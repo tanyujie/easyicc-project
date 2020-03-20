@@ -8,10 +8,10 @@
 		<artifactId>easyicc-web</artifactId>
 		<version>1.0.0.RELEASE</version>
 	</parent>
-	<groupId>org.easymis.easysaas</groupId>
-	<artifactId>easyicc-client</artifactId>
+	<groupId>org.easymis.easyicc</groupId>
+	<artifactId>easyicc-client-api</artifactId>
 	<version>1.0.0.RELEASE</version>
-	<name>easyicc</name>
+	<name>easyicc-client-api</name>
 	<url>http://www.easymis.org</url>
 	<properties>
 		<java.version>1.8</java.version>
