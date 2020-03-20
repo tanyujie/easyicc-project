@@ -4,14 +4,14 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.easymis.easysaas</groupId>
-		<artifactId>easysaas-project</artifactId>
+		<groupId>org.easymis.easyicc</groupId>
+		<artifactId>easyicc-web</artifactId>
 		<version>1.0.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>org.easymis.easysaas</groupId>
-	<artifactId>easysaas-icc-server</artifactId>
-	<name>easysaas-icc-server</name>
+	<groupId>org.easymis.easyicc</groupId>
+	<artifactId>easyicc-chat</artifactId>
+	<name>easyicc-web</name>
 	<url>http://www.easymis.org</url>
 	<properties>
 		<java.version>1.8</java.version>
