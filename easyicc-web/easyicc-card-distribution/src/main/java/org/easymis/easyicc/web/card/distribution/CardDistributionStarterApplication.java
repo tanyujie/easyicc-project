@@ -1,4 +1,4 @@
-package org.easymis.easyicc.card.distribution;
+package org.easymis.easyicc.web.card.distribution;
 
 
 
