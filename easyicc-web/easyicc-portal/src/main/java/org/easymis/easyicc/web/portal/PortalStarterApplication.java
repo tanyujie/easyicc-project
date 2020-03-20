@@ -1,4 +1,4 @@
-package org.easymis.easysaas.icc.test;
+package org.easymis.easyicc.web.portal;
 
 
 
@@ -21,12 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan({"*.easymis.easysaas.**.mapper"})
 @ServletComponentScan
 @EnableSwagger2
-public class TestStarterApplication {
-	protected static final Logger logger = LoggerFactory.getLogger(TestStarterApplication.class);
+public class PortalStarterApplication {
+	protected static final Logger logger = LoggerFactory.getLogger(PortalStarterApplication.class);
 
 	public static void main(String[] args) {
 		logger.info("web开始加载");
-		SpringApplication.run(TestStarterApplication.class, args);
+		SpringApplication.run(PortalStarterApplication.class, args);
 		logger.info("web加载完毕");
 	}
 
