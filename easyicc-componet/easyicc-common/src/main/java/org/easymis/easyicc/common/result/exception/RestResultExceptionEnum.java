@@ -50,7 +50,6 @@ public enum RestResultExceptionEnum implements ResultEnum {
 	/**
 	 * @return the msg
 	 */
-	@Override
 	public String getMsg() {
 		return this.msg;
 	}
