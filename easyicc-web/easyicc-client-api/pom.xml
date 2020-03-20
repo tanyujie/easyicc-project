@@ -131,11 +131,15 @@
 		</dependency>
 		<!-- 热部署 -->
 		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-fastdfs</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 
