@@ -6,7 +6,9 @@
 		<artifactId>easyicc-componet</artifactId>
 		<version>1.0.0.RELEASE</version>
 	</parent>
+	<groupId>org.easymis.easyicc</groupId>
 	<artifactId>easyicc-fastdfs</artifactId>
+	<version>1.0.0.RELEASE</version>
 	<description>名片综合管理服务</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -27,8 +29,7 @@
 		</dependency>
 	</dependencies>
 
-	<groupId>org.easymis.easyicc</groupId>
-	<version>1.0.0.RELEASE</version>
+
 	<build>
 		<!-- 设置项目jdk版本，编码 -->
 		<plugins>
