@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.config;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
