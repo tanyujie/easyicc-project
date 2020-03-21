@@ -1,8 +1,9 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.PromotionChannel;
-import org.easymis.easyicc.service.PromotionChannelService;
+import org.easymis.easyicc.domain.entity.AutoReply;
+import org.easymis.easyicc.domain.entity.School;
+import org.easymis.easyicc.service.AutoReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,69 +14,54 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-
-@Api(value = "/promotionChannel", description = "推广渠道")
+@Api(value = "/autoReply", description = "自动回复设置")
 @Controller
-@RequestMapping("/promotionChannel")
-public class PromotionChannelController extends IdentityRepository{
+@RequestMapping("/autoReply")
+public class AutoReplyController extends IdentityRepository{
 	@Autowired
-	private PromotionChannelService service;
-	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
-	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
-	@ResponseBody
-	public RestResult findByOrgId(String name,Integer pageNum, Integer pageSize) {
-		String orgId = getOrgId();
-		PromotionChannel bean = new PromotionChannel();
-		bean.setOrgId(orgId);
-		if (pageNum == null)
-			pageNum = 1;
-		if (pageSize == null)
-			pageSize = 10;
-		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
-	}
+	private AutoReplyService service;
 
-	@ApiOperation(value = "保存组织全局配置")
+	@ApiOperation(value = "保存自动回复设置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(PromotionChannel bean) {
+	public RestResult add(AutoReply bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "修改组织全局配置信息")
+	@ApiOperation(value = "修改自动回复设置信息")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(PromotionChannel bean) {
+	public RestResult update(AutoReply bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "查看组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id", dataType = "string", required = false), })
+	@ApiOperation(value = "查看自动回复设置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "自动回复设置id", dataType = "string", required = false), })
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult read(String id) {
 		return RestResult.buildSuccess(service.findById(id));
 	}
 
-	@ApiOperation(value = "删除组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id列表", dataType = "string", required = false), })
+	@ApiOperation(value = "删除自动回复设置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "自动回复设置id列表", dataType = "string", required = false), })
 	@RequestMapping(value = { "/delete.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult delete(String ids) {
-		return service.deleteByIds(ids);
+		return null;//service.deleteByIds(ids);
 	}
 }
