@@ -58,7 +58,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 							if (!JwtTokenUtil.isTokenExpired(authToken)) {
 								checkTokenFromCache(authToken, memberId);
 								  //设置 identityId 用户身份ID
-						        request.setAttribute("memberId", memberId);
+						        request.setAttribute("staffId", memberId);
 						        request.setAttribute("orgId", orgId);
 								// 检查角色权限
 								log.info("memberId:{}",memberId);

@@ -15,10 +15,10 @@ public class IdentityRepository{
      */
 
     public String getStaffId() {
-        return request.getAttribute("userId").toString();
+        return request.getAttribute("staffId").toString();
     }
     public String getOrgId() {
-        return request.getAttribute("companyId").toString();
+        return request.getAttribute("orgId").toString();
     }
 
 }

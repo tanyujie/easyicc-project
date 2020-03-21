@@ -33,6 +33,10 @@ public class CommonLanguageController extends IdentityRepository {
 		CommonLanguage bean = new CommonLanguage();
 		bean.setOrgId(orgId);
 		bean.setContent(content);
+		if (pageNum == null)
+			pageNum = 1;
+		if (pageSize == null)
+			pageSize = 10;
 		return RestResult.buildSuccess(service.findByOrgId(bean, pageNum, pageSize));
 	}
 
