@@ -5,7 +5,6 @@ import java.util.List;
 import org.easymis.easyicc.domain.entity.Member;
 import org.easymis.easyicc.domain.vo.FriendRequestVO;
 import org.easymis.easyicc.domain.vo.MyFriendsVO;
-import org.easymis.easyicc.web.chat.config.netty.ChatMsg;
 
 public interface  MemberService {
 
@@ -80,5 +79,5 @@ public interface  MemberService {
 	/**
 	 * @Description: 获取未签收消息列表
 	 */
-	public List<ChatMsg> getUnReadMsgList(String acceptUserId);
+	public List<org.easymis.easyicc.domain.entity.ChatMsg> getUnReadMsgList(String acceptUserId);
 }
