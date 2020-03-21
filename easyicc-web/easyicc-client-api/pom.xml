@@ -102,22 +102,7 @@
 			<version>3.1</version>
 		</dependency>
 
-		<!-- swagger2 API文档生成 -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>${springfox-swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>${springfox-swagger.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-staticdocs</artifactId>
-			<version>${springfox-staticdocs.version}</version>
-		</dependency>
+
 		<!-- -->
 		<dependency>
 			<groupId>com.orientechnologies</groupId>
