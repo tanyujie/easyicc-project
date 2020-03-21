@@ -26,18 +26,19 @@ public class CommonLanguageController extends IdentityRepository {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
 			@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),
 			@ApiImplicitParam(name = "pageSize", value = "每页显示记录", dataType = "int", required = false), })
-	@RequestMapping(value = { "/findByOrgId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(String content, Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
 		CommonLanguage bean = new CommonLanguage();
 		bean.setOrgId(orgId);
+		bean.setStaffId(getStaffId());
 		bean.setContent(content);
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		return RestResult.buildSuccess(service.findByOrgId(bean, pageNum, pageSize));
+		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
 
 	@ApiOperation(value = "保存个人常用语")
@@ -76,8 +77,8 @@ public class CommonLanguageController extends IdentityRepository {
 	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "个人常用语id", dataType = "string", required = false), })
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult read(String schoolId) {
-		return RestResult.buildSuccess(service.findById(schoolId));
+	public RestResult read(String id) {
+		return RestResult.buildSuccess(service.findById(id));
 	}
 
 	@ApiOperation(value = "删除个人常用语信息")
