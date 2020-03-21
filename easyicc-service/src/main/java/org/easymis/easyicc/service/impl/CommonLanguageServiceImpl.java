@@ -45,7 +45,7 @@ public class CommonLanguageServiceImpl implements CommonLanguageService {
 	}
 
 	@Override
-	public PageInfo<?> findByOrgId(CommonLanguage bean, Integer pageNum, Integer pageSize) {
+	public PageInfo<?> find(CommonLanguage bean, Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		List<CommonLanguage> dataList = mapper.getList(bean);
 		PageInfo<CommonLanguage> p = new PageInfo<CommonLanguage>(dataList);

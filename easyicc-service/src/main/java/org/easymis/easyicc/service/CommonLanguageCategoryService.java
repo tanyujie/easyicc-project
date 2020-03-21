@@ -12,7 +12,7 @@ public interface CommonLanguageCategoryService {
 
 	public CommonLanguageCategory findById(String id);
 
-	public PageInfo findByOrgId(CommonLanguageCategory bean, Integer pageNum, Integer pageSize);
+	public PageInfo find(CommonLanguageCategory bean, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
 }

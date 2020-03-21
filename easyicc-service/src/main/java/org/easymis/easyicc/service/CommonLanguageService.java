@@ -13,7 +13,7 @@ public interface CommonLanguageService {
 	public CommonLanguage findById(String id);
 
 
-	public PageInfo<?> findByOrgId(CommonLanguage bean, Integer pageNum, Integer pageSize);
+	public PageInfo<?> find(CommonLanguage bean, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
 }
