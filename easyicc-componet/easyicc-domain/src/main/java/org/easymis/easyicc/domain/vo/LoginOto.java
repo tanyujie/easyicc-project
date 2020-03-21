@@ -8,6 +8,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class LoginOto {
 
-    private String jesongToken;
+    private String easysaasToken;
     
 }
