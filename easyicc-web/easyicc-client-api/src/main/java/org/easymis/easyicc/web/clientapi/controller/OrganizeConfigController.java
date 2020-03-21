@@ -10,7 +10,7 @@ import io.swagger.annotations.Api;
 @Api(value = "/organizeConfig", description = "组织全局配置")
 @Controller
 @RequestMapping("/organizeConfig")
-public class OrganizeConfigController {
+public class OrganizeConfigController extends IdentityRepository{
 	@Autowired
 	private OrganizeConfigService service;
 }

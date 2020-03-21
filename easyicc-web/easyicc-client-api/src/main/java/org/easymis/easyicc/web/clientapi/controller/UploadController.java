@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-public class UploadController {
+public class UploadController extends IdentityRepository{
     private static Logger logger = LoggerFactory.getLogger(UploadController.class);
 
     @GetMapping("/")

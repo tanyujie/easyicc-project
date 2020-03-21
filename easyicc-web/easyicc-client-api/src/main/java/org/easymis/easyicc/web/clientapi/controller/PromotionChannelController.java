@@ -10,7 +10,7 @@ import io.swagger.annotations.Api;
 @Api(value = "/promotionChannel", description = "推广渠道")
 @Controller
 @RequestMapping("/promotionChannel")
-public class PromotionChannelController {
+public class PromotionChannelController extends IdentityRepository{
 	@Autowired
 	private PromotionChannelService service;
 }

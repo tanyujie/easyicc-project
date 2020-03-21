@@ -10,7 +10,7 @@ import io.swagger.annotations.Api;
 @Api(value = "/chatRecord", description = "对话记录")
 @Controller
 @RequestMapping("/chatRecord")
-public class ChatRecordController {
+public class ChatRecordController extends IdentityRepository{
 	@Autowired
 	private ChatRecordService service;
 }
