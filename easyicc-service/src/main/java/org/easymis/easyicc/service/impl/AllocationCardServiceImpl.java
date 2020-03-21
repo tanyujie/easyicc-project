@@ -13,14 +13,11 @@ import org.easymis.easyicc.service.AllocationCardService;
 import org.easymis.easyicc.service.CardLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.cache.CacheFactory;
 @Service
 public class AllocationCardServiceImpl implements AllocationCardService {
 	private final static SimpleDateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
 	private final static Log _logger = LogFactory.getLog(AllocationCardService.class);
-	@Autowired
-	private CacheFactory cacheFactory;
+
 	@Autowired
 	private CardMapper cardMapper;
 	@Autowired
