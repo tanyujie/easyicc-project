@@ -1,14 +1,5 @@
 server:
   port: 8090
-springbootwebfluxjjwt:
-  password:
-    encoder:
-      secret: mysecret
-      iteration: 33
-      keylength: 256
-  jjwt:
-    secret: ThisIsSecretForJWTHS512SignatureAlgorithmThatMUSTHave512bitsKeySize
-    expiration: 28800
 management:
   metrics:
     web:
@@ -68,6 +59,10 @@ spring:
         uri: lb://easysaas-mobile
         predicates:
         - Path=/mobile/**
+      - id: easyicc-client-api
+        uri: lb://easyicc-client-api
+        predicates:
+        - Path=/clientAPI/**
       - id: crm_route
         uri: lb://easysaas-crm
         predicates:

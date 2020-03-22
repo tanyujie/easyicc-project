@@ -5,7 +5,9 @@ package org.easymis.easyicc.web.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
 import com.alicp.jetcache.anno.config.EnableMethodCache;
@@ -13,8 +15,8 @@ import com.alicp.jetcache.anno.config.EnableMethodCache;
 @SpringBootApplication
 @EnableDiscoveryClient
 //启用feign REST访问
-/*@EnableFeignClients(basePackages = "com.springboot.cloud.auth.client")*/
-/*@EnableCircuitBreaker*/
+@EnableFeignClients(basePackages = "org.easymis.easyicc.auth.client")
+@EnableCircuitBreaker
 @EnableMethodCache(basePackages = "org.easymis.easyicc")
 @EnableCreateCacheAnnotation
 public class GatewayStarterApplication {

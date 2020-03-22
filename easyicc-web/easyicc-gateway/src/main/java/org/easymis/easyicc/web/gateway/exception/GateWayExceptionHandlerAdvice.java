@@ -1,7 +1,7 @@
 package org.easymis.easyicc.web.gateway.exception;
 
-import org.easymis.easyicc.web.gateway.common.Result;
-import org.easymis.easyicc.web.gateway.common.SystemErrorType;
+import org.easymis.easyicc.common.result.Result;
+import org.easymis.easyicc.common.result.exception.SystemErrorType;
 import org.springframework.cloud.gateway.support.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;

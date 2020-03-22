@@ -4,13 +4,12 @@ import org.easymis.easyicc.web.gateway.service.impl.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
-import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Component
+/*@Component*/
 @Slf4j
 public class RedisRouteDefinitionRepository implements RouteDefinitionRepository {
 
