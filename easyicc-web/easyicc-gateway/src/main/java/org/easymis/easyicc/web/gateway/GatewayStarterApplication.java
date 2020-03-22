@@ -15,7 +15,7 @@ import com.alicp.jetcache.anno.config.EnableMethodCache;
 @SpringBootApplication
 @EnableDiscoveryClient
 //启用feign REST访问
-@EnableFeignClients(basePackages = "org.easymis.easyicc.auth.client")
+@EnableFeignClients
 @EnableCircuitBreaker
 @EnableMethodCache(basePackages = "org.easymis.easyicc")
 @EnableCreateCacheAnnotation
