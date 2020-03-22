@@ -39,7 +39,7 @@ import net.kinfe.util.properties.ConfigLoader;
  * 绑定 微信用户
  *
  */
-@Api(value = "/setting/school", description = "绑定 微信用户")
+@Api(value = "/weChatBind", description = "绑定 微信用户")
 @Controller
 @RequestMapping("/weChatBind")
 public class WeixinBindController extends IdentityRepository{

@@ -1,16 +1,21 @@
 package org.easymis.easyicc.auth.client.service.impl;
 
-import com.springboot.cloud.common.core.entity.vo.Result;
-import io.jsonwebtoken.*;
-import lombok.extern.slf4j.Slf4j;
+import java.util.stream.Stream;
+
 import org.apache.commons.lang.StringUtils;
 import org.easymis.easyicc.auth.client.provider.AuthProvider;
 import org.easymis.easyicc.auth.client.service.IAuthService;
+import org.easymis.easyicc.common.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.util.stream.Stream;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
@@ -84,7 +89,7 @@ public class AuthService implements IAuthService {
         try {
             getJwt(authentication);
             invalid = Boolean.FALSE;
-        } catch (SignatureException | ExpiredJwtException | MalformedJwtException ex) {
+        } catch (ExpiredJwtException | MalformedJwtException ex) {
             log.error("user token error :{}", ex.getMessage());
         }
         return invalid;

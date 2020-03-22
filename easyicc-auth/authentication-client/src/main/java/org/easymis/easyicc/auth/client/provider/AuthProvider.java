@@ -1,12 +1,16 @@
 package org.easymis.easyicc.auth.client.provider;
 
-import com.springboot.cloud.common.core.entity.vo.Result;
+import org.easymis.easyicc.common.result.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import okhttp3.internal.http.HttpHeaders;
+
+
 
 @Component
 @FeignClient(name = "authentication-server", fallback = AuthProvider.AuthProviderFallback.class)

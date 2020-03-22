@@ -34,7 +34,7 @@ import io.swagger.annotations.Api;
  * 微信接口配置
  *
  */
-@Api(value = "/setting/school", description = "微信接口配置")
+@Api(value = "/weChatParty", description = "微信接口配置")
 @Controller
 @RequestMapping("/weChatParty")
 public class WeixinPartyController extends IdentityRepository{

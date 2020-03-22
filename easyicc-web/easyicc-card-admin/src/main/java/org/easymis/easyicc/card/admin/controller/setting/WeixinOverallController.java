@@ -26,7 +26,7 @@ import io.swagger.annotations.Api;
  * 全局微信推送
  *
  */
-@Api(value = "/setting/school", description = "全局微信推送")
+@Api(value = "/weChatOverall", description = "全局微信推送")
 @Controller
 @RequestMapping("/weChatOverall")
 public class WeixinOverallController extends IdentityRepository{

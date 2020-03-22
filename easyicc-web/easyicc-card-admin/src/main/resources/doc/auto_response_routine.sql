@@ -20,8 +20,8 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 -- Table structure for auto_response_routine
 -- ----------------------------
-DROP TABLE IF EXISTS `auto_response_routine`;
-CREATE TABLE `auto_response_routine`  (
+DROP TABLE IF EXISTS `auto_reply_routine`;
+CREATE TABLE `auto_reply_routine`  (
   `自动回复状态` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '自动回复状态',
   `访客与客服接通对话时，系统自动回复消息内容设置` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `当客服长时间未回复访客时，系统自动回复消息内容设置` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE `card_weixin_info`  (
 -- ----------------------------
 -- Table structure for chat_group
 -- ----------------------------
-DROP TABLE IF EXISTS `chat_group`;
+DROP TABLE IF EXISTS `chat_team`;
 CREATE TABLE `chat_group`  (
   `id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
