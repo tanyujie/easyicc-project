@@ -3,22 +3,26 @@ package org.easymis.easyicc.web.gateway;
 
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
-/*@EnableDiscoveryClient*/
-@ComponentScan({"*.easymis.easysaas.*"})
+import com.alicp.jetcache.anno.config.EnableCreateCacheAnnotation;
+import com.alicp.jetcache.anno.config.EnableMethodCache;
+
+@SpringBootApplication
+@EnableDiscoveryClient
+//启用feign REST访问
+/*@EnableFeignClients(basePackages = "com.springboot.cloud.auth.client")*/
+/*@EnableCircuitBreaker*/
+@EnableMethodCache(basePackages = "org.easymis.easyicc")
+@EnableCreateCacheAnnotation
 public class GatewayStarterApplication {
-	protected static final Logger logger = LoggerFactory.getLogger(GatewayStarterApplication.class);
+	//protected static final Logger logger = LoggerFactory.getLogger(GatewayStarterApplication.class);
 	public static void main(String[] args) {
-		logger.info("web开始加载");
+		//logger.info("web开始加载");
 		SpringApplication.run(GatewayStarterApplication.class, args);
-		logger.info("web加载完毕");
+		//logger.info("web加载完毕");
 	}
 
 }
