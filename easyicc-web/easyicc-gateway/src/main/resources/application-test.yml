@@ -16,7 +16,7 @@ management:
 gate:
   ignore:
     authentication:
-      startWith: /oauth,/open
+      startWith: /oauth,/open,/clientAPI
 spring:
   application:
     name: easyicc-gateway

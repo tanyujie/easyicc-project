@@ -43,6 +43,8 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
 		System.out.println("---------------------开始进入请求地址拦截----------------------------");
         String url = request.getServletPath();	
+        if(url!=null&&url.equals("/clientAPI/"))
+        	url=url.replace("/clientAPI/", "/");
         boolean allowedPath = ALLOWED_PATHS.contains(url);
 
         if (!allowedPath) {

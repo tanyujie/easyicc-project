@@ -5,13 +5,14 @@ server:
         min-spare-threads: 30
         maxHttpHeaderSize: 10240000
         maxHttpPostSize: 10240000 
-    port: 80
+    port: 8001
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
-      
+    servlet: 
+        context-path: /clientAPI      
 spring:
     application:
-        name: easycrm
+        name: easyicc-client-api
     # 环境 dev|test|prod
     profiles:
        active: test
@@ -65,6 +66,14 @@ spring:
                maxTotal : 100
                maxIdle : 10
                maxWaitMillis : 100000
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 mybatis:
     mapper-locations: classpath*:org/easymis/easysaas/portal/entitys/mybatis/mapper/*Mapper.xml
     type-aliases-package: org.easymis.easysaas.portal.entitys.mybatis.dto

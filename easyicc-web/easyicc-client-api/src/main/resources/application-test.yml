@@ -41,7 +41,14 @@ spring:
       password: 123456
       read-timeout: 20000 #读取超时
     connection-timeout: 20000 #连接超时
-
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    register-with-eureka: true 
+    fetch-registry: true 
+    service-url:
+      defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 ##多数据源
 datasource:
   #主库

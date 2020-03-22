@@ -1,11 +1,12 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.HtmlAlias;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
-import org.easymis.easyicc.domain.entity.Site;
-import org.easymis.easyicc.service.SiteService;
+import org.easymis.easyicc.service.HtmlAliasService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,19 +16,20 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "/site", description = "子站管理")
+@Api(value = "/htmlAlias", description = "网页别名设置")
 @Controller
-@RequestMapping("/site")
-public class SiteController extends IdentityRepository{
+@RequestMapping("/htmlAlias")
+public class HtmlAliasController extends IdentityRepository{
 	@Autowired
-	private SiteService service;
+	private HtmlAliasService service;
+	
 	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
 	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(String name,Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		Site bean = new Site();
+		HtmlAlias bean = new HtmlAlias();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
@@ -43,7 +45,7 @@ public class SiteController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(Site bean) {
+	public RestResult add(HtmlAlias bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -57,7 +59,7 @@ public class SiteController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(Site bean) {
+	public RestResult update(HtmlAlias bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else
