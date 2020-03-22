@@ -1,13 +1,9 @@
 package org.easymis.easyicc.auth.authentication.service;
 
-import org.easymis.easyicc.sysadmin.organization.entity.po.Resource;
-import org.springframework.security.access.ConfigAttribute;
-import org.springframework.security.web.util.matcher.RequestMatcher;
-import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 import java.util.Set;
+
+import org.easymis.easyicc.sysadmin.organization.entity.po.Resource;
+import org.springframework.stereotype.Service;
 
 @Service
 public interface IResourceService {
@@ -26,18 +22,6 @@ public interface IResourceService {
      */
     void removeResource(Resource resource);
 
-    /**
-     * 加载权限资源数据
-     */
-    Map<RequestMatcher, ConfigAttribute> loadResource();
-
-    /**
-     * 根据url和method查询到对应的权限信息
-     *
-     * @param authRequest
-     * @return
-     */
-    ConfigAttribute findConfigAttributesByUrl(HttpServletRequest authRequest);
 
     /**
      * 根据用户名查询 该用户所拥有的角色对应的资源信息
