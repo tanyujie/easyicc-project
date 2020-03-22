@@ -1,4 +1,4 @@
-package com.springboot.cloud.auth.client.service;
+package org.easymis.easyicc.auth.client.service;
 
 import com.springboot.cloud.common.core.entity.vo.Result;
 import io.jsonwebtoken.Claims;

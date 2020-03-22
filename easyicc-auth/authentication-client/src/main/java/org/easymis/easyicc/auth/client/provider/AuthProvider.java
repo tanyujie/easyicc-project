@@ -1,4 +1,4 @@
-package com.springboot.cloud.auth.client.provider;
+package org.easymis.easyicc.auth.client.provider;
 
 import com.springboot.cloud.common.core.entity.vo.Result;
 import org.springframework.cloud.openfeign.FeignClient;

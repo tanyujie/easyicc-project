@@ -1,8 +1,10 @@
 package com.springboot.cloud.auth.client.service.impl;
 
-import com.springboot.cloud.auth.client.provider.AuthProvider;
-import com.springboot.cloud.auth.client.service.IAuthService;
 import com.springboot.cloud.common.core.entity.vo.Result;
+
+import org.easymis.easyicc.auth.client.provider.AuthProvider;
+import org.easymis.easyicc.auth.client.service.IAuthService;
+import org.easymis.easyicc.auth.client.service.impl.AuthService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
