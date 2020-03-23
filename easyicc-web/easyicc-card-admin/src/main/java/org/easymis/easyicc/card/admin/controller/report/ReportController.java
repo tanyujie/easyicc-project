@@ -86,7 +86,6 @@ public class ReportController extends IdentityRepository{
 				continue;
 			}
 			tempList.add(user);
-			//index.put(user.getUserId(), user);
 		}
 		list = tempList;
 		for(StaffSalesVo u : list){
@@ -169,11 +168,10 @@ public class ReportController extends IdentityRepository{
 		}
 		params.put("extColumn8", request.getParameter("subjectId"));
 		params.put("extColumn9", request.getParameter("schoolId"));
-		Page<Card> page = this.cardConfigService.pageCardByCreateId(OnLine.getCurrentUserDetails().getUserId(), PageConfig.createPageConfig(request), params);
+		Page<Card> page = this.cardConfigService.pageCardByCreateId(getStaffId(), PageConfig.createPageConfig(request), params);
 		CuourUserDetail ud = (CuourUserDetail)OnLine.getCurrentUserDetails();
 		if(ud.hasDataPermission("3d5c4d88-032f-409f-bf74-1b2f429d1216", "hideTelephone", "1")){
 			for(Card card : page.getRows()){
-				//if(card.getCreateTime() == null || now - card.getCreateTime().getTime() < rule.getMobileHideTime() * 60 * 1000){
 					String mobile = card.getMobile();
 					if(mobile != null && !mobile.equals("")){
 						if(mobile.length() == 11){
@@ -185,7 +183,6 @@ public class ReportController extends IdentityRepository{
 						}
 						card.setMobile(mobile);
 					}
-				//}
 			}
 		}
 		return page;
@@ -210,10 +207,8 @@ public class ReportController extends IdentityRepository{
 			@RequestParam(value = "group", required = false) Integer group) throws ParseException{
 		List<StaffSalesVo> list = this.allocationCardService.getSaleUser(getOrgId(), 
 				formatter.parse(startTime), formatter.parse(endTime));
-		//+" 00:00:00"  +" 23:59:59"
 		List<StaffSalesVo> tempList = new ArrayList<StaffSalesVo>();
 		CompanyTotal total = new CompanyTotal();
-		//Map<String, SaleUser> index = new HashMap<String, StaffSalesVo>();
 		for(StaffSalesVo user : list){
 			total.addWeight(user.getBusinessGroupId(), user.getAllocationWeight());
 			total.addAllocation(user.getBusinessGroupId(), user.getAllocationCount());
@@ -227,7 +222,6 @@ public class ReportController extends IdentityRepository{
 				continue;
 			}
 			tempList.add(user);
-			//index.put(user.getUserId(), user);
 		}
 		list = tempList;
 		for(int i = 0; i < list.size(); i++) {
@@ -292,7 +286,6 @@ public class ReportController extends IdentityRepository{
 	private static double m1(double f) {
         BigDecimal bg = new BigDecimal(f);
         double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-       // System.out.println(f1);
         return f1;
     }
 }
