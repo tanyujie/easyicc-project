@@ -1,6 +1,7 @@
 package org.easymis.easyicc.service.impl;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,11 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 	public void clearAlternateCache(String companyId, String userId) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public List<StaffSalesVo> getSaleUser(String orgId, Date startTime, Date endTime) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

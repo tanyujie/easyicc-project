@@ -1,5 +1,6 @@
 package org.easymis.easyicc.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -41,4 +42,5 @@ public interface AllocationCardService{
 	 * @param userId
 	 */
 	public void clearAlternateCache(String companyId,String userId);
+	public List<StaffSalesVo> getSaleUser(String orgId, Date startTime, Date endTime);
 }
