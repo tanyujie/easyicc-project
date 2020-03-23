@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.easymis.easyicc.domain.vo.StaffSalesVo;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface AllocationCardService{
 	List<StaffSalesVo> getCanAllocationSaleUser(String companyId, String subjectId, String schoolId);
@@ -43,4 +44,14 @@ public interface AllocationCardService{
 	 */
 	public void clearAlternateCache(String companyId,String userId);
 	public List<StaffSalesVo> getSaleUser(String orgId, Date startTime, Date endTime);
+	/**
+	 * 名片退回
+	 * @param companyId
+	 * @param cardId
+	 * @param userId
+	 * @throws Exception 
+	 */
+	@Transactional
+	public boolean back(String orgId, String cardId, String staffId, int backType, String desp) throws Exception;
+	public boolean finished(String orgId, String cardId, String staffId, String desp);
 }
