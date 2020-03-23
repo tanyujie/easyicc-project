@@ -68,7 +68,7 @@ public class AllocationCardController extends IdentityRepository{
 	private CardRuleService ruleService;
 	@RequestMapping("/index")
 	public String index(ModelMap model) throws Exception{
-		String orgId = getCompanyId();
+		String orgId = getOrgId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", orgId);
 		model.put("cols", cardConfigService.getShowVisitorCols(orgId));
@@ -87,7 +87,7 @@ public class AllocationCardController extends IdentityRepository{
 		//	Card card = new Card();
 		//	card.setCompanyId(1);
 		//	card.setId(1989212);
-		//	String userId = getUserId();
+		//	String userId = getStaffId();
 		//	weixinService.action(card)
 			
 		} catch(Exception e) {
@@ -98,7 +98,7 @@ public class AllocationCardController extends IdentityRepository{
 	@RequestMapping("/query")
 	@ResponseBody
 	public PageInfo<Card> query(@RequestParam("status") int status, HttpServletRequest request) throws Exception{
-		String orgId = getCompanyId();
+		String orgId = getOrgId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("orgId", orgId);
 		String startTime = request.getParameter("startTime");
@@ -120,7 +120,7 @@ public class AllocationCardController extends IdentityRepository{
 		if(backType != null && !backType.equals("")){
 			params.put("backType", Integer.parseInt(backType));
 		}
-		this.notifyService.clearNotifyTime(orgId,getUserId());
+		this.notifyService.clearNotifyTime(orgId,getStaffId());
 		Page page= new Page();
 		PageInfo<Card> pageInfo = this.cardConfigService.pageVisitorCard(page, params, status);
 
@@ -147,8 +147,8 @@ public class AllocationCardController extends IdentityRepository{
 	@ResponseBody
 	public List<Map<String, Object>> getCanAllocationSaleUser(@RequestParam("subjectId") String subjectId, 
 			@RequestParam("schoolId") String schoolId) throws Exception{
-		List<StaffSalesVo> users = this.allocationCardService.getCanAllocationSaleUser(getCompanyId(), subjectId, schoolId);
-		Map<String, String> status = this.allocationCardService.getStatus(getCompanyId());
+		List<StaffSalesVo> users = this.allocationCardService.getCanAllocationSaleUser(getOrgId(), subjectId, schoolId);
+		Map<String, String> status = this.allocationCardService.getStatus(getOrgId());
 		List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 		for(StaffSalesVo user : users){
 			Map<String, Object> info = new HashMap<String, Object>();
@@ -187,7 +187,7 @@ public class AllocationCardController extends IdentityRepository{
 	public void allocation(@RequestParam("allocationCardId") String cardId, 
 			@RequestParam("allocationUserId") String userId, HttpServletResponse response) throws IOException{
 		if(!userId.equals("")){
-			this.allocationCardService.userAllocationCard(getCompanyId(), cardId, userId, getUserId());
+			this.allocationCardService.userAllocationCard(getOrgId(), cardId, userId, getStaffId());
 			//RespResult.getSuccess().writeToResponse(response);
 		}else{
 			//RespResult.getError("请选择一个要分配的咨询师！").writeToResponse(response);
@@ -207,7 +207,7 @@ public class AllocationCardController extends IdentityRepository{
 	
 	@RequestMapping("/notValidate")
 	public void notValidate(@RequestParam("cardId") String cardId, HttpServletResponse response) throws IOException{
-		this.allocationCardService.setNotValidate(getCompanyId(), cardId);
+		this.allocationCardService.setNotValidate(getOrgId(), cardId);
 		//RespResult.getSuccess().writeToResponse(response);
 	}
 	
@@ -258,7 +258,7 @@ public class AllocationCardController extends IdentityRepository{
 		if(mobile != null && !mobile.equals("")){
 			params.put("mobile", "%"+mobile+"%");
 		}
-		return this.cardLogService.pageQuery2(getCompanyId(), new Page(), params);
+		return this.cardLogService.pageQuery2(getOrgId(), new Page(), params);
 	}
 	
 	/*
@@ -267,8 +267,8 @@ public class AllocationCardController extends IdentityRepository{
      */
 	@RequestMapping(value="/clearCache", method=RequestMethod.POST)
 	public void clearCache(HttpServletResponse response) throws IOException{
-		String companyId = getCompanyId();
-		String userId = getUserId();
+		String companyId = getOrgId();
+		String userId = getStaffId();
 		//System.out.println("测试");
 		this.allocationCardService.clearCache(companyId,userId);
 		

@@ -44,7 +44,7 @@ public class ApiPushLogController extends IdentityRepository {
 	@RequestMapping("/index")
 	public String index(ModelMap model) throws Exception{		
 		
-		String companyId = getCompanyId();
+		String companyId = getOrgId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", companyId);
 		
@@ -54,8 +54,8 @@ public class ApiPushLogController extends IdentityRepository {
 	@RequestMapping("/query")
 	@ResponseBody
 	public PageInfo<ApiPushLog> query(HttpServletRequest request) throws Exception{
-		String companyId = getCompanyId(); 
-		String useId=this.getUserId();
+		String companyId = getOrgId(); 
+		String useId=this.getStaffId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", companyId);
 		params.put("useId", useId);
@@ -75,7 +75,7 @@ public class ApiPushLogController extends IdentityRepository {
 		if(phoneNumber != null && phoneNumber.trim().length() > 0){
 			params.put("phoneNumber", phoneNumber);
 		}
-		this.notifyService.clearNotifyTime(companyId, getUserId());
+		this.notifyService.clearNotifyTime(companyId, getStaffId());
 		PageInfo<ApiPushLog> pageInfo = this.apiPushLogService.pageApiPushVisitorInfo(new Page(), params);
 
 		return pageInfo;
@@ -120,8 +120,8 @@ public class ApiPushLogController extends IdentityRepository {
 		heads.add("推送次数");
 		keys.add("responseStr");
 		heads.add("推送结果");
-		String companyId = getCompanyId(); 
-		String useId=getUserId();
+		String companyId = getOrgId(); 
+		String useId=getStaffId();
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", companyId);
 		params.put("useId", useId);
@@ -141,7 +141,7 @@ public class ApiPushLogController extends IdentityRepository {
 		if(phoneNumber != null && phoneNumber.trim().length() > 0){
 			params.put("phoneNumber", phoneNumber);
 		}
-		this.notifyService.clearNotifyTime(companyId, getUserId());
+		this.notifyService.clearNotifyTime(companyId, getStaffId());
 		List<ApiPushLog> apiPushLog = this.apiPushLogService.downApiPushVisitorInfo(new Page(), params);
 		//List<ApiPushLog> apiPushLog=page.getRows();
 		if(apiPushLog.size()>=1){

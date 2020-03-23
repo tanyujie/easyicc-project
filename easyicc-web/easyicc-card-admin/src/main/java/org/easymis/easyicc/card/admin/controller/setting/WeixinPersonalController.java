@@ -46,7 +46,7 @@ public class WeixinPersonalController extends IdentityRepository{
 	@RequestMapping("/index")
 	public String indexThirdParty(ModelMap model) throws Exception {
 		try {
-			int companyId = OnLine.getCurrentUserDetails().getCompanyId();
+			int companyId = getOrgId();
 			String userId = OnLine.getCurrentUserDetails().getUserId();
 			if(companyId > 0) {
 				try {
@@ -101,7 +101,7 @@ public class WeixinPersonalController extends IdentityRepository{
 		Map<String, Object> map = new HashMap<String, Object>();
 		logger.info("保存微信用户基本信息 ========================= ");
 		try {
-			/*int companyId = OnLine.getCurrentUserDetails().getCompanyId();
+			/*int companyId = getOrgId();
 			String userId = OnLine.getCurrentUserDetails().getUserId();*/
 			//int companyId =	NumberUtils.toInt(request.getParameter("companyId")); 
 			String userId = request.getParameter("userId");

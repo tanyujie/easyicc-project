@@ -104,12 +104,12 @@ public class WeixinPartyController extends IdentityRepository{
 			HttpServletResponse response) throws IOException {
 		try {
 			if (weixin != null) {
-				int companyId = OnLine.getCurrentUserDetails().getCompanyId();
-			//	String companyName = cService.getCompanyName(companyId);
-				weixin.setCompanyId(companyId);
+				int orgId = getOrgId();
+			//	String companyName = cService.getCompanyName(orgId);
+				weixin.setCompanyId(orgId);
 				weixin.setIsDelete(CmdConstant.IS_DELETE_NO);
 				weixin.setUserName(OnLine.getCurrentUserDetails().getRealName());
-				weixin.setCompanyName(cService.getCompanyName(companyId));
+				weixin.setCompanyName(cService.getCompanyName(orgId));
 				wxService.insert(weixin);
 			//	acService.insert(ac);
 			//	this.service.saveCardInterface(cif);
@@ -195,8 +195,8 @@ public class WeixinPartyController extends IdentityRepository{
 	protected Object getQueryParams(HttpServletRequest request) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("isDelete", CmdConstant.IS_DELETE_NO);
-		int companyId = OnLine.getCurrentUserDetails().getCompanyId();
-		params.put("companyId", companyId);
+		int orgId = getOrgId();
+		params.put("orgId", orgId);
 		return params;
 	}
 

@@ -34,7 +34,7 @@ public class CardRuleController extends IdentityRepository{
 	@RequestMapping("/index")
 	public String index(ModelMap model){
 		
-		String orgId=getCompanyId();
+		String orgId=getOrgId();
 		model.put("schoolAreaList", schoolAreaService.findByOrgId(orgId));
 		model.put("subjects", subjectService.findByOrgId(orgId));
 		return PREFIX + "/index";
@@ -43,7 +43,7 @@ public class CardRuleController extends IdentityRepository{
 	@RequestMapping("/data")
 	@ResponseBody
 	public CardRule loadData(){
-		CardRule rule = this.ruleService.findByOrgId(getCompanyId());
+		CardRule rule = this.ruleService.findByOrgId(getOrgId());
 		if(rule == null){
 			rule = new CardRule();
 		}
@@ -52,7 +52,7 @@ public class CardRuleController extends IdentityRepository{
 	
 	@RequestMapping("/update")
 	public void update(CardRule rule, HttpServletResponse response) throws IOException{
-		rule.setOrgId(getCompanyId());
+		rule.setOrgId(getOrgId());
 		this.ruleService.saveOrUpdate(rule);
 	}
 }

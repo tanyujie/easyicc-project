@@ -37,8 +37,8 @@ public class WeixinOverallController extends IdentityRepository{
 	
 	@RequestMapping("/index")
 	public String indexThirdParty(ModelMap model) throws Exception {
-		int companyId = OnLine.getCurrentUserDetails().getCompanyId();
-		CompanyGlobalConf config = CoreClient.getUserMgr(companyId).getCompanyGlobalConfig(companyId);
+		String orgId = getOrgId();
+		CompanyGlobalConf config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
 		if(config != null) {
 			String notifyOpenId = config.getProps2().getProperty("notifyOpenId");
 			String notifyUserNickName = config.getProps2().getProperty("notifyUserNickName");
@@ -80,19 +80,19 @@ public class WeixinOverallController extends IdentityRepository{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {
-			String companyId = getCompanyId();
+			String orgId = getCompanyId();
 			String notifyOpenId = request.getParameter("notifyOpenId");
 			String notifyUserNickName = request.getParameter("notifyUserNickName");
 			String notifyIsOpen = request.getParameter("notifyIsOpen");
 			String notifySendOpportunity = request.getParameter("notifySendOpportunity");
 			
-			CompanyGlobalConf config = CoreClient.getUserMgr(companyId).getCompanyGlobalConfig(companyId);
+			CompanyGlobalConf config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
 			config.getProps2().setProperty("notifyIsOpen", notifyIsOpen);
 			config.getProps2().setProperty("notifyOpenId", notifyOpenId);
 			config.getProps2().setProperty("notifyUserNickName", notifyUserNickName);
 			config.getProps2().setProperty("notifySendOpportunity", notifySendOpportunity);
 			
-			CoreClient.getUserMgr(companyId).updateCompanyGlobalConfig(config);
+			CoreClient.getUserMgr(orgId).updateCompanyGlobalConfig(config);
 			
 			map.put("result", "success");
 		} catch (Exception e) {
