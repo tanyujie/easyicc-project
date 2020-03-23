@@ -1,8 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.PromotionChannel;
-import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +12,17 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import jdk.vm.ci.code.site.Site;
 
-@Api(value = "/site", description = "瀛愮珯绠＄悊")
+
+@Api(value = "/site", description = "子站管理")
 @Controller
 @RequestMapping("/site")
 public class SiteController extends IdentityRepository{
 	@Autowired
 	private SiteService service;
-	@ApiOperation(value = "鏌ヨ鎺ュ彛", response = PromotionChannel.class)
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "鍒嗙被鍚嶇О", dataType = "string", required = false),})
+	@ApiOperation(value = "查询接口", response = Site.class)
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
 	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(String name,Integer pageNum, Integer pageSize) {
@@ -36,11 +36,11 @@ public class SiteController extends IdentityRepository{
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
 
-	@ApiOperation(value = "淇濆瓨缁勭粐鍏ㄥ眬閰嶇疆")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "鍒嗙被鍚嶇О", dataType = "string", required = false),
-		@ApiImplicitParam(name = "priority", value = "鎺掑簭", dataType = "int", required = false),
+	@ApiOperation(value = "保存组织全局配置")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
-		@ApiImplicitParam(name = "depict", value = "澶囨敞", dataType = "string", required = false),})
+		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult add(Site bean) {
@@ -50,11 +50,11 @@ public class SiteController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "淇敼缁勭粐鍏ㄥ眬閰嶇疆淇℃伅")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "鍒嗙被鍚嶇О", dataType = "string", required = false),
-		@ApiImplicitParam(name = "priority", value = "鎺掑簭", dataType = "int", required = false),
+	@ApiOperation(value = "修改组织全局配置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
-		@ApiImplicitParam(name = "depict", value = "澶囨敞", dataType = "string", required = false),})
+		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult update(Site bean) {
@@ -64,16 +64,16 @@ public class SiteController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "鏌ョ湅缁勭粐鍏ㄥ眬閰嶇疆淇℃伅")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "缁勭粐鍏ㄥ眬閰嶇疆id", dataType = "string", required = false), })
+	@ApiOperation(value = "查看组织全局配置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id", dataType = "string", required = false), })
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult read(String id) {
 		return RestResult.buildSuccess(service.findById(id));
 	}
 
-	@ApiOperation(value = "鍒犻櫎缁勭粐鍏ㄥ眬閰嶇疆淇℃伅")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "缁勭粐鍏ㄥ眬閰嶇疆id鍒楄〃", dataType = "string", required = false), })
+	@ApiOperation(value = "删除组织全局配置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id列表", dataType = "string", required = false), })
 	@RequestMapping(value = { "/delete.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult delete(String ids) {

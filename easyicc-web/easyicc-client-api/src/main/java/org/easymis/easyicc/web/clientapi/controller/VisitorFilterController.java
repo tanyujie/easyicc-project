@@ -1,7 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.domain.entity.VisitorFilter;
 import org.easymis.easyicc.service.VisitorFilterService;
@@ -31,7 +30,7 @@ public class VisitorFilterController extends IdentityRepository{
 	@ResponseBody
 	public RestResult findByOrgId(String content, Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		CommonLanguage bean = new CommonLanguage();
+		VisitorFilter bean = new VisitorFilter();
 		bean.setOrgId(orgId);
 		bean.setStaffId(getStaffId());
 		bean.setContent(content);
