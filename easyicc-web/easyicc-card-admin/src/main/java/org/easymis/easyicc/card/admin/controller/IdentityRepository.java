@@ -14,12 +14,12 @@ public class IdentityRepository {
      * @return
      */
 
-    public String getUserId() {
-        return request.getAttribute("userId").toString();
+    public String getStaffId() {
+        return request.getAttribute("staffId").toString();
     }
     @SuppressWarnings("deprecation")
-	public String getCompanyId() {
-        return request.getAttribute("companyId").toString();
+	public String getOrgId() {
+        return request.getAttribute("orgId").toString();
     }
 
 }
