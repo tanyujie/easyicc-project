@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import io.swagger.annotations.Api;
+@Api(value = "/sale/url", description = "销售地址")
 @Controller
 @RequestMapping("/sale/url")
 public class SaleURLController extends IdentityRepository{

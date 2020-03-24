@@ -30,7 +30,8 @@ import cn.eutils.web.platform.permission.user.OnLine;
 import cn.eutils.web.platform.ui.PageConfig;
 import cn.eutils.web.platform.ui.RespResult;
 import cn.jesong.webcall.cuour.user.CuourUserDetail;
-
+import io.swagger.annotations.Api;
+@Api(value = "/report", description = "名片处理")
 @Controller
 @RequestMapping("/sale/card")
 public class CardDisposeController extends IdentityRepository{
