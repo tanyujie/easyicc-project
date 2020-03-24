@@ -1,5 +1,6 @@
 package org.easymis.easyicc.card.admin.controller.setting;
 
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Scheduling;
 import org.easymis.easyicc.domain.entity.School;
@@ -18,7 +19,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "/scheduling/school", description = "排班班次")
 @Controller
 @RequestMapping("/scheduling")
-public class SchedulingController {
+public class SchedulingController extends IdentityRepository{
 	@Autowired
 	private SchedulingService service;
 	@ApiOperation(value = "查询接口", response = School.class)

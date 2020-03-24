@@ -1,5 +1,6 @@
 package org.easymis.easyicc.card.admin.controller.setting;
 
+import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.domain.entity.SchoolArea;
@@ -22,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Validated
 @Slf4j
-public class SchoolAreaController {
+public class SchoolAreaController extends IdentityRepository{
 	@Autowired
 	private SchoolAreaService service;
 
