@@ -6,6 +6,8 @@ import java.util.List;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 
+import lombok.Data;
+@Data
 public class StaffSalesVo extends HrmStaffInfo{
 	private String schoolName;
 	private String subjectName;
@@ -89,175 +91,21 @@ public class StaffSalesVo extends HrmStaffInfo{
 	 */
 	private int saleFinishedCount;
 	
-	
-	public String getSchoolName() {
-		return schoolName;
-	}
-
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
-
-	public String getSubjectName() {
-		return subjectName;
-	}
-
-	public void setSubjectName(String subjectName) {
-		this.subjectName = subjectName;
-	}
-
-	public String getBusinessGroupName() {
-		return businessGroupName;
-	}
-
-	public void setBusinessGroupName(String businessGroupName) {
-		this.businessGroupName = businessGroupName;
-	}
-
-	public String getSalesTypeName() {
-		return salesTypeName;
-	}
-
-	public void setSalesTypeName(String salesTypeName) {
-		this.salesTypeName = salesTypeName;
-	}
-
-	public List<Card> getCards() {
-		return cards;
-	}
-
-	public void setCards(List<Card> cards) {
-		this.cards = cards;
-	}
-
-	public boolean isWeixinPushStatus() {
-		return weixinPushStatus;
-	}
-
-	public void setWeixinPushStatus(boolean weixinPushStatus) {
-		this.weixinPushStatus = weixinPushStatus;
-	}
-
-	public String getWeiXinOpenId() {
-		return weiXinOpenId;
-	}
-
-	public void setWeiXinOpenId(String weiXinOpenId) {
-		this.weiXinOpenId = weiXinOpenId;
-	}
-
-	public int getValidCount() {
-		return validCount;
-	}
-
-	public void setValidCount(int validCount) {
-		this.validCount = validCount;
-	}
-
-	public int getBackCount() {
-		return backCount;
-	}
-
-	public void setBackCount(int backCount) {
-		this.backCount = backCount;
-	}
-
-	public int getAllocationCount() {
-		return allocationCount;
-	}
-
-	public void setAllocationCount(int allocationCount) {
-		this.allocationCount = allocationCount;
-	}
-
-	public int getActualAllocationCount() {
-		return actualAllocationCount;
-	}
-
-	public void setActualAllocationCount(int actualAllocationCount) {
-		this.actualAllocationCount = actualAllocationCount;
-	}
-
-	public int getActualValidCount() {
-		return actualValidCount;
-	}
-
-	public void setActualValidCount(int actualValidCount) {
-		this.actualValidCount = actualValidCount;
-	}
-
-	public int getFinishedCount() {
-		return finishedCount;
-	}
-
-	public void setFinishedCount(int finishedCount) {
-		this.finishedCount = finishedCount;
-	}
-
-	public int getExpiredCount() {
-		return expiredCount;
-	}
-
-	public void setExpiredCount(int expiredCount) {
-		this.expiredCount = expiredCount;
-	}
-
-	public int getAllocationWeight() {
-		return allocationWeight;
-	}
-
-	public void setAllocationWeight(int allocationWeight) {
-		this.allocationWeight = allocationWeight;
-	}
-
-	public double getBackRatio() {
-		return backRatio;
-	}
-
-	public void setBackRatio(double backRatio) {
-		this.backRatio = backRatio;
-	}
-
-	public double getFairRatio() {
-		return fairRatio;
-	}
-
-	public void setFairRatio(double fairRatio) {
-		this.fairRatio = fairRatio;
-	}
-
-	public double getActualRatio() {
-		return actualRatio;
-	}
-
-	public void setActualRatio(double actualRatio) {
-		this.actualRatio = actualRatio;
-	}
-
-	public int getMaxCardSize() {
-		return maxCardSize;
-	}
-
-	public void setMaxCardSize(int maxCardSize) {
-		this.maxCardSize = maxCardSize;
-	}
-
-	public int getSaleAllocationCount() {
-		return saleAllocationCount;
-	}
-
-	public void setSaleAllocationCount(int saleAllocationCount) {
-		this.saleAllocationCount = saleAllocationCount;
-	}
-
-	public int getSaleFinishedCount() {
-		return saleFinishedCount;
-	}
-
-	public void setSaleFinishedCount(int saleFinishedCount) {
-		this.saleFinishedCount = saleFinishedCount;
-	}
-	
+	/**
+	 * 业务分组ID
+	 */
+	//@Column(name = "business_group_id", nullable = false)
+	private String businessGroupId;
+	/**
+	 * 校区ID
+	 */
+	//@Column(name = "school_id", nullable = false)
+	private String schoolId;
+	/**
+	 * 项目ID
+	 */
+	//@Column(name = "subject_id", nullable = false)
+	private String subjectId;
 	
 	
 }

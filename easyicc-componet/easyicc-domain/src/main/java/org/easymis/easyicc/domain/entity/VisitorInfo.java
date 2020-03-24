@@ -48,7 +48,7 @@ public class VisitorInfo {
 	  private String editUserId;
 	  private Date editTime;
 	  private int auto = 0;
-	  private Integer chatId;
+	  private String chatId;
 	  private String country;
 	  private String province;
 	  private String city;
