@@ -18,6 +18,7 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CardInterface;
 import org.easymis.easyicc.domain.entity.CardItem;
 import org.easymis.easyicc.service.CardInterfaceService;
@@ -59,7 +60,7 @@ public class CardInterfaceController extends IdentityRepository{
 	 */
 	@RequestMapping(value = "/createCard", method = RequestMethod.POST)
 	@Transactional
-	public void create(CardItem ci, HttpServletRequest request,
+	public RestResult create(CardItem ci, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		try {
 			if (ci != null && ci.getToken() != null) {
@@ -80,9 +81,9 @@ public class CardInterfaceController extends IdentityRepository{
 
 				this.service.saveCardInterface(cif);
 			}
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildError();
 		}
 	}
 
@@ -170,7 +171,7 @@ public class CardInterfaceController extends IdentityRepository{
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/updateCard", method = RequestMethod.POST)
-	public void updateCard(CardItem entity, HttpServletRequest request,
+	public RestResult updateCard(CardItem entity, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		try {
 			// int id = Integer.parseInt(request.getParameter("id") == null ?
@@ -197,9 +198,9 @@ public class CardInterfaceController extends IdentityRepository{
 					date, url, param, entity.getIsUseSubject(),
 					entity.getIsUseSchool(), Integer.parseInt(id));
 			request.getSession().removeAttribute("id");
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildError();
 		}
 	}
 
@@ -244,13 +245,13 @@ public class CardInterfaceController extends IdentityRepository{
 	 */
 	@RequestMapping("/deleteCard")
 	@ResponseBody
-	public RespResult deleteCard(HttpServletRequest request) {
+	public RestResult deleteCard(HttpServletRequest request) {
 		try {
 			int id = Integer.parseInt(request.getParameter("id") == null ? "0"
 					: request.getParameter("id"));
 			String hql = "update CardInterface set isDelete=1 where id=?";
 			this.getHibernateService().executeUpdate(hql, id);
-			return RespResult.getSuccess();
+			return RestResult.buildSuccess()
 		} catch (Exception e) {
 			return RespResult.getError(e);
 		}
@@ -329,12 +330,12 @@ public class CardInterfaceController extends IdentityRepository{
 	}
 
 
-	@Override
+
 	protected String getPrefix() {
 		return "/setting/cardInterface";
 	}
 
-	@Override
+
 	protected Object getQueryParams(HttpServletRequest request) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", OnLine.getCurrentUserDetails().getCompanyId());
@@ -342,7 +343,7 @@ public class CardInterfaceController extends IdentityRepository{
 		return params;
 	}
 
-	@Override
+
 	protected HibernateDAO<Integer, CardInterface> getHibernateService() {
 		return service;
 	}

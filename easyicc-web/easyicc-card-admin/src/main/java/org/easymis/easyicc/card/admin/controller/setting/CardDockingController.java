@@ -9,16 +9,18 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.smartcardio.Card;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
+import org.easymis.easyicc.domain.entity.VisitorColSelfSon;
 import org.easymis.easyicc.service.AllocationCardService;
 import org.easymis.easyicc.service.CardConfigService;
 import org.easymis.easyicc.service.CardDockingService;
 import org.easymis.easyicc.service.ChatRecordService;
+import org.easymis.easyicc.service.ThirdApiInvokeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
@@ -27,14 +29,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
 import cn.eutils.web.platform.ui.PageConfig;
 import cn.jesong.webcall.core.client.CoreClient;
 import cn.jesong.webcall.cuour.common.CmdConstant;
-import cn.jesong.webcall.cuour.entity.CuourCard;
-import cn.jesong.webcall.cuour.entity.VisitorColSelfSon;
-import cn.jesong.webcall.cuour.service.ThirdApiInvokeService;
 import cn.jesong.webcall.cuour.util.SendMessage;
 import io.swagger.annotations.Api;
 import sun.security.util.KeyUtil;
@@ -255,7 +254,6 @@ public class CardDockingController extends IdentityRepository{
 			String status = request.getParameter("status") == null ? "" : request.getParameter("status");
 			String token = request.getParameter("token") == null ? "" : request.getParameter("token");
 			String mobile = request.getParameter("mobile") == null ? "" : request.getParameter("mobile");
-		//	String oid = "257790";
 			String mKey = KeyUtil.getKey(token);
 			String localKey = KeyUtil.getKey(CmdConstant.LOCAL_TOKEN_ID);
 			// 判断参数是否有效
@@ -435,131 +433,24 @@ public class CardDockingController extends IdentityRepository{
 	@RequestMapping("/card")
 	public String weixin(ModelMap model, HttpServletRequest request) throws Exception {
 		try {
-			String companyId = Integer.parseInt(request.getParameter("companyId") == null ? "0" : request.getParameter("companyId"));
+			String companyId = (request.getParameter("companyId") == null ? "0" : request.getParameter("companyId"));
 			int cardId = Integer.parseInt(request.getParameter("cardId") == null ? "0" : request.getParameter("cardId"));
 			
 			
 			Map<String, Object> params = new HashMap<String, Object>();
-		//	params.put("companyId", companyId);
 			params.put("cardId", cardId);
-//			List<VisitorColSelf> list = cardConfigService.getShowVisitorCols(companyId);
 			List<VisitorColSelfSon> list = cardConfigService.getShowVisitorCols(companyId);
-			Page<CuourCard> page = this.cardConfigService.pageVisitorCardByCardId(PageConfig.createPageConfig(request), params,companyId, cardId);
-			List<CuourCard> c = page.getRows();
-			CuourCard bean = c.get(0);
+			PageInfo<Card> page = this.cardConfigService.pageVisitorCardByCardId(PageConfig.createPageConfig(request), params,companyId, cardId);
+			List<Card> c = page.getList();
+			Card bean = c.get(0);
 			
-			//获取userId
-			/*String userId=bean.getUserId();
-			_logger.info("获取的userId的值为:" + userId);
-			if(userId != null){
-				User user =  CoreClient.getUserMgr(companyId).getUser(userId);
-				if(user!=null){
-					//调用微信的接口获取code
-					String code=request.getParameter("code") == null ? "" : request.getParameter("code");
-					_logger.info("获取的code的值为:" + code);
-					//根据code获取opendid；
-					com.alibaba.fastjson.JSONObject jsonObject =SendMessage.queryUserOpenId(code);
-					String openIdCode = jsonObject.getString("openid");
-					_logger.info("返回的openId:" + openIdCode);
-					 String opendIdUser=user.getExtendConfigProperty("notifyOpenId");
-					_logger.info("绑定的openId:" + opendIdUser);
-					 if(opendIdUser!=null && opendIdUser!=""){
-						 if(!opendIdUser.equals(openIdCode)){
-							    request.setAttribute("departmentid", "1");
-							    _logger.info("userOpenId != currentWeinxinOpenId" + userId);
-							    return PREFIX + "/error";//当前用户和微信账号绑定不一致，请重新绑定微信账号
-							}
-					 }else {
-						 request.setAttribute("departmentid", "2");
-						 _logger.info("unbind weixin=" + userId);
-						 return PREFIX + "/error"; //当前用户未绑定微信账号，请先绑定微信账号
-					 }
-					
-				}
-			}else {
-				request.setAttribute("departmentid", "3");
-				_logger.info("user is null " + userId);
-				return PREFIX + "/error";//当前用户无权查看该名片
-			}*/
+
 			
 	
 			
 			request.setAttribute("cuourCard", bean);
 			request.setAttribute("colSelfList", list);
 			
-			
-			/*StringBuilder info = new StringBuilder();
-			StringBuilder hideInfo = new StringBuilder();
-			for(VisitorColSelf col : list) {
-				String cname = col.getVisitorCol().getColName();
-				if("name".equals(col.getVisitorCol().getColName()) || "sex".equals(col.getVisitorCol().getColName()) ||
-						"mobile".equals(col.getVisitorCol().getColName()) || "tel".equals(col.getVisitorCol().getColName()) || 
-								"qq".equals(col.getVisitorCol().getColName()) || "companyName".equals(col.getVisitorCol().getColName())
-								){
-					info.append("<div class='chatInfo'>");
-					info.append("<div class='infoName'>");
-					info.append(col.getVisitorCol().getText());
-					info.append("</div>");
-					info.append("<div class='infoValue'>");
-					if(cname.equals("name")) {
-						info.append(bean.getName() == null ? "" : bean.getName());
-					} else if(cname.equals("sex")) {
-						info.append(bean.getSex() == null ? "" : bean.getSex());
-					} else if(cname.equals("mobile")) {
-						info.append(bean.getMobile() == null ? "" : bean.getMobile());
-					} else if(cname.equals("tel")) {
-						info.append(bean.getTel() == null ? "" : bean.getTel());
-					}  else if(cname.equals("qq")) {
-						info.append(bean.getQq() == null ? "" : bean.getQq());
-					} else if(cname.equals("companyName")) {
-						info.append(bean.getCompanyName() == null ? "" : bean.getCompanyName());
-					}
-					info.append("</div>");
-					info.append("</div>");
-				}else{
-					hideInfo.append("<div class='chatInfo'>");
-					hideInfo.append("<div class='infoName'>");
-					hideInfo.append(col.getVisitorCol().getText());
-					hideInfo.append("</div>");
-					hideInfo.append("<div class='infoValue'>");
-					
-					if(cname.equals("email")) {
-						hideInfo.append(bean.getEmail() == null ? "" : bean.getEmail());
-					}else if(cname.equals("msn")) {
-						hideInfo.append(bean.getMsn()==null?"":bean.getMsn());
-					}else if(cname.equals("area")) {
-						hideInfo.append(bean.getArea() == null ? "" : bean.getArea());
-					} else if(cname.equals("note")) {
-						hideInfo.append(bean.getNote() == null ? "" : bean.getNote());
-					} else if(cname.equals("extColumn1")) {
-						hideInfo.append(bean.getExtColumn1() == null ? "" : bean.getExtColumn1());
-					} else if(cname.equals("extColumn2")) {
-						hideInfo.append(bean.getExtColumn2() == null ? "" : bean.getExtColumn2());
-					} else if(cname.equals("extColumn3")) {
-						hideInfo.append(bean.getExtColumn3() == null ? "" : bean.getExtColumn3());
-					} else if(cname.equals("extColumn4")) {
-						hideInfo.append(bean.getExtColumn4() == null ? "" : bean.getExtColumn4());
-					} else if(cname.equals("extColumn5")) {
-						hideInfo.append(bean.getExtColumn5() == null ? "" : bean.getExtColumn5());
-					} else if(cname.equals("extColumn6")) {
-						hideInfo.append(bean.getExtColumn6() == null ? "" : bean.getExtColumn6());
-					} else if(cname.equals("extColumn7")) {
-						hideInfo.append(bean.getExtColumn7() == null ? "" : bean.getExtColumn7());
-					} else if(cname.equals("extColumn8")) {
-						hideInfo.append(bean.getExtColumn8() == null ? "" : bean.getExtColumn8());
-					} else if(cname.equals("extColumn9")) {
-						hideInfo.append(bean.getExtColumn9() == null ? "" : bean.getExtColumn9());
-					} else if(cname.equals("extColumn10")) {
-						hideInfo.append(bean.getExtColumn10() == null ? "" : bean.getExtColumn10());
-					}
-					hideInfo.append("</div>");
-					hideInfo.append("</div>");
-				}
-				
-				
-			}*/
-			/*request.setAttribute("ylInfo", info.toString());
-			request.setAttribute("ylHideInfo", hideInfo.toString());*/
 			
 			List<ChatRecordDetail> recordDetail;
 			
@@ -574,33 +465,7 @@ public class CardDockingController extends IdentityRepository{
 			
 			request.setAttribute("recordDetail", recordDetail);
 			
-			/*if(recordDetail!=null&&recordDetail.size()>0)
-			{
-				StringBuffer detail = new StringBuffer();
-				
-				for(int i=0;i<recordDetail.size();i++)
-				{
-					ChatRecordDetail d = recordDetail.get(i);
-					if(d.getSenderType() == 0){
-						//客服
-						detail.append("<div class=\'msgBox\'><span class=\'cusMsgCss\'>客服&nbsp;&nbsp;&nbsp;</span>");
-						detail.append("<span class=\'cusMsgTimeCss\'>"+format.format(d.getCreateTime())+"</span></div>");
-						detail.append("<div class=\'msgDiv\'>"+d.getMessage()+"</div>");
-					}else{
-						//访客
-						detail.append("<div class=\'msgBox\'><span class=\'visMsgCss\'>访客&nbsp;&nbsp;&nbsp;</span>");
-						detail.append("<span class=\'visMsgTimeCss\'>"+format.format(d.getCreateTime())+"</span></div>");
-						detail.append("<div class=\'msgDiv\'>"+d.getMessage()+"</div>");
-					}
-					detail.append("<br/>");
-					detail.append(d.getMessage());
-					
-					detail.append("<br/>");
-					detail.append("<br/>");
-				}
-				
-				request.setAttribute("ylVistor", detail.toString());
-			}*/
+
 			
 		} catch(Exception e) {
 			_logger.error(e.getMessage(),e);
@@ -618,18 +483,16 @@ public class CardDockingController extends IdentityRepository{
 	@RequestMapping("/cardAuth")
 	public String weixinAuth(ModelMap model, HttpServletRequest request) throws Exception {
 		try {
-			int companyId = Integer.parseInt(request.getParameter("companyId") == null ? "0" : request.getParameter("companyId"));
+			String companyId = request.getParameter("companyId") == null ? "0" : request.getParameter("companyId");
 			int cardId = Integer.parseInt(request.getParameter("cardId") == null ? "0" : request.getParameter("cardId"));
 			
 			
 			Map<String, Object> params = new HashMap<String, Object>();
-		//	params.put("companyId", companyId);
 			params.put("cardId", cardId);
-//			List<VisitorColSelf> list = cardConfigService.getShowVisitorCols(companyId);
 			List<VisitorColSelfSon> list = cardConfigService.getShowVisitorCols(companyId);
-			Page<CuourCard> page = this.cardConfigService.pageVisitorCardByCardId(PageConfig.createPageConfig(request), params,companyId, cardId);
-			List<CuourCard> c = page.getRows();
-			CuourCard bean = c.get(0);
+			PageInfo<Card> page = this.cardConfigService.pageVisitorCardByCardId(PageConfig.createPageConfig(request), params,companyId, cardId);
+			List<Card> c = page.getList();
+			Card bean = c.get(0);
 			
 			//获取userId
 			String userId=bean.getUserId();
@@ -669,7 +532,7 @@ public class CardDockingController extends IdentityRepository{
 			
 			_logger.info("添加名片信息: "+bean.getName());
 			
-			request.setAttribute("cuourCard", bean);
+			request.setAttribute("Card", bean);
 			request.setAttribute("colSelfList", list);
 			
 			List<ChatRecordDetail> recordDetail;
@@ -678,7 +541,7 @@ public class CardDockingController extends IdentityRepository{
 			
 			if(bean!=null&&bean.getChatId()!=null)
 			{
-				recordDetail = chatRecordService.getChatRecordDetail(companyId, bean.getChatId(), bean.getCreateTime());
+				recordDetail = chatRecordService.getChatRecordDetail(companyId, bean.getChatId(), format.format(bean.getCreateTime()));
 			}
 			else
 			{

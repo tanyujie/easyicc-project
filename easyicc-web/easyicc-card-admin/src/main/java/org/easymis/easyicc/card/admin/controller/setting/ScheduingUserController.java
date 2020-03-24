@@ -19,6 +19,10 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.SchedulingUser;
+import org.easymis.easyicc.domain.vo.SchedulingImportData;
+import org.easymis.easyicc.domain.vo.SchedulingWeek;
 import org.easymis.easyicc.service.BusinessGroupService;
 import org.easymis.easyicc.service.SchedulingService;
 import org.easymis.easyicc.service.SchedulingUserService;
@@ -33,10 +37,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import cn.eutils.web.platform.ui.RespResult;
-import cn.jesong.webcall.cuour.entity.SchedulingImportData;
-import cn.jesong.webcall.cuour.entity.SchedulingUser;
-import cn.jesong.webcall.cuour.entity.SchedulingWeek;
 import io.swagger.annotations.Api;
 
 @Api(value = "/scheduling/user", description = "排班设置")
@@ -79,9 +79,9 @@ public class ScheduingUserController extends IdentityRepository{
 	@RequestMapping("/query")
 	@ResponseBody
 	public List<Map<String, Object>> query(@RequestParam(value = "startTime", required = true) String startTime, 
-			@RequestParam(value = "subjectId", required = false) Integer subjectId,
-			@RequestParam(value = "schoolId", required = false) Integer schoolId,
-			@RequestParam(value = "businessGroupId", required = false) Integer businessGroupId) throws ParseException{
+			@RequestParam(value = "subjectId", required = false) String subjectId,
+			@RequestParam(value = "schoolId", required = false) String schoolId,
+			@RequestParam(value = "businessGroupId", required = false) String businessGroupId) throws ParseException{
 		return this.schedulingUserService.getSchedulings(getOrgId(),
 				formatter2.parse(startTime) , subjectId, schoolId, businessGroupId);
 	}
@@ -93,12 +93,12 @@ public class ScheduingUserController extends IdentityRepository{
 	 */
 	@RequestMapping("/delete")
 	@ResponseBody
-	public RespResult delete(@RequestParam("id") int id){
+	public RestResult delete(@RequestParam("id") String id){
 		try{
 			this.schedulingUserService.delete(id);
-			return RespResult.getSuccess();
+			return RestResult.buildSuccess();
 		}catch(Exception e){
-			return RespResult.getError(e);
+			return RestResult.buildError();
 		}
 	}
 	
@@ -108,48 +108,48 @@ public class ScheduingUserController extends IdentityRepository{
 		SchedulingUser entity = new SchedulingUser();
 		entity.setSchedulingTime(String.valueOf(day));
 		entity.setUserId(userId);
-		entity.setSchedulingId(-1);
+		entity.setSchedulingId("-1");
 		model.put("entity", entity);
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", getOrgId());
-		model.put("schedulings", this.schedulingService.getListByTemplate(params));
+		model.put("schedulings", this.schedulingService.findByOrgId(getOrgId()));
 		return PREFIX + "/form";
 	}
 	
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public void create(SchedulingUser su, HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public RestResult create(SchedulingUser su, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		try{
-			if(su.getSchedulingId() != null && su.getSchedulingId() != -1){
-				su.setCompanyId(getOrgId());
-				this.schedulingUserService.saveOrUpdate(su);
+			if(su.getSchedulingId() != null && !su.getSchedulingId().equals("-1")){
+				su.setOrgId(getOrgId());
+				//this.schedulingUserService.saveOrUpdate(su);
 			}
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		}catch(Exception e){
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildFail();
 		}
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String edit(@RequestParam("id") int id, ModelMap model){
-		model.put("entity", this.schedulingUserService.get(id));
+	public String edit(@RequestParam("id") String id, ModelMap model){
+		model.put("entity", this.schedulingUserService.findById(id));
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", getOrgId());
-		model.put("schedulings", this.schedulingService.getListByTemplate(params));
+		model.put("schedulings", this.schedulingService.findById(getOrgId()));
 		return PREFIX + "/form";
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public void edit(SchedulingUser su, HttpServletRequest request, HttpServletResponse response) throws IOException{
-		if(su.getSchedulingId() == null || su.getSchedulingId() == -1){
+	public RestResult edit(SchedulingUser su, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		if(su.getSchedulingId() == null || !su.getSchedulingId().equals("-1")){
 			this.schedulingUserService.delete(su.getId());
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		}else{
 			try{
-				su.setCompanyId(getOrgId());
-				this.schedulingUserService.saveOrUpdate(su);
-				RespResult.getSuccess().writeToResponse(response);
+				su.setOrgId(getOrgId());
+				this.schedulingUserService.update(su);
+				return RestResult.buildSuccess();
 			}catch(Exception e){
-				RespResult.getError(e).writeToResponse(response);
+				return RestResult.buildFail();
 			}
 		}
 	}
@@ -161,21 +161,21 @@ public class ScheduingUserController extends IdentityRepository{
 	
 	
 	@RequestMapping(value = "/import", method = RequestMethod.POST)
-	public void upload(@RequestParam(value="file", required = false) MultipartFile file, 
+	public RestResult upload(@RequestParam(value="file", required = false) MultipartFile file, 
 			HttpServletRequest request, HttpServletResponse response) throws IOException{
 		try {
 			SchedulingImportData data = parseExcel(getOrgId(), file.getInputStream());
 			this.schedulingUserService.importData(data);
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
 			e.printStackTrace();
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildFail();
 		}
 	}
 	
 	
 	
-	private static SchedulingImportData parseExcel(int companyId, InputStream is) throws IOException{
+	private static SchedulingImportData parseExcel(String companyId, InputStream is) throws IOException{
 		Workbook wb = new XSSFWorkbook(is);
 		Sheet sheet = wb.getSheetAt(0);
 		Row dateRow = sheet.getRow(0);
@@ -206,7 +206,7 @@ public class ScheduingUserController extends IdentityRepository{
 	
 	public static void main(String[] args) throws IOException{
 		InputStream is = new FileInputStream("C:\\Users\\Administrator\\Desktop\\scheduling.xlsx");
-		parseExcel(1, is);
+		parseExcel("1", is);
 		is.close();
 	}
 

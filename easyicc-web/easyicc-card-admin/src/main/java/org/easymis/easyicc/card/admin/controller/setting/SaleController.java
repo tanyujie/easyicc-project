@@ -16,9 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.eutils.web.platform.permission.user.OnLine;
-import cn.jesong.webcall.cuour.dao.HibernateDAO;
-import cn.jesong.webcall.cuour.entity.Sales;
 import io.swagger.annotations.Api;
 @Api(value = "/scheduling", description = "排班班次")
 @Controller
@@ -62,34 +59,16 @@ public class SaleController extends IdentityRepository{
 			params.put(key, Integer.parseInt(value));
 		}
 	}
-
-	
-	protected HibernateDAO<String, Sales> getHibernateService() {
-		return saleService;
-	}
-	
-	
-	
-	
-	protected void createPageInit(HttpServletRequest request, ModelMap model) {
-		model.put("users", this.saleService.getCouldSettingUser(OnLine.getCurrentUserDetails().getCompanyId()));
-	}
-
-	
-	protected void beforeCreateOrUpdate(Sales entity) {
-		entity.setCompanyId(OnLine.getCurrentUserDetails().getCompanyId());
-	}
-
 	
 	protected void indexInit(ModelMap model) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		int companyId = OnLine.getCurrentUserDetails().getCompanyId();
-		params.put("companyId", companyId);
-		model.put("users", this.saleService.getUsers(companyId));
+		String orgId = getOrgId();
+		params.put("companyId", orgId);
+		model.put("users", this.saleService.getUsers(orgId));
 		model.put("schools", this.schoolService.findByOrgId(orgId));
 		model.put("subjects", this.subjectService.findByOrgId(orgId));
-		model.put("saleTypes", this.saleTypeService.getListByTemplate(params));
-		model.put("businessGroups", this.businessGroupService.getListByTemplate(params));
+		model.put("saleTypes", this.saleTypeService.findByOrgId(orgId));
+		model.put("businessGroups", this.businessGroupService.findByOrgId(orgId));
 	}
 
 	

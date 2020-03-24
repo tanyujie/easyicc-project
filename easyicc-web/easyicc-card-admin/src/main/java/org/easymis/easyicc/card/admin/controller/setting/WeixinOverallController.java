@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.eutils.web.platform.permission.user.OnLine;
 import cn.jesong.webcall.core.client.CoreClient;
 import cn.jesong.webcall.resource.CompanyGlobalConf;
 import io.swagger.annotations.Api;
@@ -80,7 +79,7 @@ public class WeixinOverallController extends IdentityRepository{
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		try {
-			String orgId = getCompanyId();
+			String orgId = getOrgId();
 			String notifyOpenId = request.getParameter("notifyOpenId");
 			String notifyUserNickName = request.getParameter("notifyUserNickName");
 			String notifyIsOpen = request.getParameter("notifyIsOpen");
