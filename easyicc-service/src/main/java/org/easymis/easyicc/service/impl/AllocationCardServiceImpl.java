@@ -70,6 +70,16 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public boolean back(String orgId, String cardId, String staffId, int backType, String desp) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public boolean finished(String orgId, String cardId, String staffId, String desp) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	
 }
