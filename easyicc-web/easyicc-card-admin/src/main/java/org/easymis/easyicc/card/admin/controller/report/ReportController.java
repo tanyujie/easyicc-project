@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.CustomerReport;
+import org.easymis.easyicc.domain.vo.CompanyTotal;
 import org.easymis.easyicc.domain.vo.StaffSalesVo;
 import org.easymis.easyicc.service.AllocationCardService;
 import org.easymis.easyicc.service.BusinessGroupService;
 import org.easymis.easyicc.service.CardConfigService;
+import org.easymis.easyicc.service.ReportService;
 import org.easymis.easyicc.service.SchoolService;
 import org.easymis.easyicc.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,12 +30,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
-import cn.eutils.web.platform.permission.user.OnLine;
-import cn.eutils.web.platform.ui.PageConfig;
-import cn.jesong.webcall.cuour.cache.entity.CompanyTotal;
-import cn.jesong.webcall.cuour.cache.entity.SaleUser;
-import cn.jesong.webcall.cuour.user.CuourUserDetail;
 import io.swagger.annotations.Api;
 @Api(value = "/report", description = "报表菜单")
 @Controller
@@ -49,6 +47,8 @@ public class ReportController extends IdentityRepository{
 	private AllocationCardService allocationCardService;
 	@Autowired
 	private BusinessGroupService businessGroupService;
+	@Autowired
+	private ReportService reportService;
 	@Autowired
 	private CardConfigService cardConfigService;
 	//名片分配监控
@@ -66,24 +66,24 @@ public class ReportController extends IdentityRepository{
 	@RequestMapping("/monitor/allocation/query")
 	@ResponseBody
 	public List<StaffSalesVo> getAllSaleUser(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, 
-			@RequestParam(value = "school", required = false) Integer school, 
-			@RequestParam(value = "subject", required = false) Integer subject,
-			@RequestParam(value = "group", required = false) Integer group) throws ParseException{
+			@RequestParam(value = "school", required = false) String school, 
+			@RequestParam(value = "subject", required = false) String subject,
+			@RequestParam(value = "group", required = false) String group) throws ParseException{
 		List<StaffSalesVo> list = this.allocationCardService.getSaleUser(getOrgId(), 
 				formatter.parse(startTime), formatter.parse(endTime));
 		//+" 00:00:00"  +" 23:59:59"
 		List<StaffSalesVo> tempList = new ArrayList<StaffSalesVo>();
 		CompanyTotal total = new CompanyTotal();
-		for(SaleUser user : list){
+		for(StaffSalesVo user : list){
 			total.addWeight(user.getBusinessGroupId(), user.getAllocationWeight());
 			total.addAllocation(user.getBusinessGroupId(), user.getAllocationCount());
-			if(school != null && user.getSchoolId().intValue() != school.intValue()){
+			if(school != null && !user.getSchoolId().equals(school)){
 				continue;
 			}
-			if(subject != null && user.getSubjectId().intValue() != subject.intValue()){
+			if(subject != null && !user.getSubjectId().equals(subject)){
 				continue;
 			}
-			if(group != null && user.getBusinessGroupId().intValue() != group.intValue()){
+			if(group != null && !user.getBusinessGroupId().equals(group)){
 				continue;
 			}
 			tempList.add(user);
@@ -152,7 +152,7 @@ public class ReportController extends IdentityRepository{
 	//我录入的名片
 	@RequestMapping("/mycard/query")
 	@ResponseBody
-	public Page<Card> query(HttpServletRequest request) throws Exception{
+	public PageInfo<Card> query(HttpServletRequest request) throws Exception{
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", getOrgId());
 		String startTime = request.getParameter("startTime");
@@ -169,10 +169,10 @@ public class ReportController extends IdentityRepository{
 		}
 		params.put("extColumn8", request.getParameter("subjectId"));
 		params.put("extColumn9", request.getParameter("schoolId"));
-		Page<Card> page = this.cardConfigService.pageCardByCreateId(getStaffId(), PageConfig.createPageConfig(request), params);
-		CuourUserDetail ud = (CuourUserDetail)OnLine.getCurrentUserDetails();
+		PageInfo<Card> page = this.cardConfigService.pageCardByCreateId(getStaffId(), new Page(), params);
+		/*CuourUserDetail ud = (CuourUserDetail)OnLine.getCurrentUserDetails();
 		if(ud.hasDataPermission("3d5c4d88-032f-409f-bf74-1b2f429d1216", "hideTelephone", "1")){
-			for(Card card : page.getRows()){
+			for(Card card : page.getResult()){
 					String mobile = card.getMobile();
 					if(mobile != null && !mobile.equals("")){
 						if(mobile.length() == 11){
@@ -185,7 +185,7 @@ public class ReportController extends IdentityRepository{
 						card.setMobile(mobile);
 					}
 			}
-		}
+		}*/
 		return page;
 	}
 	//校区分配监控
@@ -203,9 +203,9 @@ public class ReportController extends IdentityRepository{
 	@RequestMapping("/school/allocation/query")
 	@ResponseBody
 	public List<StaffSalesVo> getSchoolSaleUser(@RequestParam("startTime") String startTime, @RequestParam("endTime") String endTime, 
-			@RequestParam(value = "school", required = false) Integer school, 
-			@RequestParam(value = "subject", required = false) Integer subject,
-			@RequestParam(value = "group", required = false) Integer group) throws ParseException{
+			@RequestParam(value = "school", required = false) String school, 
+			@RequestParam(value = "subject", required = false) String subject,
+			@RequestParam(value = "group", required = false) String group) throws ParseException{
 		List<StaffSalesVo> list = this.allocationCardService.getSaleUser(getOrgId(), 
 				formatter.parse(startTime), formatter.parse(endTime));
 		List<StaffSalesVo> tempList = new ArrayList<StaffSalesVo>();
@@ -213,13 +213,13 @@ public class ReportController extends IdentityRepository{
 		for(StaffSalesVo user : list){
 			total.addWeight(user.getBusinessGroupId(), user.getAllocationWeight());
 			total.addAllocation(user.getBusinessGroupId(), user.getAllocationCount());
-			if(school != null && user.getSchoolId().intValue() != school.intValue()){
+			if(school != null && !user.getSchoolId().equals(school)){
 				continue;
 			}
-			if(subject != null && user.getSubjectId().intValue() != subject.intValue()){
+			if(subject != null && !user.getSubjectId().equals(subject)){
 				continue;
 			}
-			if(group != null && user.getBusinessGroupId().intValue() != group.intValue()){
+			if(group != null && !user.getBusinessGroupId().equals(group)){
 				continue;
 			}
 			tempList.add(user);
@@ -246,7 +246,7 @@ public class ReportController extends IdentityRepository{
 			}
 			for(int j = i + 1; j < list.size(); j++) {
 				StaffSalesVo uj = list.get(j);
-				if(ui.getBusinessGroupId().intValue() == uj.getBusinessGroupId().intValue()) {
+				if(ui.getBusinessGroupId().equals(uj.getBusinessGroupId())) {
 					if(total.getTotalWeight(uj.getBusinessGroupId()) > 0) {
 						fairRatio += this.getRatio(uj.getAllocationWeight(), total.getTotalWeight(uj.getBusinessGroupId()));
 						fairRatio = fairRatio / 2;
@@ -289,4 +289,10 @@ public class ReportController extends IdentityRepository{
         double f1 = bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         return f1;
     }
+	private double getRatio(int s1, int s2){
+		BigDecimal b1 = new BigDecimal(s1 * 100);
+		BigDecimal b2 = new BigDecimal(s2);
+		BigDecimal ratio = b1.divide(b2, 2, BigDecimal.ROUND_HALF_UP);
+		return ratio.doubleValue();
+	}
 }

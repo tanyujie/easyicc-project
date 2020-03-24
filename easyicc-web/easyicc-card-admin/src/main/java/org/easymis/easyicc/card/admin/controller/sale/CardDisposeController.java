@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.service.AllocationCardService;
 import org.easymis.easyicc.service.BackTypeService;
@@ -18,7 +19,6 @@ import org.easymis.easyicc.service.CardConfigService;
 import org.easymis.easyicc.service.SchoolService;
 import org.easymis.easyicc.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +26,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.eutils.web.platform.permission.user.OnLine;
-import cn.eutils.web.platform.ui.PageConfig;
-import cn.eutils.web.platform.ui.RespResult;
-import cn.jesong.webcall.cuour.user.CuourUserDetail;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
+
 import io.swagger.annotations.Api;
 @Api(value = "/report", description = "名片处理")
 @Controller
@@ -69,7 +68,7 @@ public class CardDisposeController extends IdentityRepository{
 	
 	@RequestMapping("/query")
 	@ResponseBody
-	public Page<Card> query(HttpServletRequest request) throws Exception{
+	public PageInfo<Card> query(HttpServletRequest request) throws Exception{
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("companyId", getOrgId());
 		params.put("userId", getStaffId());
@@ -81,9 +80,9 @@ public class CardDisposeController extends IdentityRepository{
 		if(endTime != null){
 			params.put("endTime", formatter.parse(endTime));//+" 23:59:59"
 		}
-		CuourUserDetail ud = (CuourUserDetail)OnLine.getCurrentUserDetails();
-		Page<Card> page = this.cardConfigService.pageCanDisposeVisitorCard(PageConfig.createPageConfig(request), params);
-		if(ud.hasDataPermission("3d5c4d88-032f-409f-bf74-1b2f429d1216", "hideTelephone", "1")){
+		//CuourUserDetail ud = (CuourUserDetail)OnLine.getCurrentUserDetails();
+		PageInfo<Card> page = this.cardConfigService.pageCanDisposeVisitorCard(new Page(), params);
+		/*if(ud.hasDataPermission("3d5c4d88-032f-409f-bf74-1b2f429d1216", "hideTelephone", "1")){
 			for(Card card : page.getRows()){
 				String noteString=card.getNote();
 				String mobileString=card.getMobile();
@@ -97,7 +96,7 @@ public class CardDisposeController extends IdentityRepository{
 				card.setMsn(hideMSNRule(msnString));
 				
 			}
-		}
+		}*/
 		return page;
 	}
 	
@@ -108,14 +107,14 @@ public class CardDisposeController extends IdentityRepository{
 	}
 	
 	@RequestMapping(value = "/back", method = RequestMethod.POST)
-	public void back(@RequestParam("cardId") String cardId, @RequestParam("backType") int backType,
+	public RestResult back(@RequestParam("cardId") String cardId, @RequestParam("backType") int backType,
 			@RequestParam("desp") String desp, HttpServletResponse response) throws IOException{
 		try {
 			this.allocationCardService.back(getOrgId(), cardId, 
 					getStaffId(), backType, desp);
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildError();
 		}
 	}
 	
@@ -125,10 +124,9 @@ public class CardDisposeController extends IdentityRepository{
 	}
 	
 	@RequestMapping(value = "/dispose", method = RequestMethod.POST)
-	public void dispose(@RequestParam("cardId") String cardId, @RequestParam("desp") String desp, HttpServletResponse response) throws IOException{
-		this.allocationCardService.finished(getOrgId(), cardId, 
-				getStaffId(), desp);
-		RespResult.getSuccess().writeToResponse(response);
+	public RestResult dispose(@RequestParam("cardId") String cardId, @RequestParam("desp") String desp, HttpServletResponse response) throws IOException{
+		this.allocationCardService.finished(getOrgId(), cardId, getStaffId(), desp);
+		return RestResult.buildSuccess();
 	}
 	
 	public static String hidePhoneRule(String str){
