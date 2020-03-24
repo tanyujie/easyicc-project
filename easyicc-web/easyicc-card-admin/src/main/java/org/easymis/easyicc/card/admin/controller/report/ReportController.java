@@ -34,7 +34,8 @@ import cn.eutils.web.platform.ui.PageConfig;
 import cn.jesong.webcall.cuour.cache.entity.CompanyTotal;
 import cn.jesong.webcall.cuour.cache.entity.SaleUser;
 import cn.jesong.webcall.cuour.user.CuourUserDetail;
-
+import io.swagger.annotations.Api;
+@Api(value = "/report", description = "报表菜单")
 @Controller
 @RequestMapping("/report")
 public class ReportController extends IdentityRepository{
