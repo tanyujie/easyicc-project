@@ -41,5 +41,17 @@ public class CardConfigServiceImpl implements CardConfigService {
 		PageInfo<Card> p = new PageInfo<Card>(cardList);
         return p;
 	}
+	@Override
+	public PageInfo<Card> pageCardByCreateId(String createUserId, Page pageConfig, Map<String, Object> map)
+			throws Exception {
+		// select a.* from js_visitor_info a where a.create_user_id = 
+		//传入参数创建人，开始时间，结束时间，项目，校区
+		return null;
+	}
+	@Override
+	public PageInfo<Card> pageCanDisposeVisitorCard(Page pageConfig, Map<String, Object> map) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

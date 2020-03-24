@@ -1,5 +1,8 @@
 package org.easymis.easyicc.service;
 
-public interface SaleService {
+import java.util.List;
+import java.util.Map;
 
+public interface SaleService {
+	public List<Map<String, Object>> getUsers(String companyId);
 }

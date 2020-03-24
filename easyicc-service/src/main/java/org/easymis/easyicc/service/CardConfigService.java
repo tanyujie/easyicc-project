@@ -11,5 +11,11 @@ import com.github.pagehelper.PageInfo;
 
 public interface CardConfigService {
 	public List<VisitorColSelf> getShowVisitorCols(String orgId) throws Exception;
+
 	public PageInfo<Card> pageVisitorCard(Page pageConfig, Map<String, Object> map, int status) throws Exception;
+
+	public PageInfo<Card> pageCardByCreateId(String createUserId, Page pageConfig, Map<String, Object> map)
+			throws Exception;
+
+	public PageInfo<Card> pageCanDisposeVisitorCard(Page pageConfig, Map<String, Object> map) throws Exception;
 }

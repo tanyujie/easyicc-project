@@ -1,5 +1,9 @@
 package org.easymis.easyicc.service;
 
-public interface SaleTypeService {
+import java.util.List;
 
+import org.easymis.easyicc.domain.entity.SaleType;
+
+public interface SaleTypeService {
+	List<SaleType> findByOrgId(String orgId);
 }
