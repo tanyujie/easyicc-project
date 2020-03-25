@@ -1,3 +1,4 @@
+clusterName=cluster-dev
 system:
   domain: http://dbview.easymis.org
   email: 535782704@qq.com
@@ -5,10 +6,7 @@ system:
   name: easymis
   icp: 蜀ICP备17043811号-1
   auth: www.easymis.org
-#server:
-#  tomcat:
-#    access_log_enabled: true
-#    basedir: target/tomcat
+
 spring:
   profiles:
     include: pay,mail,param
