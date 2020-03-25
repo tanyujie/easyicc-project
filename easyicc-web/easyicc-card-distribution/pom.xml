@@ -140,6 +140,16 @@
 			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-domain</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-service</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 	</dependencies>
 
 
