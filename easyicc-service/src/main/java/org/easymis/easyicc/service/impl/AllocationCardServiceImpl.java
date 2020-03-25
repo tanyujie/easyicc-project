@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.vo.StaffSalesVo;
 import org.easymis.easyicc.mybatis.mapper.CardMapper;
 import org.easymis.easyicc.mybatis.mapper.VisitorInfoMapper;
@@ -79,6 +80,11 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 	public boolean finished(String orgId, String cardId, String staffId, String desp) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	@Override
+	public Card getCard(String companyId, String staticId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

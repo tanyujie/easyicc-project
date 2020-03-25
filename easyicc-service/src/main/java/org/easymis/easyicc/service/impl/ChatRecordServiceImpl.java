@@ -1,7 +1,10 @@
 package org.easymis.easyicc.service.impl;
 
+import java.util.List;
+
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.ChatRecord;
+import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.service.ChatRecordService;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +39,13 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 
 	@Override
 	public RestResult deleteByIds(String ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ChatRecordDetail> getChatRecordDetail(String companyId, String visitorStaticId, String createTime)
+			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
