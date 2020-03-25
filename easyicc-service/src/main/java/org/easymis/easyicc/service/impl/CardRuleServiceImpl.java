@@ -33,4 +33,10 @@ public class CardRuleServiceImpl implements CardRuleService {
 
 	}
 
+	@Override
+	public CardRule findByServerName(String serverName) {
+		// TODO Auto-generated method stub
+		return mapper.findByServerName(serverName);
+	}
+
 }
