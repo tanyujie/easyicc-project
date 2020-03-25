@@ -251,7 +251,7 @@ public class CardInterfaceController extends IdentityRepository{
 					: request.getParameter("id"));
 			String hql = "update CardInterface set isDelete=1 where id=?";
 			this.getHibernateService().executeUpdate(hql, id);
-			return RestResult.buildSuccess()
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
 			return RespResult.getError(e);
 		}

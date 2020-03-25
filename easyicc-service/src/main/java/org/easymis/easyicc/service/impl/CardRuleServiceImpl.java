@@ -1,5 +1,7 @@
 package org.easymis.easyicc.service.impl;
 
+import java.util.List;
+
 import org.easymis.easyicc.domain.entity.CardRule;
 import org.easymis.easyicc.mybatis.mapper.CardRuleMapper;
 import org.easymis.easyicc.service.CardRuleService;
@@ -34,7 +36,7 @@ public class CardRuleServiceImpl implements CardRuleService {
 	}
 
 	@Override
-	public CardRule findByServerName(String serverName) {
+	public List<CardRule> findByServerName(String serverName) {
 		// TODO Auto-generated method stub
 		return mapper.findByServerName(serverName);
 	}
