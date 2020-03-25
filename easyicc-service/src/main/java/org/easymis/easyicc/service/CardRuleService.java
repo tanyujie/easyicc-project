@@ -1,11 +1,13 @@
 package org.easymis.easyicc.service;
 
+import java.util.List;
+
 import org.easymis.easyicc.domain.entity.CardRule;
 
 public interface CardRuleService {
 	CardRule findByOrgId(String orgId);
 
-	CardRule findByServerName(String serverName);
+	List<CardRule> findByServerName(String serverName);
 
 	void saveOrUpdate(CardRule bean);
 
