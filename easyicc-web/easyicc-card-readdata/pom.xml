@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -131,13 +132,18 @@
 		</dependency>
 		<!--二维码生成依赖 end -->
 		<dependency>
-			<groupId>org.apache.rocketmq</groupId>
-			<artifactId>rocketmq-spring-boot-starter</artifactId>
-			<version>2.0.1</version>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-common</artifactId>
+			<version>1.0.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.easymis.easyicc</groupId>
-			<artifactId>easyicc-common</artifactId>
+			<artifactId>easyicc-domain</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-service</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 	</dependencies>
