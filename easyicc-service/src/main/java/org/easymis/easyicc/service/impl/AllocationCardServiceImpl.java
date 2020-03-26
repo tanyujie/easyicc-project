@@ -86,6 +86,11 @@ public class AllocationCardServiceImpl implements AllocationCardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public List<Card> getAllWaitForAllocationCards(String serverName) {
+		// TODO Auto-generated method stub
+		return cardMapper.getAllWaitForAllocationCards(serverName);
+	}
 
 	
 }

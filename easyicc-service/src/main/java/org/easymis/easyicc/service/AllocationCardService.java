@@ -10,6 +10,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface AllocationCardService{
 	List<StaffSalesVo> getCanAllocationSaleUser(String companyId, String subjectId, String schoolId);
+	/**
+	 * 获取当天所有待分配的名片
+	 * @return
+	 */
+	public List<Card> getAllWaitForAllocationCards(String serverName);
+	
 	public Map<String, String> getStatus(String companyId) throws  Exception;
 	/**
 	 * 更新名片校区
