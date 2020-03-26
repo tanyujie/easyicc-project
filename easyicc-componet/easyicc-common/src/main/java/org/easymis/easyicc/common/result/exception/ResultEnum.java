@@ -12,7 +12,7 @@ public interface ResultEnum {
      * @author yueli
      * @date 2019-02-21 11:23
      */
-    default String getCode() {
+    default Integer getCode() {
         return CommConstants.OK;
     }
 

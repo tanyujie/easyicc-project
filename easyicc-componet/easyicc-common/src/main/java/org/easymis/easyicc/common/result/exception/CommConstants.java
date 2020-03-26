@@ -13,7 +13,7 @@ public class CommConstants {
 	public static final String RESULT = "result";
 
 	//操作成功-7个0-返回给app接口
-	public static final String OK = "0000000";
+	public static final Integer OK = 0;
 	//操作成功
 	public static final String OK_MSG = "success";
 
@@ -87,7 +87,7 @@ public class CommConstants {
     /**
      * 错误编码-系统错误
      */
-    public static final String SYSTEM_ERROR = "00000001";
+    public static final Integer SYSTEM_ERROR = 10000001;
     /**
      * 错误描述-系统错误
      */
@@ -97,7 +97,7 @@ public class CommConstants {
     /**
      * 错误编码-数据操作失败(数据不存在)
      */
-    public static final String DATABASE_ERROR = "00000002";
+    public static final Integer DATABASE_ERROR = 10000002;
     /**
      * 错误描述-数据操作失败(数据不存在)
      */
@@ -107,7 +107,7 @@ public class CommConstants {
      * 错误编码-数据不存在
      * 数据库操作失败通用型编码，如果需要返回详细错误，请使用详细错误编码
      */
-    public static final String DATABASE_NOTEXIST = "00000003";
+    public static final Integer DATABASE_NOTEXIST = 10000003;
     /**
      * 错误描述-数据不存在
      */
