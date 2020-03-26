@@ -11,7 +11,7 @@ public class  RestResult implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String code;
+	private Integer code;
     private String msg;
     private Object data;
 
@@ -19,13 +19,13 @@ public class  RestResult implements Serializable {
 
     }
 
-    public RestResult(String code, String msg, boolean flag) {
+    public RestResult(Integer code, String msg, boolean flag) {
         this.code = code;
         this.msg = msg;
         this.data = "";
     }
 
-    public RestResult(String code, String msg, Object data, boolean flag) {
+    public RestResult(Integer code, String msg, Object data, boolean flag) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -166,11 +166,11 @@ public class  RestResult implements Serializable {
     }
 
 
-    public String getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
