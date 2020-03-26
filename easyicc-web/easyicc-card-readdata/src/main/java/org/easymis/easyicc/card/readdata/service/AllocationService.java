@@ -14,8 +14,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.easymis.easyicc.card.readdata.provider.DistributionCardProvider;
 import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.common.result.ResultCode;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.CardRule;
+import org.easymis.easyicc.service.AllocationCardService;
 import org.easymis.easyicc.service.CardRuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class AllocationCardService {
+public class AllocationService {
 	private final static Log _logger = LogFactory.getLog(AllocationCardService.class);
 	private ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(2);
 	private ExecutorService allocationExecutor = Executors.newCachedThreadPool();
@@ -35,6 +37,9 @@ public class AllocationCardService {
 	@Autowired
 	private CardRuleService cardRuleService;
 	@Autowired
+	private AllocationCardService allocationCardService;
+	
+	@Autowired
 	private DistributionCardProvider distributionCardProvider;
 	
 	
@@ -42,7 +47,7 @@ public class AllocationCardService {
 	public void init() {
 		_logger.info("名片分配serverName:" + this.serverName);
 		scheduledExecutor.scheduleWithFixedDelay(() -> {
-			synchronized (AllocationCardService.this) {
+			synchronized (AllocationService.this) {
 				String time = formatterTime.format(new Date());
                 List<CardRule> list = cardRuleService.findByServerName(serverName);
                 for(CardRule cr: list){
@@ -57,11 +62,10 @@ public class AllocationCardService {
 		scheduledExecutor.scheduleWithFixedDelay(() -> {
             List<Card> cards = getAllWaitForAllocationCards();
             RestResult result = distributionCardProvider.allocationCard(cards,serverName);
-			/*
-			  if(result.getCode() != ResultTypeEnum.SUCCESS.getCode()){
-			 * _logger.error("分配失败 code "+ result.getCode() +" cards, " + cards.toString());
-			 * }
-			 */
+            if(result.getCode()!=ResultCode.SUCCESS)
+            {
+            	_logger.error("分配失败 code "+ result.getCode() +" cards, " + cards.toString());
+            }
         }, 120, 120, TimeUnit.SECONDS);
 	}
 	/**
@@ -69,14 +73,6 @@ public class AllocationCardService {
 	 * @return
 	 */
 	public List<Card> getAllWaitForAllocationCards(){
-
-		String sql = "select a.* from js_visitor_info a " +
-						"inner join js_cuour_card_rule b on a.company_id=b.company_id "+
-						"where b.use_allocation=1 and b.server_name = ? " +
-						"and a.create_time is not null and a.create_time between (sysdate - 2) and (sysdate - b.allocation_delay/24/60) "+
-						"and allocation_status = 0 "+
-						"order by a.company_id, a.ext_column7, a.create_time";
-		//return this.jdbcTemplate.query(sql, new Object[]{this.serverName}, new CardRowMapper());
-		return null;
+		return allocationCardService.getAllWaitForAllocationCards(serverName);
 	}
 }
