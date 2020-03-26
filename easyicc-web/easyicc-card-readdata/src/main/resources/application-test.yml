@@ -1,4 +1,4 @@
-clusterName=cluster-dev
+clusterName: cluster-dev
 system:
   domain: http://dbview.easymis.org
   email: 535782704@qq.com

@@ -27,7 +27,8 @@ public class AllocationCardService {
 	private ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(2);
 	private ExecutorService allocationExecutor = Executors.newCachedThreadPool();
 	private final static SimpleDateFormat formatterTime = new SimpleDateFormat("HH:mm");
-	@Value("${serverName}")
+
+    @Value(value = "${clusterName}")
 	private String serverName;
 	@Autowired
 	private CardRuleService cardRuleService;
@@ -41,7 +42,7 @@ public class AllocationCardService {
                 List<CardRule> list = cardRuleService.findByServerName(serverName);
                 for(CardRule cr: list){
                     if(cr.getResetTime() != null && !cr.getResetTime().equals("") && time.equals(cr.getResetTime())){
-                        _logger.info("重置["+cr.getCompanyId()+"]");
+                        _logger.info("重置["+cr.getOrgId()+"]");
                       // distributionCardService.removeLocalCacheByCompanyId(cr.getCompanyId());
                        //pushdataService.removeLocalCacheByCompanyId(cr.getCompanyId());
                     }
