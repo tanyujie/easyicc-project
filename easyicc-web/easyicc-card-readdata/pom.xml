@@ -17,6 +17,10 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
@@ -92,7 +96,7 @@
 		</dependency>
 
 		<!-- swagger2 API文档生成 -->
-		<dependency>
+<!-- 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${springfox-swagger.version}</version>
@@ -106,7 +110,7 @@
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-staticdocs</artifactId>
 			<version>${springfox-staticdocs.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- -->
 		<dependency>
 			<groupId>com.orientechnologies</groupId>
