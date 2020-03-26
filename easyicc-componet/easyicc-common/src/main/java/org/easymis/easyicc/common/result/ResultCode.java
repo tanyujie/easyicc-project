@@ -3,7 +3,7 @@ package org.easymis.easyicc.common.result;
 /**
  * 返回结果常量定义
  *
- * @author Rlax
+ * @author tanyujie
  */
 public class ResultCode {
 
