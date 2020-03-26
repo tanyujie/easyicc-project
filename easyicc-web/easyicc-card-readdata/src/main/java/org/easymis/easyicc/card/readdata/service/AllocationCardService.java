@@ -12,6 +12,8 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.readdata.provider.DistributionCardProvider;
+import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.CardRule;
 import org.easymis.easyicc.service.CardRuleService;
@@ -32,6 +34,9 @@ public class AllocationCardService {
 	private String serverName;
 	@Autowired
 	private CardRuleService cardRuleService;
+	@Autowired
+	private DistributionCardProvider distributionCardProvider;
+	
 	
 	@PostConstruct
 	public void init() {
@@ -51,9 +56,9 @@ public class AllocationCardService {
 		}, 60, 60, TimeUnit.SECONDS);
 		scheduledExecutor.scheduleWithFixedDelay(() -> {
             List<Card> cards = getAllWaitForAllocationCards();
+            RestResult result = distributionCardProvider.allocationCard(cards,serverName);
 			/*
-			 * DistributionResult result = distributionCardService.allocationCard(cards,
-			 * serverName); if(result.getCode() != ResultTypeEnum.SUCCESS.getCode()){
+			  if(result.getCode() != ResultTypeEnum.SUCCESS.getCode()){
 			 * _logger.error("分配失败 code "+ result.getCode() +" cards, " + cards.toString());
 			 * }
 			 */
