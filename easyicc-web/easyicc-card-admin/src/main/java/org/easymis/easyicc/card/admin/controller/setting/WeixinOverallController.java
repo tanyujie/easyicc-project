@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.domain.entity.OrganizeConfig;
+import org.easymis.easyicc.service.OrganizeConfigService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.jesong.webcall.core.client.CoreClient;
-import cn.jesong.webcall.resource.CompanyGlobalConf;
 import io.swagger.annotations.Api;
 
 /**
@@ -37,7 +38,7 @@ public class WeixinOverallController extends IdentityRepository{
 	@RequestMapping("/index")
 	public String indexThirdParty(ModelMap model) throws Exception {
 		String orgId = getOrgId();
-		CompanyGlobalConf config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
+		OrganizeConfig config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
 		if(config != null) {
 			String notifyOpenId = config.getProps2().getProperty("notifyOpenId");
 			String notifyUserNickName = config.getProps2().getProperty("notifyUserNickName");
@@ -85,7 +86,7 @@ public class WeixinOverallController extends IdentityRepository{
 			String notifyIsOpen = request.getParameter("notifyIsOpen");
 			String notifySendOpportunity = request.getParameter("notifySendOpportunity");
 			
-			CompanyGlobalConf config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
+			OrganizeConfig config = CoreClient.getUserMgr(orgId).getCompanyGlobalConfig(orgId);
 			config.getProps2().setProperty("notifyIsOpen", notifyIsOpen);
 			config.getProps2().setProperty("notifyOpenId", notifyOpenId);
 			config.getProps2().setProperty("notifyUserNickName", notifyUserNickName);

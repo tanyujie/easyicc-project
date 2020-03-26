@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
+import org.easymis.easyicc.common.result.RestResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -104,17 +105,15 @@ public class WeixinPartyController extends IdentityRepository{
 			HttpServletResponse response) throws IOException {
 		try {
 			if (weixin != null) {
-				int orgId = getOrgId();
+				String orgId = getOrgId();
 			//	String companyName = cService.getCompanyName(orgId);
 				weixin.setCompanyId(orgId);
 				weixin.setIsDelete(CmdConstant.IS_DELETE_NO);
 				weixin.setUserName(OnLine.getCurrentUserDetails().getRealName());
 				weixin.setCompanyName(cService.getCompanyName(orgId));
 				wxService.insert(weixin);
-			//	acService.insert(ac);
-			//	this.service.saveCardInterface(cif);
 			}
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -147,7 +146,7 @@ public class WeixinPartyController extends IdentityRepository{
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/updateWeixin", method = RequestMethod.POST)
-	public void updateWeixin(WeixinInfo weixin, HttpServletRequest request,
+	public RestResult updateWeixin(WeixinInfo weixin, HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
 		try {
 			// int id = Integer.parseInt(request.getParameter("id") == null ?
@@ -160,9 +159,9 @@ public class WeixinPartyController extends IdentityRepository{
 			this.getHibernateService().executeUpdate(hql, weixin.getStatus(),
 					weixin.getSendOpportunity(), Integer.parseInt(id));
 			request.getSession().removeAttribute("id");
-			RespResult.getSuccess().writeToResponse(response);
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			RespResult.getError(e).writeToResponse(response);
+			return RestResult.buildError();
 		}
 	}
 	
@@ -174,24 +173,24 @@ public class WeixinPartyController extends IdentityRepository{
 	 */
 	@RequestMapping("/deleteWeixin")
 	@ResponseBody
-	public RespResult deleteWeixin(HttpServletRequest request) {
+	public RestResult deleteWeixin(HttpServletRequest request) {
 		try {
 			int id = Integer.parseInt(request.getParameter("id") == null ? "0"
 					: request.getParameter("id"));
 			String hql = "delete from WeixinInfo  where id=?";
 			this.getHibernateService().executeUpdate(hql, id);
-			return RespResult.getSuccess();
+			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			return RespResult.getError(e);
+			return RestResult.buildError(e.toString());
 		}
 	}
 	
-	@Override
+	
 	protected String getPrefix() {
 		return "/setting/weixinParty";
 	}
 
-	@Override
+	
 	protected Object getQueryParams(HttpServletRequest request) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("isDelete", CmdConstant.IS_DELETE_NO);
@@ -200,7 +199,7 @@ public class WeixinPartyController extends IdentityRepository{
 		return params;
 	}
 
-	@Override
+	
 	protected HibernateDAO<Integer, WeixinInfo> getHibernateService() {
 		return wxService;
 	}

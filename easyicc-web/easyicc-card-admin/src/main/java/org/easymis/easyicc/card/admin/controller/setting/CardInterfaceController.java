@@ -79,7 +79,7 @@ public class CardInterfaceController extends IdentityRepository{
 				String param = object.toString();
 				cif.setParam(param);
 
-				this.service.saveCardInterface(cif);
+				this.service.save(cif);
 			}
 			return RestResult.buildSuccess();
 		} catch (Exception e) {
@@ -120,7 +120,7 @@ public class CardInterfaceController extends IdentityRepository{
 					item.setIsUseSchool(bean.getIsUseSchool());
 					item.setIsUseSubject(bean.getIsUseSubject());
 					item.setUrl(bean.getUrl());
-					item.setCompanyId(bean.getCompanyId());
+					item.setOrgId(bean.getOrgId());
 					pageList.add(item);
 				}
 			}
@@ -141,9 +141,9 @@ public class CardInterfaceController extends IdentityRepository{
 	 */
 	@RequestMapping(value = "/updateCard", method = RequestMethod.GET)
 	public String updateCard(HttpServletRequest request, ModelMap model) {
-		int id = Integer.parseInt(request.getParameter("id") == null ? "0"
-				: request.getParameter("id"));
-		CardInterface entity = this.getHibernateService().get(id);
+		String id = request.getParameter("id") == null ? "0"
+				: request.getParameter("id");
+		CardInterface entity = service.findById(id);
 		CardItem item = new CardItem();
 		if (entity != null) {
 			String param = entity.getParam();
@@ -154,7 +154,7 @@ public class CardInterfaceController extends IdentityRepository{
 			item.setUrl(entity.getUrl());
 			item.setIsUseSchool(entity.getIsUseSchool());
 			item.setIsUseSubject(entity.getIsUseSubject());
-			item.setCompanyId(entity.getCompanyId());
+			item.setOrgId(entity.getOrgId());
 		}
 
 		model.put("entity", item);
@@ -191,7 +191,7 @@ public class CardInterfaceController extends IdentityRepository{
 			String param = object.toString();
 			cif.setParam(param);
 			String url = "http://api.jswebcall.easyliao.com/data/api/invoke?companyId="
-					+ entity.getCompanyId() + "&interfaceId=" + id + "&token="
+					+ entity.getOrgId() + "&interfaceId=" + id + "&token="
 					+ entity.getToken() + "&cmd=insert";
 			String hql = "update CardInterface set token=?,updateTime=?,url=?,param=?,isUseSubject=?,isUseSchool=? where id=?";
 			this.getHibernateService().executeUpdate(hql, entity.getToken(),
@@ -213,10 +213,9 @@ public class CardInterfaceController extends IdentityRepository{
 	 */
 	@RequestMapping(value = "/preview", method = RequestMethod.GET)
 	public String preview(HttpServletRequest request, ModelMap model) {
-		int id = Integer.parseInt(request.getParameter("id") == null ? "0"
-				: request.getParameter("id"));
+		String id = request.getParameter("id") == null ? "0" : request.getParameter("id");
 		try {
-			CardInterface entity = this.getHibernateService().get(id);
+			CardInterface entity = service.findById(id);
 			model.put("entity", entity);
 			if (entity != null && entity.getParam() != null) {
 				String param = entity.getParam();
@@ -253,7 +252,7 @@ public class CardInterfaceController extends IdentityRepository{
 			this.getHibernateService().executeUpdate(hql, id);
 			return RestResult.buildSuccess();
 		} catch (Exception e) {
-			return RespResult.getError(e);
+			return RestResult.buildError(e.toString());
 		}
 	}
 
@@ -312,12 +311,10 @@ public class CardInterfaceController extends IdentityRepository{
 					HttpEntity entity = rsp.getEntity();
 					String res = EntityUtils.toString(entity);
 					jsonObject = JSONObject.fromObject(res);
-				//	System.out.println(jsonObject);
-					//String code = jsonObject.getString("code");
 				} else {
 					jsonObject = JSONObject.fromObject("");
 				}
-			//	logger.info("消息推送模板连接接口成功：返回结果："+rsp.getStatusLine().getStatusCode());
+				logger.info("消息推送模板连接接口成功：返回结果："+rsp.getStatusLine().getStatusCode());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -338,7 +335,7 @@ public class CardInterfaceController extends IdentityRepository{
 
 	protected Object getQueryParams(HttpServletRequest request) {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("companyId", OnLine.getCurrentUserDetails().getCompanyId());
+		params.put("companyId", getOrgId());
 		params.put("isDelete", 0);
 		return params;
 	}
