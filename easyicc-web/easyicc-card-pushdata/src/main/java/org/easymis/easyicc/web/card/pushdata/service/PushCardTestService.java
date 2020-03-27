@@ -11,14 +11,14 @@ import org.apache.rocketmq.common.message.Message;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PushCardService {
+public class PushCardTestService {
 	private String consumerGroup = "pay_consumer_group";
 	private String nameServerAddr = "127.0.0.1:9876";
 	private static final String topic = "pay_topic";
 
 	private DefaultMQPushConsumer consumer;
 
-	public PushCardService() throws MQClientException {
+	public PushCardTestService() throws MQClientException {
 		consumer = new DefaultMQPushConsumer(consumerGroup);
 		consumer.setNamesrvAddr(nameServerAddr);
 		consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
