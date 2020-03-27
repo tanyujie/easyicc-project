@@ -101,19 +101,30 @@
     </script>
 </head>
 <body>
-    <div class="talk_con">
-        <div class="talk_show" id="words">
-            <div class="atalk"><span id="asay">A说：吃饭了吗？</span></div>
-            <div class="btalk"><span id="bsay">B说：还没呢，你呢？</span></div>
-        </div>
-        <div class="talk_input">
-            <select class="whotalk" id="who">
-                <option value="0">A说：</option>
-                <option value="1">B说：</option>
-            </select>
-            <input type="text" class="talk_word" id="talkwords">
-            <input type="button" value="发送" class="talk_sub" id="talksub">
-        </div>
+    <div id="e_chatWin" class="" style="box-shadow: rgb(51, 51, 51) 0px 0px 10px; display: block; line-height: normal; width: auto; z-index: 2147483647; right: 283px; bottom: 2px; position: fixed !important; margin: 0px;">
+	    <div class="sharp">
+	    <div class="ks_dir_bg" style="width:600px;height:500px;">
+	    <div class="ks_dir_t_title" style="cursor: move; position: absolute; width: 100%; height: 50px; right: 0px; top: 0px;">
+	    </div>
+	    <div style="width:100%;height:100%;">
+	    <div class="talk_con">
+	        <div class="talk_show" id="words">
+	            <div class="atalk"><span id="asay">A说：吃饭了吗？</span></div>
+	            <div class="btalk"><span id="bsay">B说：还没呢，你呢？</span></div>
+	        </div>
+	        <div class="talk_input">
+	            <select class="whotalk" id="who">
+	                <option value="0">A说：</option>
+	                <option value="1">B说：</option>
+	            </select>
+	            <input type="text" class="talk_word" id="talkwords">
+	            <!-- id="talksub"  -->
+	            <input type="button" value="发送" class="talk_sub" onclick="CHAT.chat()">
+	        </div>
+	    </div>
+	    </div>
+	    </div>
+	    </div>
     </div>
 	<script type="text/javascript">		
 		window.CHAT = {
@@ -136,7 +147,9 @@
 						console.log("接受到消息：" + e.data)
 						//var receiveMsg = document.getElementById("receiveMsg");
 						//var html = receiveMsg.innerHTML;
-						str = '<div class="btalk"><span>B说 :' + e.data +'</span></div>';
+						var json=JSON.parse(e.data);
+						var chatMsg=json.chatMsg;
+						str = '<div class="atalk"><span>' + chatMsg.msg +'</span></div>';
 						var Words = document.getElementById("words");
 						Words.innerHTML = Words.innerHTML + str;
 						//receiveMsg.innerHTML = html + "<br/>" + e.data
@@ -147,11 +160,14 @@
 				}
 			},
 			chat:function(){
-				var msgContent = document.getElementById("msgContent")
+				var msgContent = document.getElementById("talkwords")
 				//CHAT.socket.send(msgContent.value);
-				var msg='{"action":2,"chatMsg":{"orgId":"orgId","msg":"'+'sss'+'","msgId":"msgId","receiverId":"1","senderId":"2"},"extand":"orgId"}';
+				var msg='{"action":2,"chatMsg":{"orgId":"orgId","msg":"'+msgContent.value+'","msgId":"msgId","receiverId":"1","senderId":"2"},"extand":"orgId"}';
 				CHAT.socket.send(msg);
-				console.log(msg.value + "发送成功");
+				str = '<div class="btalk"><span>' + msgContent.value +'</span></div>';
+				//console.log(msg.value + "发送成功");
+				 var Words = document.getElementById("words");
+				Words.innerHTML = Words.innerHTML + str;
 			}
 		}
 		
