@@ -65,6 +65,10 @@ spring:
                maxTotal : 100
                maxIdle : 10
                maxWaitMillis : 100000
+    rocketmq:
+        nameServer: 127.0.0.1:9876
+        producer:
+            group: boot_producer_group
 mybatis:
     mapper-locations: classpath*:org/easymis/easysaas/portal/entitys/mybatis/mapper/*Mapper.xml
     type-aliases-package: org.easymis.easysaas.portal.entitys.mybatis.dto
