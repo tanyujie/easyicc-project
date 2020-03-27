@@ -1,5 +1,8 @@
 package org.easymis.easyicc.service;
 
-public interface CardInterfaceService {
+import org.easymis.easyicc.domain.entity.CardInterface;
 
+public interface CardInterfaceService {
+	public void save(CardInterface bean);
+	public CardInterface findById(String id);
 }

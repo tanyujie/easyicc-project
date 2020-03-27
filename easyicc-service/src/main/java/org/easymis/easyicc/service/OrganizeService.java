@@ -1,5 +1,9 @@
 package org.easymis.easyicc.service;
 
-public interface OrganizeService {
+import java.util.List;
 
+import org.easymis.easyicc.domain.entity.Organize;
+
+public interface OrganizeService {
+	public List<Organize> findList();
 }
