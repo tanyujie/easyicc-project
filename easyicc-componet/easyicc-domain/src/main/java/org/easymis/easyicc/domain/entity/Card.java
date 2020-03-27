@@ -65,4 +65,19 @@ public class Card extends VisitorInfo{
     private String backUserId;
     
     private Date backTime;
+	/**
+	 * 销售ID
+	 */
+	private String saleId;
+	/**
+	 * 分处销售ID
+	 */
+	private String userId;
+    /**
+     * 新增字段，这个字段来判断是否分配，mq after方法里会用到
+     */
+    private boolean allocation;
+	public boolean isSaleCard(){
+		return this.saleId != null && this.saleId.equals(this.userId);
+	}
 }

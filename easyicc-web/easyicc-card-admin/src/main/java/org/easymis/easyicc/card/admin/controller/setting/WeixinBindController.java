@@ -3,6 +3,7 @@ package org.easymis.easyicc.card.admin.controller.setting;
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.OutputStream;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -15,6 +16,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.NumberUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.admin.common.SendMessage;
+import org.easymis.easyicc.card.admin.common.SessionUtil;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +27,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.qrcode.encoder.QRCode;
 
-import cn.eutils.web.platform.permission.user.OnLine;
-import cn.jesong.webcall.cuour.common.QRCode;
-import cn.jesong.webcall.cuour.common.SessionUtil;
-import cn.jesong.webcall.cuour.controller.setting.WeixinBindController;
-import cn.jesong.webcall.cuour.util.DateUtil;
-import cn.jesong.webcall.cuour.util.SendMessage;
 import io.swagger.annotations.Api;
 import net.kinfe.util.properties.ConfigLoader;
 
@@ -60,7 +58,7 @@ public class WeixinBindController extends IdentityRepository{
 		logger.info("进入微信反调函数 ========================= ");
 		System.out.println("进入微信反调函数 ========================= ");
 		System.out.println("获取code："+code);
-		String key = userId + DateUtil.getCurrentDate1();
+		String key = userId + LocalDate.now();
 		String openId = "";
 		String nickName = "";
 		String headImgUrl = "";
@@ -94,13 +92,12 @@ public class WeixinBindController extends IdentityRepository{
 	@RequestMapping(value = "/createCode", method = RequestMethod.GET)
 	@ResponseBody
 	public void createCode(HttpServletRequest request, HttpServletResponse response) {
-	//	int imageSize = NumberUtils.toInt(request.getParameter("imageSize"), 1);
+
 		int width = NumberUtils.toInt(request.getParameter("width"), 430);
 		int height = NumberUtils.toInt(request.getParameter("height"), 430);
 		String userId = request.getParameter("userId");
 		Properties prop = ConfigLoader.getInstance().load();
 		String serverType = prop.getProperty("server.script.domain.type", "");
-	//	long token = NumberUtils.toLong(request.getParameter("token"), 0);
 		try {
 			OutputStream outputStream = new BufferedOutputStream(response.getOutputStream());
 			String CropId = "wxf5f153db1f8a580e";
@@ -133,7 +130,7 @@ public class WeixinBindController extends IdentityRepository{
 	public Map<String, String> getOpenid(HttpServletRequest request,
 			HttpServletResponse response) {
 		String userId = this.getStaffId();
-		String key = userId + DateUtil.getCurrentDate1();
+		String key = userId + LocalDate.now();
 		Map<String, String> map = new HashMap<String, String>();
 		String openid = SessionUtil.getOpenId(request, key);
 		String nickname = SessionUtil.getNickname(request, key);

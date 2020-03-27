@@ -9,7 +9,7 @@ public class VisitorInfo {
 	  private String id;
 	  private String visitorStaticId;
 	  private String globalStaticId = "";
-	  private Integer companyId;
+	  private String companyId;
 	  private String name;
 	  private String tel;
 	  private String email;

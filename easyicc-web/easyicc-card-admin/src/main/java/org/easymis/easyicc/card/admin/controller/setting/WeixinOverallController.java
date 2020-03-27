@@ -11,7 +11,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.domain.entity.OrganizeConfig;
-import org.easymis.easyicc.service.OrganizeConfigService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;

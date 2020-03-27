@@ -2,9 +2,9 @@ package org.easymis.easyicc.domain.entity;
 
 public class CardItem {
 	
-	private int id;
+	private String id;
 	private String url;
-	private int companyId;
+	private String orgId;
 	private int isUseSchool;
 	private int isUseSubject;
 
@@ -190,11 +190,12 @@ public class CardItem {
 		this.extColumn7 = extColumn7;
 	}
 
-	public int getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -206,12 +207,14 @@ public class CardItem {
 		this.url = url;
 	}
 
-	public int getCompanyId() {
-		return companyId;
+
+
+	public String getOrgId() {
+		return orgId;
 	}
 
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
 	}
 
 	public int getIsUseSchool() {

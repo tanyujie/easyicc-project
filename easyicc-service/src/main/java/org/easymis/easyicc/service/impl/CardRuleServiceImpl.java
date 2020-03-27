@@ -41,4 +41,10 @@ public class CardRuleServiceImpl implements CardRuleService {
 		return mapper.findByServerName(serverName);
 	}
 
+	@Override
+	public List<CardRule> findExpiredCards(String serverName) {
+		// TODO Auto-generated method stub
+		return mapper.findExpiredCards(serverName);
+	}
+
 }

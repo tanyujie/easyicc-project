@@ -6,15 +6,17 @@ import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Card;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Component
-@FeignClient(name = "authentication-server", fallback = DistributionCardProvider.DistributionCardFallback.class)
+@FeignClient(name = "easyicc-card-distribution", fallback = DistributionCardProvider.DistributionCardFallback.class)
 public interface DistributionCardProvider {
     /**
      * 分配名片
      * @param cardList
      * @throws Exception
      */
+    @PostMapping(value = "/distribution/allocationCard")
 	RestResult allocationCard(List<Card> cardList, String serveName);
 
 

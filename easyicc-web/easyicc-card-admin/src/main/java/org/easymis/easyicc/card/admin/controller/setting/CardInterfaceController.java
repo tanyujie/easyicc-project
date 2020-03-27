@@ -340,8 +340,4 @@ public class CardInterfaceController extends IdentityRepository{
 		return params;
 	}
 
-
-	protected HibernateDAO<Integer, CardInterface> getHibernateService() {
-		return service;
-	}
 }

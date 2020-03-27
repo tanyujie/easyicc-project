@@ -9,9 +9,12 @@ public interface CardRuleService {
 
 	List<CardRule> findByServerName(String serverName);
 
+	List<CardRule> findExpiredCards(String serverName);
+
 	void saveOrUpdate(CardRule bean);
 
 	void save(CardRule bean);
 
 	void update(CardRule bean);
+
 }

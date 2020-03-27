@@ -2,7 +2,7 @@ package org.easymis.easyicc.card.admin.common;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.easymis.easyicc.domain.entity.WeChatInfo;
+import org.easymis.easyicc.domain.entity.WechatInfo;
 
 public class SessionUtil {
 	
@@ -50,7 +50,7 @@ public class SessionUtil {
 	}
 	
 	
-	public static void setWeixinInfo(HttpServletRequest request, WeChatInfo wx) {
+	public static void setWeixinInfo(HttpServletRequest request, WechatInfo wx) {
 		request.getSession().setAttribute(SESSION_USER_KEY, wx);
 	}
 	

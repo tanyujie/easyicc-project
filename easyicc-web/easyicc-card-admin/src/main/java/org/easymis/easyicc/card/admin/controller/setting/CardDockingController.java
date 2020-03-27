@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.easymis.easyicc.card.admin.common.CmdConstant;
+import org.easymis.easyicc.card.admin.common.SendMessage;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.domain.entity.Card;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
@@ -33,8 +35,6 @@ import com.github.pagehelper.PageInfo;
 
 import cn.eutils.web.platform.ui.PageConfig;
 import cn.jesong.webcall.core.client.CoreClient;
-import cn.jesong.webcall.cuour.common.CmdConstant;
-import cn.jesong.webcall.cuour.util.SendMessage;
 import io.swagger.annotations.Api;
 import sun.security.util.KeyUtil;
 @Api(value = "/cardDocking", description = "排班班次")
