@@ -105,8 +105,11 @@
 	    <div class="sharp">
 	    <div class="ks_dir_bg" style="width:600px;height:500px;">
 	    <div class="ks_dir_t_title" style="cursor: move; position: absolute; width: 100%; height: 50px; right: 0px; top: 0px;">
+	    <div style="width:100%;height:100%;" onmouseover="this.style.cssText='width:100%;height:100%;background-color:#FFF;filter:alpha(opacity=30);-moz-opacity:0.30;opacity:0.30;'" onmouseout="this.style.cssText='width:100%;height:100%;'">
+	    </div>
 	    </div>
 	    <div style="width:100%;height:100%;">
+
 	    <div class="talk_con">
 	        <div class="talk_show" id="words">
 	            <div class="atalk"><span id="asay">A说：吃饭了吗？</span></div>
@@ -126,6 +129,7 @@
 	    </div>
 	    </div>
     </div>
+    	    <audio id="SysSoundPlayer" src="https://test.kuaishang.cn/bs/sound/sound000.mp3"></audio>
 	<script type="text/javascript">		
 		window.CHAT = {
 			socket: null,
@@ -147,6 +151,9 @@
 						console.log("接受到消息：" + e.data)
 						//var receiveMsg = document.getElementById("receiveMsg");
 						//var html = receiveMsg.innerHTML;
+						var mp3 = new Audio("https://test.kuaishang.cn/bs/sound/sound000.mp3");
+                        mp3.play(); //播放 mp3这个音频对象
+                        
 						var json=JSON.parse(e.data);
 						var chatMsg=json.chatMsg;
 						str = '<div class="atalk"><span>' + chatMsg.msg +'</span></div>';
