@@ -8,8 +8,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.easymis.easyicc.card.admin.common.CmdConstant;
 import org.easymis.easyicc.card.admin.controller.IdentityRepository;
 import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.Organize;
+import org.easymis.easyicc.domain.entity.WechatInfo;
+import org.easymis.easyicc.service.OrganizeService;
+import org.easymis.easyicc.service.WechatInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,16 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.eutils.web.platform.permission.user.OnLine;
-import cn.eutils.web.platform.ui.Page;
-import cn.eutils.web.platform.ui.PageConfig;
-import cn.eutils.web.platform.ui.RespResult;
-import cn.jesong.webcall.cuour.common.CmdConstant;
-import cn.jesong.webcall.cuour.dao.HibernateDAO;
-import cn.jesong.webcall.cuour.entity.Company;
-import cn.jesong.webcall.cuour.entity.WeixinInfo;
-import cn.jesong.webcall.cuour.service.CompanyService;
-import cn.jesong.webcall.cuour.service.WeixinInfoService;
+import com.github.pagehelper.Page;
+
 import io.swagger.annotations.Api;
 
 /**
@@ -38,21 +35,21 @@ import io.swagger.annotations.Api;
 @Api(value = "/weChatParty", description = "微信接口配置")
 @Controller
 @RequestMapping("/weChatParty")
-public class WeixinPartyController extends IdentityRepository{
-	
+public class WeixinPartyController extends IdentityRepository {
+
 	private final static String PREFIX = "/setting/weixinParty";
-	
+
 	@Autowired
-	private CompanyService cService;
-	
+	private OrganizeService cService;
+
 	@Autowired
-	private WeixinInfoService wxService;
-	
+	private WechatInfoService wxService;
+
 	@RequestMapping("/indexWeixinParty")
 	public String indexThirdParty(ModelMap model) throws Exception {
 		return PREFIX + "/index";
 	}
-	
+
 	/**
 	 * 微信接口列表
 	 * 
@@ -61,33 +58,19 @@ public class WeixinPartyController extends IdentityRepository{
 	 */
 	@RequestMapping("/queryPage")
 	@ResponseBody
-	public Page<WeixinInfo> queryPage(HttpServletRequest request) {
-		Page<WeixinInfo> page = new Page<WeixinInfo>();
-		try {
-			Object params = this.getQueryParams(request);
-			if (params == null) {
-				params = new HashMap<String, Object>();
-			}
-			page = this.getHibernateService()
-					.pageQueryByTemplate(PageConfig.createPageConfig(request),
-							params);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public RestResult queryPage(HttpServletRequest request) {
+		Page<WechatInfo> page = new Page<WechatInfo>();
+		WechatInfo bean = new WechatInfo();
+		bean.setOrgId(this.getOrgId());
+		bean.setDeleteFlag(CmdConstant.IS_DELETE_NO);
+		return RestResult.buildSuccess(wxService.findPage(bean, new Page()));
 
-		return page;
 	}
-	
-	@RequestMapping(value = "/createWeixinInfo", method = RequestMethod.GET)
-	public String createWeixinInfo(ModelMap model) {
-		try {
-			List<Company> list = cService.getCompanys();
-			model.put("companys", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
+
+	@RequestMapping(value = "/createWechatInfo", method = RequestMethod.GET)
+	public String createWechatInfo(ModelMap model) {
+		List<Organize> list = cService.findList();
+		model.put("companys", list);
 		return PREFIX + "/form";
 	}
 
@@ -99,26 +82,23 @@ public class WeixinPartyController extends IdentityRepository{
 	 * @param response
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/createWeixinInfo", method = RequestMethod.POST)
+	@RequestMapping(value = "/createWechatInfo", method = RequestMethod.POST)
 	@Transactional
-	public void createWeixinInfo(WeixinInfo weixin, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		try {
-			if (weixin != null) {
-				String orgId = getOrgId();
-			//	String companyName = cService.getCompanyName(orgId);
-				weixin.setCompanyId(orgId);
-				weixin.setIsDelete(CmdConstant.IS_DELETE_NO);
-				weixin.setUserName(OnLine.getCurrentUserDetails().getRealName());
-				weixin.setCompanyName(cService.getCompanyName(orgId));
-				wxService.insert(weixin);
-			}
-			return RestResult.buildSuccess();
-		} catch (Exception e) {
-			e.printStackTrace();
+	public RestResult createWechatInfo(WechatInfo weixin, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		if (weixin != null) {
+			String orgId = getOrgId();
+			weixin.setOrgId(orgId);
+			weixin.setDeleteFlag(CmdConstant.IS_DELETE_NO);
+			// weixin.setUserName(OnLine.getCurrentUserDetails().getRealName());
+			// weixin.setCompanyName(cService.getCompanyName(orgId));
+			wxService.save(weixin);
 		}
+		return RestResult.buildSuccess();
+
 	}
-	
+
 	/**
 	 * 更新页面
 	 * 
@@ -128,14 +108,13 @@ public class WeixinPartyController extends IdentityRepository{
 	 */
 	@RequestMapping(value = "/updateWeixin", method = RequestMethod.GET)
 	public String updateWeixin(HttpServletRequest request, ModelMap model) {
-		int id = Integer.parseInt(request.getParameter("id") == null ? "0"
-				: request.getParameter("id"));
-		WeixinInfo entity = this.getHibernateService().get(id);
-		
+		String id = request.getParameter("id") == null ? "0" : request.getParameter("id");
+		WechatInfo entity = wxService.findById(id);
+
 		model.put("entity", entity);
 		model.put("id", "" + id);
-		this.updatePageInit(entity, request, model);
-		return this.getPrefix() + "/" + this.getEditPage();
+
+		return this.getPrefix() + "/editPage";
 	}
 
 	/**
@@ -146,25 +125,20 @@ public class WeixinPartyController extends IdentityRepository{
 	 * @throws IOException
 	 */
 	@RequestMapping(value = "/updateWeixin", method = RequestMethod.POST)
-	public RestResult updateWeixin(WeixinInfo weixin, HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-		try {
-			// int id = Integer.parseInt(request.getParameter("id") == null ?
-			// "0" : request.getParameter("id"));
-			String id = request.getSession().getAttribute("id") == null ? ""
-					: (String) request.getSession().getAttribute("id");
-			
-			
-			String hql = "update WeixinInfo set status=?,sendOpportunity=? where id=?";
-			this.getHibernateService().executeUpdate(hql, weixin.getStatus(),
-					weixin.getSendOpportunity(), Integer.parseInt(id));
-			request.getSession().removeAttribute("id");
-			return RestResult.buildSuccess();
-		} catch (Exception e) {
-			return RestResult.buildError();
-		}
+	public RestResult updateWeixin(WechatInfo weixin, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		String id = request.getSession().getAttribute("id") == null ? ""
+				: (String) request.getSession().getAttribute("id");
+
+		// String hql = "update WechatInfo set status=?,sendOpportunity=? where id=?";
+		// this.getHibernateService().executeUpdate(hql, weixin.getStatus(),
+		// weixin.getSendOpportunity(), Integer.parseInt(id));
+		wxService.Update(weixin);
+		return RestResult.buildSuccess();
+
 	}
-	
+
 	/**
 	 * 删除
 	 * 
@@ -174,33 +148,22 @@ public class WeixinPartyController extends IdentityRepository{
 	@RequestMapping("/deleteWeixin")
 	@ResponseBody
 	public RestResult deleteWeixin(HttpServletRequest request) {
-		try {
-			int id = Integer.parseInt(request.getParameter("id") == null ? "0"
-					: request.getParameter("id"));
-			String hql = "delete from WeixinInfo  where id=?";
-			this.getHibernateService().executeUpdate(hql, id);
-			return RestResult.buildSuccess();
-		} catch (Exception e) {
-			return RestResult.buildError(e.toString());
-		}
+
+		String id = request.getParameter("id") == null ? "0" : request.getParameter("id");
+		wxService.delete(id);
+		return RestResult.buildSuccess();
+
 	}
-	
-	
+
 	protected String getPrefix() {
 		return "/setting/weixinParty";
 	}
 
-	
 	protected Object getQueryParams(HttpServletRequest request) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("isDelete", CmdConstant.IS_DELETE_NO);
-		int orgId = getOrgId();
+		String orgId = getOrgId();
 		params.put("orgId", orgId);
 		return params;
-	}
-
-	
-	protected HibernateDAO<Integer, WeixinInfo> getHibernateService() {
-		return wxService;
 	}
 }
