@@ -50,6 +50,25 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				System.out.println(c.id().asLongText());
 			}
 			UserChannelRel.output();
+			// 从全局用户Channel关系中获取接受方的channel
+			Channel receiverChannel = UserChannelRel.get(senderId);
+			// 当receiverChannel不为空的时候，从ChannelGroup去查找对应的channel是否存在
+			Channel findChannel = users.find(receiverChannel.id());
+			if (findChannel != null) {
+				ChatMsg chatMsg = dataContent.getChatMsg();
+				chatMsg.setMsg("初始化问候语");
+				
+				DataContent dataContentMsg = new DataContent();
+				dataContentMsg.setAction(2);
+				dataContentMsg.setChatMsg(chatMsg);
+				// 用户在线
+				receiverChannel.writeAndFlush(
+						new TextWebSocketFrame(
+								JsonUtils.objectToJson(dataContentMsg)));
+			} else {
+				// 用户离线 TODO 推送消息
+			}
+			
 		} else if (action == MsgActionEnum.CHAT.type) {
 			//  2.2  聊天类型的消息，把聊天记录保存到数据库，同时标记消息的签收状态[未签收]
 			ChatMsg chatMsg = dataContent.getChatMsg();
