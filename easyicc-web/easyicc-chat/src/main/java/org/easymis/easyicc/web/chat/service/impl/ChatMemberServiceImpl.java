@@ -20,7 +20,7 @@ import org.easymis.easyicc.web.chat.enums.MsgActionEnum;
 import org.easymis.easyicc.web.chat.enums.MsgSignFlagEnum;
 import org.easymis.easyicc.web.chat.enums.SearchFriendsStatusEnum;
 import org.easymis.easyicc.web.chat.n3r.idworker.Sid;
-import org.easymis.easyicc.web.chat.service.MemberService;
+import org.easymis.easyicc.web.chat.service.ChatMemberService;
 import org.easymis.easyicc.web.chat.utils.FileUtils;
 import org.easymis.easyicc.web.chat.utils.JsonUtils;
 import org.easymis.easyicc.web.chat.utils.QRCodeUtils;
@@ -34,8 +34,8 @@ import io.netty.channel.Channel;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import springfox.documentation.schema.Example;
 
-@Service("memberServiceImpl")  
-public class MemberServiceImpl implements MemberService {
+@Service("chatMemberService")  
+public class ChatMemberServiceImpl implements ChatMemberService {
 
 	@Autowired
 	private MemberMapper userMapper;

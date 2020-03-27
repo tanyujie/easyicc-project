@@ -6,7 +6,7 @@ import org.easymis.easyicc.domain.entity.Member;
 import org.easymis.easyicc.domain.vo.FriendRequestVO;
 import org.easymis.easyicc.domain.vo.MyFriendsVO;
 
-public interface  MemberService {
+public interface  ChatMemberService {
 
 	/**
 	 * @Description: 判断用户名是否存在

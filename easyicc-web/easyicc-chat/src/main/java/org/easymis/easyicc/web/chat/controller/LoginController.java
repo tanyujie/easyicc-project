@@ -6,7 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Member;
 import org.easymis.easyicc.domain.vo.MemberVO;
-import org.easymis.easyicc.web.chat.service.MemberService;
+import org.easymis.easyicc.web.chat.service.ChatMemberService;
 import org.easymis.easyicc.web.chat.utils.MD5Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import io.swagger.annotations.Api;
 @RestController
 public class LoginController {
 	@Autowired
-    private MemberService userService;
+    private ChatMemberService userService;
     @PostMapping("/login")
     public RestResult registOrLogin(@RequestBody Member user) throws NoSuchAlgorithmException {
         if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword())) {

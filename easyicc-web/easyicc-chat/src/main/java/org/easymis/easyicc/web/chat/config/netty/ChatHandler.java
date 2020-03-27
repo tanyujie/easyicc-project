@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.easymis.easyicc.web.chat.enums.MsgActionEnum;
-import org.easymis.easyicc.web.chat.service.MemberService;
+import org.easymis.easyicc.web.chat.service.ChatMemberService;
 import org.easymis.easyicc.web.chat.utils.JsonUtils;
 
 import io.netty.channel.Channel;
@@ -59,7 +59,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			String senderId = chatMsg.getSenderId();
 			
 			// 保存消息到数据库，并且标记为 未签收
-			MemberService userService = (MemberService)SpringUtil.getBean("memberServiceImpl");
+			ChatMemberService userService = (ChatMemberService)SpringUtil.getBean("chatMemberService");
 			String msgId = userService.saveMsg(chatMsg);
 			chatMsg.setMsgId(msgId);
 			
@@ -106,7 +106,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 
 		} else if (action == MsgActionEnum.SIGNED.type) {
 			//  2.3  签收消息类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收]
-			MemberService userService = (MemberService)SpringUtil.getBean("memberServiceImpl");
+			ChatMemberService userService = (ChatMemberService)SpringUtil.getBean("chatMemberService");
 			// 扩展字段在signed类型的消息中，代表需要去签收的消息id，逗号间隔
 			String msgIdsStr = dataContent.getExtand();
 			String msgIds[] = msgIdsStr.split(",");

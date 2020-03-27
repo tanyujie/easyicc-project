@@ -11,7 +11,7 @@ import org.easymis.easyicc.domain.vo.MyFriendsVO;
 import org.easymis.easyicc.web.chat.enums.OperatorFriendRequestTypeEnum;
 import org.easymis.easyicc.web.chat.enums.SearchFriendsStatusEnum;
 import org.easymis.easyicc.web.chat.n3r.idworker.Sid;
-import org.easymis.easyicc.web.chat.service.MemberService;
+import org.easymis.easyicc.web.chat.service.ChatMemberService;
 import org.easymis.easyicc.web.chat.utils.MD5Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
 	@Autowired
-    private MemberService userService;
+    private ChatMemberService userService;
 	
     @Autowired
     private Sid sid;
