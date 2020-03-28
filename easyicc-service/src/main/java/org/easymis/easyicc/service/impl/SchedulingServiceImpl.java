@@ -4,13 +4,16 @@ import java.util.List;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Scheduling;
+import org.easymis.easyicc.mybatis.mapper.SchedulingMapper;
 import org.easymis.easyicc.service.SchedulingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageInfo;
 @Service
 public class SchedulingServiceImpl implements SchedulingService {
-
+	@Autowired
+	private SchedulingMapper mapper;
 	@Override
 	public boolean save(Scheduling bean) {
 		// TODO Auto-generated method stub

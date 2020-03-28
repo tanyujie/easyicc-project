@@ -6,11 +6,14 @@ import java.util.Map;
 
 import org.easymis.easyicc.domain.entity.SchedulingUser;
 import org.easymis.easyicc.domain.vo.SchedulingImportData;
+import org.easymis.easyicc.mybatis.mapper.SchedulingStaffMapper;
 import org.easymis.easyicc.service.SchedulingUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
-public class SchedulingUserServiceImpl  implements SchedulingUserService{
-
+public class SchedulingStaffServiceImpl  implements SchedulingUserService{
+	@Autowired
+	private SchedulingStaffMapper mapper;
 	@Override
 	public List<Map<String, Object>> getPersonelSchedulings(String orgId, String staffId, Date startTime) {
 		// TODO Auto-generated method stub

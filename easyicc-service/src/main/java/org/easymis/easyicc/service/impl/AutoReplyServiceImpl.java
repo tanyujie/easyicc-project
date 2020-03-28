@@ -1,14 +1,14 @@
 package org.easymis.easyicc.service.impl;
 
 import org.easymis.easyicc.domain.entity.AutoReply;
-import org.easymis.easyicc.domain.entity.CommonLanguage;
+import org.easymis.easyicc.mybatis.mapper.AutoReplyMapper;
 import org.easymis.easyicc.service.AutoReplyService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageInfo;
 @Service
 public class AutoReplyServiceImpl implements AutoReplyService {
-
+	@Autowired
+	private AutoReplyMapper mapper;
 	@Override
 	public boolean save(AutoReply bean) {
 		// TODO Auto-generated method stub
