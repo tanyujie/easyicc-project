@@ -10,7 +10,7 @@ import lombok.Data;
 
       private String configId; 
 
-      private String org_Id; 
+      private String orgId; 
       //代码描述",column="description",length=255,isnull=true) 
       private String description; 
       //绑定域名",column="bind_hosts",length=255,isnull=true) 
