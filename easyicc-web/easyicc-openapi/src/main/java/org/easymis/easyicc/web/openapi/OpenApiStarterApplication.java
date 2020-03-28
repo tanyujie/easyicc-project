@@ -1,4 +1,4 @@
-package org.easymis.easyicc.card.readdata;
+package org.easymis.easyicc.web.openapi;
 
 
 
@@ -21,12 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan({"*.easymis.easyicc.**.mapper"})
 @ServletComponentScan
 @EnableSwagger2
-public class ReadDataApplication {
-	protected static final Logger logger = LoggerFactory.getLogger(ReadDataApplication.class);
+public class OpenApiStarterApplication {
+	protected static final Logger logger = LoggerFactory.getLogger(OpenApiStarterApplication.class);
 
 	public static void main(String[] args) {
 		logger.info("web开始加载");
-		SpringApplication.run(ReadDataApplication.class, args);
+		SpringApplication.run(OpenApiStarterApplication.class, args);
 		logger.info("web加载完毕");
 	}
 
