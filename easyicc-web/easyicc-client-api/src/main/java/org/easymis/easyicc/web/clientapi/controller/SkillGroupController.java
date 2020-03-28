@@ -1,9 +1,8 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.School;
-import org.easymis.easyicc.domain.entity.VisitorFilter;
+import org.easymis.easyicc.domain.entity.SkillGroup;
 import org.easymis.easyicc.service.SkillGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,15 +30,15 @@ public class SkillGroupController extends IdentityRepository{
 	@ResponseBody
 	public RestResult findByOrgId(String content, Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		CommonLanguage bean = new CommonLanguage();
+		SkillGroup bean = new SkillGroup();
 		bean.setOrgId(orgId);
-		bean.setStaffId(getStaffId());
-		bean.setContent(content);
+
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
+		//service.find(bean, pageNum, pageSize)
+		return RestResult.buildSuccess();
 	}
 
 	@ApiOperation(value = "保存访客屏蔽")
@@ -50,9 +49,8 @@ public class SkillGroupController extends IdentityRepository{
 			@ApiImplicitParam(name = "hotKey", value = "hotKey", dataType = "string", required = false), })
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(VisitorFilter bean) {
+	public RestResult add(SkillGroup bean) {
 		bean.setOrgId(getOrgId());
-		bean.setStaffId(getStaffId());
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -67,7 +65,7 @@ public class SkillGroupController extends IdentityRepository{
 			@ApiImplicitParam(name = "hotKey", value = "hotKey", dataType = "string", required = false), })
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(VisitorFilter bean) {
+	public RestResult update(SkillGroup bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

@@ -33,7 +33,6 @@ public class VisitorFilterController extends IdentityRepository{
 		VisitorFilter bean = new VisitorFilter();
 		bean.setOrgId(orgId);
 		bean.setStaffId(getStaffId());
-		bean.setContent(content);
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)

@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.swagger.annotations.Api;
 
-@Api(value = "/rewriteRule", description = "微网页管理")
+@Api(value = "/miniHtml", description = "微网页管理")
 @Controller
-@RequestMapping("/rewriteRule")
+@RequestMapping("/miniHtml")
 public class MiniHtmlController {
 
 }

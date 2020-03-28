@@ -1,6 +1,7 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,17 +13,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import jdk.vm.ci.code.site.Site;
 
 
-@Api(value = "/site", description = "×ÓÕ¾¹ÜÀí")
+@Api(value = "/site", description = "ç«™ç‚¹ç®¡ç†")
 @Controller
 @RequestMapping("/site")
 public class SiteController extends IdentityRepository{
 	@Autowired
 	private SiteService service;
-	@ApiOperation(value = "²éÑ¯½Ó¿Ú", response = Site.class)
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "·ÖÀàÃû³Æ", dataType = "string", required = false),})
+	@ApiOperation(value = "ï¿½ï¿½Ñ¯ï¿½Ó¿ï¿½", response = Site.class)
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", dataType = "string", required = false),})
 	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(String name,Integer pageNum, Integer pageSize) {
@@ -36,11 +36,11 @@ public class SiteController extends IdentityRepository{
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
 
-	@ApiOperation(value = "±£´æ×éÖ¯È«¾ÖÅäÖÃ")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "·ÖÀàÃû³Æ", dataType = "string", required = false),
-		@ApiImplicitParam(name = "priority", value = "ÅÅĞò", dataType = "int", required = false),
+	@ApiOperation(value = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", dataType = "string", required = false),
+		@ApiImplicitParam(name = "priority", value = "ï¿½ï¿½ï¿½ï¿½", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
-		@ApiImplicitParam(name = "depict", value = "±¸×¢", dataType = "string", required = false),})
+		@ApiImplicitParam(name = "depict", value = "ï¿½ï¿½×¢", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult add(Site bean) {
@@ -50,11 +50,11 @@ public class SiteController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "ĞŞ¸Ä×éÖ¯È«¾ÖÅäÖÃĞÅÏ¢")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "·ÖÀàÃû³Æ", dataType = "string", required = false),
-		@ApiImplicitParam(name = "priority", value = "ÅÅĞò", dataType = "int", required = false),
+	@ApiOperation(value = "ï¿½Ş¸ï¿½ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", dataType = "string", required = false),
+		@ApiImplicitParam(name = "priority", value = "ï¿½ï¿½ï¿½ï¿½", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
-		@ApiImplicitParam(name = "depict", value = "±¸×¢", dataType = "string", required = false),})
+		@ApiImplicitParam(name = "depict", value = "ï¿½ï¿½×¢", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult update(Site bean) {
@@ -64,16 +64,16 @@ public class SiteController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "²é¿´×éÖ¯È«¾ÖÅäÖÃĞÅÏ¢")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "×éÖ¯È«¾ÖÅäÖÃid", dataType = "string", required = false), })
+	@ApiOperation(value = "ï¿½é¿´ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½id", dataType = "string", required = false), })
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult read(String id) {
 		return RestResult.buildSuccess(service.findById(id));
 	}
 
-	@ApiOperation(value = "É¾³ı×éÖ¯È«¾ÖÅäÖÃĞÅÏ¢")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "×éÖ¯È«¾ÖÅäÖÃidÁĞ±í", dataType = "string", required = false), })
+	@ApiOperation(value = "É¾ï¿½ï¿½ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "ï¿½ï¿½Ö¯È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½idï¿½Ğ±ï¿½", dataType = "string", required = false), })
 	@RequestMapping(value = { "/delete.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult delete(String ids) {
