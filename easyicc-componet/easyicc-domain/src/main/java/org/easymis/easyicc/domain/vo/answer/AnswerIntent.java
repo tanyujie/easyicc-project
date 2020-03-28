@@ -6,7 +6,7 @@ import lombok.Data;
 
 //请求意图
 @Data
-public class Intent {
+public class AnswerIntent {
 	/*5000无解析结果|6000暂不支持该功能
 	 * 4007|apikey不合法
 4100|userid获取失败

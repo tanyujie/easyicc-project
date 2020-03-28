@@ -1,5 +1,9 @@
 package org.easymis.easyicc.domain.entity;
 
-public class ChatRecord {
+import lombok.Data;
 
+@Data
+public class ChatRecord {
+	private String id;
+	private String orgId;
 }

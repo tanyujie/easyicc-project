@@ -1,5 +1,8 @@
 package org.easymis.easyicc.domain.vo.question;
 
-public class InputText {
+import lombok.Data;
 
+@Data
+public class InputText {
+	private String text;
 }
