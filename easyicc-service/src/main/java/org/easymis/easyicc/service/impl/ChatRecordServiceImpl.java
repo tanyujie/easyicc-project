@@ -37,7 +37,7 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 	@Override
 	public PageInfo<?> find(ChatRecord bean, Integer pageNum, Integer pageSize) {
 		// TODO Auto-generated method stub
-		return null;
+		return null;// mapper.getList(bean);
 	}
 
 	@Override
