@@ -1,4 +1,4 @@
-package org.easymis.easysaas.icc.test;
+package org.easymis.easyicc.web.robot;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
