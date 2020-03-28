@@ -2,6 +2,7 @@ package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.HtmlAlias;
+import org.easymis.easyicc.domain.entity.JsConfig;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.JsConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +22,11 @@ import io.swagger.annotations.ApiOperation;
 public class JsConfigController extends IdentityRepository{
 	@Autowired
 	private JsConfigService service;
-	@ApiOperation(value = "客户端聊天窗口配置首页", response = PromotionChannel.class)
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
+	@ApiOperation(value = "客户端聊天窗口配置首页")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		HtmlAlias bean = new HtmlAlias();
+		JsConfig bean = new JsConfig();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
