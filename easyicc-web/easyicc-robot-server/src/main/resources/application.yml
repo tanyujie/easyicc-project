@@ -9,10 +9,10 @@ server:
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
     servlet: 
-        context-path: /clientAPI      
+        context-path: /robotServer      
 spring:
     application:
-        name: easyicc-client-api
+        name: easyicc-robot-server
     # 环境 dev|test|prod
     profiles:
        active: test
