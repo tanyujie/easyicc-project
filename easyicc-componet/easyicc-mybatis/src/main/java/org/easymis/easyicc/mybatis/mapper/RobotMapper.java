@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easyicc.domain.entity.Robot;
@@ -27,8 +28,15 @@ public interface RobotMapper {
 	public void removeBatch(List<String> list);
 
 	public void restoreBatch(List<String> list);
-
-	public void deleteBatch(List<String> list);
+	@Delete({"<script>",
+        "DELETE FROM robot",
+        "WHERE robot_id IN", 
+          "<foreach item='item' index='index' collection='ids'",
+            "open='(' separator=',' close=')'>",
+            "#{item}",
+          "</foreach>",
+        "</script>"}) 
+	public void deleteBatch(@Param("ids")List<String> ids);
 
 	@Select("select * from robot t WHERE t.robot_id = #{robotId}")
 	public Robot findById(String robot_id);
