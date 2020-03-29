@@ -9,7 +9,7 @@ server:
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
     servlet: 
-        context-path: /scripts
+        context-path: /portal
 spring:
     application:
         name: easyicc-scripts

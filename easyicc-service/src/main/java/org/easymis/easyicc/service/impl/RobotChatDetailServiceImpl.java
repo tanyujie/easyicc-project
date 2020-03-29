@@ -1,5 +1,6 @@
 package org.easymis.easyicc.service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +25,7 @@ public class RobotChatDetailServiceImpl implements RobotChatDetailService {
 	@Override
 	public boolean save(RobotChatDetail bean) {
 		bean.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+		bean.setCreateTime(new Date());
 		return mapper.save(bean);
 	}
 
