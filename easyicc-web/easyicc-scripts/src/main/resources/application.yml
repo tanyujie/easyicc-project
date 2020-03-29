@@ -5,7 +5,7 @@ server:
         min-spare-threads: 2
         maxHttpHeaderSize: 10240000
         maxHttpPostSize: 10240000 
-    port: 5191
+    port: 5161
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
     servlet: 
