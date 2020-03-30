@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 23/03/2020 15:58:53
+ Date: 30/03/2020 12:03:44
 */
 
 SET NAMES utf8mb4;
@@ -23,6 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `js_config`;
 CREATE TABLE `js_config`  (
   `config_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `org_id` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '代码描述',
   `bind_hosts` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '绑定域名',
   `device_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '嵌入类型1PC端2移动端',
@@ -105,7 +106,7 @@ CREATE TABLE `js_config`  (
   `ocpc_config_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '广点通配置',
   `update_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `update_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`config_Id`) USING BTREE
+  PRIMARY KEY (`config_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '网页样式配置' ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
