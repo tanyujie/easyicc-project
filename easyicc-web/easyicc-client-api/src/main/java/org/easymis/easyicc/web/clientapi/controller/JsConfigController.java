@@ -16,13 +16,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "/jsConfig", description = "客户端聊天窗口配置")
+@Api(value = "/jsConfig", description = "网页样式配置")
 @Controller
 @RequestMapping("/jsConfig")
 public class JsConfigController extends IdentityRepository{
 	@Autowired
 	private JsConfigService service;
-	@ApiOperation(value = "客户端聊天窗口配置首页")
+	@ApiOperation(value = "网页样式配置首页")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
@@ -50,7 +50,7 @@ public class JsConfigController extends IdentityRepository{
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
 
-	@ApiOperation(value = "保存组织全局配置")
+	@ApiOperation(value = "保存网页样式配置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
@@ -64,7 +64,7 @@ public class JsConfigController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "修改组织全局配置信息")
+	@ApiOperation(value = "修改网页样式配置信息")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
 		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
@@ -78,16 +78,16 @@ public class JsConfigController extends IdentityRepository{
 			return RestResult.buildFail();
 	}
 
-	@ApiOperation(value = "查看组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id", dataType = "string", required = false), })
+	@ApiOperation(value = "查看网页样式配置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "网页样式配置id", dataType = "string", required = false), })
 	@RequestMapping(value = { "/read.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult read(String id) {
 		return RestResult.buildSuccess(service.findById(id));
 	}
 
-	@ApiOperation(value = "删除组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "组织全局配置id列表", dataType = "string", required = false), })
+	@ApiOperation(value = "删除网页样式配置信息")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "ids", value = "网页样式配置id列表", dataType = "string", required = false), })
 	@RequestMapping(value = { "/delete.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult delete(String ids) {
