@@ -2,10 +2,10 @@ package org.easymis.easyicc.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.JsConfig;
-import org.easymis.easyicc.domain.entity.Robot;
 import org.easymis.easyicc.mybatis.mapper.JsConfigMapper;
 import org.easymis.easyicc.service.JsConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class JsConfigServiceImpl implements JsConfigService{
 	private JsConfigMapper mapper;
 	@Override
 	public boolean save(JsConfig bean) {
-		// TODO Auto-generated method stub
+		bean.setConfigId(UUID.randomUUID().toString().replace("-", ""));
 		return mapper.save(bean);
 	}
 
