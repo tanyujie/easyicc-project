@@ -7,7 +7,7 @@ import io.swagger.annotations.Api;
 
 @Api(value = "/rewriteRule", description = "知识库配置")
 @Controller
-@RequestMapping("/rebotQuestion")
+@RequestMapping("/robotQuestion")
 public class RebotQuestionController {
 
 }

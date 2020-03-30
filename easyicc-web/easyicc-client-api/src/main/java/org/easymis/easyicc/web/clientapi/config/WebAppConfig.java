@@ -40,6 +40,6 @@ public class WebAppConfig implements WebMvcConfigurer {
 
 	public void addInterceptors(InterceptorRegistry registry) {
 		// 注册自定义拦截器，添加拦截路径和排除拦截路径
-		registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATH);// 拦截除登录以外的其他接口
+		//registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**").excludePathPatterns(EXCLUDE_PATH);// 拦截除登录以外的其他接口
 	}
 }
