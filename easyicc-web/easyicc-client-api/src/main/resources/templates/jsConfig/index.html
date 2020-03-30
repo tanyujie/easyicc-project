@@ -54,18 +54,18 @@
       </tr>
     </thead> -->
     <tbody>
-    <#list robot.list as bean>
+    <#list pageInfo.list as bean>
       <tr>
         <td>${bean.name!}</td>
         <td>Doe</td>
         <td>机器人版本：</td>
         <td>机器人版本：</td>
-        <td><a class="btn btn-primary" href="${request.contextPath}/robot/delete?ids={bean.id}">删除</a></td>
+        <td><a class="btn btn-primary" href="${request.contextPath}/jsConfig/delete?ids={bean.id}">删除</a></td>
       </tr>
       </#list>
     </tbody>
 </table>
-<a class="btn btn-primary" href="${request.contextPath}/robot/add.html">创建机器人</a>
+<a class="btn btn-primary" href="${request.contextPath}/jsConfig/add.html">新增</a>
   </div>
 </div>
 
