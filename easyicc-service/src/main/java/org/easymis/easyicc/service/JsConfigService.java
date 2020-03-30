@@ -1,19 +1,19 @@
 package org.easymis.easyicc.service;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.HtmlAlias;
+import org.easymis.easyicc.domain.entity.JsConfig;
 
 import com.github.pagehelper.PageInfo;
 
 public interface JsConfigService {
-	public boolean save(HtmlAlias bean);
+	public boolean save(JsConfig bean);
 
-	public boolean update(HtmlAlias bean);
+	public boolean update(JsConfig bean);
 
-	public HtmlAlias findById(String id);
+	public JsConfig findById(String id);
 
 
-	public PageInfo<?> find(HtmlAlias bean, Integer pageNum, Integer pageSize);
+	public PageInfo<?> find(JsConfig bean, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
 }

@@ -1,7 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.HtmlAlias;
 import org.easymis.easyicc.domain.entity.JsConfig;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.JsConfigService;
@@ -41,7 +40,7 @@ public class JsConfigController extends IdentityRepository{
 	@ResponseBody
 	public RestResult findPage(String name,Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		HtmlAlias bean = new HtmlAlias();
+		JsConfig bean = new JsConfig();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
@@ -57,7 +56,7 @@ public class JsConfigController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(HtmlAlias bean) {
+	public RestResult add(JsConfig bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -71,7 +70,7 @@ public class JsConfigController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(HtmlAlias bean) {
+	public RestResult update(JsConfig bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else
