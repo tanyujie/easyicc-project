@@ -33,7 +33,7 @@ public class JsConfigController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/jsConfig/index.html";
+		return "/jsConfig/index";
 	}
 	
 	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
@@ -54,7 +54,7 @@ public class JsConfigController extends IdentityRepository{
 	@ApiOperation(value = "新增网页样式配置")
 	@RequestMapping(value = { "/add.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String add() {
-		return "/jsConfig/index.html";
+		return "/jsConfig/add";
 	}
 	@ApiOperation(value = "保存网页样式配置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
