@@ -6,6 +6,7 @@ import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.JsConfigService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +24,7 @@ public class JsConfigController extends IdentityRepository{
 	private JsConfigService service;
 	@ApiOperation(value = "网页样式配置首页")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public String find(String name,Integer pageNum, Integer pageSize) {
+	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
 		String orgId = getOrgId();
 		JsConfig bean = new JsConfig();
 		bean.setOrgId(orgId);
@@ -31,6 +32,7 @@ public class JsConfigController extends IdentityRepository{
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
 		return "/jsConfig/index.html";
 	}
 	
@@ -49,6 +51,11 @@ public class JsConfigController extends IdentityRepository{
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
 
+	@ApiOperation(value = "新增网页样式配置")
+	@RequestMapping(value = { "/add.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String add() {
+		return "/jsConfig/index.html";
+	}
 	@ApiOperation(value = "保存网页样式配置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
@@ -56,7 +63,7 @@ public class JsConfigController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(JsConfig bean) {
+	public RestResult save(JsConfig bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
