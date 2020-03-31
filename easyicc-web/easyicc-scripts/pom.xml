@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.easymis.easysaas</groupId>
-	<artifactId>easysaas-icc-scripts</artifactId>
+	<artifactId>easyicc-scripts</artifactId>
 	<name>easysaas-icc</name>
 	<url>http://www.easymis.org</url>
 	<properties>
