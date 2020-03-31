@@ -75,8 +75,8 @@ eureka:
     service-url:
       defaultZone: http://easysass:easysass123@118.31.43.2:8761/eureka #Eureka服务位置
 mybatis:
-    mapper-locations: classpath*:org/easymis/easysaas/portal/entitys/mybatis/mapper/*Mapper.xml
-    type-aliases-package: org.easymis.easysaas.portal.entitys.mybatis.dto
+    mapper-locations: classpath*:org/easymis/easyicc/mybatis/mapper/*Mapper.xml
+    type-aliases-package: org.easymis.easyicc.domain.entity
     configuration:
         map-underscore-to-camel-case: true
 pagehelper:
