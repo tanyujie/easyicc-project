@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.easymis.easyicc</groupId>
-		<artifactId>easysaas-icc</artifactId>
+		<artifactId>easyicc-web</artifactId>
 		<version>1.0.0.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
@@ -131,8 +131,23 @@
 		</dependency>
 		<!-- 热部署 -->
 		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-common</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-domain</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-service</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-fastdfs</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
 
