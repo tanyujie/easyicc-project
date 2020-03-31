@@ -17,6 +17,7 @@
 	height: 200px;
 	background: #aaa;
 }
+<!--Jishubu1   easyliao2020->
 </style>
 </head>
 <body>
@@ -191,18 +192,182 @@
 				</div> -->
 				<h3>客服分组</h3>
 		<div class="form-group">
-					<label for="email">所属子站点:</label> 
+					<label for="email">响应客服分组:</label> 
 					<select id="relGroupId" name="relGroupId" class="form-control" >
-					<#list siteList as site>
-							<option value="${site.id!}">${site.name}</option>
+					<#list skillGroupList as bean>
+							<option value="${bean.id!}">${bean.groupName}</option>
 					</#list>
 						</select>
 				</div>
 				<h2>访客监测</h2>
 				<h3>邀请框样式设置</h3>
+				<div class="form-group">
+					<label for="email">邀请框类型:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">邀请框位置:</label> <select id="invitePos"
+						name="invitePos" class="form-control">
+
+						<option value="1">左上角</option>
+						<option value="2">左下角</option>
+						<option value="3">中间 </option>
+						<option value="4">右上角</option>
+						<option value="5">右下角</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">样式选择:</label> 
+					<select id="monIndex"
+						name="monIndex" class="form-control">
+						<option value="1">样式一</option>
+						<option value="2">样式二</option>
+						<option value="3">样式三</option>
+						<option value="4">样式四</option>
+						<option value="5">样式五</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">邀请框内容:</label> 
+					
+				</div>
 				<h3>更多设置</h3>
+				<div class="form-group">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="1" name="mask">启用遮罩网页
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email">自动弹出邀请框:</label> 
+					<input type="text"
+						class="form-control" id="autoInvite" name="autoInvite">"-1"表示不自动弹出邀请框
+				</div>
+								<div class="form-group">
+					<label for="email">关闭邀请框后弹出:</label> 
+					<input type="text"
+						class="form-control" id="showInviteAgain" name="showInviteAgain"  value="-1">"-1"表示不再弹出
+				</div>
+								<div class="form-group">
+					<label for="email">弹出邀请框次数:</label> 
+					<input type="text"
+						class="form-control" id="autoInviteTimes" name="autoInviteTimes" value="-1">"-1"表示不限制
+				</div>
+								<div class="form-group">
+					<label for="email">自动邀请时段:</label> 
+					<input type="text"
+						class="form-control" id="autoInviteStart" name="autoInviteStart">
+				</div>
+								<div class="form-group">
+					<label for="email">响应客服:</label> 
+					<select id="autoInviteGroupId" name="autoInviteGroupId" class="form-control" >
+					<#list skillGroupList as bean>
+							<option value="${bean.id!}">${bean.groupName}</option>
+					</#list>
+						</select>
+				</div>
 				<h2>对话框设置</h2>
 				<h3>聊天界面设置</h3>
+				<div class="form-group">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="1" name="phoneDefine">自定义电话号码
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="email">手机号位置:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">语言:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">对话窗口模式:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">PC弹出窗口风格:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">对话窗口颜色代码:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">PC小窗口框宽度:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="email">工具栏设置:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+								<div class="form-group">
+					<label for="email">PC展示信息:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+								<div class="form-group">
+					<label for="email">插图(PC大窗口):</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+								<div class="form-group">
+					<label for="email">插图(小窗口或移动端):</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
+												<div class="form-group">
+					<label for="email">页面标题:</label> <select id="monitorType"
+						name="monitorType" class="form-control">
+
+						<option value="0">默认</option>
+						<option value="1">自定义</option>
+					</select>
+				</div>
 				<h3>自动对话设置</h3>
 				<h3>接通欢迎语</h3>
 				<h3>广告设置</h3>
