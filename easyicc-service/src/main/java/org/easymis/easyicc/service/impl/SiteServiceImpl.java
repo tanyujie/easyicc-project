@@ -1,5 +1,7 @@
 package org.easymis.easyicc.service.impl;
 
+import java.util.List;
+
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.mybatis.mapper.SiteMapper;
@@ -38,6 +40,12 @@ public class SiteServiceImpl implements SiteService {
 
 	@Override
 	public RestResult deleteByIds(String ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List findByOrgId(String orgId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
