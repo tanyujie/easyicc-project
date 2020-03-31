@@ -26,6 +26,8 @@ public class JsConfig implements Serializable {
 	// 开启模块-访客监测1开启0否",column="with_monitor",isnull=true)
 	private Integer withMonitor;
 	// 面板类型",column="category",length=255,isnull=true)
+	//免费电话
+	private Integer freePhone;
 	private String category;
 	// 面板位置0不浮动1屏幕左上边2屏幕右上边3屏幕左下边4屏幕右下边",column="floatPos",length=255,isnull=true)
 	private String floatPos;
