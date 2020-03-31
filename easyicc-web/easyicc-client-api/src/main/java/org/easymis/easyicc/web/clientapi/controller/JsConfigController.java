@@ -66,7 +66,7 @@ public class JsConfigController extends IdentityRepository{
 		String orgId = getOrgId();
 		model.put("siteList", siteService.findByOrgId(orgId));
 		model.put("promotionChannelList", promotionChannelService.findById(orgId));
-		model.put("promotionChannelList", skillGroupService.findById(orgId));
+		model.put("skillGroupList", skillGroupService.findById(orgId));
 		
 		
 		return "/jsConfig/add";
