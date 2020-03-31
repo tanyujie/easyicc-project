@@ -1,10 +1,10 @@
 package org.easymis.easyicc.mybatis.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -12,19 +12,19 @@ import org.apache.ibatis.annotations.Update;
 import org.easymis.easyicc.domain.entity.Site;
 
 public interface SiteMapper {
-	@Select("select * from site")
-	@Results(value = { @Result(property = "id", column = "id"), @Result(property = "orgId", column = "org_id"),
-			@Result(property = "name", column = "name"), @Result(property = "depict", column = "depict") })
-	public List<Site> getList(HashMap<String, Object> params);
-
+	@Select("select * from site where org_id=#{orgId}")
+	public List<Site> getList(Site params);
+	@Select("select * from site where org_id=#{orgId}")
+	public List findByOrgId(@Param("orgId")String orgId);
+	
 	@Insert("insert into site(id,org_id,name,depict)values(#{id},#{orgId},#{name},#{depict})")
-	public void save(Site bean);
+	public boolean save(Site bean);
 
 	@Insert("insert into site(id,org_id,name,depict)values(#{id},#{orgId},#{name},#{depict})")
 	public void saveBatch(List<Site> beans);
 
-	@Update("UPDATE site SET id= #{id},org_id= #{orgId},name= #{name},depict= #{depict} WHERE id= #{id}")
-	public void update(Site bean);
+	@Update("UPDATE site SET name= #{name},depict= #{depict} WHERE id= #{id}")
+	public boolean update(Site bean);
 
 	@Delete(" DELETE FROM site WHERE id = #{id}")
 	public void delete(String id);
