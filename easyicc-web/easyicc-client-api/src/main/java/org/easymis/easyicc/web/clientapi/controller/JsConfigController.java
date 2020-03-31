@@ -65,8 +65,8 @@ public class JsConfigController extends IdentityRepository{
 	public String add(ModelMap model) {
 		String orgId = getOrgId();
 		model.put("siteList", siteService.findByOrgId(orgId));
-		model.put("promotionChannelList", promotionChannelService.findById(orgId));
-		model.put("skillGroupList", skillGroupService.findById(orgId));
+		model.put("promotionChannelList", promotionChannelService.findByOrgId(orgId));
+		model.put("skillGroupList", skillGroupService.findByOrgId(orgId));
 		
 		
 		return "/jsConfig/add";
@@ -79,6 +79,7 @@ public class JsConfigController extends IdentityRepository{
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult save(JsConfig bean) {
+		bean.setOrgId(getOrgId());
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
