@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
-
+/**Jishubu1   easyliao2020**/
 @SpringBootApplication(exclude = { DataSourceAutoConfiguration.class })
 @EnableDiscoveryClient
 @ComponentScan({"*.easymis.easyicc.*"})
