@@ -47,70 +47,134 @@
 				<h2>基础设置</h2>
 				<div class="form-group">
 					<label for="email">代码描述:</label> <input type="text"
-						class="form-control" id="name" name="name">
+						class="form-control" id="description" name="description">
 				</div>
 				<div class="form-group">
 					<label for="pwd">绑定域名:</label> <input type="text"
-						class="form-control" id="clients" name="clients">
+						class="form-control" id="bindHosts" name="bindHosts">
 				</div>
 				<div class="form-group">
-					<label for="email">嵌入类型:</label> <input type="text"
-						class="form-control" id="email">
+					<label for="email">嵌入类型:</label> 
+					
+					<select id="deviceType" name="deviceType" class="form-control" >
+					
+							<option value="0">PC端</option>
+							<option value="1">移动端</option>
+						</select>
 				</div>
 				<div class="form-group">
-					<label for="email">所属子站点:</label> <input type="text"
-						class="form-control" id="email">
+					<label for="email">所属子站点:</label> 
+					<select id="siteId" name="siteId" class="form-control" >
+					<#list siteList as site>
+							<option value="${site.id!}">${site.name}</option>
+					</#list>
+						</select>
 				</div>
 				<div class="form-group">
 					<label for="email">推广渠道:</label> 
-					<input type="text"
-						class="form-control" id="email">
+					<select id="promotionId" name="promotionId" class="form-control" >
+					<#list promotionChannelList as channel>
+							<option value="${channel.id!}">${channel.name}</option>
+					</#list>
+						</select>
+				</div>
+				<div class="form-group">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="" name="showIcon">网页图标
+						</label>
+					</div>
+										<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="" name="withMonitor">访客监测
+						</label>
+					</div>
+										<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="" name="freePhone">免费电话
+						</label>
+					</div>
 				</div>
 				<h2>网页图标</h2>
 				<h3>面板设置</h3>
 								<div class="form-group">
 					<label for="email">面板类型:</label> 
-					<input type="text"
-						class="form-control" id="email">
+					<select id="category" name="category" class="form-control" >
+					
+							<option value="icon">图标方式</option>
+							<option value="win">客服列表</option>
+						</select>
 				</div>
 								<div class="form-group">
 					<label for="email">面板位置:</label> 
-					<input type="text"
-						class="form-control" id="email">
+					<select id="floatPos" name="floatPos" class="form-control" >
+							<option value="0">不浮动</option>
+							<option value="1">屏幕左上边</option>
+							<option value="2">屏幕右上边</option>
+							<option value="3">屏幕左下边</option>
+							<option value="4">屏幕右下边</option>
+						</select>
 				</div>
 								<div class="form-group">
 					<label for="email">上(下)边距:</label> 
 					<input type="text"
-						class="form-control" id="email">
+						class="form-control" id="marginY" name="marginY">
 				</div>
 								<div class="form-group">
 					<label for="email">侧边距:</label> 
 					<input type="text"
-						class="form-control" id="email">
+						class="form-control" id="marginX" name="marginX">
 				</div>
-				
+				<div class="form-group">
+					<div class="form-check form-check-inline">
+						<label class="form-check-label"> <input type="checkbox"
+							class="form-check-input" value="1" name="panelWhenInvite">弹出邀请框时隐藏浮动面板
+						</label>
+					</div>
+				</div>
 				<h3>图标样式</h3>
 				<div class="form-group">
-					<label for="email">显示模式:</label> 
-					<input type="text"
-						class="form-control" id="email">
+					<label for="email">默认图标:</label> 
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="1">图标一</a></div>
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="2">图标二</a></div>
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="3">图标三</a></div>
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="4">图标四</a></div>
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="5">图标五</a></div>
+					<div class="type-pc" style="width:50px;"><a class="icon-selects" href="javascript:void(0);" rel="6">图标六</a></div>
 				</div>
 				<div class="form-group">
-					<label for="email">窗口宽度:</label> 
+					<label for="email">在线图片URL:</label> 
 					<input type="text"
-						class="form-control" id="email">
+						class="form-control" id="iconOnlinePath" name="iconOnlinePath">
 				</div>
 				<div class="form-group">
-					<label for="email">窗口标题:</label> 
+					<label for="email">离线图片URL:</label> 
 					<input type="text"
-						class="form-control" id="email">
-				</div>
-								<div class="form-group">
-					<label for="email">公司电话:</label> 
-					<input type="text"
-						class="form-control" id="email">
+						class="form-control" id="iconOfflinePath" name="iconOfflinePath">
 				</div>
 				<div class="form-group">
+					<label for="email">图片宽度:</label> 
+					<input type="text"
+						class="form-control" id="iconWidth" name="iconWidth">
+						<label for="email">图片高度:</label> 
+					<input type="text"
+						class="form-control" id="iconHeight" name="iconHeight">
+				</div>
+				<div class="form-group">
+					<label for="email">关闭按钮宽度:</label> 
+					<input type="text"
+						class="form-control" id="iconCloseWidth" name="iconCloseWidth">
+						<label for="email">高度:</label> 
+					<input type="text"
+						class="form-control" id="iconCloseHeight" name="iconCloseHeight">
+						<label for="email">上边距:</label> 
+					<input type="text"
+						class="form-control" id="iconCloseTop" name="iconCloseTop">
+						<label for="email">左边距:</label> 
+					<input type="text"
+						class="form-control" id="iconCloseLeft" name="iconCloseLeft">
+				</div>
+<!-- 				<div class="form-group">
 					<label for="email">二唯码图片:</label> 
 					<input type="text"
 						class="form-control" id="email">
@@ -124,9 +188,16 @@
 					<label for="email">边框背景颜色:</label> 
 					<input type="text"
 						class="form-control" id="email">
-				</div>
+				</div> -->
 				<h3>客服分组</h3>
-
+		<div class="form-group">
+					<label for="email">所属子站点:</label> 
+					<select id="relGroupId" name="relGroupId" class="form-control" >
+					<#list siteList as site>
+							<option value="${site.id!}">${site.name}</option>
+					</#list>
+						</select>
+				</div>
 				<h2>访客监测</h2>
 				<h3>邀请框样式设置</h3>
 				<h3>更多设置</h3>

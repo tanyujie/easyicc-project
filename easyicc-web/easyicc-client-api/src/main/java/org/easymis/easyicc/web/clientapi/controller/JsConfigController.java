@@ -4,6 +4,9 @@ import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.JsConfig;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.JsConfigService;
+import org.easymis.easyicc.service.PromotionChannelService;
+import org.easymis.easyicc.service.SiteService;
+import org.easymis.easyicc.service.SkillGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +25,12 @@ import io.swagger.annotations.ApiOperation;
 public class JsConfigController extends IdentityRepository{
 	@Autowired
 	private JsConfigService service;
+	@Autowired
+	private SiteService siteService;
+	@Autowired
+	private PromotionChannelService promotionChannelService;
+	@Autowired
+	private SkillGroupService skillGroupService;
 	@ApiOperation(value = "网页样式配置首页")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
@@ -53,7 +62,13 @@ public class JsConfigController extends IdentityRepository{
 
 	@ApiOperation(value = "新增网页样式配置")
 	@RequestMapping(value = { "/add.html" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public String add() {
+	public String add(ModelMap model) {
+		String orgId = getOrgId();
+		model.put("siteList", siteService.findByOrgId(orgId));
+		model.put("promotionChannelList", promotionChannelService.findById(orgId));
+		model.put("promotionChannelList", skillGroupService.findById(orgId));
+		
+		
 		return "/jsConfig/add";
 	}
 	@ApiOperation(value = "保存网页样式配置")
