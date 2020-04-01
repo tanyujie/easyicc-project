@@ -10,7 +10,7 @@ public class ChatController {
 
 	@RequestMapping("/chat.do")
 	public String index() throws NoSuchAlgorithmException {
-		return "/customerService";
+		return "/chat";
 	}
 
 }
