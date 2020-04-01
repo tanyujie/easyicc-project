@@ -1,0 +1,754 @@
+/*######CSS Document ######*/
+#jesong_chat_layout *{
+	font-family:"Microsoft YaHei";
+}
+
+#jesong_chat_layout{
+	z-index:2147483620;
+}
+
+
+#jesong_chat_layout a{
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    /* background:transparent; */
+
+}
+#jesong_chat_layout a:hover, #jesong_chat_layout a:focus{
+    text-decoration:none;
+    bblr:expression(this.onFocus=this.blur());/*IE*/
+    outline-style:none;/*FF*/
+}
+
+#jesong_chat_layout input, #jesong_chat_layout select {
+    vertical-align:middle;
+}
+/*######cssÎªclearfix£¬Çå³ý¸¡¶¯######*/
+#jesong_chat_layout .clearfix::before,
+#jesong_chat_layout .clearfix::after{
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+#jesong_chat_layout .clearfix:after{clear:both;}
+#jesong_chat_layout .clearfix{
+    *zoom:1;/*IE/7/6*/
+}
+/*######×Ô¶¨Òå¹ö¶¯Ìõ######*/
+#jesong_chat_layout .scrollbar{
+    margin: 0 auto;
+}
+#jesong_chat_layout .test-1::-webkit-scrollbar {/*¹ö¶¯ÌõÕûÌåÑùÊ½*/
+    width: 8px;     /*¸ß¿í·Ö±ð¶ÔÓ¦ºáÊú¹ö¶¯ÌõµÄ³ß´ç*/
+    height: 1px;
+}
+#jesong_chat_layout .test-1::-webkit-scrollbar-thumb {/*¹ö¶¯ÌõÀïÃæÐ¡·½¿é*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #cdcdcd;
+}
+#jesong_chat_layout .test-1::-webkit-scrollbar-track {/*¹ö¶¯ÌõÀïÃæ¹ìµÀ*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #EDEDED;
+}
+
+
+#jesong_chat_layout a:link{
+    text-decoration:none ;
+    color:#409EFF;
+}
+#jesong_chat_layout a:visited {
+    text-decoration:none ;
+    color:#409EFF;
+}
+#jesong_chat_layout a:hover {
+    text-decoration:none ;
+    color:#409EFF;
+}
+#jesong_chat_layout a:active {
+    text-decoration:none ;
+    color:#409EFF;
+}
+
+
+.jesong_full_body{
+	position: fixed !important;
+	top: 0 !important;
+	right: 0 !important;
+	bottom: 0 !important;
+	left: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	overflow: hidden !important;
+}
+.jesong_phone_mask {position:fixed;top:0px;left:0px;right:0px;bottom:0px;z-index:2147483530;filter:alpha(opacity=10);opacity: 0.1;background:#000000;}
+/****************************************/
+/*###### PC-brand&&PC-miniBrand ######*/
+.jesong-container-mini{
+    width:420px;
+    height:500px;
+    position:fixed;
+    right: 0px;
+    bottom:0;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.jesong-container-mini-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.jesong-container-mini-badge{
+    width:220px;
+    height:50px;
+    line-height: 50px;
+    position:fixed;
+    right:0px;
+    bottom:10px;
+    font-size: 12px;
+    color: #fff;
+    background: #409EFF;
+    border-radius: 5px;
+}
+.jesong-container-mini-badge .jesong-badge-warning{
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    border-radius: 50px;
+    background: red;
+}
+.jesong-container-mini-badge .jesong-badge-brand{
+    margin: 7px 10px;
+    float:left;
+    width:36px;
+    height:36px;
+    overflow: hidden;
+}
+.jesong-container-mini-badge .jesong-badge-brand img{
+    vertical-align: top;
+    width:36px;
+    height:36px;
+}
+.jesong-container-mini-badge .jesong-badge-con{
+    float:left;
+    width:130px;
+    height:100%;
+    /*text-align: center;*/
+}
+.jesong-container-mini-badge .jesong-badge-icon{
+    display: inline-block;
+    margin-top: 15px;
+    font-size:14px;
+    background:url('../image/open.png') no-repeat center center;
+    padding:10px;
+}
+.jesong-badge{
+    background: #409EFF;
+}
+
+.container-mini2{
+    width:32rem;
+    height:43.5rem;
+    position:fixed;
+    right: -32.2rem;
+    bottom:0;
+    box-shadow:0 0 2rem rgba(0,0,0,0.15);
+}
+.container-mini-inner2{
+    width:32rem;
+    height:43.5rem;
+    position:relative;
+}
+/*###### PC-Ðü¸¡¿ò ######*/
+.header-img{
+    height: 70px;
+    background: #409EFF;
+}
+.header-img .brand-img{
+    margin: 10px;
+    width: 309px;
+    height: 50px;
+    background-size: 100% 100%;
+    background: url('../images/icon2.png') no-repeat;
+}
+.jesong-mini-main-top{
+    height: 50px;
+    background: #409EFF;
+}
+.jesong-mini-main-top .jesong-brand{
+    margin: 7px 10px;
+    float: left;
+    width: 36px;
+    height: 35px;
+    overflow: hidden;
+}
+.jesong-mini-main-top .jesong-brand img{
+    width: 36px;
+    height: 36px;
+}
+.jesong-mini-main-top .jesong-abstract{
+    float: left;
+    width: 134px;
+    height: 50px;
+}
+.jesong-mini-main-top .jesong-abstract .jesong-abstract-title{
+    height: 25px;
+    line-height: 25px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 16px;
+}
+.jesong-mini-main-top .jesong-abstract .jesong-abstract-con{
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-size: 12px;
+}
+.jesong-mini-main-top .jesong-custom{
+    margin: 15px 20px;
+    float: right;
+    width: 80px;
+    height: 20px;
+    line-height: 20px;
+    text-align: right;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fff;
+}
+.jesong-mini-main-top .jesong-custom div{
+    float:right;
+	display: inline-block;
+    width:20px;
+    height:20px;
+    margin-left:5px;
+    cursor: pointer;
+}
+.jesong-mini-main-top .jesong-custom div#jesong_chat_close{
+	background:url('../image/close.png') no-repeat center center;
+}
+.jesong-mini-main-top .jesong-custom div#jesong_chat_min_btn{
+	background:url('../image/min.png') no-repeat center center;
+}
+.jesong-mini-main-top .jesong-custom div#jesong_chat_max_btn{
+	background:url('../image/max.png') no-repeat center center;
+}
+.jesong-mini-main-middle{
+    width: 100%;
+    overflow: auto;
+    font-size: 12px;
+    background: #f5f8fa;
+}
+.mini-main-middle2{
+    width: 32rem;
+    height: 25.4rem;
+    overflow: auto;
+    font-size: 1.2rem;
+    background: #f5f8fa;
+}
+.jesong-float-right{
+    float: right;
+    text-align: right;
+   	clear:both;
+}
+.jesong-float-right span{
+    margin-left: 1rem;
+    margin-right: 0!important;
+}
+.btn-default{
+    color: #999;
+    padding: .5rem 1rem;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    background: #fff;
+    border: 0.1rem solid #ccc;
+}
+.jesong-mini-main-footer{
+    height: 135px;
+    font-size: 12px;
+    border-top:1px solid #eee;
+    background:#ffffff;
+}
+/*###### »á»°ÐÅÏ¢ ######*/
+.logo-bubble{
+    margin: 20px;
+    padding: 10px;
+    background: #fff;
+}
+.logo-bubble img{
+    width: 100%;
+}
+.jesong-service-bubble{
+    display: flex;
+    margin: 15px 10px;
+    min-height: 40px;
+    color: #888;
+}
+.jesong-service-bubble .jesong-service-bubble-icon{
+    margin: 6px 6px 6px 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+.jesong-service-bubble .jesong-service-bubble-icon img{
+    width: 36px;
+    height: 36px;
+}
+.jesong-service-bubble .jesong-service-bubble-con{
+    flex: 1;
+    min-height: 40px;
+}
+.jesong-service-bubble .jesong-service-session{
+    width: calc(100% - 60px);
+    height: 20px;
+}
+.jesong-service-bubble .jesong-service-session span{
+    display: inline-block;
+    margin-right:10px;
+}
+.jesong-service-bubble .jesong-service-session-con{
+    display: inline-block;
+    margin: 0;
+    padding: 10px 15px;
+    min-height: 20px;
+    line-height: 20px;
+    color: #333;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow:0 0 5px rgba(0,0,0,0.06);
+    border: 1px solid #e6e6e6;
+    word-wrap:break-word;word-break:break-word;
+    text-align:left;
+}
+.jesong-service-bubble .jesong-service-session-con img{
+    width: auto;
+}
+.jesong-service-bubble .jesong-visitor-session-con{
+    color: #fff;
+    background: #409EFF;
+    box-shadow:0 0 5px rgba(0,0,0,0.06);
+    border: 1px solid #409EFF;
+}
+.jesong-finish-bubble{
+    margin: 15px auto;
+    padding-left:10px;
+    padding-right:10px;
+    min-height: 25px;
+    height:auto;
+    width:fit-content;
+    width:-moz-fit-content;
+    line-height: 25px;
+    color: #62778e;
+    background: #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+/*###### »á»°²Ù×÷ ######*/
+.jesong-operation-header{
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+}
+.jesong-operation-footer{
+    position: relative;
+    height: 25px;
+    line-height: 25px;
+}
+.jesong-operation-footer .jesong-btn-info{
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 3px;
+    color: #fff;
+    background: #409EFF;
+    border: 1px solid #409EFF;
+}
+.jesong-operation-footer .jesong-main-operate{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 140px;
+    height: 30px;
+}
+.jesong-operation-footer .jesong-main-operate .jesong-btn-succ{
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 15px;
+    border-radius: 3px;
+    color: #fff;
+    background: #409EFF;
+    border: 1px solid #409EFF;
+}
+.jesong-operation-header span{
+    display: inline-block;
+    margin: 7px 0 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #96a7b8;
+}
+.jesong-operation-header span:hover{
+    color: #3a4b5b;
+}
+.jesong-operation-footer .jesong-help-block{
+    margin: 0 10px;
+    color: #bbb;
+}
+.jesong-operation-main{
+    display: flex;
+    height: 70px;
+}
+.jesong-operation-main .jesong-main-import{
+    flex: 1;
+    height: 100%;
+}
+.jesong-operation-main .jesong-main-import textarea{
+    margin-left: 10px;
+    margin-right: 0px;
+    width: 95%;
+    height: 90%;
+    resize: none;
+    padding:0px;
+    color:#333;
+    outline: none;
+    box-sizing:border-box;
+    padding-right:5px;
+    _padding-right:0px;
+    font-size:13px;
+    border:0;
+}
+
+.zl_test div{
+	display: inline-block;
+    width:20px;
+    height:20px;
+}
+
+.jesong-operation-header div{
+	display: inline-block;
+    width:20px;
+    height:20px;
+    margin-top:10px;
+    margin-left:15px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #96a7b8;
+    float:left;
+}
+.jesong-operation-header div#jesong_tools_emoticons{
+	background:url('../image/face.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_emoticons:hover{
+	background:url('../image/face-1.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_file{
+	background:url('../image/upload.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_file:hover{
+	background:url('../image/upload-1.png') no-repeat center center;
+}
+
+.jesong-operation-header div#jesong_tools_screen{
+	background:url('../image/screen.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_screen:hover{
+	background:url('../image/screen-1.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_opinion{
+	background:url('../image/opinion.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_opinion:hover{
+	background:url('../image/opinion-1.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_sound{
+	background:url('../image/sound.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_sound:hover{
+	background:url('../image/sound-1.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_quiet{
+	display:none;
+	background:url('../image/quiet.png') no-repeat center center;
+}
+.jesong-operation-header div#jesong_tools_quiet:hover{
+	background:url('../image/quiet-1.png') no-repeat center center;
+}
+
+.jesong-pop-window{
+	z-index:200;
+	overflow:hidden;
+	position:absolute;
+	display:none;
+}
+.jesong-emoticon-layout{
+	left:0px;bottom:130px;background-color:#ffffff;
+}
+.jesong-emoticon-layout .jesong-emoticons{
+	padding:10px;
+}
+.jesong-emoticon-layout .jesong-emoticons .jesong-emot{
+	float:left;width:36px;height:36px;
+}
+.jesong-emoticon-layout div .jesong-emot img{
+	width:20px;height:20px;border:0;margin-left:8px;margin-top:8px;
+}
+.jesong-file-layout{
+	left:0px;bottom:130px;background-color:#ffffff;height:40px;border-top:1px solid #eee;
+}
+.jesong-opinion-layout{
+	width:280px;height:280px;background-color:#ffffff;border-radius:10px;
+}
+.jesong-opinion-layout .jesong-opinion-close{
+	position:absolute;top:10px;right:10px;width:25px;height:25px;background:url('../image/opinion-close.png') no-repeat center center;
+}
+.jesong-opinion-layout .jesong-opinion-icon{
+	width:100%;height:60px;margin-top:40px;background:url('../image/opinion-icon.png') no-repeat center center;
+}
+
+.jesong-opinion-layout .jesong-score div{
+	text-align:center;width:100%;
+}
+.jesong-opinion-layout .jesong-score .jesong-desp{
+	font-size:14px;color:#999999;line-height:14px;padding-top:15px;
+}
+.jesong-opinion-layout .jesong-score .jesong-result span{
+	font-size:12px;color:#ff9601;line-height:12px;display:none;
+}
+.jesong-opinion-layout .jesong-score .jesong-result span.op5{
+	display:block;
+}
+.jesong-opinion-layout .jesong-score .jesong-star{
+	padding:16px;
+}
+.jesong-opinion-layout .jesong-score .jesong-star-1{
+	background:url('../image/star-1.png') no-repeat center center;
+}
+.jesong-opinion-layout .jesong-score .jesong-star-2{
+	background:url('../image/star-2.png') no-repeat center center;
+}
+.jesong-opinion-layout .jesong-commit{
+    width:80px;height:36px;
+    font-size: 12px;
+    line-height: 36px;
+    border-radius: 3px;
+    color: #fff;
+    background: #409EFF;
+    border: 1px solid #409EFF;
+}
+.jesong-opinion-layout .jesong-reason{
+	display:none;width:240px;height:90px;margin-left:20px;margin-top:10px;
+}
+.jesong-opinion-layout .jesong-reason textarea{
+	width:100%;height:100%;background-color:#eeeeee;border:0px;
+}
+
+.jesong-top-image{margin-left:10px;margin-right:10px;margin-top:10px;overflow:hidden;}
+.jesong-top-image img{width:100%;height:auto;border:0px;}
+
+/*################################*/
+.jesong-container-full{
+    width:100%;
+    height:90%;
+    display:flex;
+    position:fixed;
+    right: 0px;
+    bottom:0;
+    flex-direction:column;
+    z-index:2147483640;
+}
+.jesong-container-full .jesong-full-top {
+	position:relative;height:45px;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	box-sizing: border-box;
+	overflow:hidden;
+	width:100%;
+}
+.jesong-container-full .jesong-full-main{
+	width:100%;overflow:hidden;position:relative;
+}
+.jesong-full-top .jesong-min-btn{width:35px;height:100%;float:right;margin-right:10px;background:url(../image/close2.png) no-repeat center center;background-size:50%;}
+
+.jesong_guide_layout, .jesong_invite_layout{
+	display:none;z-index:2147483640;position:fixed;cursor:pointer;height:56px;opacity:0;filter:alpha(opacity:0);top:0px;left:0px;right:0px;width:100%;
+}
+
+#jesong_pop_msg{
+	display:none;z-index:2147483630;position:fixed;height:55px;
+	top:0px;left:0px;right:0px;
+	background: rgba(255,255,255,0.85);
+    box-shadow:0 5px 10px rgba(0,0,0,0.05);
+}
+
+.jesong-top-bubble{
+    position: relative;
+    margin: 10px;
+    height: 35px;
+}
+.jesong-top-bubble .jesong-top-bubble-icon{
+    float: left;
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.jesong-top-bubble .jesong-top-bubble-icon img{
+    width: 35px;
+    height: 35px;
+}
+.jesong-top-bubble .jesong-top-badge-warning{
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    width: 14.5px;
+    height: 14.5px;
+    line-height: 14.5px;
+    text-align: center;
+    background: #f72e31;
+    color: #fff;
+    border-radius: 14.5px;
+    font-size: 9px;
+}
+.jesong-top-bubble .jesong-top-bubble-con{
+    float: left;
+    width: calc(100% - 35px);
+    /*flex: 1;*/
+    height: 3.5px;
+}
+.jesong-top-bubble .jesong-top-bubble-con .title{
+    height: 17.5px;
+    line-height: 17.5px;
+    font-size:12px;
+}
+.jesong-top-bubble .jesong-top-bubble-con .title h4{
+    float: left;
+    width: calc(100% - 52px);
+    height: 17.5px;
+    line-height: 17.5px;
+    text-indent: 10px;
+    font-size: 13px;
+    margin:0;padding:0;
+}
+.jesong-top-bubble .jesong-top-bubble-con .title span{
+    display: inline-block;
+    float: left;
+    width: 52px;
+    height: 17.5px;
+    line-height: 17.5px;
+    text-align: center;
+    color: #999;
+    margin:0;padding:0;
+}
+.jesong-top-bubble .jesong-top-bubble-con p{
+    height: 17.5px;
+    line-height: 17.5px;
+    text-indent: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    margin:0;padding:0;
+}
+
+/*#########LeaveMessage########*/
+.jesong-leave-pc{
+	margin-left:20px;padding-top:10px;
+}
+.jesong-leave-pc .jesong-leave-field{
+	clear:both;margin-top:10px;
+}
+
+.jesong-leave-pc .jesong-leave-field .jesong-leave-title{
+	float:left;width:70px;height:100%;line-height:30px;font-size:14px;
+}
+.jesong-leave-pc .jesong-leave-field .jesong-leave-content{
+	float:left;height:100%;
+}
+.jesong-leave-pc .jesong-leave-field .jesong-leave-content input, .jesong-leave-pc .jesong-leave-field .jesong-leave-content textarea{
+	height:25px;border:1px solid #eee;text-indent:4px;margin:0px;padding:0px;font-size:12px;line-height:25px;
+}
+.jesong-leave-pc .jesong-commit{
+    width:80px;height:36px;
+    margin-top:15px;
+    margin-left:70px;
+    font-size: 14px;
+    line-height: 36px;
+    border-radius: 3px;
+    color: #fff;
+    background: #409EFF;
+    border: 1px solid #409EFF;
+}
+
+.jesong-leave-phone{
+	width:100%;padding-left:10px;padding-top:10px;
+}
+.jesong-leave-phone .jesong-leave-field{
+	clear:both;background:#ffffff;margin-top:2px;
+}
+
+.jesong-leave-phone .jesong-leave-field .jesong-leave-title{
+	float:left;width:70px;height:100%;line-height:30px;font-size:14px;padding-left:10px;
+}
+.jesong-leave-phone .jesong-leave-field .jesong-leave-content{
+	float:left;height:100%;
+}
+.jesong-leave-phone .jesong-leave-field .jesong-leave-content input, .jesong-leave-phone .jesong-leave-field .jesong-leave-content textarea{
+	height:30px;border:0px;text-indent:4px;margin:0px;padding:0px;font-size:12px;line-height:30px;color:#9A9A9A;
+}
+.jesong-leave-phone .jesong-leave-btn{
+	text-align:center;margin-top:15px;
+}
+.jesong-leave-phone .jesong-commit{
+    height:45px;
+    width:90%;
+    font-size: 14px;
+    line-height: 36px;
+    border-radius: 10px;
+    color: #fff;
+    background: #409EFF;
+    border: 1px solid #409EFF;
+}
+
+/*¶ÌÐÅÑéÖ¤*/
+#chatDiv{ position:relative; font-size:12px!important;}
+#yl_msgBox{ width:100%; height:230px; position:relative;}
+#yl_msgBox #msgCheck{ width:310px; background:#ffffff; box-shadow: 0 0 5px #cccccc; position:absolute; left:50%; margin-left:-155px; margin-top:15px; margin-bottom:20px;}
+#yl_msgBox .msgCon{ padding:26px 18px 16px 29px;}
+#yl_msgBox .msgCon p{ margin-bottom:10px;}
+#yl_msgBox .msgCon input{ height:30px; border:1px solid #f2f2f2; background:#ffffff; padding-left:5px;  box-sizing:border-box;}
+#yl_msgBox #msgPhone{ width:230px;}
+#yl_msgBox .vcodeBox{ width:230px; overflow:auto; margin-top:5px;}
+#yl_msgBox .vcodeBox input{ width:140px; float:left;}
+#yl_msgBox .vcodeBox a{ float:left; width:90px; height:30px; background:#3097ef; text-align:center; line-height:30px; color:#ffffff!important;}
+#yl_msgBox .tips{ margin-top:5px;}
+.green{ color:#11bc49;}
+.red{ color:#f66868;}
+.gray{ background:#dddddd!important; cursor: not-allowed; pointer-events:none; color:#999999}
+.hide{ display:none;}
+#yl_msgBox .msgBtn{ width:100%; border-top:1px solid #f2f2f2; height:34px;}
+#yl_msgBox .msgBtn a{ display:inline-block; width:50%; text-align:center; float:left; line-height:34px; color:#3499ef; box-sizing:border-box;}
+#yl_msgBox .msgBtn a:last-child{ border-left:1px solid #f2f2f2!important}
+
+/* Ð¡´°¿Ú */
+.jesong-container-mini #msgCheck{width:288px!important; margin-left:-144px!important;}
