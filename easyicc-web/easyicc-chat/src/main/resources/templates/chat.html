@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="keywords" content="在线客服"/>
+	<meta name="description" content="在线客服"/>
+	<title>在线客服</title>
+    <link type="text/css" rel="stylesheet" href="http://scripts.easyliao.com/prd5/live/static/2019/css/initialize.css?ver=20190708"/>
+    <link type="text/css" rel="stylesheet" href="http://scripts.easyliao.com/prd5/live/static/2019/css/index.css?ver=20190708"/>
+    
+    <script src="http://scripts.easyliao.com/prd5/live/js/jquery-1.4.4.min.js"></script>
+    
+    <script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/lang/sc.js?ver=20190708'></script>
+    
+<script>
+	
+	var scheme = "http";
+	var schemePort = "80";
+	
+	var staticFilePath = "http://scripts.easyliao.com/prd5/live/";
+	
+	var promotionId = 0;
+	var chatType = "pc";
+	var companyId = 12990;
+	var visitorId = '01000000012990575164535068686070';
+	var userId = '01000000012990575164535068686070';
+	var customerId = 'AI-ylkj';
+	var realName = '在线客服';
+	
+	var tag = 0;
+	
+	var compType = null; 
+	var command = '';
+	var chatId = '337131562';
+	var curLanguage='sc';
+	var usePhoneMsg = false;
+	var useFreePhone = false;
+	var chattingType = 0;
+	var useQueue = null;
+	var meettingId='';
+	var reseveKey = '';
+	var jsConfigId = 35018;
+	var ua = navigator.userAgent.toLowerCase();
+	var isIE = (ua.indexOf('msie') >= 0 && ua.indexOf('opera') < 0);
+
+	var groupId = '';
+	if(groupId == '')
+	{
+			  groupId = ('24135');
+	}
+	
+	var noneWorkTime = 'null';
+	var NonWorkTimeTip = '';
+	
+	var clientStyle = '1';
+	
+	var basePath = "http://prd5.easyliao.com:80/live/";
+	
+	var servletURL = "chat.do";
+	
+	var chaturl = "http://127.0.0.1:5191/portal/";
+	
+	var validateFlag = false;
+	
+	var frameFlag = false;
+	
+	var waitSendMessage = '';
+	
+	var referPage = '';
+	
+	var msgStyle = "pc";
+	
+	var quietFlag = false;
+	var imgUrl = "http://scripts.easyliao.com/prd5/live/static/2019/images/pcWarning.png";
+	
+	window.onbeforeunload=function(e){
+		
+	}
+</script>    
+</head>
+<body>
+<div class="container-screen">
+    <div class="header-img">
+        <div class="brand-img"></div>
+    </div>
+    <div class="main">
+        <div id="chatDiv" class="main-aside-left test-1">
+	        
+            <!-- <div class="scrollbar"></div> -->
+            <!-- logo气泡 -->
+            <!-- 
+            <div class="logo-bubble">
+                <img src="http://scripts.easyliao.com/prd5/live/static/2019/images/logo.png" alt=""/>
+            </div>
+             -->
+        </div>
+        <div class="emoticon-layout pop-window">
+       		<div class="emoticons"></div>
+        </div>
+        <div class="file-layout pop-window">
+			<form name="uploadForm" action="receive.jsp" method="post" enctype="multipart/form-data" target="uf">
+				<input name="file" type="file" style="padding:10px;float:left;font-size:12px;"/>
+				<input type="button" class="btn btn-succ btn-sm" style="float:right;" value="发送" onclick="transferFile()"/>
+			</form>
+		</div>
+        <div class="main-aside-right">
+            <div class="nav">
+                <div class="nav-tabs active">客服信息</div>
+                <div class="nav-tabs">关于我们</div>
+            </div>
+            <div class="tab-content test-1">
+                <div class="tabs show" id="service-info">
+                    <p class="service-icon">
+                        <img id="custHead" src="http://scripts.easyliao.com/prd5/live/static/2019/images/portrait.png" alt=""/>
+                    </p>
+                    <h4 class="service-number">客服：<span id="custName"></span></h4>
+                    <p><span class="icon-1">部门： </span><span id="custDept"></span></p>
+                    <p><span class="icon-11">电话：</span><span id="custTel"></span></p>
+                </div>
+                <div class="tabs" id="about-us">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-aside-left">
+            <div class="operation-header">
+                <div id="emoticonBtn" title="表情"></div>
+                <div id="fileBtn" title="传送文件"></div>
+                <div id="screenShotBtn" title="截图"></div>
+                <div id="opinionBtn" title="评价客服"></div>
+                <div id="soundBtn" title="静音"></div>
+                <div id="quietBtn" title="静音"></div>
+            </div>
+            <div class="operation-main">
+                <div class="main-import">
+                    <textarea id="message" class="test-1" placeholder="请输入你要咨询的问题..."></textarea>
+                </div>
+            </div>
+            <div class="operation-footer">
+                <span class="help-block" id="bottom_logo">智点客服提供技术支持</span>
+                <div class="main-operate">
+                    <button id="exitBtn" class="btn-default btn-sm">结束对话</button>
+                    <button id="sendBtn" class="btn btn-succ btn-sm">发送</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-aside-right">
+            <img src="http://scripts.easyliao.com/prd5/live/static/2019/images/ad-space.png" alt=""/>
+        </div>
+    </div>
+</div>
+<div class="opinion-layout pop-window">
+	<input id="opinionValue" type="hidden" value="4"/>
+	<div class="close"></div>
+	<div class="opinion-icon"></div>
+	<div class="score">
+		<p class="desp">请对我们的服务进行评价， 最高5分</p>
+		<div style="width:100%;text-align:center;margin-top:20px;height:40px;">
+			<span class="star star-1"></span>
+			<span class="star star-1"></span>
+			<span class="star star-1"></span>
+			<span class="star star-1"></span>
+			<span class="star star-1"></span>
+		</div>
+		<p class="result">
+			<span class="op5">5分</span>
+			<span class="op4">4分</span>
+			<span class="op3">3分</span>
+			<span class="op2">2分</span>
+			<span class="op1">1分</span>
+		</p>
+	</div>
+	<div class="reason">
+		 <textarea id="opinionReason" placeholder="您认为我们还有哪些不足，请留下您的宝贵意见，谢谢！"></textarea>
+	</div>
+	<div style="width:100%;text-align:center;margin-top:20px;">
+		<button class="btn commit">提交</button>
+	</div>
+</div>
+<div class="mask" style="display:none;position:absolute;top:0px;bottom:0px;left:0px;right:0px;width:100%;height:100%;z-index:100;opacity:0.5;filter:alpha(opacity=50);background:#000000;"></div>
+<iframe name="uf" id="uf" height="0" width="0" src="blank.html" style="display:none"></iframe>
+
+<div id="jesong_sound" style="display:none;">
+	<audio id="jesong_audio" src="./wav/sound.wav"></audio>
+</div>
+<script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/js/util.js?ver=20190708'></script>
+<script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/static/2019/js/chat.js?ver=20190708'></script>
+</body>
+</html>
