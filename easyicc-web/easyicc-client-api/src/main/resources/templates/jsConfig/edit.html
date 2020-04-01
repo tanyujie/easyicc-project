@@ -281,92 +281,134 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="email">手机号位置:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
+					<label for="email">手机号位置:</label> <select id="phonePosition"
+						name="phonePosition" class="form-control">
+						<option value="left" selected="">左</option>
+						<option value="center">中</option>
+						<option value="right">右</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="email">语言:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
+					<label for="email">语言:</label> <select id="lang"
+						name="lang" class="form-control">
+						<option value="1" selected="">浏览器适配</option>
+						<option value="2">中文</option>
+						<option value="3">中文</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="email">对话窗口模式:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
+					<label for="email">对话窗口模式:</label> 
+					<select id="minChat"
+						name="minChat" class="form-control">
+						<option value="0" selected="">弹出窗口</option>
+						<option value="1">小窗口</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="email">PC弹出窗口风格:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
+					<label for="email">PC弹出窗口风格:</label>
+					 <select id="popStyle"
+						name="popStyle" class="form-control">
+						<option value="0" selected="">自适应尺寸</option>
+						<option value="1">标准尺寸</option>
 					</select>
 				</div>
 				<div class="form-group">
-					<label for="email">对话窗口颜色代码:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
+					<label for="email">对话窗口颜色代码:</label> 
+					<input type="text"
+						class="form-control" id="autochatBgColor" name="autochatBgColor">
 				</div>
 				<div class="form-group">
-					<label for="email">PC小窗口框宽度:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
+				
+					<label for="email">PC小窗口框宽度:</label> 
+					<div class="form-check form-check-inline">
+					<input type="text"
+						class="form-control" id="forceChatWidth" name="forceChatWidth">
+						<label for="email">高度:</label> 
+					<input type="text"
+						class="form-control" id="forceChatHeight" name="forceChatHeight">
+				</div>
 				</div>
 				<div class="form-group">
-					<label for="email">工具栏设置:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
+					<label for="email">工具栏设置:</label> 
+					<div class="form-check form-check-inline">
+					<input type="checkbox"
+							class="form-check-input" value="1" name="toolEmoticons">表情
+						<input type="checkbox"
+							class="form-check-input" value="1" name="toolScreen">截图
+						
+						<div class="label" style="width:70px;margin-left:0px;">
+							<div id="toolOpinionCk" class="ck ckselected" rel="toolOpinion">评价</div>
+							<input type="hidden" id="toolOpinion" name="toolOpinion" value="1">
+						</div>
+						<div class="label" style="width:70px;margin-left:0px;">
+							<div id="toolFileCk" class="ck ckselected" rel="toolFile">文件</div>
+							<input type="hidden" id="toolFile" name="toolFile" value="1">
+						</div>
+						<div class="label" style="width:70px;margin-left:0px;">
+							<div id="toolQuietCk" class="ck ckselected" rel="toolQuiet">静音</div>
+							<input type="hidden" id="toolQuiet" name="toolQuiet" value="1">
+						</div>
 
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label for="email">PC展示信息:</label> 
+					<div class="form-check form-check-inline">
+					<input type="checkbox"
+							class="form-check-input" value="1" name="showCustomerInfo">客服信息
+					<input type="checkbox"
+							class="form-check-input" value="1" name="showAboutUs">关于我们
+					</div>
+					</div>
+					<div class="form-group">
+					<label for="email">插图(PC大窗口):</label> 
+<input type="text"
+						class="form-control" value="http://imgs.easyliao.com/M00/00/02/dr4_vVj2r0CAGK91AAARmgWI0Zs819.png" id="topImage" name="topImage">
 				</div>
 								<div class="form-group">
-					<label for="email">PC展示信息:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
-				</div>
-								<div class="form-group">
-					<label for="email">插图(PC大窗口):</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
-				</div>
-								<div class="form-group">
-					<label for="email">插图(小窗口或移动端):</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
+					<label for="email">插图(小窗口或移动端):</label> 
+					<input type="text"
+						class="form-control" id="topImageMin" name="topImageMin">
+					
 				</div>
 												<div class="form-group">
-					<label for="email">页面标题:</label> <select id="monitorType"
-						name="monitorType" class="form-control">
-
-						<option value="0">默认</option>
-						<option value="1">自定义</option>
-					</select>
+					<label for="email">页面标题:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				</div>
+																<div class="form-group">
+					<label for="email">竞价效果优化:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				</div>
+				<div class="form-group">
+					<label for="email">竞价智能优化模式:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				<div class="form-group">
+					<label for="email">PC小窗口位置:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				<div class="form-group">
+					<label for="email">手机小窗口高度(%):</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				</div>
+				<div class="form-group">
+					<label for="email">PC小窗口关闭按钮:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				</div>
+				<div class="form-group">
+					<label for="email">PC小窗口最小化按钮:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
+				</div>
+				<div class="form-group">
+					<label for="email">PC小窗口遮罩:</label> 
+					<input type="text"
+						class="form-control" id="pageTitle" name="pageTitle">
 				</div>
 				<h3>自动对话设置</h3>
 				<h3>接通欢迎语</h3>

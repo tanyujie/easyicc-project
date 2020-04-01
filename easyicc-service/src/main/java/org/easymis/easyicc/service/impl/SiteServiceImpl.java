@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.JsConfig;
+import org.easymis.easyicc.config.datasource.DataSourceType;
+import org.easymis.easyicc.config.datasource.EasymisDataSource;
 import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.mybatis.mapper.SiteMapper;
 import org.easymis.easyicc.service.SiteService;
@@ -49,8 +50,8 @@ public class SiteServiceImpl implements SiteService {
 		return null;
 	}
 
-	@Override
-	public List findByOrgId(String orgId) {
+	@EasymisDataSource(DataSourceType.Master)
+	public List<?> findByOrgId(String orgId) {
 		// TODO Auto-generated method stub
 		return mapper.findByOrgId(orgId);
 	}

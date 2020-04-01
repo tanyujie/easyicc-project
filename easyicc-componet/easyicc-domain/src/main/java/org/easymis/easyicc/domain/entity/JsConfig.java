@@ -38,6 +38,8 @@ public class JsConfig implements Serializable {
 	// 弹出邀请框时隐藏浮动面板 1弹出0否",column="panel_when_invite",isnull=true)
 	private Integer panelWhenInvite;
 	// 默认图标{iconOnlinePath:在线图片URL,iconOfflinePath:离线图片URL,图片宽度:iconWidth;iconHeight}",column="icon",length=255,isnull=true)
+	private String iconOnlinePath;
+	private String iconOfflinePath;
 	private String icon;
 	// 关闭按钮{iconCloseWidth,iconCloseHeight,iconCloseTop,iconCloseLeft}",column="icon_close",length=255,isnull=true)
 	private String iconClose;

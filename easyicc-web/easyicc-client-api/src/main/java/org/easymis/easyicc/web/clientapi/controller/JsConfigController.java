@@ -85,7 +85,17 @@ public class JsConfigController extends IdentityRepository{
 		else
 			return RestResult.buildFail();
 	}
-
+	@ApiOperation(value = "新增网页样式配置")
+	@RequestMapping(value = { "/edit.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String edit(ModelMap model) {
+		String orgId = getOrgId();
+		model.put("siteList", siteService.findByOrgId(orgId));
+		model.put("promotionChannelList", promotionChannelService.findByOrgId(orgId));
+		model.put("skillGroupList", skillGroupService.findByOrgId(orgId));
+		
+		
+		return "/jsConfig/edit";
+	}
 	@ApiOperation(value = "修改网页样式配置信息")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),

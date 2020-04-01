@@ -14,9 +14,10 @@ import org.easymis.easyicc.domain.entity.Site;
 public interface SiteMapper {
 	@Select("select * from site where org_id=#{orgId}")
 	public List<Site> getList(Site params);
+
 	@Select("select * from site where org_id=#{orgId}")
-	public List findByOrgId(@Param("orgId")String orgId);
-	
+	public List<Site> findByOrgId(@Param("orgId") String orgId);
+
 	@Insert("insert into site(id,org_id,name,depict)values(#{id},#{orgId},#{name},#{depict})")
 	public boolean save(Site bean);
 

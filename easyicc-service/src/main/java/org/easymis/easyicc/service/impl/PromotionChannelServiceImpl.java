@@ -48,7 +48,7 @@ public class PromotionChannelServiceImpl implements PromotionChannelService{
 	@Override
 	public List findByOrgId(String orgId) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.findByOrgId(orgId);
 	}
 
 }

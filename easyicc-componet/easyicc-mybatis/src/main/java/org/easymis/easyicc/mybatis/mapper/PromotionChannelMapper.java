@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
@@ -13,7 +14,8 @@ public interface PromotionChannelMapper {
 	@Select("select * from promotion_channel")
 
 	public List<PromotionChannel> getList(HashMap<String, Object> params);
-
+	@Select("select * from promotion_channel where org_id=#{orgId}")
+	public List<PromotionChannel> findByOrgId(@Param("orgId") String orgId);
 	@Insert("insert into promotion_channel(id,org_id,channel_name,match_type,depict,match_rule,match_content,status)values(#{id},#{orgId},#{channelName},#{matchType},#{depict},#{matchRule},#{matchContent},#{status})")
 	public void save(PromotionChannel bean);
 
