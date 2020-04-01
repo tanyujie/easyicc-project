@@ -1144,8 +1144,8 @@
 	jesong.commonReady = function(){
 		jesong.ready();
 	};
-	jesong.loadForceJS = function(){
-		jesong.util.loadJS(jesong.env.server.file+"static/2019/js/force.js?ver="+jesong.version);
+	jesong.loadForceJS = function(){alert(jesong.env.server.file)
+		jesong.util.loadJS(jesong.env.server.file+"/js/2020/force.js?ver="+jesong.version);
 	},
 	/*jesong.initUI=function(){
 		if(jesong.config.monitor){

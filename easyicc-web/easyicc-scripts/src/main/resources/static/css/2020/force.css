@@ -241,13 +241,13 @@
     cursor: pointer;
 }
 .jesong-mini-main-top .jesong-custom div#jesong_chat_close{
-	background:url('../image/close.png') no-repeat center center;
+	background:url('../../images/2020/close.png') no-repeat center center;
 }
 .jesong-mini-main-top .jesong-custom div#jesong_chat_min_btn{
-	background:url('../image/min.png') no-repeat center center;
+	background:url('../../images/2020/min.png') no-repeat center center;
 }
 .jesong-mini-main-top .jesong-custom div#jesong_chat_max_btn{
-	background:url('../image/max.png') no-repeat center center;
+	background:url('../../images/2020/max.png') no-repeat center center;
 }
 .jesong-mini-main-middle{
     width: 100%;
@@ -457,42 +457,42 @@
     float:left;
 }
 .jesong-operation-header div#jesong_tools_emoticons{
-	background:url('../image/face.png') no-repeat center center;
+	background:url('../../images/2020/face.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_emoticons:hover{
-	background:url('../image/face-1.png') no-repeat center center;
+	background:url('../../images/2020/face-1.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_file{
-	background:url('../image/upload.png') no-repeat center center;
+	background:url('../../images/2020/upload.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_file:hover{
-	background:url('../image/upload-1.png') no-repeat center center;
+	background:url('../../images/2020/upload-1.png') no-repeat center center;
 }
 
 .jesong-operation-header div#jesong_tools_screen{
-	background:url('../image/screen.png') no-repeat center center;
+	background:url('../../images/2020/screen.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_screen:hover{
-	background:url('../image/screen-1.png') no-repeat center center;
+	background:url('../../images/2020/screen-1.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_opinion{
-	background:url('../image/opinion.png') no-repeat center center;
+	background:url('../../images/2020/opinion.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_opinion:hover{
-	background:url('../image/opinion-1.png') no-repeat center center;
+	background:url('../../images/2020/opinion-1.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_sound{
-	background:url('../image/sound.png') no-repeat center center;
+	background:url('../../images/2020/sound.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_sound:hover{
-	background:url('../image/sound-1.png') no-repeat center center;
+	background:url('../../images/2020/sound-1.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_quiet{
 	display:none;
-	background:url('../image/quiet.png') no-repeat center center;
+	background:url('../../images/2020/quiet.png') no-repeat center center;
 }
 .jesong-operation-header div#jesong_tools_quiet:hover{
-	background:url('../image/quiet-1.png') no-repeat center center;
+	background:url('../../images/2020/quiet-1.png') no-repeat center center;
 }
 
 .jesong-pop-window{
