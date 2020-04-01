@@ -7,6 +7,7 @@ window.sendJesongError = function(type, error){
 	img.style="border:0px;width:0px;height:0px;";
 	document.body.appendChild(img);
 };
+//连接错误处理
 window.jesongErrorTimeout = window.setTimeout(function(){
 	window.sendJesongError(2);
 }, 5000);
@@ -69,7 +70,7 @@ jesong={
 	config:{
 		firstToRebot:0,
 		phoneChatPop:0,
-		monitor:true,
+		monitor:true,//开启访客监测
 		panel:true,
 		frameChatStyle:14,
 		forceChatLogo:""
@@ -140,6 +141,7 @@ jesong={
 		}
 	},
 	init:function(){
+		console.log("begin index:init:function");
 		if(this._isBindHost()){
 			jesong.env.vId = this._genId();
 			this._createLayout("jesong_panel", "");
@@ -173,19 +175,19 @@ jesong={
 };
 
 
-
+//访客监测
 jesong.monitor.config={
 	index:11,
 	type:0,
 	title:JESONG_MESSAGE_TEXT.inviteTitle,
 	text:JESONG_MESSAGE_TEXT.inviteText,
 	pos:'3',
-	auto:-1,
+	auto:-1,//autoInvite
 	showInviteAgain:-1,
 	autoInviteTimes:-1,
 	group:'24135',
-	start:'00:00',
-	end:'23:59',
+	start:'00:00',//自动邀请时段autoInviteStart
+	end:'23:59',//自动邀请时段
 	mask:false,
 	mainBg:'url() no-repeat',
 	mainHeight:'0',
@@ -318,7 +320,7 @@ jesong.ocpc = {
 	configId:'0'
 };
 jesong.init();
-
+	console.log("begin index.js");
 })();
 
 		
