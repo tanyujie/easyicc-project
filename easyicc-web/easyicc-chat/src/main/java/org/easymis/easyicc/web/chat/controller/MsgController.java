@@ -6,9 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+public class MsgController {
 
-	@RequestMapping("/msg")
+	@RequestMapping("/index")
 	public String index() throws NoSuchAlgorithmException {
 		return "/customerService";
 	}
