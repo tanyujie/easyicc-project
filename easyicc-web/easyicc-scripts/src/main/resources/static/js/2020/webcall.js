@@ -1,4 +1,5 @@
 (function(){
+	console.log("begin webcall.js");
 	var userAgent = navigator.userAgent.toLowerCase();
 	//jesong.version="1.0.0.1";
 	jesong.isReady = false;
@@ -8,8 +9,16 @@
 				$:function(id){return document.getElementById(id);},
 				isEmpty:function(s){if(typeof s=='undefined'||s==null||s.length==0)return true;return false;},
 				browser:{version: (userAgent.match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [])[1],safari: /webkit/.test( userAgent ),opera: /opera/.test( userAgent ),msie: /msie/.test( userAgent ) && !/opera/.test( userAgent ),	mozilla: /mozilla/.test( userAgent ) && !/(compatible|webkit)/.test( userAgent )},
-				getCookie:function(name){ var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");arr=document.cookie.match(reg);if(arr){return unescape(arr[2]);}else{return null;}},
-				getCookieDomain:function() {
+				getCookie:function(name){ 
+					var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+					arr=document.cookie.match(reg);
+					if(arr){
+						return unescape(arr[2]);
+					}else{
+						return null;
+					}
+				},
+				getCookieDomain:function() {					
 					var host = location.hostname;
 					var ip = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
 					if (ip.test(host) == true || host == 'localhost') return host;
@@ -21,10 +30,12 @@
 					}
 				},
 				setCookie:function(name,value,t){
+					console.log("begin webcall:JS.setCookie:function：设置："+name+"值:"+value+"有效时间:"+t);
 					if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;  
 					var exp  = new Date(); exp.setTime(exp.getTime() + t); 
 					document.cookie = name + "="+ escape (value)+ ";domain="+jesong.util.getCookieDomain()+";expires=" + exp.toGMTString()+";path=/";
 				},jsonRequest:function(url,cb){
+					console.log("begin webcall:jsonRequest:function");
 					jesong.resp=null;
 					var u=url + '&x='+(new Date()).getTime();	
 					h = document.getElementsByTagName('head')[0];	
@@ -47,8 +58,18 @@
 							this.parentNode.removeChild(this);
 						}
 					};
-				},show:function(v){if(typeof v == 'string') v=jesong.util.$(v); v.style.display='block'; },
-				hide:function(v){if(typeof v == 'string') v=jesong.util.$(v); (v==null)||(v.style.display='none'); },							
+				},show:function(v){
+					if(typeof v == 'string') 
+						v=jesong.util.$(v); 
+					v.style.display='block'; 
+					console.log("begin webcall:show:function");
+				},
+				hide:function(v){
+					if(typeof v == 'string') 
+					v=jesong.util.$(v); 
+					(v==null)||(v.style.display='none');
+					console.log("begin webcall:hide:function");
+				},							
 				log:function(s){var l=jesong.util.$('log'); l.innerHTML += s + '</br>';l.scrollTop+=8000;},
 				attach:function(t,e,f){if(t.addEventListener) t.addEventListener(e,f,false);else if(t.attachEvent) t.attachEvent('on'+e,f);},			
 				getBody:function(){return(document.compatMode!="CSS1Compat")?document.body:document.documentElement;},
@@ -64,7 +85,9 @@
 					}else{
 						return null;
 					}
+					console.log("begin webcall:getDomain:function");
 				}, loadJS : function(src){
+					console.log("begin webcall:loadJS:function");
 					var _ss = document.getElementsByTagName("script");
 					for(var i = 0 ; i < _ss.length ; i++){
 						if(_ss[i].src==src){
@@ -78,6 +101,7 @@
 				    s.parentNode.insertBefore(sga, s);
 				},
 				upvid:function(){
+					console.log("begin webcall:upvid:function");
 					var u = jesong.util,ev=jesong.env;
 					var v = u.getCookie('JESONG_VISITOR_ID');
 					if( v != null && v.length !=0)
@@ -93,6 +117,7 @@
 					u.setCookie('JESONG_AUTO_MON_TIMES', autoTimes, 60000);
 				},
 				getRequestParam:function(key){
+					console.log("begin webcall:getRequestParam:function");
 					var h = window.location.href;
 					var args = h.split("?");
 					if(args[0] != h && args.length>1){
@@ -109,6 +134,7 @@
 					return null;
 				},
 				getReseveKey:function(){
+					console.log("begin webcall:getReseveKey:function");
 					var exts = null;
 					if(typeof reseveKey != 'undefined' && reseveKey!=null){
 						exts = reseveKey;
@@ -224,6 +250,7 @@
 					f.start();
 				},
 				bindReady:function(){
+					console.log("begin webcall:bindReady:function");
 					jesong.domReady = true;
 					var browser = jesong.util.browser;				
 					if ( document.addEventListener && !browser.opera) document.addEventListener( "DOMContentLoaded", jesong.ready, false );
@@ -278,6 +305,7 @@
 				}
 			},
 			openChatRoom:function(cg){
+				console.log("begin webcall:openChatRoom:function");
 				var ev =jesong.env;			
 				var url = jesong.util.commonURL();
 				url = url + "&cg="+cg;
@@ -288,6 +316,7 @@
 				}
 			},
 			getChatUrl:function(c){
+				console.log("begin webcall:getChatUrl:function");
 				var ev = jesong.env;
 				var u = jesong.util;
 				var url = jesong.util.commonURL();
@@ -361,6 +390,7 @@
 				return url;
 			},
 			openWindowChat:function(url){
+				console.log("begin webcall:openWindowChat:function");
 				var ev = jesong.env;
 				var u = jesong.util;
 				var p = "height=600,width=800,directories=no,location=no,menubar=no,resizeable=no,status=no,toolbar=no,top=100,left=200";
@@ -371,6 +401,7 @@
 				}
 			},
 			openChat:function(c){
+				console.log("begin webcall:openChat:function");
 				var ev = jesong.env;
 				var url = jesong.util.getChatUrl(c);
 				try{
@@ -474,6 +505,7 @@
 		jesong.monitor.accept();
 	};
 	jesong.monitor.doEvent=function(e){
+		console.log("begin webcall:jesong.monitor.doEvent function");
 		var mon = jesong.monitor;
 		switch(e.e){
 			case '11': case '1':
@@ -775,6 +807,7 @@
 		jesong.util.$("jesong_freecall").style.display = "none";
 	};
 	jesong.freecall.commit = function(){
+		console.log("begin webcall:jesong.freecall.commit function");
 		var phone = jesong.util.$("jesong_freecall_text").value;
 		if(/^(13|14|15|17|18)\d{9}$/i.test(phone) || /^((\(\d{2,3}\))|(\d{3}\-))?(\(0\d{2,3}\)|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/i.test(phone)){
 			//保存
@@ -813,6 +846,7 @@
 		}
 	};
 	jesong.freecall.init = function(){
+		console.log("begin webcall:jesong.freecall.init function");
 		var con = jesong.freecall.config;
 		if(con && con.show){
 			var m = document.createElement('div');
@@ -875,6 +909,7 @@
 		}
 	};
 	jesong.monitor.init=function(){
+		console.log("begin webcall:jesong.monitor.init function");
 		var u = jesong.util,mon=jesong.monitor;
 		var m = document.createElement('div');
 		document.body.appendChild(m);
@@ -917,6 +952,7 @@
 		m.style.cssText = csstext;
 	};
 	jesong.panel.init=function(){
+		console.log("begin webcall:jesong.panel.init function");
 		var u=jesong.util,pan=jesong.panel,con=pan.config;
 		var p = u.$('jesong_panel');
 		
@@ -942,6 +978,7 @@
 		u.show(p);	
 	};
 	jesong.win.builder=function(){
+		console.log("begin webcall:jesong.win.builder function");
 			var con = jesong.win.config,u=jesong.util,pan=u.$('jesong_panel');
 			if(con.mode == 0 ){ con.width += 8;}
 			if(con.mode == 1){		
@@ -980,6 +1017,7 @@
 			}
 		};
 	jesong.win.openChat=function(et,tar){
+		console.log("begin webcall:jesong.win.openChat function");
 		jesong.util.winChat(function(){
 			var p = '';
 			if( et == 'c')
@@ -995,6 +1033,7 @@
 		u.$('jesong_allcontent').scrollTop = parseInt(u.$('jesong_allcontent').scrollTop) + (p==1?-a:a) ;
 	};
 	jesong.win.buildList=function(mode){
+		console.log("begin webcall:jesong.win.buildList function");
 		var ele = function(et,sn,tar,stat,off){
 			var mo = jesong.win.config.mode;
 			var sc = ['jesong_offline','jesong_online','jesong_offline','jesong_offline','jesong_offline','jesong_other','jesong_other','jesong_other'];	
@@ -1072,6 +1111,7 @@
 		
 	};
 	jesong.icon.hide = function(e){
+		console.log("begin webcall:jesong.icon.hide function");
 		document.getElementById('jesong_panel').style.display='none';
 		if (e && e.stopPropagation){
 	        e.stopPropagation();
@@ -1082,6 +1122,7 @@
 	};
 	//
 	jesong.icon.builder=function(){
+		console.log("begin webcall:jesong.icon.builder function");
 			function efs(s){
 				var ev = jesong.env.server,s1='http://localhost/';
 				if(s.indexOf(s1) != -1)
@@ -1210,6 +1251,7 @@
 		}
 	};
 	jesong.ready=function(){
+		console.log("begin webcall:jesong.ready function");
 		if(!jesong.isReady){
 			jesong.isReady = true;
 			
@@ -1254,8 +1296,9 @@
 	}catch(e){
 		window.sendJesongError(1, e.message);
 	}
+	//clearTimeout方法可取消由 setTimeout() 方法设置的定时操作
 	window.clearTimeout(window.jesongErrorTimeout);
-
+	console.log("begin webcall.js");
 })();
 
 

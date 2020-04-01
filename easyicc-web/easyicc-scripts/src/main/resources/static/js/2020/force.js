@@ -1,4 +1,5 @@
 (function(){
+	console.log("begin force.js");
 	String.prototype.replaceAll = function (AFindText,ARepText){
 		raRegExp = new RegExp(AFindText,"g");
 		return this.replace(raRegExp,ARepText);
@@ -210,6 +211,7 @@
 			if(this.dom){
 				this.dom.style.display="block";
 			}
+			console.log("begin force：-JS show调用显示函数");
 			return this;
 		}, remove : function(){
 			if(this.dom){
@@ -291,6 +293,7 @@
 		}
 	};
 	JS.setCookie = function(name,value,t){
+		console.log("begin force:JS.setCookie:function：设置："+name+"值:"+value+"有效时间:"+t);
 		if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;  
 		var exp  = new Date(); 
 		exp.setTime(exp.getTime() + t); 
@@ -542,7 +545,7 @@
 		visitorId : jesong.env.vId,
 		visitorStaticId : jesong.env.uId,
 		siteId : jesong.env.sid,
-		chatId : null,
+		chatId : null,//对话记录id
 		receiveMessageInterval : null,
 		screenActiveX : false,
 		screenActiveXTime : null,
@@ -636,7 +639,7 @@
 			}
 		},
 		init : function(){
-			
+			console.log("begin force:init:function");
 			if(jesong.autochat.width > jesong.util.getBody().clientWidth){
 				jesong.autochat.width = jesong.util.getBody().clientWidth;
 			}
@@ -840,6 +843,7 @@
 			}
 			
 		}, initChat : function(){
+			console.log("begin force:initChat:function");
 			if(this.status != 2){
 				//var cId = JS.getCookie("jesong_chat_"+this.companyId+"_id");
 				//var cUserId = JS.getCookie("jesong_chat_user_"+this.companyId+"_id");
@@ -865,6 +869,7 @@
 				}
 			}
 		}, initWaitQueue : function(){
+			console.log("begin force:initWaitQueue:function");
 			var waitGroupId = JS.getCookie("jesong_queue_"+this.companyId+"_id");
 			if(waitGroupId && waitGroupId > 0){
 				this.groupId = waitGroupId;
@@ -901,6 +906,7 @@
 				}*/
 			}
 		}, initAutochat : function(){
+			console.log("begin force:initAutochat:function");
 			if(/*!jesong.env.isPhone && */jesong.autochat && jesong.autochat.use == 1 && jesong.monitor.config && jesong.monitor.config.group){
 				var now = new Date();var nh=now.getHours(),nm=now.getMinutes();		
 				function tonum(s){ var s1=s.replace(/:/g,'');
@@ -940,6 +946,7 @@
 				return false;
 			}
 		}, setFocus : function(id){
+			console.log("begin force:setFocus:function");
 			var rel = JS(id).attr("rel");
 			JS(id).focus(function(){
 				if(JS(id).attr("rel") == JS(id).val()){
@@ -987,6 +994,7 @@
 			JS(id).val(rel);
 			JS(id).addClass("jesong_text_blur");
 		}, initChatUI : function(){
+			console.log("begin force:初始化聊天对话框initChatUI:function");
 			/*if(jesong.autochat.hideMonitor){
 				jesong.monitor.hide();
 			}*/
@@ -1057,7 +1065,7 @@
 			            
 				);
 			}else{ //PC端工具条
-				
+				console.log("begin force:显示jesong_chat_layout聊天窗口");
 				JS("jesong_chat_layout").css("width", jesong.autochat.width+"px")
 										.css("height", jesong.autochat.height+"px")
 										.show();
@@ -1174,6 +1182,7 @@
 				//"</div>"
 			);
 		}*/, initLeaveMsgUI : function(){
+			console.log("begin force:initLeaveMsgUI:function");
 			var _w = jesong.autochat.width - 110;
 			var _h = 140;
 			if(!(jesong.jsType == 1 && jesong.env.isPhone)){
@@ -1284,6 +1293,7 @@
 		 * 初始对话界面UI事件
 		 */
 		initChatEvent : function(){
+			console.log("begin force:initChatEvent:function");
 			var setHover = function(id){
 				JS(id).hover(function(){
 					JS(id).addClass("hover");
@@ -1376,6 +1386,7 @@
 			
 			
 			JS("jesong_message").keydown(function(e){
+				
 				if(e.keyCode == 13){
 					this.sendMessage();
 					var event=arguments.callee.caller.arguments[0]||e;
@@ -1552,6 +1563,7 @@
 		}, 
 		
 		commitOpinion : function(op, desp){
+			console.log("begin force:commitOpinion:function");
 			var data = {
 				cId:this.chatId, c:this.companyId, op:op,b_op:4, desp:desp, v:this.visitorId, u:this.visitorStaticId
 			};
@@ -1574,6 +1586,7 @@
 		},
 		
 		openchat : function(params){
+			console.log("begin force:openchat:function");
 			if(this.requesting == false){
 				this.requesting = true;
 				
@@ -1634,6 +1647,7 @@
 			}
 		},
 		sendkeyWord : function(keyWord){
+			console.log("begin force:sendkeyWord:function");
 			if(document.referrer && jesong.env.min == 1 && jesong.autochat.sendkeyWord == 1 && keyWord){
 				var reg = /[\u4e00-\u9fa5]/g;
 				if(reg.test(keyWord)){
@@ -1643,6 +1657,7 @@
 			}
 		},
 		waitQueue : function(first){
+			console.log("begin force:waitQueue:function");
 			this.ajax("waitQueue", {
 				c : this.companyId,
 				v : this.visitorId,
@@ -1659,6 +1674,7 @@
 		 * @param rs
 		 */
 		handlerWaitQueue : function(rs, first){
+			console.log("begin force:handlerWaitQueue:function");
 			if(first && (rs.type == "CHATING" || rs.type == "WAIT_QUEUE")){
 				this.initChatUI();
 				this.showChatLayout();
@@ -1690,6 +1706,7 @@
 			}
 		},
 		exitQueue : function(){
+			console.log("begin force:exitQueue:function");
 			this.status = 0;
 			window.clearTimeout(this.waitQueueTimeout);
 			JS.setCookie("jesong_queue_"+this.companyId+"_id", "",  -1);
@@ -1705,6 +1722,7 @@
 		 * 开始创建对话
 		 */
 		connect : function(chatId, customerId){
+			console.log("begin force:connect:function");
 			this.firstGetMessage = true;
 			this.initChatUI();
 			if(jesong.jsType != 1 || !jesong.env.isPhone){
@@ -1780,6 +1798,7 @@
 		 * 创建对话成功
 		 */
 		connectSuccess : function(rs){
+			console.log("begin force:connectSuccess:function");
 			this.chatId = rs.chatId;
 			if(rs.groupId){
 				this.groupId = rs.groupId;
@@ -1853,6 +1872,7 @@
 		 * 获取聊天窗口参数
 		 */
 		getWinChatParam : function(){
+			console.log("begin force:getWinChatParam:function");
 			if(jesong.env.min != 1){
 				this.hideChat();
 			}
@@ -1873,6 +1893,7 @@
 			}
 		},
 		showPopMessage : function(content){
+			console.log("begin force:showPopMessage:function");
 			if(content != null/* && this.status == 2*/){
 				if(content.length > 20){
 					content = content.substring(0, 18) + "...";
@@ -1932,6 +1953,7 @@
 			}
 		},
 		playSound : function(msg){
+			console.log("begin force:playSound:function");
 			if(this.sound){
 				var wav = jesong.env.server.file + "wav/sound.wav";
 				var borswer = window.navigator.userAgent.toLowerCase();  
@@ -1984,6 +2006,7 @@
 		 * 接受消息
 		 */
 		startReceiveMessage : function(){
+			console.log("begin force:startReceiveMessage:function");
 			//tanyujie
 			Chat.getMessage.apply(Chat, []);
 			if(!this.receiveMessageInterval){
@@ -1994,6 +2017,7 @@
 			}
 		},
 		getMessage : function(){
+			console.log("begin force:getMessage:function");
 			var now = new Date().getTime();
 			//避免由于上一次请求未在本次请求前返回，而出现重复消息的问题
 			if(this.lastGetMessageTime != null && now - this.lastGetMessageTime < 6000){
@@ -2030,6 +2054,7 @@
 		 * 处理接收到的消息
 		 */
 		processMessage : function(msgs){
+			console.log("begin force:processMessage:function");
 			for (var i=0; i<msgs.length; i++) {
 				var msg = msgs[i];
 				var target = "user";
@@ -2141,6 +2166,7 @@
 			}
 		},
 		clearCustInputing : function(){
+			console.log("begin force:clearCustInputing:function");
 			JS("jesong_inputing").remove();
 		},
 		showCustInputing : function(){
@@ -2183,6 +2209,7 @@
 		
 		//弹窗内操作
 		windowFun:function(){
+			console.log("begin force:windowFun:function");
 			//取消按钮
 			JS("msgCancel").click(function(){
 				var cancelMsg = JS("jesong_message").val();
@@ -2262,6 +2289,7 @@
 			
 			//倒计时
 			function getRandomCode() {
+				console.log("begin force:getRandomCode:function");
 				JS("tips").html("");
 			   if (Chat.time === 0) { 
 			       Chat.time = 60;
@@ -2293,6 +2321,7 @@
 		
 		//发送消息手机号验证
 		msgCheck:function(msg){
+			console.log("begin force:msgCheck:function");
 			var t;
 			var msg = JS("jesong_message").val();
 //			var phoneNum = msg.replace(/[^0-9]?/ig,"");
@@ -2324,6 +2353,7 @@
 		},
 		
 		sendMessage : function(message, times){
+			console.log("begin force:sendMessage:function");
 			if(!message){
 				message = JS("jesong_message").val();
 			}
@@ -2401,6 +2431,7 @@
 		 * 结束对话
 		 */
 		closeChat : function(){
+			console.log("begin force:closeChat:function");
 			if(this.status == 2){
 				if(this.chatId != null && this.chatId!=''){
 					this.ajax("endChat", {
@@ -2423,12 +2454,14 @@
 		 * 停止接受消息
 		 */
 		stopReceiveMessage : function(){
+			console.log("begin force:stopReceiveMessage:function");
 			if(this.receiveMessageInterval){
 				window.clearInterval(this.receiveMessageInterval);
 				this.receiveMessageInterval = null;
 			}
 		},
 		date2Text : function(v, fmt) {
+			console.log("begin force:date2Text:function");
 			var fv = function(s){
 				if(s<10){
 					return '0'+s;
@@ -2476,6 +2509,7 @@
 		    return (h>9 ? h : "0"+h)+":"+(mm > 9 ? mm : "0"+mm );
 		},
 		showChatLayout : function(){
+			console.log("begin force:showChatLayout:function：显示聊天面板");
 			if(jesong.autochat && jesong.autochat.hideMonitor){
 				jesong.monitor.hide();
 			}
@@ -2494,7 +2528,9 @@
 				}
 				JS("jesong_chat_layout").css("position", "fixed");
 			}
+			//控制聊天面板显示
 			JS("jesong_chat_layout").show();
+			console.log("begin force:showChatLayout:function：jesong_chat_layout显示聊天面板");
 			this.resetUnReadMessage();
 		},
 		increaseUnReadMessage : function(){
@@ -2504,6 +2540,7 @@
 			}
 		},
 		resetUnReadMessage : function(){
+			console.log("begin force:resetUnReadMessage:function：重置未读消息+jesong_chat_unread_"+this.chatId);
 			JS.setCookie("jesong_chat_unread_"+this.chatId, "0", 60*60*1000);
 			JS("jesong_unread").hide();
 		},
@@ -2521,6 +2558,7 @@
 			}
 		},
 		hideChatLayout : function(){
+			console.log("begin force:hideChatLayout:function");
 			if(jesong.jsType == 1 && jesong.env.isPhone){
 				var cls = "jesong_full_body";
 				var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)'); 
@@ -2549,6 +2587,7 @@
 		},
 		initCallEvent : function(){	
 		}, addMessage : function(msg, type, time){
+			console.log("begin force:addMessage:function");
 			var flag = true;
 			var _tpl;
 			if(time){
@@ -2641,6 +2680,7 @@
 			}
 		},
 		flashLastUserMessage : function(){
+			console.log("begin force:flashLastUserMessage:function");
 			if(this.userMessageStep >= this.flashUserMessageColor.length){
 				this.userMessageStep = 0;
 			}
@@ -2693,6 +2733,6 @@
 		Chat.windowFocus=true;
 		Chat.clearFlashTitle.apply(Chat, []);
 	};
-
+	console.log("end force.js");
 })();
 
