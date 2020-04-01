@@ -61,7 +61,7 @@
 .jesong_win_monitor_10 .accept{width:120px;height:42px;left:15px;bottom:15px;background:url(../images/monitor/accept3.png);_background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='bEnabled',sizingMethod='scale',src='css/../images/monitor/accept3.png');}
 .jesong_win_monitor_10 .refuse{width:120px;height:42px;left:130px;bottom:15px;background:url(../images/monitor/refuse3.png);_background:none;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='bEnabled',sizingMethod='scale',src='css/../images/monitor/refuse3.png');}
 
-.jesong_win_monitor_11{background:url(../images/2020/monitor-win11.png);width:419px;height:226px;}
+.jesong_win_monitor_11{background:url(../../images/2020/monitor-win11.png);width:419px;height:226px;}
 .jesong_win_monitor_11 .context{right:12px;top:40px;width:246px;height:135px;}
 .jesong_win_monitor_11 .accept{width:80px;height:29px;right:14px;bottom:12px;}
 .jesong_win_monitor_11 .refuse{width:80px;height:29px;right:110px;bottom:12px;}

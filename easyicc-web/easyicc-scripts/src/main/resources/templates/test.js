@@ -21,7 +21,16 @@ window.jesongErrorTimeout = window.setTimeout(function(){
 	if(jesong || (false && false != isMobile())){
 		return;
 	}
-JESONG_MESSAGE_TEXT = {"replyMsgAtConnected":"","welcomeMsgOfConnected":"您好，我是今天的值班客服，您要了解哪方面问题？","welcomeMsgOfConnectedMin":"","extCode":"","msgOfTrans":"您的对话将被转移给我的同事， 感谢您的咨询！","msgOfDisConnected":"感谢您的咨询， 再见！","inviteTitle":"","inviteText":""};
+JESONG_MESSAGE_TEXT = {
+	"replyMsgAtConnected":"我是今天的值班客服，请问您需要咨询哪方面的问题？为了更好的服务效果，请在对话结束后对我的服务满意度进行评价，非常感谢您的支持!",
+	"welcomeMsgOfConnected":"${jsConfig.pcWelcomeMessage!}",
+	"welcomeMsgOfConnectedMin":"${jsConfig.mobileWelcomeMessage!}",
+	"extCode":"",
+	"msgOfTrans":"您的对话将被转移给我的同事， 感谢您的咨询！",
+	"msgOfDisConnected":"感谢您的咨询， 再见！",
+	"inviteTitle":"inviteTitle",
+	"inviteText":""
+};
 jesong={	
 	lazy : false,
 	version : '20190927',
@@ -29,6 +38,7 @@ jesong={
 	visitorReady : false,
 	forceReady : false,
 	newChat : false,
+	//嵌入类型0PC端1移动端
 	jsType : 0,
 	callerOpinion : "0",
 	visitorPhoneVerification: "0",
@@ -41,7 +51,7 @@ jesong={
 		server:{
 			monitor:'http://prd5.easyliao.com/',
 			chat:'http://prd5.easyliao.com/live/',
-			file:'http://scripts.easyliao.com/prd5/',
+			file:'http://127.0.0.1:5161/scripts/',
 			guide : 'http://prd5.easyliao.com/api/robot'
 		},
 		compId:12990,
@@ -149,9 +159,9 @@ jesong={
 				this.env.scheme = "https";
 				
 			}
-			this._loadCSS(this.env.server.file + "css/webcall.css?ver=20190927");
-			this._loadJS(this.env.server.file + "static/2019/js/webcall.js?ver=20190927");
-			this._loadCSS(this.env.server.file + "static/2019/css/force.css?ver=20190927");
+			this._loadCSS(this.env.server.file + "css/2020/webcall.css?ver=20190928");
+			this._loadJS(this.env.server.file + "js/2020/webcall.js?ver=20190928");
+			this._loadCSS(this.env.server.file + "css/2020/force.css?ver=20190928");
 		}
 	},
 	words:{
@@ -202,8 +212,8 @@ jesong.panel.config={
 jesong.icon.config={
 	mode:1,
 	target:'24135',
-	online:'http://live.jswebcall.com/images/floaticon/online-2.png',
-	offline:'http://live.jswebcall.com/images/floaticon/offline-2.png',
+	online:'${jsConfig.iconOnlinePath!}',
+	offline:'${jsConfig.iconOfflinePath!}',
 	width:198,
 	height:188,
 	status:1,
@@ -259,7 +269,7 @@ jesong.autochat={
 	keyWord : null,
 	sendkeyWord : 0,
 	searchMode : 0,
-	bgcolor:'',
+	bgcolor:'#000099',
 	width:420,
 	height:500,
 	use:0,
@@ -272,16 +282,16 @@ jesong.autochat={
 	welcome:JESONG_MESSAGE_TEXT.welcomeMsgOfConnected,
 	waitSendMsg:'',
 	connect : '0',
-	closeBtn : '1',
-	minBtn : '1',
+	closeBtn : '${jsConfig.minChatCloseButton!}',
+	minBtn : '0',
 	mask : '0',
-	userHead : 'http://scripts.easyliao.com/prd5//images/chat/201805/head-user.png',
-	visitorHead : 'http://scripts.easyliao.com/prd5//images/chat/201805/head-visitor.png',
+	userHead : '${jsConfig.staffHead!}',
+	visitorHead : 'http://127.0.0.1:5161/scripts/images/chat/20200501/head-visitor.png',
 	topImage : '',
 	topImageMin : '',
 	phoneHeight : 80,
 	tel : '',
-	pageTitle : '',
+	pageTitle : '${jsConfig.pageTitle!}',
 	pcMinLogo : '',
 	autoPopMWinTime : -1,
 	autoPopMWinPeroid : -1,
