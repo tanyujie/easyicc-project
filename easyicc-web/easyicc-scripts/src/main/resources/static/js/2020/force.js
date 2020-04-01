@@ -509,7 +509,7 @@
 						"<div class=\"jesong-service-bubble-icon\"><img src=\""+jesong.autochat.userHead+"\"/></div>" +
 						"<div class=\"jesong-service-bubble-con\">"+
 							"<div class=\"jesong-service-session\"><span>{nickName}</span><span></span></div>"+
-							"<div class=\"jesong-service-session-con\"><img src=\""+jesong.env.server.file+"static/2019/image/inputting.gif\" alt=\"\" style=\"width:14px;height:14px;\"/><span style=\"line-height:14px;padding-left:4px;\">"+JSLang[jesong.language].inputting+"</span></div>"+
+							"<div class=\"jesong-service-session-con\"><img src=\""+jesong.env.server.file+"images/2020/inputting.gif\" alt=\"\" style=\"width:14px;height:14px;\"/><span style=\"line-height:14px;padding-left:4px;\">"+JSLang[jesong.language].inputting+"</span></div>"+
 						"</div>" +
 					"</div>";
 	
@@ -1116,7 +1116,7 @@
 			
 			var emoticonHTML = "";
 			for(var i=1; i<16; i++){
-				var e = jesong.env.server.file+"/emoticon/"+(i>9 ? i : "0"+i)+".png";
+				var e = jesong.env.server.file+"/images/emoticon/"+(i>9 ? i : "0"+i)+".png";
 				var style="";
 				if((i-1)%5==0){
 					style="clear:both;";

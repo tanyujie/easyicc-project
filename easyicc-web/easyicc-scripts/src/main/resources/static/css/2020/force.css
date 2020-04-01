@@ -520,10 +520,10 @@
 	width:280px;height:280px;background-color:#ffffff;border-radius:10px;
 }
 .jesong-opinion-layout .jesong-opinion-close{
-	position:absolute;top:10px;right:10px;width:25px;height:25px;background:url('../image/opinion-close.png') no-repeat center center;
+	position:absolute;top:10px;right:10px;width:25px;height:25px;background:url('../../images/2020/opinion-close.png') no-repeat center center;
 }
 .jesong-opinion-layout .jesong-opinion-icon{
-	width:100%;height:60px;margin-top:40px;background:url('../image/opinion-icon.png') no-repeat center center;
+	width:100%;height:60px;margin-top:40px;background:url('../../images/2020/opinion-icon.png') no-repeat center center;
 }
 
 .jesong-opinion-layout .jesong-score div{
@@ -542,10 +542,10 @@
 	padding:16px;
 }
 .jesong-opinion-layout .jesong-score .jesong-star-1{
-	background:url('../image/star-1.png') no-repeat center center;
+	background:url('../../images/2020/star-1.png') no-repeat center center;
 }
 .jesong-opinion-layout .jesong-score .jesong-star-2{
-	background:url('../image/star-2.png') no-repeat center center;
+	background:url('../../images/2020/star-2.png') no-repeat center center;
 }
 .jesong-opinion-layout .jesong-commit{
     width:80px;height:36px;
