@@ -420,7 +420,7 @@
 				placeholder : "Please enter the verification code"
 			},
 			sc:{
-				softLogo : "\u6613\u804A\u79D1\u6280\u63D0\u4F9B\u6280\u672F\u652F\u6301",
+				softLogo : "\x667A\x70B9\x5BA2\x670D\u63D0\u4F9B\u6280\u672F\u652F\u6301",
 				newMessage : "\u60a8\u6709\u65b0\u7684\u6d88\u606f",
 				online : "\u5728\u7ebf\u5ba2\u670d",
 				welcome : "\u6b22\u8fce\u54a8\u8be2",
