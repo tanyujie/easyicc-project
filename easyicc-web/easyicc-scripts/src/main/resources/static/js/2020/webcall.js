@@ -1,5 +1,4 @@
 (function(){
-	alert('webcall-step-1');
 	var userAgent = navigator.userAgent.toLowerCase();
 	//jesong.version="1.0.0.1";
 	jesong.isReady = false;
@@ -373,7 +372,7 @@
 			},
 			openChat:function(c){
 				var ev = jesong.env;
-				var url = jesong.util.getChatUrl(c);alert(url);
+				var url = jesong.util.getChatUrl(c);
 				try{
 					if(ev.min == 1 && jesong.force && jesong.force.openchat){
 						jesong.force.openchat(url);
