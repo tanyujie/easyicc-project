@@ -1,5 +1,5 @@
 
-var JESONG_MESSAGE_TEXT;
+var JEASYICC_MESSAGE_TEXT;
 var jesong;
 window.sendJesongError = function(type, error){
 	var img = document.createElement("img");
@@ -22,7 +22,7 @@ window.jesongErrorTimeout = window.setTimeout(function(){
 	if(jesong || (false && false != isMobile())){
 		return;
 	}
-JESONG_MESSAGE_TEXT = {
+JEASYICC_MESSAGE_TEXT = {
 	"replyMsgAtConnected":"我是今天的值班客服，请问您需要咨询哪方面的问题？为了更好的服务效果，请在对话结束后对我的服务满意度进行评价，非常感谢您的支持!",
 	"welcomeMsgOfConnected":"${jsConfig.pcWelcomeMessage!}",
 	"welcomeMsgOfConnectedMin":"${jsConfig.mobileWelcomeMessage!}",
@@ -167,10 +167,10 @@ jesong={
 		}
 	},
 	words:{
-		welcome:JESONG_MESSAGE_TEXT.welcomeMsgOfConnected,
-		welcomeMin:JESONG_MESSAGE_TEXT.welcomeMsgOfConnectedMin,
-		greeting:JESONG_MESSAGE_TEXT.replyMsgAtConnected,
-		disconnect:JESONG_MESSAGE_TEXT.msgOfDisConnected
+		welcome:JEASYICC_MESSAGE_TEXT.welcomeMsgOfConnected,
+		welcomeMin:JEASYICC_MESSAGE_TEXT.welcomeMsgOfConnectedMin,
+		greeting:JEASYICC_MESSAGE_TEXT.replyMsgAtConnected,
+		disconnect:JEASYICC_MESSAGE_TEXT.msgOfDisConnected
 	}
 };
 
@@ -179,8 +179,8 @@ jesong={
 jesong.monitor.config={
 	index:11,
 	type:0,
-	title:JESONG_MESSAGE_TEXT.inviteTitle,
-	text:JESONG_MESSAGE_TEXT.inviteText,
+	title:JEASYICC_MESSAGE_TEXT.inviteTitle,
+	text:JEASYICC_MESSAGE_TEXT.inviteText,
 	pos:'3',
 	auto:-1,//autoInvite
 	showInviteAgain:-1,
@@ -281,7 +281,7 @@ jesong.autochat={
 	delay : -1,
 	hideMonitor : true,
 	show:false,
-	welcome:JESONG_MESSAGE_TEXT.welcomeMsgOfConnected,
+	welcome:JEASYICC_MESSAGE_TEXT.welcomeMsgOfConnected,
 	waitSendMsg:'',
 	connect : '0',
 	closeBtn : '${jsConfig.minChatCloseButton!}',
