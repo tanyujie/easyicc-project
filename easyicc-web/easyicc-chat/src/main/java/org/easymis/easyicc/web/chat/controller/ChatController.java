@@ -12,5 +12,8 @@ public class ChatController {
 	public String index() throws NoSuchAlgorithmException {
 		return "/chat";
 	}
-
+	@RequestMapping("/blank.html")
+	public String blank() throws NoSuchAlgorithmException {
+		return "/chatBlank";
+	}
 }

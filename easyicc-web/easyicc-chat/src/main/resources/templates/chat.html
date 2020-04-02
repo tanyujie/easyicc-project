@@ -5,12 +5,12 @@
 	<meta name="keywords" content="在线客服"/>
 	<meta name="description" content="在线客服"/>
 	<title>在线客服</title>
-    <link type="text/css" rel="stylesheet" href="http://scripts.easyliao.com/prd5/live/static/2019/css/initialize.css?ver=20190708"/>
-    <link type="text/css" rel="stylesheet" href="http://scripts.easyliao.com/prd5/live/static/2019/css/index.css?ver=20190708"/>
+    <link type="text/css" rel="stylesheet" href="http://127.0.0.1:5031/chat/css/2020/initialize.css?ver=20190708"/>
+    <link type="text/css" rel="stylesheet" href="http://127.0.0.1:5031/chat/css/2020/index.css?ver=20190708"/>
     
-    <script src="http://scripts.easyliao.com/prd5/live/js/jquery-1.4.4.min.js"></script>
+    <script src="http://127.0.0.1:5031/chat/js/jquery-1.4.4.min.js"></script>
     
-    <script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/lang/sc.js?ver=20190708'></script>
+    <script type='text/javascript' src='http://127.0.0.1:5031/chat/lang/sc.js?ver=20190708'></script>
     
 <script>
 	
@@ -71,8 +71,13 @@
 	var msgStyle = "pc";
 	
 	var quietFlag = false;
-	var imgUrl = "http://scripts.easyliao.com/prd5/live/static/2019/images/pcWarning.png";
-	
+	var imgUrl = "http://127.0.0.1:5031/chat/images/2020/pcWarning.png";
+	var ocpc = {
+			platform:'-1',
+			condition:'1',
+			configId:'0'
+		};
+	var siteId = 0;
 	window.onbeforeunload=function(e){
 		
 	}
@@ -184,7 +189,7 @@
 <div id="jesong_sound" style="display:none;">
 	<audio id="jesong_audio" src="./wav/sound.wav"></audio>
 </div>
-<script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/js/util.js?ver=20190708'></script>
-<script type='text/javascript' src='http://scripts.easyliao.com/prd5/live/static/2019/js/chat.js?ver=20190708'></script>
+<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/util.js?ver=20190708'></script>
+<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/2020/chat.js?ver=20190708'></script>
 </body>
 </html>
