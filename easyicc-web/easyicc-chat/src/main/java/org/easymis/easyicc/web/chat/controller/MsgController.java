@@ -10,13 +10,28 @@ public class MsgController {
 
 	@RequestMapping("/msg")
 	public String index(String cmd) throws NoSuchAlgorithmException {
-		if(cmd.equals("getMessage"))
+		if (cmd.equals("getMessage"))
 			return getMessage("orgId");
+		else if (cmd.equals("addEvent"))
+			return addEvent("orgId");
+		else if (cmd.equals("chat"))
+			return chat("orgId");
+
 		return "/customerService";
 	}
-	public String getMessage(String orgId) throws NoSuchAlgorithmException {
 
-		return "/customerService";
-	}	
+	private String getMessage(String orgId) throws NoSuchAlgorithmException {
 
+		return "/msg/getMessage";
+	}
+
+	private String addEvent(String orgId) throws NoSuchAlgorithmException {
+
+		return "/msg/addEvent";
+	}
+
+	private String chat(String orgId) throws NoSuchAlgorithmException {
+
+		return "/msg/chat";
+	}
 }
