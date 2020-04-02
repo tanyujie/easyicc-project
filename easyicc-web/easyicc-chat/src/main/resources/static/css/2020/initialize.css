@@ -1,0 +1,75 @@
+/*######CSS Document ######*/
+html, body, div, span, object, iframe,h1, h2,
+h3, h4, h5, h6, p, blockquote, pre,abbr, address, cite, code,del, dfn,
+em, img, ins,kbd, q, samp,small, strong, sub, sup, var,b, i,dl, dt, dd,
+ol, ul, li,fieldset, form, label, legend,table, caption, tbody,
+tfoot,thead,tr, th, td,article, aside, canvas, details, figcaption,
+figure, footer, header, hgroup, menu, nav, section, summary,time, mark,
+audio, video, input, textarea {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    outline-style:none;
+    list-style:none;
+    font-family:"Microsoft YaHei";
+}
+body {
+    line-height:1;
+}
+a{
+    margin:0;
+    padding:0;
+    border:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+
+}
+a:hover,a:focus{
+    text-decoration:none;
+    bblr:expression(this.onFocus=this.blur());/*IE*/
+    outline-style:none;/*FF*/
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+/*######cssÎªclearfix£¬Çå³ý¸¡¶¯######*/
+.clearfix::before,
+.clearfix::after{
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix:after{clear:both;}
+.clearfix{
+    *zoom:1;/*IE/7/6*/
+}
+/*######×Ô¶¨Òå¹ö¶¯Ìõ######*/
+.scrollbar{
+    margin: 0 auto;
+}
+.test-1::-webkit-scrollbar {/*¹ö¶¯ÌõÕûÌåÑùÊ½*/
+    width: 8px;     /*¸ß¿í·Ö±ð¶ÔÓ¦ºáÊú¹ö¶¯ÌõµÄ³ß´ç*/
+    height: 10px;
+}
+.test-1::-webkit-scrollbar-thumb {/*¹ö¶¯ÌõÀïÃæÐ¡·½¿é*/
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #ddd;
+}
+.test-1::-webkit-scrollbar-track {/*¹ö¶¯ÌõÀïÃæ¹ìµÀ*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.01);
+    background: #eee;
+}
