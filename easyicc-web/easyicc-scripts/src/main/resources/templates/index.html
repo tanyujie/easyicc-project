@@ -1,15 +1,15 @@
 
 var JEASYICC_MESSAGE_TEXT;
-var jesong;
-window.sendJesongError = function(type, error){
+var jeasy;
+window.sendJeasyiccError = function(type, error){
 	var img = document.createElement("img");
 	img.src= "http://prd5.easyliao.com/i?cmd=loadError&c=12990&j=35018&type="+type+"&error="+(error ? window.encodeURIComponent(error) : "")+"&url="+window.encodeURIComponent(window.location.href);
 	img.style="border:0px;width:0px;height:0px;";
 	document.body.appendChild(img);
 };
 //连接错误处理
-window.jesongErrorTimeout = window.setTimeout(function(){
-	window.sendJesongError(2);
+window.jeasyiccErrorTimeout = window.setTimeout(function(){
+	window.sendJeasyiccError(2);
 }, 5000);
 (function(){
 	function isMobile(){
@@ -19,7 +19,7 @@ window.jesongErrorTimeout = window.setTimeout(function(){
 			return false;
 		}
 	}
-	if(jesong || (false && false != isMobile())){
+	if(jeasy || (false && false != isMobile())){
 		return;
 	}
 JEASYICC_MESSAGE_TEXT = {
@@ -32,7 +32,7 @@ JEASYICC_MESSAGE_TEXT = {
 	"inviteTitle":"inviteTitle",
 	"inviteText":""
 };
-jesong={	
+jeasy={	
 	lazy : false,
 	version : '20190927',
 	language : 'sc',
@@ -143,16 +143,16 @@ jesong={
 	init:function(){
 		console.log("begin index:init:function");
 		if(this._isBindHost()){
-			jesong.env.vId = this._genId();
+			jeasy.env.vId = this._genId();
 			this._createLayout("jesong_panel", "");
-			if(jesong.jsType == 1 && jesong.env.isPhone){
+			if(jeasy.jsType == 1 && jeasy.env.isPhone){
 				this._createLayout("jesong_chat_layout", "jesong_phone_layout jesong_phone_layout_sc_1");
 			}else{
 				this._createLayout("jesong_chat_layout", "jesong_chat_layout_pc jesong_chat_layout_pc_sc");
 			}
 			document.getElementById("jesong_chat_layout").style.display = "none";
 			this._createLayout("jesong_chat_min", "jesong_chat_min_sc");
-			this._createLayout("jesong_pop_msg", (jesong.jsType == 1 && jesong.env.isPhone) ? "jesong_pop_msg_phone" : "");
+			this._createLayout("jesong_pop_msg", (jeasy.jsType == 1 && jeasy.env.isPhone) ? "jesong_pop_msg_phone" : "");
 			if("https:" == document.location.protocol){
 				this.env.server.monitor = this.env.server.monitor.replace("http:", "https:");
 				this.env.server.chat = this.env.server.chat.replace("http:", "https:");
@@ -176,7 +176,7 @@ jesong={
 
 
 //访客监测
-jesong.monitor.config={
+jeasy.monitor.config={
 	index:11,
 	type:0,
 	title:JEASYICC_MESSAGE_TEXT.inviteTitle,
@@ -199,7 +199,7 @@ jesong.monitor.config={
 };
 
 
-jesong.panel.config={
+jeasy.panel.config={
 	category:'icon',	
 	position:0,
 	vertical:120,
@@ -211,7 +211,7 @@ jesong.panel.config={
 
 
 
-jesong.icon.config={
+jeasy.icon.config={
 	mode:1,
 	target:'24135',
 	online:'${jsConfig.iconOnlinePath!}',
@@ -230,7 +230,7 @@ jesong.icon.config={
 
 
 
-jesong.freecall.config = {
+jeasy.freecall.config = {
 	groupId : -1,
 	show : false,
 	panelPos : 0,
@@ -262,12 +262,12 @@ jesong.freecall.config = {
 };
 
 
-jesong.probe = {
+jeasy.probe = {
 	texts:"", 
 	groupIds:""
 };
 
-jesong.autochat={
+jeasy.autochat={
 	keyWord : null,
 	sendkeyWord : 0,
 	searchMode : 0,
@@ -314,13 +314,12 @@ jesong.autochat={
 		opacity : '80'
 	}
 };
-jesong.ocpc = {
+jeasy.ocpc = {
 	platform:'-1',
 	condition:'1',
 	configId:'0'
 };
-jesong.init();
-	console.log("begin index.js");
+jeasy.init();
 })();
 
 		
