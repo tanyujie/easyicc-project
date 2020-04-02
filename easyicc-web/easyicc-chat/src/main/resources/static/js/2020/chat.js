@@ -45,7 +45,7 @@ var time = 60;
 var t;
 var timer=null;
 var browserType = myexplorer();
-//tanyujie
+//tanyujie begin
 var visitorPhoneVerification=0;
 var popStyle=0;
 var bgColor="#409EFF";
@@ -56,6 +56,9 @@ var showToolFile=1;
 var showToolScreen=1;
 var showToolOpinion=1;
 var showToolQuiet=1;
+var inputText = '1'; 
+//tanyujie end
+
 if(isNullOrEmpty(visitorPhoneVerification)){
 	visitorPhoneVerification = 0;
 }
