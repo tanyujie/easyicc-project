@@ -12,7 +12,8 @@ public interface ChatRecordService {
 	public boolean save(ChatRecord bean);
 
 	public boolean update(ChatRecord bean);
-
+	public boolean saveOrUpdate(ChatRecord bean);
+	
 	public ChatRecord findById(String id);
 
 	public PageInfo<?> find(ChatRecord bean, Integer pageNum, Integer pageSize);
