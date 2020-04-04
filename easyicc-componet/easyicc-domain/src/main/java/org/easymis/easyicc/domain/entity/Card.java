@@ -1,11 +1,11 @@
 package org.easymis.easyicc.domain.entity;
 
-import java.util.Date;
-
 import lombok.Data;
 
 @Data
 public class Card extends VisitorInfo{
+
+
 	/**
 	 * 默认， 等待分配
 	 */
@@ -39,20 +39,19 @@ public class Card extends VisitorInfo{
 	 * 重复线索
 	 */
 	public final static int STATUS_REPEAT = 5;
-	
-	
+
 	//
 	private String backDesp;
     
     //回电说明
     private String finishDesp;
-    
-    private int isValid = 1;
+/*   
+    private int Valid = 1;
     
     private int isBack = 0;
     
     private int isExpired = 0;
-    
+       
     //退回类型
     private int backType = 0;
     
@@ -76,8 +75,10 @@ public class Card extends VisitorInfo{
     /**
      * 新增字段，这个字段来判断是否分配，mq after方法里会用到
      */
-    private boolean allocation;
+/*    private boolean allocation;
 	public boolean isSaleCard(){
 		return this.saleId != null && this.saleId.equals(this.userId);
-	}
+	}*/
+
+
 }
