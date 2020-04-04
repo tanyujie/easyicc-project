@@ -6,6 +6,7 @@ import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.ChatRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +22,19 @@ import io.swagger.annotations.ApiOperation;
 public class ChatRecordController extends IdentityRepository{
 	@Autowired
 	private ChatRecordService service;
+	@ApiOperation(value = "站点管理首页")
+	@RequestMapping(value = { "/im/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
+		String orgId = getOrgId();
+		ChatRecord bean = new ChatRecord();
+		bean.setOrgId(orgId);
+		if (pageNum == null)
+			pageNum = 1;
+		if (pageSize == null)
+			pageSize = 10;
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/chatRecord/im/index";
+	}
 	@ApiOperation(value = "查询接口", response = School.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
 			@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),

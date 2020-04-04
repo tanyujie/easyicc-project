@@ -2,7 +2,6 @@ package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.AutoReply;
-import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.AutoReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
