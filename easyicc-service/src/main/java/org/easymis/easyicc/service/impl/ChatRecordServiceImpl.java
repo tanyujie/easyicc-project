@@ -6,7 +6,6 @@ import java.util.List;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
-import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordMapper;
 import org.easymis.easyicc.service.ChatRecordService;
 import org.springframework.beans.factory.annotation.Autowired;

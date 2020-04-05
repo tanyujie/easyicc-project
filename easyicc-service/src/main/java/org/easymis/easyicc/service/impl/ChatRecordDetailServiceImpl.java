@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordDetailMapper;
@@ -13,6 +14,7 @@ import org.easymis.easyicc.service.ChatRecordDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
@@ -44,8 +46,10 @@ public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 	}
 	@Override
 	public PageInfo<?> find(ChatRecordDetail bean, Integer pageNum, Integer pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		PageHelper.startPage(pageNum, pageSize);
+		List<ChatRecordDetail> dataList = mapper.getList(bean);
+		PageInfo<ChatRecordDetail> p = new PageInfo<ChatRecordDetail>(dataList);
+		return p;
 	}
 
 	@Override
