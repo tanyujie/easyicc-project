@@ -1,5 +1,7 @@
 package org.easymis.easyicc.service;
 
+import java.util.List;
+
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
 
@@ -15,4 +17,6 @@ public interface CommonLanguageCategoryService {
 	public PageInfo find(CommonLanguageCategory bean, Integer pageNum, Integer pageSize);
 
 	public RestResult deleteByIds(String ids);
+
+	List<CommonLanguageCategory> findByOrgId(String orgId);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
+import org.easymis.easyicc.domain.vo.CommonLanguageTreeVo;
 import org.easymis.easyicc.mybatis.mapper.CommonLanguageCategoryMapper;
 import org.easymis.easyicc.service.CommonLanguageCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,12 @@ public class CommonLanguageCategoryServiceImpl implements CommonLanguageCategory
 		List<String> idsList = Arrays.asList(ids.split(","));
 		mapper.deleteBatch(idsList);
 		return RestResult.buildSuccess();
+	}
+
+	@Override
+	public List<CommonLanguageCategory> findByOrgId(String orgId) {
+		// TODO Auto-generated method stub
+		return mapper.findByOrgId(orgId);
 	}
 
 }
