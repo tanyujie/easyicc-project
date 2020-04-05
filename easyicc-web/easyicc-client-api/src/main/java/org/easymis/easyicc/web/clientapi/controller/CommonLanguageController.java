@@ -5,6 +5,7 @@ import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.CommonLanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -87,5 +88,17 @@ public class CommonLanguageController extends IdentityRepository {
 	@ResponseBody
 	public RestResult delete(String ids) {
 		return service.deleteByIds(ids);
+	}
+	@ApiOperation(value = "查询组织下所有常用语", notes = "JSON ", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@RequestMapping(value = { "/findByOrgId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public RestResult findByOrgId(String orgId) throws Exception {
+		return RestResult.buildSuccess(service.getListByTree(orgId));
+	}
+	@ApiOperation(value = "查询组织下所有常用语", notes = "JSON ", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@RequestMapping(value = { "/findByStaffId.json" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public RestResult listJson(String staffId) throws Exception {
+		return RestResult.buildSuccess(service.findByStaffId(staffId));
 	}
 }
