@@ -46,7 +46,10 @@ public interface CommonLanguageCategoryMapper {
 
 	@Select("select * from common_language_category t WHERE t.id = #{id}")
 	public CommonLanguageCategory findById(String id);
-
-	@Select(" SELECT t.* FROM common_language_category t }")
+	
+	@Select(" SELECT t.* FROM common_language_category t where t.org_id = #{orgId} ")
+	public List<CommonLanguageCategory> findByOrgId(@Param("orgId")String orgId);
+	
+	@Select(" SELECT t.* FROM common_language_category t ")
 	public List<CommonLanguageCategory> findByIds(List<String> list);
 }

@@ -11,7 +11,7 @@ import org.easymis.easyicc.domain.entity.CommonLanguage;
 
 public interface CommonLanguageMapper {
 	@Select({"<script>",
-        "SELECT * from common_language",
+        "SELECT * from common_language ",
         " <where> " +
         " <if test=\"orgId != null\"> AND org_id=#{orgId}</if> " +
         " <if test=\"staffId != null\"> AND staff_id=#{staffId}</if> " +
@@ -48,7 +48,12 @@ public interface CommonLanguageMapper {
 
 	@Select("select * from common_language t WHERE t.id = #{id}")
 	public CommonLanguage findById(@Param("id")String id);
-
-	@Select(" SELECT t.* FROM common_language t }")
+	@Select("select * from common_language t WHERE t.org_id = #{orgId} and staff_id is null")
+	public List<CommonLanguage> findByOrgId(@Param("orgId")String orgId);
+	
+	@Select("select * from common_language t WHERE t.staff_id = #{staffId}")
+	public List<CommonLanguage> findByStaffId(@Param("staffId")String staffId);
+	
+	@Select(" SELECT t.* FROM common_language t ")
 	public List<CommonLanguage> findByIds(List<String> list);
 }
