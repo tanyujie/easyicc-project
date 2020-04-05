@@ -2,10 +2,10 @@ package org.easymis.easyicc.web.clientapi.controller;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.HrmStaffInfo;
-import org.easymis.easyicc.domain.entity.HtmlAlias;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.HrmStaffInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,5 +97,11 @@ public class HrmStaffInfoController extends IdentityRepository{
 	@ResponseBody
 	public RestResult delete(String ids) {
 		return service.deleteByIds(ids);
+	}
+	@ApiOperation(value = "查询所有员工", notes = "JSON ", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	@RequestMapping(value = { "/list.json" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public RestResult listJson(ModelMap map) throws Exception {
+		return RestResult.buildSuccess(service.getListByDepartment("2018012402340575"));
 	}
 }
