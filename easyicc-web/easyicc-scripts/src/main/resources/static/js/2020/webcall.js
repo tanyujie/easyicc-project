@@ -34,8 +34,7 @@
 					if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;  
 					var exp  = new Date(); exp.setTime(exp.getTime() + t); 
 					document.cookie = name + "="+ escape (value)+ ";domain="+jeasy.util.getCookieDomain()+";expires=" + exp.toGMTString()+";path=/";
-				},jsonRequest:function(url,cb){
-					console.log("begin webcall:jsonRequest:function");
+				},jsonRequest:function(url,cb){					
 					jeasy.resp=null;
 					var u=url + '&x='+(new Date()).getTime();	
 					h = document.getElementsByTagName('head')[0];	
@@ -44,6 +43,7 @@
 					c.setAttribute("type","text/javascript");
 					h.appendChild(c);
 					c.setAttribute("src",u);
+					console.log("begin webcall:jsonRequest:function:"+u);
 					c.onreadystatechange =function(){	
 						if(c.readyState=='loaded'){
 							cb(c);
@@ -70,8 +70,17 @@
 					(v==null)||(v.style.display='none');
 					console.log("begin webcall:hide:function");
 				},							
-				log:function(s){var l=jeasy.util.$('log'); l.innerHTML += s + '</br>';l.scrollTop+=8000;},
-				attach:function(t,e,f){if(t.addEventListener) t.addEventListener(e,f,false);else if(t.attachEvent) t.attachEvent('on'+e,f);},			
+				log:function(s){
+					var l=jeasy.util.$('log'); 
+					l.innerHTML += s + '</br>';
+					l.scrollTop+=8000;
+				},
+				attach:function(t,e,f){
+					if(t.addEventListener) 
+						t.addEventListener(e,f,false);
+					else if(t.attachEvent) 
+						t.attachEvent('on'+e,f);
+				},			
 				getBody:function(){return(document.compatMode!="CSS1Compat")?document.body:document.documentElement;},
 				getDomain:function(url){
 					var domain = url.match(/(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i);
@@ -465,7 +474,8 @@
 		started:function(){return this.id!=0;}
 	};
 	jeasy.monitor.timer = 0;
-	jeasy.monitor.chat = {build:function(e){
+	jeasy.monitor.chat = {
+		build:function(e){
 		this.type= (e.e == '11')?1:0;
 		this.force = (e.m&&e.m.indexOf('<FORCE>') != -1);
 		this.cId = e.c;
@@ -476,7 +486,8 @@
 		var url = ev.server.monitor + 'i?cmd=monitorSuccess&c='+ev.compId+'&v='+ev.vId +"&t="+e.c+"&n="+e.s;
 		jeasy.util.jsonRequest(url,jeasy.monitor.pump);
 		
-	}};
+		}
+	};
 	jeasy.monitor.driver=function(){	
 		var ev = jeasy.env;
 		var url = ev.server.monitor + 'i?cmd=getEvent&c='+ev.compId+'&v='+ev.vId + '&p='+ev.pId;
@@ -767,6 +778,7 @@
 			ev.vId = v;	
 		}
 		var url = ev.server.monitor + 'i?cmd=init&c='+ev.compId+'&u='+ev.uId+"&v="+ev.vId;
+		alert("jeasy.monitor.chat4");
 		jeasy.util.jsonRequest(url,jeasy.monitor.pump);
 	};
 	jeasy.monitor.record=function(){
@@ -844,6 +856,7 @@
 				params.push("ext="+window.encodeURIComponent(exts));
 			}
 			params.push("url="+window.encodeURIComponent(window.location.href));
+			alert("jeasy.monitor.chat6");
 			jeasy.util.jsonRequest(url+"&"+params.join("&"), function(){});
 		}else{
 			alert("\u8bf7\u8f93\u5165\u6b63\u786e\u7684\u7535\u8bdd\u53f7\u7801\n\u5750\u673a\u8bf7\u4f7f\u7528\u4ee5\u4e0b\u683c\u5f0f:\u533a\u53f7-\u5ea7\u673a\u53f7-\u5206\u673a\u53f7");
@@ -1303,7 +1316,6 @@
 	}
 	//clearTimeout方法可取消由 setTimeout() 方法设置的定时操作
 	window.clearTimeout(window.jeasyiccErrorTimeout);
-	console.log("begin webcall.js");
 })();
 
 

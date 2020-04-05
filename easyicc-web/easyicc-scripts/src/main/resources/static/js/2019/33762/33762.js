@@ -1,22 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 var JESONG_MESSAGE_TEXT;
 var jesong;
 window.sendJesongError = function(type, error){

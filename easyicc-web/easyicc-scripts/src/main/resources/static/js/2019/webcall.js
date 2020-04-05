@@ -737,12 +737,17 @@
 			}
 		}
 	};
+	//设置监听器
 	jesong.monitor.start=function(){	
 		var con=jesong.monitor.config;
 		if(con.auto >= 0){
-			var now = new Date();var nh=now.getHours(),nm=now.getMinutes();		
-			function tonum(s){ var s1=s.replace(/:/g,'');
-				while(s1.charAt(0)=='0' && s1.length>1) s1=s1.substring(1); return parseInt(s1);}
+			var now = new Date();
+			var nh=now.getHours(),nm=now.getMinutes();		
+			function tonum(s){ 
+				var s1=s.replace(/:/g,'');
+				while(s1.charAt(0)=='0' && s1.length>1) s1=s1.substring(1); 
+				return parseInt(s1);
+			}
 			var h1=tonum(con.start);var h2=tonum(con.end);var n=tonum(nh+":"+((nm<10)?('0'+nm):nm));
 			var _flag = false;
 			if(h1 > h2 && ((h1 <= n && n < 2359) || (n > 0 && n <= h2))){

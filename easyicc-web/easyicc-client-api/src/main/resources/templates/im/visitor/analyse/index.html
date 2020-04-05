@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+ 
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ 
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form>
+<div class="row">
+  <div class="col-sm-3 col-md-6 col-lg-4 col-xl-2"></div>
+</div>
+</form>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>来访客人 </th>
+        <th>客人ID </th>
+        <th>进入时间</th>
+        <th>停留</th>
+        <th>来访 </th>
+        <th>最初访问 </th>
+        <th>离开页面 </th>        
+        <th>访问来源  </th>
+        <th>搜索词 </th>
+        <th>访问 </th>
+        <th>对话  </th>
+        <th>留言  </th>
+        <th>名片 </th>
+        <th>访客ip </th>
+        <th>访客姓名</th>
+        <th>访客手机 </th>
+        <th>邀请次数  </th>        
+      </tr>
+    </thead>
+    <tbody>
+			<#list pageInfo.list as cr>
+			<tr>
+				<td>${pageInfo.startRow+cr_index!}</td>
+				<td>${cr.visitorId!}</td>
+				<td style="width:120px;">${cr.createTime?string("yyyy-MM-dd HH:mm:ss")}</td>
+				<td>${cr.span!}</td>
+				<td>第${cr.visitorCount!}次</td>
+				<td>${cr.firstActiveUrl!}</td>
+				<td>${cr.lastActiveUrl!}</td>
+				<td>${cr.refer!}</td>
+				<td>${cr.keyword!}</td>
+				<td>${cr.viewPageCount!}页</td>
+				<td><#if cr.messageCount gt 0>有对话<#else>无对话</#if>
+				</td>
+				<td><#if cr.leaveMessageCount gt 0>留言<#else>无留言</#if></td>
+				<td>-</td>
+				<td>${cr.visitorIp!}</td>
+				<td>${cr.name!}</td>
+				<td>${cr.mobile!}</td>
+				<td>${cr.inviteTotal!}</td>
+				
+			</tr>
+			</#list>
+      
+    </tbody>
+</table>
+</body>
+</html>

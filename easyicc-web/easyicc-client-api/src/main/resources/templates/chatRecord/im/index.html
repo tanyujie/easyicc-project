@@ -1,13 +1,98 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<!-- 新 Bootstrap4 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+ 
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+ 
+<!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+ 
+<!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+<script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <body>
 
 
 
-<form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="file" /><br/><br/>
-    <input type="submit" value="Submit" />
-</form>
+	<form method="POST" action="/upload" enctype="multipart/form-data">
+
+	</form>
+	<table class="table table-striped">
+		<caption>基本的表格布局</caption>
+		<thead>
+			<tr>
+				<th style="width:20px;font-size: 12px;color: #888888;line-height:25px;">序号</th>
+				<th style="width:120px;font-size: 12px;color: #888888;line-height:25px;">接待标识</th>
+				<th style="width:120x;font-size: 12px;color: #888888;line-height:25px;">客服名称</th>
+				<th>客服Id</th>
+				<th>会话Id</th>
+				<th>访客标识</th>
+				<th>访客静态Id</th>
+				<th>姓名</th>
+				<th>备注</th>
+				<th>手机</th>
+				<th>电话</th>
+				<th>QQ</th>
+				<th>地区</th>
+				<th>微信</th>
+				<th>邮箱</th>
+				<th>性别</th>
+				<th>公司名称</th>
+				<th>对话归类</th>
+				<th>客服类型</th>
+				<th>会话标签</th>
+				<th>接入分组</th>
+				<th>对话开始时间</th>
+				<th>推广渠道</th>
+				<th>消息数</th>
+				<th>访客消息数</th>
+				<th>客服消息数</th>
+				<th>访客IP</th>
+				<th>省份</th>
+				<th>城市</th>
+				<th>对话总结标签</th>
+				<th>总结详情</th>
+				<th>来源地址</th>
+				<th>对话时间</th>
+				<th>有效沟通时间</th>
+				<th>搜索词</th>
+				<th>会话效果</th>
+				<th>最初访问</th>
+				<th>访客评价</th>
+				<th>评价原因</th>
+				<th>评价原因</th>
+				<th>子站点ID</th>
+				<th>子站点</th>
+				<th>对话页面</th>
+				<th>客服超时响应次数</th>
+				<th>对话质量</th>
+				<th>访客首次发消息时间</th>
+				<th>客服首次回复时间</th>
+				<th>客服首次响应时长</th>
+				<th>最后一条消息时间</th>
+				<th>会话设备类型</th>
+				<th>发起方式</th>
+				<th>结束方式</th>
+				<th>会话转移来源会话ID</th>
+				<th>会话转移接入方</th>
+				<th>搜索引擎</th>
+				<th>对话结束时间</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<#list pageInfo.list as cr>
+			<tr>
+				<td>${pageInfo.startRow+cr_index!}</td>
+				<td>Bangalore</td>
+				<td style="width:120px;">太原欧米奇机器人</td>
+				<td>${cr.id!}</td>
+				<td>${cr.id!}</td>
+			</tr>
+			</#list>
+		</tbody>
+	</table>
 
 </body>
 </html>

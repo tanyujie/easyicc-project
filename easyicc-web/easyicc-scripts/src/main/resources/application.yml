@@ -15,7 +15,7 @@ spring:
         name: easyicc-scripts
     # 环境 dev|test|prod
     profiles:
-       active: test
+       active: dev
     devtools:
       restart:
         enabled: true

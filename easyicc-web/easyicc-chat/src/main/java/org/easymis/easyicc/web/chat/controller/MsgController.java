@@ -2,10 +2,13 @@ package org.easymis.easyicc.web.chat.controller;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
+import org.easymis.easyicc.domain.entity.VisitorInfo;
 import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
 import org.easymis.easyicc.service.ChatRecordDetailService;
 import org.easymis.easyicc.service.ChatRecordService;
+import org.easymis.easyicc.service.VisitorInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ public class MsgController {
 	private ChatRecordService chatRecordService;
 	@Autowired
 	private ChatRecordDetailService chatRecordDetailService;
+	@Autowired
+	private VisitorInfoService visitorInfoService;
 	@RequestMapping("/msg.do")
 	public String index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
@@ -29,7 +34,7 @@ public class MsgController {
 		else if (cmd.equals("chat"))
 			return chat( v,  u,  userId,  c,  ext,  keys,
 					 values,  promotionId,  tag,  ref,  ocpcPlatform,  ocpcCondition,
-					 ocpcConfigId,  g,  chatType,  sid);
+					 ocpcConfigId,  g,  chatType,  sid,cId);
 
 		return "/customerService";
 	}
@@ -76,10 +81,20 @@ public class MsgController {
 		return "/msg/addEvent";
 	}
 
-	private String chat(String v, String u, String userId, String c, String ext, String keys[],
+	private String chat(String visitorId, String u, String userId, String orgId, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
-			String ocpcConfigId, String g, String chatType, String sid) throws NoSuchAlgorithmException {
-
+			String ocpcConfigId, String g, String chatType, String sid,String chatId) throws NoSuchAlgorithmException {
+		ChatRecord bean= new ChatRecord();
+		bean.setOrgId(orgId);
+		bean.setChatId(chatId);
+		bean.setVisitorId(visitorId);
+		chatRecordService.saveOrUpdate(bean);
+		
+		VisitorInfo visitorInfo= new VisitorInfo();
+		visitorInfo.setId(visitorId);
+		visitorInfo.setOrgId(orgId);
+		visitorInfo.setChatId(chatId);
+		//visitorInfoService.saveOrUpdate(visitorInfo);
 		return "/msg/chat";
 	}
 }

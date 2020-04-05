@@ -101,7 +101,7 @@ public class HrmStaffInfoController extends IdentityRepository{
 	@ApiOperation(value = "查询所有员工", notes = "JSON ", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	@RequestMapping(value = { "/list.json" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public RestResult listJson(ModelMap map) throws Exception {
+	public RestResult listJson(String orgId) throws Exception {
 		return RestResult.buildSuccess(service.getListByDepartment("2018012402340575"));
 	}
 }
