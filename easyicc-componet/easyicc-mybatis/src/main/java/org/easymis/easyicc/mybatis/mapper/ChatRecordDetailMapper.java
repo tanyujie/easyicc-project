@@ -4,10 +4,18 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
 
 public interface ChatRecordDetailMapper {
+	@Select({ "<script>", "SELECT * from chat_record",
+		" <where> " + 
+		" <if test=\"orgId != null\"> AND org_id=#{orgId}</if> " +
+
+		" </where> " + 
+		"</script>" })
+	public List<ChatRecord> getList(ChatRecordDetail params);
 	@Insert("insert into chat_record_detail(org_id, chat_id, recorder_id, create_Time, type, message, from_id)"
 			+ "values"
 			+ "(#{orgId},#{chatId},#{recorderId},#{createTime},#{type},#{message},#{fromId})")
