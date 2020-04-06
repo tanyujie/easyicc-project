@@ -7,6 +7,7 @@ import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 import org.easymis.easyicc.domain.vo.DepartmentTreeVo;
 import org.easymis.easyicc.domain.vo.StaffInfoVo;
+import org.easymis.easyicc.domain.vo.StaffOnlineTreeVo;
 import org.easymis.easyicc.mybatis.mapper.HrmStaffInfoMapper;
 import org.easymis.easyicc.service.DepartmentService;
 import org.easymis.easyicc.service.HrmStaffInfoService;
@@ -104,5 +105,11 @@ public class HrmStaffInfoServiceImpl implements HrmStaffInfoService {
 		}
 		return list;
 
+	}
+
+	@Override
+	public List<StaffOnlineTreeVo> findByOnlineTree(String orgId) {
+		// TODO Auto-generated method stub
+		return mapper.findByOnlineTree(orgId);
 	}
 }

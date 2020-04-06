@@ -15,6 +15,8 @@ public interface ChatRecordDetailService {
 
 	public ChatRecordDetail findById(String id);
 
+	public List<ChatRecordDetail> findByChatId(String chatId);
+
 	public List<ChatRecordDetail> findList(ChatRecordDetailVo vo);
 
 	public PageInfo<?> find(ChatRecordDetail bean, Integer pageNum, Integer pageSize);

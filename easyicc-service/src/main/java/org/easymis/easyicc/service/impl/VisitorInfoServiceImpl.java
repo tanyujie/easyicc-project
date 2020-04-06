@@ -2,6 +2,7 @@ package org.easymis.easyicc.service.impl;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.VisitorInfo;
@@ -15,14 +16,15 @@ public class VisitorInfoServiceImpl implements VisitorInfoService {
 	private VisitorInfoMapper mapper;
 	@Override
 	public boolean save(VisitorInfo bean) {
-		// TODO Auto-generated method stub
+		bean.setId(UUID.randomUUID().toString().replace("-", ""));
+		bean.setCreateTime(new Date());
 		return mapper.save(bean);
 	}
 
 	@Override
 	public boolean update(VisitorInfo bean) {
-		// TODO Auto-generated method stub
-		return false;
+		bean.setUpdateTime(new Date());
+		return mapper.update(bean);
 	}
 
 	@Override

@@ -58,5 +58,11 @@ public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 		return null;
 	}
 
+	@Override
+	public List<ChatRecordDetail> findByChatId(String chatId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
