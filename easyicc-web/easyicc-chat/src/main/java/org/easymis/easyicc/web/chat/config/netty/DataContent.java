@@ -11,6 +11,7 @@ public class DataContent implements Serializable {
 	private Integer action;		// 动作类型
 	private ChatMsg chatMsg;	// 用户的聊天内容entity
 	private String extand;		// 扩展字段
+	private Object data;
 	
 	public Integer getAction() {
 		return action;
@@ -29,6 +30,13 @@ public class DataContent implements Serializable {
 	}
 	public void setExtand(String extand) {
 		this.extand = extand;
+	}
+	
+	public Object getData() {
+		return data;
+	}
+	public void setData(Object data) {
+		this.data = data;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
