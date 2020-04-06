@@ -28,4 +28,9 @@ public interface ChatRecordMapper {
 
 	@Select("select * from chat_record t WHERE t.chat_id = #{chatId}")
 	ChatRecord findById(@Param("chatId") String chatId);
+	@Select("select * from chat_record t WHERE t.visitor_id = #{visitorId}")
+	public List<ChatRecord> findByVisitorId(String visitorId);
+	
+	@Select("select * from chat_record t WHERE t.connected =1 and org_id= #{orgId}")
+	public List<ChatRecord> findOnline(@Param("orgId")String orgId);
 }

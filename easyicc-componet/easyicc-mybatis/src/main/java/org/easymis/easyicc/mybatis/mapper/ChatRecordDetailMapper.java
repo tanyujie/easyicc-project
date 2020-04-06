@@ -15,9 +15,9 @@ public interface ChatRecordDetailMapper {
 		" </where> " + 
 		"</script>" })
 	public List<ChatRecordDetail> getList(ChatRecordDetail params);
-	@Insert("insert into chat_record_detail(org_id, chat_id, recorder_id, create_Time, type, message, from_id)"
+	@Insert("insert into chat_record_detail(org_id, chat_id, recorder_id, create_Time, type, message, from_user_id,to_user_id)"
 			+ "values"
-			+ "(#{orgId},#{chatId},#{recorderId},#{createTime},#{type},#{message},#{fromId})")
+			+ "(#{orgId},#{chatId},#{recorderId},#{createTime},#{type},#{message},#{fromUserId},#{toUserId})")
 	boolean insertByBean(ChatRecordDetail bean);
 	@Select("<script>" + "SELECT * FROM chat_record_detail "+
             " <where> " +
@@ -25,7 +25,7 @@ public interface ChatRecordDetailMapper {
             " <if test=\"chatId != null\"> AND chat_id=#{chatId}</if> " +
             " </where> " +
             "<if test='start!=null'>" +
-            " LIMIT #{start}" +
+            " LIMIT #{start},1000" +
             "</if>" +
 			"</script>")
 	public List<ChatRecordDetail> findList(ChatRecordDetailVo bean);
