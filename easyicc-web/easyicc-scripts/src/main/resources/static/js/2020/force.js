@@ -1514,7 +1514,7 @@
 							JS("jesong_opinion_layout").hide();
 							JS("jesong_emoticon_layout").hide();
 							JS("jesong_file_layout").show();
-							document.getElementById("jesong_file_frame").src= jeasy.env.server.chat + "file.jsp?chatId="+this.chatId+"&cId="+this.companyId+"&vId="+this.visitorId+"&lang="+jeasy.language;
+							document.getElementById("jesong_file_frame").src= jeasy.env.server.chat + "file/upload.html?chatId="+this.chatId+"&cId="+this.companyId+"&vId="+this.visitorId+"&lang="+jeasy.language;
 						}else{
 							JS("jesong_file_layout").hide();
 						}

@@ -778,7 +778,6 @@
 			ev.vId = v;	
 		}
 		var url = ev.server.monitor + 'i?cmd=init&o='+ev.compId+'&u='+ev.uId+"&v="+ev.vId;
-		alert("jeasy.monitor.chat4");
 		jeasy.util.jsonRequest(url,jeasy.monitor.pump);
 	};
 	jeasy.monitor.record=function(){
