@@ -3,6 +3,7 @@ package org.easymis.easyicc.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.ChatRecord;
@@ -27,7 +28,7 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 	private HrmStaffInfoService hrmStaffInfoService;
 	@Override
 	public boolean save(ChatRecord bean) {
-		// TODO Auto-generated method stub
+		bean.setChatId(UUID.randomUUID().toString().replace("-", ""));
 		return mapper.save(bean);
 	}
 
