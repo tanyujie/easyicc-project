@@ -17,7 +17,7 @@
 	var scheme = "http";
 	var schemePort = "80";
 	
-	var staticFilePath = "http://scripts.easyliao.com/prd5/live/";
+	var staticFilePath = "http://127.0.0.1:5031/chat/";
 	
 	var promotionId = 0;
 	var chatType = "pc";
@@ -89,18 +89,18 @@
 <body>
 <div class="container-screen">
     <div class="header-img">
-        <div class="brand-img"></div>
+        <div class="brand-img" style="background: url("http://127.0.0.1:5031/chat/images/logo.png") left center no-repeat;"></div>
     </div>
     <div class="main">
         <div id="chatDiv" class="main-aside-left test-1">
 	        
             <!-- <div class="scrollbar"></div> -->
             <!-- logo气泡 -->
-            <!-- 
-            <div class="logo-bubble">
-                <img src="http://scripts.easyliao.com/prd5/live/static/2019/images/logo.png" alt=""/>
-            </div>
-             -->
+            
+            <!-- <div class="logo-bubble">
+                <img src="${request.contextPath}/images/2020/logo.png" alt=""/>
+            </div> -->
+             
         </div>
         <div class="emoticon-layout pop-window">
        		<div class="emoticons"></div>
@@ -119,7 +119,7 @@
             <div class="tab-content test-1">
                 <div class="tabs show" id="service-info">
                     <p class="service-icon">
-                        <img id="custHead" src="http://scripts.easyliao.com/prd5/live/static/2019/images/portrait.png" alt=""/>
+                        <img id="custHead" src="${request.contextPath}/images/2020/portrait.png" alt=""/>
                     </p>
                     <h4 class="service-number">客服：<span id="custName"></span></h4>
                     <p><span class="icon-1">部门： </span><span id="custDept"></span></p>
@@ -154,7 +154,7 @@
             </div>
         </div>
         <div class="footer-aside-right">
-            <img src="http://scripts.easyliao.com/prd5/live/static/2019/images/ad-space.png" alt=""/>
+            <img src="${request.contextPath}/images/2020/ad-space.png" alt=""/>
         </div>
     </div>
 </div>
@@ -192,7 +192,7 @@
 <div id="jesong_sound" style="display:none;">
 	<audio id="jesong_audio" src="./wav/sound.wav"></audio>
 </div>
-<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/util.js?ver=20190708'></script>
-<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/2020/chat.js?ver=20190708'></script>
+<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/util.js?ver=20200408'></script>
+<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/2020/chat.js?ver=20200408'></script>
 </body>
 </html>
