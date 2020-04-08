@@ -201,7 +201,7 @@ function initUI(){
 			if((i-1)%5 == 0){
 				style = "clear:both;";
 			}
-			$("<div class=\"emot\" style=\""+style+"\"><img src=\""+staticFilePath+"emoticon/new/"+img+".png\"></img></div>").data("img",img).appendTo($(".emoticon-layout .emoticons"));
+			$("<div class=\"emot\" style=\""+style+"\"><img src=\""+staticFilePath+"emoticon/"+img+".png\"></img></div>").data("img",img).appendTo($(".emoticon-layout .emoticons"));
 		}
 		
 		$(".emoticon-layout .emot").hover(function(){
@@ -210,7 +210,7 @@ function initUI(){
 			$(this).css("backgroundColor", "#ffffff");
 		}).click(function(){
 			var img = $(this).data("img");
-			appendEmot("["+img+"]", staticFilePath + "emoticon/new/"+img+".png");
+			appendEmot("["+img+"]", staticFilePath + "emoticon/"+img+".png");
 			$(".emoticon-layout").hide();
 		});
 		$("#emoticonBtn").click(function(){
@@ -794,7 +794,7 @@ function sendMessage() {
 		return;
 	}*/
 
-	var msg =$("#message").val();alert(msg);
+	var msg =$("#message").val();
 //	var phoneNum = msg.replace(/[^0-9]?/ig,"");
 	var phoneNum = getValue(msg);
 	var sessionBox = sessionStorage.getItem('phone');
@@ -1565,7 +1565,7 @@ function getInputingStyleDiv(userName){
 				(popStyle == "1" || isPhone() ? "<div class=\"service-bubble-icon\"><img src=\""+userHead+"\"/></div>" : "")+
     			"<div class=\"service-bubble-con\">"+
 	    			"<div class=\"service-session\"><span>"+userName+"</span><span>"+getPhoneTime()+"</span></div>"+
-		    		"<div class=\"service-session-con\"><img src=\"static/2019/images/inputting.gif\" alt=\"\" style=\"width:14px;height:14px;\"/><span style=\"line-height:14px;padding-left:4px;\">"+langConfig["inputting"]+"</span></div>"+
+		    		"<div class=\"service-session-con\"><img src=\"images/2020/inputting.gif\" alt=\"\" style=\"width:14px;height:14px;\"/><span style=\"line-height:14px;padding-left:4px;\">"+langConfig["inputting"]+"</span></div>"+
 		    	"</div>" +
 		    "</div>";
 }
@@ -1683,7 +1683,7 @@ function transferFile() {
     	return false;
     }
     var fileType = fileFullPath.substring(fileFullPath.lastIndexOf('.'));
-    var url = './receive.jsp?fileType='+fileType+'&chatId='+chatId+'&cId='+companyId;
+    var url = './file/upload.do?fileType='+fileType+'&chatId='+chatId+'&cId='+companyId;
    	$(uploadForm).attr('action',url);
     uploadForm.submit();
 }
