@@ -99,7 +99,7 @@ public class MsgController {
 		ChatRecordDetailVo vo = new ChatRecordDetailVo();
 		vo.setChatId(chatId);
 		List<ChatRecordDetail> list = new ArrayList();
-		if (start == 0 && start == 0) {
+		if (start == 0 && vstart == 0) {
 			vo.setStart(start);
 			list = chatRecordDetailService.findList(vo);
 		}else if (start > vstart) {

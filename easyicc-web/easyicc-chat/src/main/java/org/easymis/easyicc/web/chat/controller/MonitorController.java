@@ -14,14 +14,16 @@ public class MonitorController {
 	@Autowired
     private ChatRecordService chatRecordService;
 	@RequestMapping("/i")
-	public String index(Model model,String cmd,String o,String v,String u,String p,String ref,String h,String w,String scn,String t,String vc,String ac,String ic,String dc,String sid,String promotionId,String x) throws NoSuchAlgorithmException {
-		if(cmd.equals("init"))
-			return init(model,"orgId");
-		else if(cmd.equals("add"))
-			return add(model,o,v,u,p,ref,h,w,scn,t,vc,ac,ic,dc,sid,promotionId,x);
-		else if(cmd.equals("getEvent"))
-			return getEvent(model,"orgId");
-		
+	public String index(Model model, String cmd, String o, String v, String u, String p, String ref, String h, String w,
+			String scn, String t, String vc, String ac, String ic, String dc, String sid, String promotionId, String x)
+			throws NoSuchAlgorithmException {
+		if (cmd.equals("init"))
+			return init(model, "orgId");
+		else if (cmd.equals("add"))
+			return add(model, o, v, u, p, ref, h, w, scn, t, vc, ac, ic, dc, sid, promotionId, x);
+		else if (cmd.equals("getEvent"))
+			return getEvent(model, o, v, p, x);
+
 		return "/customerService";
 	}
 	
@@ -38,8 +40,10 @@ public class MonitorController {
 		model.addAttribute("visitorId", visitorId);
 		return "/monitor/add";
 	}	
-	private String getEvent(Model model,String orgId)throws NoSuchAlgorithmException {
-
+	private String getEvent(Model model,String orgId,String visitorId,String p,String x)throws NoSuchAlgorithmException {
+		ChatRecord bean=chatRecordService.findByVisitorId(visitorId);
+		model.addAttribute("chatId", bean.getChatId());
+		//model.addAttribute("customerId", bean.get)
 		return "/monitor/event";
 	}	
 
