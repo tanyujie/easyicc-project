@@ -17,6 +17,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.util.StringUtil;
+
 @Controller
 public class MsgController {
 	@Autowired
@@ -27,22 +30,31 @@ public class MsgController {
 	private VisitorInfoService visitorInfoService;
 	@RequestMapping("/msg.do")
 	@ResponseBody
-	public HashMap index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
+	public String index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
 			String ocpcConfigId, String g, String chatType, String sid, String cId, Integer start, Integer vstart,
-			String msg, Integer force,String op,String b_op,String desp) throws NoSuchAlgorithmException {
+			String msg, Integer force,String op,String b_op,String desp,String uId,String callback) throws NoSuchAlgorithmException {
+		HashMap prinMap= new HashMap();
 		if (cmd.equals("getMessage"))
-			return getMessage(c, v, u, cId, start, vstart);
+			prinMap= getMessage(c, v, u, cId, start, vstart);
 		else if (cmd.equals("addEvent"))
-			return addEvent("orgId");
+			prinMap= addEvent("orgId");
 		else if (cmd.equals("addMessage"))
-			return addMessage(c, cId, v, msg, force);
+			prinMap= addMessage(c, cId, v, msg, force);
 		else if (cmd.equals("chat"))
-			return chat(v, u, userId, c, ext, keys, values, promotionId, tag, ref, ocpcPlatform, ocpcCondition,
+			prinMap= chat(v, u, userId, c, ext, keys, values, promotionId, tag, ref, ocpcPlatform, ocpcCondition,
 					ocpcConfigId, g, chatType, sid, cId);
 		else if (cmd.equals("opinion"))
-			return opinion(cId, c, op, b_op, desp, v, u);
-		return null;
+			prinMap= opinion(cId, c, op, b_op, desp, v, u);
+		else if (cmd.equals("isChatExist")) {
+			prinMap= isChatExist(c, uId,force);			
+		}
+		JSONObject jsonObj = new JSONObject(prinMap);//转化为json格式
+		if(StringUtil.isNotEmpty(callback)) {
+			return callback+'('+jsonObj.toJSONString()+");";
+		}
+
+		return jsonObj.toJSONString();
 		// return "/customerService";
 	}
 	/**
@@ -112,7 +124,17 @@ public class MsgController {
 	private HashMap opinion(String chatId,String orgId,String op,String b_op,String desp,String visitorId,String u) throws NoSuchAlgorithmException {
 		return new HashMap();
 	}
-	
+
+	private HashMap isChatExist(String orgId, String uId, Integer force)
+			throws NoSuchAlgorithmException {
+		HashMap map = new HashMap();
+		map.put("result", "success");
+		map.put("exist", true);
+		map.put("chatId", "343076868");
+		map.put("customerId", "AI-ylkj");
+		map.put("visitorId", "01000000012990630423857861418213");
+		return map;
+	}
 	private HashMap chat(String visitorId, String u, String userId, String orgId, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
 			String ocpcConfigId, String g, String chatType, String sid,String chatId) throws NoSuchAlgorithmException {
