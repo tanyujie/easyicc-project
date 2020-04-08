@@ -1,7 +1,9 @@
 package org.easymis.easyicc.web.chat.controller;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
@@ -27,9 +29,9 @@ public class MsgController {
 	@ResponseBody
 	public HashMap index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
-			String ocpcConfigId, String g, String chatType, String sid,String cId,Integer start,Integer vStart,String msg,Integer force) throws NoSuchAlgorithmException {
+			String ocpcConfigId, String g, String chatType, String sid,String cId,Integer start,Integer vstart,String msg,Integer force) throws NoSuchAlgorithmException {
 		if (cmd.equals("getMessage"))
-			return getMessage(c,v,u,cId,start,vStart);
+			return getMessage(c,v,u,cId,start,vstart);
 		else if (cmd.equals("addEvent"))
 			return addEvent("orgId");
 		else if (cmd.equals("addMessage"))
@@ -56,8 +58,9 @@ public class MsgController {
 		ChatRecordDetail bean= new ChatRecordDetail();
 		bean.setOrgId(orgId);
 		bean.setChatId(chatId);
-		bean.setMessage(message);
+		bean.setMessage(transformEmoticon(message));
 		bean.setFromUserId(fromId);
+		bean.setType("RECORD_RECORD");
 		bean.setToUserId("AI-ylkj");
 		chatRecordDetailService.save(bean);
 		return new HashMap();
@@ -76,22 +79,27 @@ public class MsgController {
 　 * @throws NoSuchAlgorithmException
  */
 	
-	private HashMap getMessage(String orgId,String visitorId,String u,String chatId,Integer start,Integer vStart) throws NoSuchAlgorithmException {
+	private HashMap getMessage(String orgId, String visitorId, String u, String chatId, Integer start, Integer vstart)
+			throws NoSuchAlgorithmException {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		ChatRecordDetailVo vo = new ChatRecordDetailVo();
 		vo.setChatId(chatId);
-		if(start==null)
-			start=0;
-		if(vStart==null)
-			vStart=0;
-		if (start > vStart)
+		List<ChatRecordDetail> list = new ArrayList();
+		if (start == 0 && start == 0) {
 			vo.setStart(start);
-		else
-			vo.setStart(vStart);
+			list = chatRecordDetailService.findList(vo);
+		}else if (start > vstart) {
+			vo.setToUserId(visitorId);
+			vo.setStart(start);
+			list = chatRecordDetailService.findList(vo);
+		} else {
+			vo.setFromUserId(visitorId);
+			vo.setStart(vstart);
+		}
 		map.put("result", "success");
 		map.put("msgs", chatRecordDetailService.findList(vo));
 		return map;
-		//return "/msg/getMessage";
+		// return "/msg/getMessage";
 	}
 
 	private HashMap addEvent(String orgId) throws NoSuchAlgorithmException {
@@ -143,5 +151,27 @@ public class MsgController {
 		
 		return map;
 		//return "/msg/chat";
+	}
+
+	private String transformEmoticon(String message) {
+		message.replace("[01]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[02]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[03]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[04]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[05]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[06]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[07]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[08]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[09]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[10]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[11]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[12]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[13]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[14]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[15]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[16]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[17]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message.replace("[18]", "<img src='emoticon/06.png' alt='' border='0' />");
+		return message;
 	}
 }
