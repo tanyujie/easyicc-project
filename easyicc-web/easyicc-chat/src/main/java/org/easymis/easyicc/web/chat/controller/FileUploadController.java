@@ -3,10 +3,15 @@ package org.easymis.easyicc.web.chat.controller;
 import java.io.IOException;
 import java.io.InputStream;
 
+import org.easymis.easyicc.domain.entity.ChatRecord;
+import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.fastdfs.FastDFSClient;
 import org.easymis.easyicc.fastdfs.FastDFSFile;
+import org.easymis.easyicc.service.ChatRecordDetailService;
+import org.easymis.easyicc.service.ChatRecordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +26,10 @@ import io.swagger.annotations.Api;
 @Controller
 @RequestMapping("/file")
 public class FileUploadController extends IdentityRepository{
+	@Autowired
+	private ChatRecordService chatRecordService;
+	@Autowired
+	private ChatRecordDetailService chatRecordDetailService;
     private static Logger logger = LoggerFactory.getLogger(FileUploadController.class);
 
     @GetMapping("/")
@@ -29,7 +38,7 @@ public class FileUploadController extends IdentityRepository{
     }
 
     @PostMapping("/upload.do")
-    public String singleFileUpload(@RequestParam("file") MultipartFile file,
+    public String singleFileUpload(@RequestParam("file") MultipartFile file,String chatId,String cId,
                                    RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
@@ -44,7 +53,15 @@ public class FileUploadController extends IdentityRepository{
         } catch (Exception e) {
             logger.error("upload file failed",e);
         }*/
-        return "/uploadStatus";
+        ChatRecord chatRecord=chatRecordService.findById(chatId);
+		ChatRecordDetail bean= new ChatRecordDetail();
+		bean.setOrgId(chatRecord.getOrgId());
+		bean.setChatId(chatId);
+		bean.setMessage("http://file.easyliao.com/M00/20/F9/Ch6jw16NRdaEJxfQAAAAAAaI_Ug622.png?ext=.png");
+		bean.setFromUserId(chatRecord.getVisitorId());
+		bean.setType("RECORD_FILE");
+		chatRecordDetailService.save(bean);
+        return "/file/uploadStatus";
     }
 
     @GetMapping("/uploadStatus")
