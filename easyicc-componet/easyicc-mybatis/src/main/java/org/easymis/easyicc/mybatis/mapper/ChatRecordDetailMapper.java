@@ -23,6 +23,8 @@ public interface ChatRecordDetailMapper {
             " <where> " +
             " <if test=\"orgId != null\">org_id=#{orgId}</if> " +
             " <if test=\"chatId != null\"> AND chat_id=#{chatId}</if> " +
+            " <if test=\"fromUserId != null\"> AND from_user_id=#{fromUserId}</if> " +
+            " <if test=\"toUserId != null\"> AND to_user_id=#{toUserId}</if> " +
             " </where> " +
             "<if test='start!=null'>" +
             " LIMIT #{start},1000" +

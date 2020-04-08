@@ -39,7 +39,7 @@ public interface JsConfigMapper {
 	public void deleteBatch(List<String> list);
 
 	@Select("select * from js_config t WHERE t.config_id = #{configId}")
-	public JsConfig findById(String configId);
+	public JsConfig findById(@Param("configId")String configId);
 
 	@Select(" SELECT t.* FROM js_config t }")
 	public List<JsConfig> findByIds(List<String> list);
