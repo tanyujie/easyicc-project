@@ -1,0 +1,49 @@
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<script type='text/javascript' src='lang/sc.js?ver=20160307'></script>
+	<style type="text/css">
+		*{margin:0; padding:0;}
+		form input{float:left;height:22px;width:200px;line-height:18px;margin-top:3px;}
+		form input.send{float:right;width:40px;margin-right:2px;}
+	</style>
+  </head>
+  <script>
+  	function transferFile(){
+  		var fileFullPath = document.getElementById("file").value;
+	    if(fileFullPath==''){
+	    	alert(langConfig["groupFileWarning"]);//请选择一个要上传的文件！
+	    	return false;
+	    }
+	    var fileType = fileFullPath.substring(fileFullPath.lastIndexOf('.'));
+	    var action = "http://127.0.0.1:5031/chat/file/upload.do?fileType="+fileType+"&chatId=343133729&cId=12990&vId=01000000012990630423857861418213";
+	    var uploadForm = document.getElementById("jeasyicc_file_form");
+	    uploadForm.action=action;
+	    uploadForm.submit();
+  	}
+  	function uploadErr(msg){
+  		alert(msg);
+  	}
+   	function uploadfinish(file){
+   		alert(file);
+   	}
+  </script>
+  <body>
+  	<div style="width:100%;height:100%;">
+	  	<form id="jeasyicc_file_form" action="receive2.jsp" method="post" enctype="multipart/form-data">
+			<input id="file" name="file" type="file"/>
+			<input type="button" class="send" value="发送" onclick="transferFile()"/>
+		</form>
+	</div>
+  </body>
+  <script>
+  	
+  </script>
+</html>
