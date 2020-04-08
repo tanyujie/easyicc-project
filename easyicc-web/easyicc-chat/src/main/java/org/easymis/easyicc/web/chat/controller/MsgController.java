@@ -29,23 +29,25 @@ public class MsgController {
 	@ResponseBody
 	public HashMap index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
-			String ocpcConfigId, String g, String chatType, String sid,String cId,Integer start,Integer vstart,String msg,Integer force) throws NoSuchAlgorithmException {
+			String ocpcConfigId, String g, String chatType, String sid, String cId, Integer start, Integer vstart,
+			String msg, Integer force,String op,String b_op,String desp) throws NoSuchAlgorithmException {
 		if (cmd.equals("getMessage"))
-			return getMessage(c,v,u,cId,start,vstart);
+			return getMessage(c, v, u, cId, start, vstart);
 		else if (cmd.equals("addEvent"))
 			return addEvent("orgId");
 		else if (cmd.equals("addMessage"))
-			return addMessage(c,cId,v,msg,force);
+			return addMessage(c, cId, v, msg, force);
 		else if (cmd.equals("chat"))
-			return chat( v,  u,  userId,  c,  ext,  keys,
-					 values,  promotionId,  tag,  ref,  ocpcPlatform,  ocpcCondition,
-					 ocpcConfigId,  g,  chatType,  sid,cId);
+			return chat(v, u, userId, c, ext, keys, values, promotionId, tag, ref, ocpcPlatform, ocpcCondition,
+					ocpcConfigId, g, chatType, sid, cId);
+		else if (cmd.equals("opinion"))
+			return opinion(cId, c, op, b_op, desp, v, u);
 		return null;
-		//return "/customerService";
+		// return "/customerService";
 	}
 	/**
 	 * 
-	*<p>Title: addMessage</p>
+	*<p>Title: 发送消息</p>
 	*<p>Description: </p>
 	　 * @param orgId orgId,组织id
 	　 * @param chatId 对话id
@@ -106,7 +108,11 @@ public class MsgController {
 		return new HashMap();
 		//return "/msg/addEvent";
 	}
-
+	//添加评论
+	private HashMap opinion(String chatId,String orgId,String op,String b_op,String desp,String visitorId,String u) throws NoSuchAlgorithmException {
+		return new HashMap();
+	}
+	
 	private HashMap chat(String visitorId, String u, String userId, String orgId, String ext, String keys[],
 			String values[], String promotionId, String tag, String ref, Integer ocpcPlatform, Integer ocpcCondition,
 			String ocpcConfigId, String g, String chatType, String sid,String chatId) throws NoSuchAlgorithmException {
@@ -154,24 +160,24 @@ public class MsgController {
 	}
 
 	private String transformEmoticon(String message) {
-		message.replace("[01]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[02]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[03]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[04]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[05]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[06]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[07]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[08]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[09]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[10]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[11]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[12]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[13]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[14]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[15]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[16]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[17]", "<img src='emoticon/06.png' alt='' border='0' />");
-		message.replace("[18]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message=message.replace("[01]", "<img src='emoticon/01.png' alt='' border='0' />");
+		message=message.replace("[02]", "<img src='emoticon/02.png' alt='' border='0' />");
+		message=message.replace("[03]", "<img src='emoticon/03.png' alt='' border='0' />");
+		message=message.replace("[04]", "<img src='emoticon/04.png' alt='' border='0' />");
+		message=message.replace("[05]", "<img src='emoticon/05.png' alt='' border='0' />");
+		message=message.replace("[06]", "<img src='emoticon/06.png' alt='' border='0' />");
+		message=message.replace("[07]", "<img src='emoticon/07.png' alt='' border='0' />");
+		message=message.replace("[08]", "<img src='emoticon/08.png' alt='' border='0' />");
+		message=message.replace("[09]", "<img src='emoticon/09.png' alt='' border='0' />");
+		message=message.replace("[10]", "<img src='emoticon/10.png' alt='' border='0' />");
+		message=message.replace("[11]", "<img src='emoticon/11.png' alt='' border='0' />");
+		message=message.replace("[12]", "<img src='emoticon/12.png' alt='' border='0' />");
+		message=message.replace("[13]", "<img src='emoticon/13.png' alt='' border='0' />");
+		message=message.replace("[14]", "<img src='emoticon/14.png' alt='' border='0' />");
+		message=message.replace("[15]", "<img src='emoticon/15.png' alt='' border='0' />");
+		message=message.replace("[16]", "<img src='emoticon/16.png' alt='' border='0' />");
+		message=message.replace("[17]", "<img src='emoticon/17.png' alt='' border='0' />");
+		message=message.replace("[18]", "<img src='emoticon/18.png' alt='' border='0' />");
 		return message;
 	}
 }
