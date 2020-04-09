@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class IndexConfig implements WebMvcConfigurer {
 	 @Override
 	    public void addViewControllers(ViewControllerRegistry registry) {
-	        registry.addViewController( "/" ).setViewName( "forward:/index-config.html" );
+	        registry.addViewController( "/" ).setViewName( "forward:/index.html" );
 	        registry.setOrder( Ordered.HIGHEST_PRECEDENCE );
 	        WebMvcConfigurer.super.addViewControllers(registry);
 	    }	
