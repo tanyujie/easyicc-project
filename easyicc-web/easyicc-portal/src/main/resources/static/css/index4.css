@@ -42,7 +42,7 @@
 
 .slideBox .bd {
     position: relative;
-    height: 100%;
+    height: 70%;
     z-index: 0;
 }
 
@@ -338,7 +338,7 @@
 }
 
 .i_four {
-    background: url("../image/fo_bac1.jpg")no-repeat;
+    background: url("../images/fo_bac1.jpg")no-repeat;
     background-size: 100% 100%;
     width: 100%;
     height: 600px;
