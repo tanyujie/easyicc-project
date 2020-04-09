@@ -1101,7 +1101,7 @@
 			
 			var emoticonHTML = "";
 			for(var i=1; i<16; i++){
-				var e = jeasy.env.server.file+"/images/emoticon/"+(i>9 ? i : "0"+i)+".png";
+				var e = jeasy.env.server.file+"/emoticon/"+(i>9 ? i : "0"+i)+".png";
 				var style="";
 				if((i-1)%5==0){
 					style="clear:both;";
@@ -1199,7 +1199,7 @@
 					"<div class=\""+(jeasy.jsType == 1 && jeasy.env.isPhone ? "jesong-leave-phone" : "jesong-leave-pc")+"\">"+
 						"<div class=\"jesong-leave-field\" style=\"height:30px;width:"+_w2+"px\">"+
 							"<div class=\"jesong-leave-title\">"+JSLang[jeasy.language].name+"</div>"+//您的姓名：\u60a8\u7684\u59d3\u540d\uff1a
-							"<div class=\"jesong-leave-content\"><input type=\"text\" id=\"jeasyicc_lm_name\" style=\"width:"+_w+"px;\" rel=\""+JSLang[jeasy.language].namePrompt+"\"/></div>"+//请输入您的姓名
+							"<div class=\"jesong-leave-content\"><input type=\"text\" id=\"jesong_lm_name\" style=\"width:"+_w+"px;\" rel=\""+JSLang[jeasy.language].namePrompt+"\"/></div>"+//请输入您的姓名
 						"</div>"+
 						"<div class=\"jesong-leave-field\" style=\"height:30px;width:"+_w2+"px\">"+
 							"<div class=\"jesong-leave-title\">"+JSLang[jeasy.language].mobile+"</div>"+//联系方式：\u8054\u7cfb\u65b9\u5f0f\uff1a
@@ -1214,7 +1214,7 @@
 						"</div>"+
 					"</div>"
 				);
-			this.setFocus("jeasyicc_lm_name");
+			this.setFocus("jesong_lm_name");
 			this.setFocus("jesong_lm_contact");
 			this.setFocus("jesong_lm_content");
 			JS("jesong_commit").hover(function(){
@@ -1233,12 +1233,12 @@
 							return "";
 						}
 					}
-					var name = _getValue("jeasyicc_lm_name");
+					var name = _getValue("jesong_lm_name");
 					var contact = _getValue("jesong_lm_contact");
 					var content = _getValue("jesong_lm_content");
 					if(name =="" || name.length>20){
 						alert(JSLang[jeasy.language].nameWarning);//姓名不能为空且不能超过20个字符
-						JS("jeasyicc_lm_name").focus();
+						JS("jesong_lm_name").focus();
 						this.leaveMsgFlag = false;
 						return false;
 					}
@@ -2386,7 +2386,6 @@
 					
 					//接收到的消息  提交给后台  验证是否链接中
 					this.ajax('addMessage', {c: this.companyId, cId: this.chatId, v: this.visitorId, msg: replaceHtml(message)}, function(resp){
-						//alert(resp.res);
 						if(resp.res == 0){ //如果当前对话存在
 							this.receiveSelfMessageNum++;
 							this.addMessage(replaceEmoticon(replacelinkHtml(message)), "visitor");
