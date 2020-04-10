@@ -7,10 +7,13 @@ import java.util.List;
 
 import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
+import org.easymis.easyicc.domain.entity.RobotQuestion;
 import org.easymis.easyicc.domain.entity.VisitorInfo;
 import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
 import org.easymis.easyicc.service.ChatRecordDetailService;
 import org.easymis.easyicc.service.ChatRecordService;
+import org.easymis.easyicc.service.RobotChatDetailService;
+import org.easymis.easyicc.service.RobotQuestionService;
 import org.easymis.easyicc.service.VisitorInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +31,13 @@ public class MsgController {
 	private ChatRecordDetailService chatRecordDetailService;
 	@Autowired
 	private VisitorInfoService visitorInfoService;
+	
+	@Autowired
+	private RobotChatDetailService robotChatDetailService;
+	
+	@Autowired
+	private RobotQuestionService robotQuestionService;
+	
 	@RequestMapping("/msg.do")
 	@ResponseBody
 	public String index(String cmd, String v, String u, String userId, String c, String ext, String keys[],
@@ -69,15 +79,41 @@ public class MsgController {
 	　 * @return
 	 */
 	private HashMap addMessage(String orgId,String chatId,String fromId,String message,Integer force) {
+		ChatRecord chatRecord=chatRecordService.findById(chatId);
 		ChatRecordDetail bean= new ChatRecordDetail();
 		bean.setOrgId(orgId);
 		bean.setChatId(chatId);
 		bean.setMessage(transformEmoticon(message));
 		bean.setFromUserId(fromId);
 		bean.setType("RECORD_RECORD");
-		bean.setToUserId("AI-ylkj");
+		bean.setToUserId("AI-ylkj");//客服 id
 		chatRecordDetailService.save(bean);
+		
+		RobotQuestion robotQuestion = new RobotQuestion();
+		robotQuestion.setOrgId(orgId);
+		
+		robotQuestion.setQuestion(message);
+		List<RobotQuestion>  answerList=robotQuestionService.findByQuestion(robotQuestion);
+		//机器人回复
+		if(answerList!=null) {
+			for(int i=0;i<answerList.size();i++) {
+				RobotQuestion robotAnswer= answerList.get(i);				
+				ChatRecordDetail answer= new ChatRecordDetail();
+				answer.setOrgId(orgId);
+				answer.setChatId(chatId);
+				answer.setMessage(robotAnswer.getAnswer());
+				answer.setFromUserId("AI-ylkj");
+				answer.setType("RECORD_RECORD");
+				answer.setToUserId(fromId);//客服 id
+				chatRecordDetailService.save(answer);
+		
+			}
+
+		}
+		
+		
 		return new HashMap();
+		
 		//return "/msg/addMessage";
 	}
 /** 
