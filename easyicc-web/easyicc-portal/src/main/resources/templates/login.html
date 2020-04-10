@@ -1,1 +1,202 @@
-login.html
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="_csrf" content=""/>
+    <meta name="_csrf_header" content=""/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport"
+          content="width=device-width, maximum-scale=1.0, initial-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+	<title>智能客服</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.xc.new.ico?t=1586518043671"/>
+    <link rel="stylesheet" href="/css/layui.css">
+    <link rel="stylesheet" href="/css/flexboxgrid.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/jquery-1.10.2.min.js"></script>
+    <script src="/js/jquery.form.js"></script>
+    <script src="/layui.js"></script>
+    <!-- <script defer="true" src="/im/044JYV.html"></script> -->
+    <script language="javascript">
+        if ((window.frameElement && window.frameElement.id || '') != "") {
+            top.location.href = "/login.html";
+        }
+        layui.use('layer', function () {
+            var layer = layui.layer;
+        });
+        layui.use('form', function(){
+            //var form = layui.form();
+        });
+    </script>
+    <link rel="stylesheet" href="${basePath}/css/login.css">
+</head>
+
+<body style="">
+
+
+<img class="logoot" src="/images/logo.xc.new.png" style="height: 30px; padding-top: 5px;">
+<div class="model-hander">
+
+</div>
+<div class="model-nav">
+    <div class="model-main">
+        <div class="main-left">
+            <div class="main-left-image"></div>
+        </div>
+
+        <div class="main-right">
+            <form id="loginForm" action="/login.html" class="layui-form" method="post" onsubmit="return checkForm();">
+                <p><span style="font-size: 20px;">登陆小持科技</span>
+
+
+                </p><div class="main-input" style="margin-bottom:10px;">
+                    <span class="layui-icon form-control-feedback"><img src="/images/yonghu.png" height="20px"></span>
+                    <input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" class="form-control required" value="" placeholder="手机/邮箱/用户名"></div>
+                <div class="main-input" style="margin-bottom:10px;">
+                    <span class="lay form-control-feedback"><img src="/images/mima.png" height="22px"></span>
+                    <input type="password" name="password" id="password" required="" lay-verify="required|pass" class="form-control required" value="" placeholder="密码"></div>
+                <div class="verify">
+                    <div style="border-radius: 3px;height: 40px;width: 226px;position: relative;float: left;border: 1px solid #dcdcdc;">
+                        <span class="layui-icon form-control-feedback"><img src="/images/verify-code.png" height="22px"></span>
+                        <input type="text" name="code" id="code" required="" lay-verify="required" style="width:196px;height: 35px;float: left;" class="form-control required" value="" placeholder="请输入验证码">
+                    </div>
+                    <span class="layui-icon form-control-code" style="float: right;">
+                             <canvas id="canvas" width="100" height="43"></canvas>
+                        </span>
+                </div>
+
+
+                <p>
+                    <button id="submitBTN" class="btn btn-block btn-primary btn-lg">立即登录</button>
+                </p>
+                <a href="/repassword.html" style="color: #999999">忘记密码</a><a href="/register.html">立即注册</a>
+            </form>
+            <div class="right-font">
+
+                <p>温馨提示：</p>
+                为了您的账号安全和使用便利，账号或密码,若输错5次之后，账号将被冻结，于两小时之后重新登录！
+
+                <a href="#"></a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<div class="floor">
+    <div class="clearfix wrap">
+        <div class="fl">
+            Copyright © 2016-2019 上海小持智能科技有限公司. 沪ICP备16043540号
+
+        </div>
+        <div class="fr">
+            <a href="http://www.xiaochirobot.com/about-us/1.html">
+                关于小持
+            </a>
+
+            ｜
+
+            <a href="http://www.xiaochirobot.com/about-us/2.html">媒体报道</a>
+
+            ｜
+
+            <a href="http://www.xiaochirobot.com/about-us/3.html">加入我们</a>
+
+            ｜
+
+            <a href="http://www.xiaochirobot.com/about-us/4.html">联系我们</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var show_num = [];
+    window.onload = function (){
+        draw(show_num);
+
+        $("#canvas").on('click',function(){
+            draw(show_num);
+        })
+    }
+
+    function checkForm(){
+        var val = $("#code").val().toLowerCase();
+        var num = show_num.join("");
+        if(val == num){
+            return true;
+        }else{
+            $("#password").val('');
+            $("#code").val('');
+            draw(show_num);
+            top.layer.msg('验证码错误！请重新输入！');
+            return false;
+        }
+    }
+
+    function draw(show_num) {
+        var canvas_width=$('#canvas').width();
+        var canvas_height=$('#canvas').height();
+        var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+        var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+        canvas.width = canvas_width;
+        canvas.height = canvas_height;
+        var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+        var aCode = sCode.split(",");
+        var aLength = aCode.length;//获取到数组的长度
+
+        for (var i = 0; i <= 3; i++) {
+            var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+            var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+            var txt = aCode[j];//得到随机的一个内容
+            show_num[i] = txt.toLowerCase();
+            var x = 10 + i * 20;//文字在canvas上的x坐标
+            var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+            context.font = "bold 23px 微软雅黑";
+
+            context.translate(x, y);
+            context.rotate(deg);
+
+            context.fillStyle = randomColor();
+            context.fillText(txt, 0, 0);
+
+            context.rotate(-deg);
+            context.translate(-x, -y);
+        }
+        for (var i = 0; i <= 8; i++) { //验证码上显示线条
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.stroke();
+        }
+        for (var i = 0; i <= 50; i++) { //验证码上显示小点
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            var x = Math.random() * canvas_width;
+            var y = Math.random() * canvas_height;
+            context.moveTo(x, y);
+            context.lineTo(x + 1, y + 1);
+            context.stroke();
+        }
+    }
+
+    function randomColor() {//得到随机的颜色值
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="_csrf" content=""/>
+	<meta name="_csrf_header" content=""/>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta http-equiv="Cache-Control" content="no-siteapp"/>
+	<meta name="viewport"
+		  content="width=device-width, maximum-scale=1.0, initial-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<title>智能客服</title>
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.xc.new.ico?t=1586513488511"/>
+<script src="/layui.js"></script>
+<script src="/js/jquery-1.10.2.min.js"></script>
+<link rel="stylesheet" href="/css/login.css">
+<link rel="stylesheet" href="${basePath}/css/register.css">
+</head>
+<body>
+<img class="logoot" src="${basePath}/images/logo.xc.new.png" style="height: 30px; padding-top: 5px;"><a href="/login">返回首页</a>
+<div class="model-hander">
+
+	</div>
+<div class="model-nav">
+		<div class="model-main">
+
+			<form id="loginForm" action="/addAdmin.html" class="layui-form" method="post">
+				<p style="margin:10px 0px 20px 0px"><span style="font-size: 22px; font-weight: bold;">小持科技用户注册</span></p>
+				<div class="main-input">
+					<span class="layui-icon form-control-feedback"><img src="/images/yonghu.png" height="20px"></span>
+					<input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" placeholder="用户名"><label>*</label></div>
+				<div class="main-input">
+					<span class="kfont form-control-feedback"><img src="/images/mima.png" height="22px"></span>
+					<input type="password" name="password" id="password" required="" lay-verify="required|pass" placeholder="密码"><label>*</label></div>
+				<div class="main-input">
+					<span class="kfont form-control-feedback"><img src="/images/mima.png" height="22px"></span>
+					<input type="password" name="passwordagen" id="passwordagen" required="" lay-verify="required|pass" placeholder="确认密码"><label>*</label></div>
+				<div class="main-input">
+					<span class="layui-icon form-control-feedback"><img src="/images/qiye.png" height="20px"></span>
+					<input name="name" placeholder="企业名称" maxlength="50">
+				</div>
+				<div class="main-input">
+					<span class="layui-icon form-control-feedback"><img src="/images/shouji.png" height="20px"></span>
+					<input type="text" name="mobile" id="mobile" autofocus="" required="" lay-verify="required" placeholder="手机号"><label>*</label></div>
+				<div class="main-input" style="width: 230px">
+					<span class="layui-icon form-control-feedback"><img src="/images/yanzhengma.png" height="20px"></span>
+					<input type="text" name="vcode" id="vcode" autofocus="" required="" lay-verify="required|vcverify" placeholder="短信验证码" style="width: 159px">
+					<span style="position: absolute;float:right;top:-7px;right:-100px;border-radius: 4px;">
+						<input id="btnSendCode" class="btn btn-block btn-primary btn-lg" style="width:90px;height:45px ; line-height:35px;color: #d00b3c;padding: 2px 4px 2px 4px;board:0px;font-size: 16px;background-color:#f1f1f1;  font-weight: bold; " type="button" value="发送" onclick="sendMessage();">
+					</span>
+
+				</div>
+				<div class="main-input">
+					<span class="kfont form-control-feedback"><img src="/images/youixang.png" height="22px"></span>
+					<input type="email" name="email" placeholder="邮件地址" autocomplete="off"></div>
+
+				<p style="font-size: 10px; margin-bottom: 20px"> <input type="checkbox" lay-ignore="" style="height: 15px;width: 15px;vertical-align:middle;margin: 0px;opacity:0.6;" onclick="enable(this);"> <span>请阅读 <a href="javascriptl:;" onclick="notice()">《小持科技智能客服服务条款》</a></span> <span style="float: right;padding-right:60px">已有账号？<a href="login.html">登录</a></span> </p>
+				<p><button id="regbtn" disabled="disabled" onclick="checkVCode()" class="btn btn-block btn-primary btn-lg" type="button" lay-filter="formDemo">确定</button></p>
+
+
+			</form>
+
+
+		</div>
+
+	</div>
+	<div class="floor">
+	<div class="clearfix wrap">
+		<div class="fl">
+			Copyright © 2016-2019 上海小持智能科技有限公司. 沪ICP备16043540号
+
+		</div>
+		<div class="fr">
+			<a href="http://www.xiaochirobot.com/about-us/1.html">
+				关于小持
+			</a>
+
+			｜
+
+			<a href="http://www.xiaochirobot.com/about-us/2.html">媒体报道</a>
+
+			｜
+
+			<a href="http://www.xiaochirobot.com/about-us/3.html">加入我们</a>
+
+			｜
+
+			<a href="http://www.xiaochirobot.com/about-us/4.html">联系我们</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>
