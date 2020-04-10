@@ -11,7 +11,7 @@
 		  content="width=device-width, maximum-scale=1.0, initial-scale=1.0,initial-scale=1.0,user-scalable=no"/>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<title>智能客服</title>
-	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.xc.new.ico?t=1586513488511"/>
+	<link rel="shortcut icon" type="image/x-icon" href="${basePath}/images/favicon.xc.new.ico?t=1586513488511"/>
 <script src="/layui.js"></script>
 <script src="/js/jquery-1.10.2.min.js"></script>
 <link rel="stylesheet" href="/css/login.css">
@@ -26,25 +26,23 @@
 		<div class="model-main">
 
 			<form id="loginForm" action="/addAdmin.html" class="layui-form" method="post">
-				<p style="margin:10px 0px 20px 0px"><span style="font-size: 22px; font-weight: bold;">小持科技用户注册</span></p>
+				<p style="margin:10px 0px 20px 0px"><span style="font-size: 22px; font-weight: bold;">申请免费试用</span></p>
 				<div class="main-input">
-					<span class="layui-icon form-control-feedback"><img src="/images/yonghu.png" height="20px"></span>
+					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/yonghu.png" height="20px"></span>
 					<input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" placeholder="用户名"><label>*</label></div>
 				<div class="main-input">
-					<span class="kfont form-control-feedback"><img src="/images/mima.png" height="22px"></span>
+					<span class="kfont form-control-feedback"><img src="${basePath}/images/mima.png" height="22px"></span>
 					<input type="password" name="password" id="password" required="" lay-verify="required|pass" placeholder="密码"><label>*</label></div>
+
 				<div class="main-input">
-					<span class="kfont form-control-feedback"><img src="/images/mima.png" height="22px"></span>
-					<input type="password" name="passwordagen" id="passwordagen" required="" lay-verify="required|pass" placeholder="确认密码"><label>*</label></div>
-				<div class="main-input">
-					<span class="layui-icon form-control-feedback"><img src="/images/qiye.png" height="20px"></span>
+					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/qiye.png" height="20px"></span>
 					<input name="name" placeholder="企业名称" maxlength="50">
 				</div>
 				<div class="main-input">
-					<span class="layui-icon form-control-feedback"><img src="/images/shouji.png" height="20px"></span>
+					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/shouji.png" height="20px"></span>
 					<input type="text" name="mobile" id="mobile" autofocus="" required="" lay-verify="required" placeholder="手机号"><label>*</label></div>
 				<div class="main-input" style="width: 230px">
-					<span class="layui-icon form-control-feedback"><img src="/images/yanzhengma.png" height="20px"></span>
+					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/yanzhengma.png" height="20px"></span>
 					<input type="text" name="vcode" id="vcode" autofocus="" required="" lay-verify="required|vcverify" placeholder="短信验证码" style="width: 159px">
 					<span style="position: absolute;float:right;top:-7px;right:-100px;border-radius: 4px;">
 						<input id="btnSendCode" class="btn btn-block btn-primary btn-lg" style="width:90px;height:45px ; line-height:35px;color: #d00b3c;padding: 2px 4px 2px 4px;board:0px;font-size: 16px;background-color:#f1f1f1;  font-weight: bold; " type="button" value="发送" onclick="sendMessage();">
@@ -52,7 +50,7 @@
 
 				</div>
 				<div class="main-input">
-					<span class="kfont form-control-feedback"><img src="/images/youixang.png" height="22px"></span>
+					<span class="kfont form-control-feedback"><img src="${basePath}/images/youixang.png" height="22px"></span>
 					<input type="email" name="email" placeholder="邮件地址" autocomplete="off"></div>
 
 				<p style="font-size: 10px; margin-bottom: 20px"> <input type="checkbox" lay-ignore="" style="height: 15px;width: 15px;vertical-align:middle;margin: 0px;opacity:0.6;" onclick="enable(this);"> <span>请阅读 <a href="javascriptl:;" onclick="notice()">《小持科技智能客服服务条款》</a></span> <span style="float: right;padding-right:60px">已有账号？<a href="login.html">登录</a></span> </p>

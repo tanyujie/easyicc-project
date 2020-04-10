@@ -45,11 +45,11 @@ body{
   position: relative;
   background-color: white;
   width: 450px;
-  height: 455px;
+  height: 505px;
   z-index: 1;
-  top: 50%;
-  margin-top: -313px;
-  margin-right: auto;
+  top: 30px;
+/*   margin-top: -313px; */
+   margin-right: 10%;
   margin-left: auto;
   border-radius: 4px;
 }
@@ -100,7 +100,7 @@ right: -10px;
 
 .model-main input{
   border: none;
-  margin-left:35px;
+/*   margin-left:35px; */
   margin-top: 5px;
   font-size: 14px;
   width: 295px;
@@ -123,7 +123,7 @@ right: -10px;
   outline: none;
 }
 .floor{
-  position:absolute;
+/*   position:absolute; */
   padding-bottom: 20px;
 bottom:0px;
   text-align: center;
