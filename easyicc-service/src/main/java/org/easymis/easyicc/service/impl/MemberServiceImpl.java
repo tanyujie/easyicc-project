@@ -1,5 +1,6 @@
 package org.easymis.easyicc.service.impl;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
@@ -58,29 +59,49 @@ public class MemberServiceImpl implements MemberService {
 	public RestResult saveRegister(RegisterVo vo) {
 		String orgId=UUID.randomUUID().toString().replace("-", "");
 		String memberId=UUID.randomUUID().toString().replace("-", "");
+		String staffId=UUID.randomUUID().toString().replace("-", "");
+		String departmentId=UUID.randomUUID().toString().replace("-", "");
 		//会员信息
 		Member member = new Member();
 		member.setMemberId(memberId);
 		member.setMemberNo(vo.getMobileNo());
 		member.setPassword(MD5Util.md5(vo.getPassword()));
 		member.setMobileNo(vo.getMobileNo());
+		member.setCreateTime(new Date());
+		member.setEnabled(true);
 		
 		//组织公司信息
 		Organize organize = new Organize();
 		organize.setOrgId(orgId);
+		organize.setOrgNo(orgId);
 		organize.setOrgName(vo.getOrgName());
+		organize.setCreateTime(new Date());
+		organize.setStatus(true);
+		organize.setLockFlag(2);
+		organize.setIpGateway(1);
 		//部门信息
-		Department department= new Department();		
+		Department department= new Department();
+		department.setId(departmentId);
+		department.setOrgId(orgId);
+		department.setDepict("技术部");
+		department.setName("技术部");
+		department.setStatus(1);
+		
 		//员工信息
 		HrmStaffInfo hrmStaffInfo= new HrmStaffInfo();
+		hrmStaffInfo.setStaffId(staffId);
+		hrmStaffInfo.setOrgId(orgId);
+		hrmStaffInfo.setDepartmentId(departmentId);
+		hrmStaffInfo.setMemberId(memberId);
+
 		
 		mapper.save(member);
 		
 		organizeMapper.save(organize);
 		
-		//departmentMapper.save(department);
+		departmentMapper.save(department);
 		
-		//staffInfoMapper.save(hrmStaffInfo);
+		staffInfoMapper.save(hrmStaffInfo);
 		
 		return RestResult.buildSuccess();
 	}
