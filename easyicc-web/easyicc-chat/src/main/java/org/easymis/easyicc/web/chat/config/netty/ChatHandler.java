@@ -187,7 +187,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			Channel findChannel = users.find(receiverChannel.id());
 			if (findChannel != null) {			
 				DataContent dataContentMsg = new DataContent();
-				dataContentMsg.setAction(51);
+				dataContentMsg.setAction(52);
 				//设置返回数据
 				dataContentMsg.setData(staffInfoService.getListByDepartment(orgId));
 				// 用户在线
