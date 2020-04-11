@@ -23,7 +23,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.util.StringUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class MsgController {
 	@Autowired
 	private ChatRecordService chatRecordService;
@@ -138,16 +141,23 @@ public class MsgController {
 		if (start == 0 && vstart == 0) {
 			vo.setStart(start);
 			list = chatRecordDetailService.findList(vo);
-		}else if (start > vstart) {
-			vo.setToUserId(visitorId);
-			vo.setStart(start);
-			list = chatRecordDetailService.findList(vo);
-		} else {
+		} 
+		if (vstart > 0) {
 			vo.setFromUserId(visitorId);
 			vo.setStart(vstart);
+			List<ChatRecordDetail> vstartList = chatRecordDetailService.findList(vo);
+			list.addAll(vstartList);
 		}
+		if (start > 0) {
+			vo.setFromUserId(null);
+			vo.setToUserId(visitorId);
+			vo.setStart(start);
+			List<ChatRecordDetail> startList = chatRecordDetailService.findList(vo);
+			list.addAll(startList);
+		}
+		log.debug("start,%,vstart,%,size:%", start,vstart,list.size());
 		map.put("result", "success");
-		map.put("msgs", chatRecordDetailService.findList(vo));
+		map.put("msgs", list);
 		return map;
 		// return "/msg/getMessage";
 	}

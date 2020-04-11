@@ -96,7 +96,7 @@ public class ChatMemberServiceImpl implements ChatMemberService {
 		user.setQrcode(qrCodeUrl);
 		
 		user.setId(userId);
-		userMapper.insertByBean(user);
+		userMapper.save(user);
 		
 		return user;
 	}
