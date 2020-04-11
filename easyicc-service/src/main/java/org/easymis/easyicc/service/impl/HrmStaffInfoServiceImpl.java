@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.aliyuncs.utils.StringUtils;
 import com.github.pagehelper.PageInfo;
-@Service
+@Service("hrmStaffInfoService") 
 public class HrmStaffInfoServiceImpl implements HrmStaffInfoService {
 	@Autowired
 	private DepartmentService departmentService;
