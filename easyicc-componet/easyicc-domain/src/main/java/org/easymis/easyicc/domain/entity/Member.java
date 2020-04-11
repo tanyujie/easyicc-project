@@ -7,6 +7,7 @@ public class Member {
     private String memberId; 
     //member编号",column="member_no",length=40,isnull=false) 
     private String memberNo; 
+    private String orgId;
     //性别",column="sex",length=1,isnull=true) 
     private String sex; 
     //年龄",column="age",isnull=true) 
@@ -306,6 +307,14 @@ public class Member {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public String getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
 	}
 	
 }
