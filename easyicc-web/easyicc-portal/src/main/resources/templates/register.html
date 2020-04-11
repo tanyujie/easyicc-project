@@ -25,22 +25,23 @@
 <div class="model-nav">
 		<div class="model-main">
 
-			<form id="loginForm" action="/addAdmin.html" class="layui-form" method="post">
+			<form id="registerForm" action="${basePath}/register.do" class="layui-form" method="post">
 				<p style="margin:10px 0px 20px 0px"><span style="font-size: 22px; font-weight: bold;">申请免费试用</span></p>
-				<div class="main-input">
-					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/yonghu.png" height="20px"></span>
-					<input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" placeholder="用户名"><label>*</label></div>
-				<div class="main-input">
-					<span class="kfont form-control-feedback"><img src="${basePath}/images/mima.png" height="22px"></span>
-					<input type="password" name="password" id="password" required="" lay-verify="required|pass" placeholder="密码"><label>*</label></div>
-
-				<div class="main-input">
+								<div class="main-input">
 					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/qiye.png" height="20px"></span>
 					<input name="name" placeholder="企业名称" maxlength="50">
 				</div>
 				<div class="main-input">
+					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/yonghu.png" height="20px"></span>
+					<input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" placeholder="用户名,请输入手机号码"><label>*</label></div>
+				<div class="main-input">
+					<span class="kfont form-control-feedback"><img src="${basePath}/images/mima.png" height="22px"></span>
+					<input type="password" name="password" id="password" required="" lay-verify="required|pass" placeholder="密码"><label>*</label></div>
+
+
+<!-- 				<div class="main-input">
 					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/shouji.png" height="20px"></span>
-					<input type="text" name="mobile" id="mobile" autofocus="" required="" lay-verify="required" placeholder="手机号"><label>*</label></div>
+					<input type="text" name="mobile" id="mobile" autofocus="" required="" lay-verify="required" placeholder="手机号"><label>*</label></div> -->
 				<div class="main-input" style="width: 230px">
 					<span class="layui-icon form-control-feedback"><img src="${basePath}/images/yanzhengma.png" height="20px"></span>
 					<input type="text" name="vcode" id="vcode" autofocus="" required="" lay-verify="required|vcverify" placeholder="短信验证码" style="width: 159px">
@@ -54,7 +55,14 @@
 					<input type="email" name="email" placeholder="邮件地址" autocomplete="off"></div>
 
 				<p style="font-size: 10px; margin-bottom: 20px"> <input type="checkbox" lay-ignore="" style="height: 15px;width: 15px;vertical-align:middle;margin: 0px;opacity:0.6;" onclick="enable(this);"> <span>请阅读 <a href="javascriptl:;" onclick="notice()">《小持科技智能客服服务条款》</a></span> <span style="float: right;padding-right:60px">已有账号？<a href="login.html">登录</a></span> </p>
-				<p><button id="regbtn" disabled="disabled" onclick="checkVCode()" class="btn btn-block btn-primary btn-lg" type="button" lay-filter="formDemo">确定</button></p>
+				<p>
+				<!-- <button id="regbtn" disabled="disabled" onclick="checkVCode()"
+						class="btn btn-block btn-primary btn-lg" type="button"
+						lay-filter="formDemo">确定</button> -->
+					<button id="regbtn" 
+						class="btn btn-block btn-primary btn-lg" type="submit"
+						lay-filter="formDemo">确定</button>
+				</p>
 
 
 			</form>

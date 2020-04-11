@@ -11,6 +11,7 @@ import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.domain.vo.ChatInviteVo;
 import org.easymis.easyicc.domain.vo.ChatOnlineVo;
 import org.easymis.easyicc.domain.vo.StaffOnlineTreeVo;
+import org.easymis.easyicc.domain.vo.VisitorTreeVo;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordMapper;
 import org.easymis.easyicc.service.ChatRecordService;
 import org.easymis.easyicc.service.HrmStaffInfoService;
@@ -79,7 +80,8 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 	}
 
 	@Override
-	public List<StaffOnlineTreeVo> findOnline(String orgId) {
+	public VisitorTreeVo findVisitorChatTree(String orgId) {
+		VisitorTreeVo  visitorTreeVo = new VisitorTreeVo();
 		List<StaffOnlineTreeVo> voList =hrmStaffInfoService.findByOnlineTree(orgId);
 		List<StaffOnlineTreeVo> treeList= new ArrayList();
 		List<ChatRecord> chatRecordList = mapper.findOnline(orgId);
@@ -89,7 +91,10 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 			vo.setChatInviteList(makeChatInviteList(vo.getStaffId(),chatRecordList));
 			treeList.add(vo);
 		}
-		return treeList;
+		visitorTreeVo.setChatWaitList(new ArrayList());
+		visitorTreeVo.setStaffOnlineTree(treeList);
+		visitorTreeVo.setBrowseWebsiteList(new ArrayList());
+		return visitorTreeVo;
 	}
 	private List<ChatOnlineVo> makeChatOnlineList(String staffId, List<ChatRecord> chatRecordList) {
 		List<ChatOnlineVo> list = new ArrayList<ChatOnlineVo>();
