@@ -12,7 +12,8 @@ import lombok.Data;
  */
 @Data
 public class VisitorTreeVo {
-	private List<ChatOnlineVo> chatWaitList;//排队访客
+	private List<ChatVisitorVo> chatWaitList;//排队访客
 	private List<StaffOnlineTreeVo>  staffOnlineTree;//员工接待访客
-	private List<ChatOnlineVo> browseWebsiteList;//浏览网站访客
+	private List<ChatVisitorVo> browseWebsiteList;//浏览网站访客
+	private List<ChatVisitorVo> chatLeaveList;//已离开访客
 }
