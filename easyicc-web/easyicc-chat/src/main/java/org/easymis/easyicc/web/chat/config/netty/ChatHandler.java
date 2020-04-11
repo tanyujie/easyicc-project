@@ -17,12 +17,14 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 
  * @Description: 处理消息的handler
  * TextWebSocketFrame： 在netty中，是用于为websocket专门处理文本的对象，frame是消息的载体
  */
+@Slf4j
 public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame> {
 
 	// 用于记录和管理所有客户端的channle
@@ -150,7 +152,8 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			//  2.4  心跳类型的消息
 			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
 		}
-		else if (action == MsgActionEnum.PULL_VISITOR.type) {//51拉取访客			
+		else if (action == MsgActionEnum.PULL_VISITOR.type) {//51拉取访客
+			log.info("开始拉取访客action："+action+":begin");
 			ChatRecordService chatRecordService = (ChatRecordService)SpringUtil.getBean("chatRecordService");
 			ChatMsg chatMsg = dataContent.getChatMsg();
 			String senderId = chatMsg.getSenderId();
@@ -172,8 +175,10 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			} else {
 				// 用户离线 TODO 推送消息
 			}
+			log.info("开始拉取访客action："+action+":end");
 			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
 		}else if (action == MsgActionEnum.PULL_STAFF.type) {
+			log.info("开始拉取员工action："+action+":begin");
 			//52拉取员工
 			HrmStaffInfoService staffInfoService = (HrmStaffInfoService)SpringUtil.getBean("hrmStaffInfoService");
 			ChatMsg chatMsg = dataContent.getChatMsg();
@@ -197,6 +202,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			} else {
 				// 用户离线 TODO 推送消息
 			}
+			log.info("开始拉取员工action："+action+":end");
 			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
 		}else if (action == MsgActionEnum.PULL_FRIEND.type) {
 			//53拉取好友
