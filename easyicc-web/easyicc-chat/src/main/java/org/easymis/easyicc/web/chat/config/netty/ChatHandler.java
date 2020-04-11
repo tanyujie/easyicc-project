@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.easymis.easyicc.domain.vo.StaffOnlineTreeVo;
 import org.easymis.easyicc.service.ChatRecordService;
+import org.easymis.easyicc.service.HrmStaffInfoService;
 import org.easymis.easyicc.web.chat.enums.MsgActionEnum;
 import org.easymis.easyicc.web.chat.service.ChatMemberService;
 import org.easymis.easyicc.web.chat.utils.JsonUtils;
@@ -175,6 +175,28 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
 		}else if (action == MsgActionEnum.PULL_STAFF.type) {
 			//52拉取员工
+			HrmStaffInfoService staffInfoService = (HrmStaffInfoService)SpringUtil.getBean("hrmStaffInfoService");
+			ChatMsg chatMsg = dataContent.getChatMsg();
+			String senderId = chatMsg.getSenderId();
+			String orgId = chatMsg.getOrgId();
+			orgId="2018012402340575";
+			
+			// 从全局用户Channel关系中获取接受方的channel
+			Channel receiverChannel = UserChannelRel.get(senderId);
+			// 当receiverChannel不为空的时候，从ChannelGroup去查找对应的channel是否存在
+			Channel findChannel = users.find(receiverChannel.id());
+			if (findChannel != null) {			
+				DataContent dataContentMsg = new DataContent();
+				dataContentMsg.setAction(51);
+				//设置返回数据
+				dataContentMsg.setData(staffInfoService.getListByDepartment(orgId));
+				// 用户在线
+				receiverChannel.writeAndFlush(
+						new TextWebSocketFrame(
+								JsonUtils.objectToJson(dataContentMsg)));
+			} else {
+				// 用户离线 TODO 推送消息
+			}
 			System.out.println("收到来自channel为[" + currentChannel + "]的心跳包...");
 		}else if (action == MsgActionEnum.PULL_FRIEND.type) {
 			//53拉取好友
