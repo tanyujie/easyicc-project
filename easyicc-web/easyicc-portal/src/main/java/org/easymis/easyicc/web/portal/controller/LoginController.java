@@ -29,9 +29,7 @@ public class LoginController {
 		return "/login";
 	}
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
-	public RestResult login(LoginVo ar) {
-		
-		
+	public RestResult login(LoginVo ar) {		
 		Member member=memberService.findByMobile(ar.getLoginName());
 		if(member!=null) {
 			System.out.println(MD5Util.md5(ar.getPassword()));
