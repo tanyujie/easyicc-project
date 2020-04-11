@@ -8,8 +8,7 @@ import java.util.UUID;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
-import org.easymis.easyicc.domain.vo.ChatInviteVo;
-import org.easymis.easyicc.domain.vo.ChatOnlineVo;
+import org.easymis.easyicc.domain.vo.ChatVisitorVo;
 import org.easymis.easyicc.domain.vo.StaffOnlineTreeVo;
 import org.easymis.easyicc.domain.vo.VisitorTreeVo;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordMapper;
@@ -96,11 +95,11 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 		visitorTreeVo.setBrowseWebsiteList(new ArrayList());
 		return visitorTreeVo;
 	}
-	private List<ChatOnlineVo> makeChatOnlineList(String staffId, List<ChatRecord> chatRecordList) {
-		List<ChatOnlineVo> list = new ArrayList<ChatOnlineVo>();
+	private List<ChatVisitorVo> makeChatOnlineList(String staffId, List<ChatRecord> chatRecordList) {
+		List<ChatVisitorVo> list = new ArrayList<ChatVisitorVo>();
 		for (int i = 0; i < chatRecordList.size(); i++) {
 			if (staffId.equals(chatRecordList.get(i).getStaffId())) {
-				ChatOnlineVo chatOnlineVo = new ChatOnlineVo();
+				ChatVisitorVo chatOnlineVo = new ChatVisitorVo();
 				BeanUtils.copyProperties(chatRecordList.get(i), chatOnlineVo);
 				list.add(chatOnlineVo);
 			}
@@ -109,11 +108,11 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 		return list;
 
 	}
-	private List<ChatInviteVo> makeChatInviteList(String staffId, List<ChatRecord> chatRecordList) {
-		List<ChatInviteVo> list = new ArrayList<ChatInviteVo>();
+	private List<ChatVisitorVo> makeChatInviteList(String staffId, List<ChatRecord> chatRecordList) {
+		List<ChatVisitorVo> list = new ArrayList<ChatVisitorVo>();
 		for (int i = 0; i < chatRecordList.size(); i++) {
 			if (staffId.equals(chatRecordList.get(i).getStaffId())) {
-				ChatInviteVo chatInviteVo = new ChatInviteVo();
+				ChatVisitorVo chatInviteVo = new ChatVisitorVo();
 				BeanUtils.copyProperties(chatRecordList.get(i), chatInviteVo);
 				list.add(chatInviteVo);
 			}

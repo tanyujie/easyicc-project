@@ -61,6 +61,7 @@ public class MemberServiceImpl implements MemberService {
 		//会员信息
 		Member member = new Member();
 		member.setMemberId(memberId);
+		member.setMemberNo(vo.getMobileNo());
 		member.setPassword(MD5Util.md5(vo.getPassword()));
 		member.setMobileNo(vo.getMobileNo());
 		
