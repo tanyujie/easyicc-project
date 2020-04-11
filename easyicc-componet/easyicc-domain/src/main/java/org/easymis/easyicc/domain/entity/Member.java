@@ -1,19 +1,44 @@
 package org.easymis.easyicc.domain.entity;
 
-public class Member {
+import java.util.Date;
 
+public class Member {
 	private String id;
-	private String memberId;
+    private String memberId; 
+    //member编号",column="member_no",length=40,isnull=false) 
+    private String memberNo; 
+    //性别",column="sex",length=1,isnull=true) 
+    private String sex; 
+    //年龄",column="age",isnull=true) 
+    private Integer age; 
+    //公司名称",column="company_name",length=1024,isnull=true) 
+    private String companyName; 
+    //部门",column="department",length=1024,isnull=true) 
+    private String department; 
+    //职位",column="position",length=1024,isnull=true) 
+    private String position; 
+    //密码",column="password",length=60,isnull=true) 
+    private String password; 
+    //头像地址",column="head_url",length=1024,isnull=true) 
+    private String headUrl; 
+    //电话号码/手机号码",column="mobile_no",length=32,isnull=false) 
+    private String mobileNo; 
+    //邮箱",column="email",length=1024,isnull=true) 
+    private String email; 
+    //修改时间",column="modify_time",isnull=true) 
+    private Date modifyTime; 
+    //创建时间",column="create_time",isnull=true) 
+    private Date createTime; 
+    //名字",column="name",length=128,isnull=true) 
+    private String name; 
+    //启用/禁用",column="enabled",isnull=true) 
+    private Boolean enabled; 
+
 
 	/**
 	 * 用户名，账号，慕信号
 	 */
 	private String username;
-
-	/**
-	 * 密码
-	 */
-	private String password;
 
 	/**
 	 * 我的头像，如果没有默认给一张
@@ -33,7 +58,6 @@ public class Member {
 	private String qrcode;
 
 	private String cid;
-	private String mobileNo;
 
 	/**
 	 * @return id
@@ -186,6 +210,102 @@ public class Member {
 
 	public void setMobileNo(String mobileNo) {
 		this.mobileNo = mobileNo;
+	}
+
+	public String getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(String memberNo) {
+		this.memberNo = memberNo;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getHeadUrl() {
+		return headUrl;
+	}
+
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getModifyTime() {
+		return modifyTime;
+	}
+
+	public void setModifyTime(Date modifyTime) {
+		this.modifyTime = modifyTime;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 	
 }
