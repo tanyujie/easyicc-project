@@ -164,7 +164,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				DataContent dataContentMsg = new DataContent();
 				dataContentMsg.setAction(51);
 				//设置返回数据
-				dataContentMsg.setData(chatRecordService.findOnline(orgId));
+				dataContentMsg.setData(chatRecordService.findVisitorChatTree(orgId));
 				// 用户在线
 				receiverChannel.writeAndFlush(
 						new TextWebSocketFrame(
