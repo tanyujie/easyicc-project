@@ -152,13 +152,17 @@
 			<artifactId>easyicc-service</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-fastdfs</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
 
 	</dependencies>
 
 
 	<build>
-		<finalName>easysaas-icc</finalName>
+		<finalName>easyicc-chat</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
