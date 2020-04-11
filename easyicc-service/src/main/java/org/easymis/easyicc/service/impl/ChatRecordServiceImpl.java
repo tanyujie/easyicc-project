@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
+import org.easymis.easyicc.domain.vo.ChatInviteVo;
 import org.easymis.easyicc.domain.vo.ChatOnlineVo;
 import org.easymis.easyicc.domain.vo.StaffOnlineTreeVo;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordMapper;
@@ -85,6 +86,7 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 		for(int i=0;i<voList.size();i++) {
 			StaffOnlineTreeVo vo=voList.get(i);
 			vo.setChatOnlineList(makeChatOnlineList(vo.getStaffId(),chatRecordList));
+			vo.setChatInviteList(makeChatInviteList(vo.getStaffId(),chatRecordList));
 			treeList.add(vo);
 		}
 		return treeList;
@@ -96,6 +98,19 @@ public class ChatRecordServiceImpl implements ChatRecordService{
 				ChatOnlineVo chatOnlineVo = new ChatOnlineVo();
 				BeanUtils.copyProperties(chatRecordList.get(i), chatOnlineVo);
 				list.add(chatOnlineVo);
+			}
+
+		}
+		return list;
+
+	}
+	private List<ChatInviteVo> makeChatInviteList(String staffId, List<ChatRecord> chatRecordList) {
+		List<ChatInviteVo> list = new ArrayList<ChatInviteVo>();
+		for (int i = 0; i < chatRecordList.size(); i++) {
+			if (staffId.equals(chatRecordList.get(i).getStaffId())) {
+				ChatInviteVo chatInviteVo = new ChatInviteVo();
+				BeanUtils.copyProperties(chatRecordList.get(i), chatInviteVo);
+				list.add(chatInviteVo);
 			}
 
 		}
