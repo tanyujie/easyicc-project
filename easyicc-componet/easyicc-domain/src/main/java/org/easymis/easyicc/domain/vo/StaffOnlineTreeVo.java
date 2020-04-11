@@ -5,7 +5,8 @@ import java.util.List;
 import lombok.Data;
 @Data
 public class StaffOnlineTreeVo {
-	private String staffId;
-	private String name;
-	private List<ChatOnlineVo> chatOnlineList;
+	private String staffId;//员工Id
+	private String name;//员工姓名
+	private List<ChatOnlineVo> chatOnlineList;//对话中访客
+	private List<ChatInviteVo> chatInviteList;//邀请中访客
 }

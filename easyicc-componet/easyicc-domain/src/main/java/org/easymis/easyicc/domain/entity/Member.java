@@ -33,6 +33,7 @@ public class Member {
 	private String qrcode;
 
 	private String cid;
+	private String mobileNo;
 
 	/**
 	 * @return id
@@ -178,4 +179,13 @@ public class Member {
 	public void setCid(String cid) {
 		this.cid = cid;
 	}
+
+	public String getMobileNo() {
+		return mobileNo;
+	}
+
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	
 }
