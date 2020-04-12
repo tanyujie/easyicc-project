@@ -17,7 +17,9 @@ import org.easymis.easyicc.mybatis.mapper.OrganizeMapper;
 import org.easymis.easyicc.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 	@Autowired
 	MemberMapper mapper;
@@ -55,7 +57,7 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.save(bean);
 	}
 
-	@Override
+
 	public RestResult saveRegister(RegisterVo vo) {
 		String orgId=UUID.randomUUID().toString().replace("-", "");
 		String memberId=UUID.randomUUID().toString().replace("-", "");
@@ -85,6 +87,7 @@ public class MemberServiceImpl implements MemberService {
 		department.setOrgId(orgId);
 		department.setDepict("技术部");
 		department.setName("技术部");
+		department.setLevel(1);
 		department.setStatus(1);
 		
 		//员工信息
@@ -93,6 +96,7 @@ public class MemberServiceImpl implements MemberService {
 		hrmStaffInfo.setOrgId(orgId);
 		hrmStaffInfo.setDepartmentId(departmentId);
 		hrmStaffInfo.setMemberId(memberId);
+		hrmStaffInfo.setSetLanguage(1);
 
 		
 		mapper.save(member);
