@@ -1,10 +1,11 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import javax.validation.Valid;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.SiteService;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,8 +35,8 @@ public class SiteController extends IdentityRepository{
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/site/index";
+		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/site/index";
 	}
 	@ApiOperation(value = "站点查询", response = Site.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "��������", dataType = "string", required = false),})

@@ -1,6 +1,7 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.domain.entity.JsConfig;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
