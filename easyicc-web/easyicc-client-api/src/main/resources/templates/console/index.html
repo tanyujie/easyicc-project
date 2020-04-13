@@ -7,19 +7,19 @@
     <title>Bordash - Admin Dashboard Template</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/media/image/favicon.png"/>
+    <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
 
     <!-- Plugin styles -->
-    <link rel="stylesheet" href="vendors/bundle.css" type="text/css">
+    <link rel="stylesheet" href="${basePath}/vendors/bundle.css" type="text/css">
 
     <!-- Datepicker -->
-    <link rel="stylesheet" href="vendors/datepicker/daterangepicker.css">
+    <link rel="stylesheet" href="${basePath}/vendors/datepicker/daterangepicker.css">
 
     <!-- Vmap -->
-    <link rel="stylesheet" href="vendors/vmap/jqvmap.min.css">
+    <link rel="stylesheet" href="${basePath}/vendors/vmap/jqvmap.min.css">
 
     <!-- App styles -->
-    <link rel="stylesheet" href="assets/css/app.css" type="text/css">
+    <link rel="stylesheet" href="${basePath}/assets/css/app.css" type="text/css">
 </head>
 <body>
 
@@ -477,7 +477,7 @@
 
         <div class="navigation-menu-tab">
             <div>
-                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="Roxana Roussell" data-placement="right">
+                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
                     <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
                         <figure class="avatar avatar-sm">
                             <img src="assets/media/image/user/women_avatar1.jpg" class="rounded-circle" alt="avatar">
@@ -527,30 +527,45 @@
             <div class="flex-grow-1">
                 <ul>
                     <li>
-                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="Dashboards"
+                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="个人常用功能"
                            data-nav-target="#dashboards">
                             <i data-feather="bar-chart-2"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Apps" data-nav-target="#apps">
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="系统状态监控" data-nav-target="#apps">
                             <i data-feather="command"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="UI Elements"
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="机器人配置"
                            data-nav-target="#elements">
                             <i data-feather="layers"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="Pages" data-nav-target="#pages">
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="辅助功能管理" data-nav-target="#pages">
                             <i data-feather="copy"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="咨询入口管理" data-nav-target="#pages">
+                            <i data-feather="copy"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="网页样式配置" data-nav-target="#pages">
+                            <i data-feather="copy"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="基础信息设置" data-nav-target="#basicSettings">
+                            <i data-feather="settings"></i>
                         </a>
                     </li>
                 </ul>
             </div>
-            <div>
+<!--             <div>
                 <ul>
                     <li>
                         <a href="#" data-toggle="tooltip" data-placement="right" title="Settings">
@@ -563,7 +578,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
 
         <!-- begin::navigation menu -->
@@ -586,8 +601,8 @@
                     <ul>
                         <li class="navigation-divider">Dashboards</li>
                         <li><a class="active" href="index.html">CRM System</a></li>
-                        <li><a href="dashboard-two.html">Ecommerce <span class="badge badge-danger">2</span></a></li>
-                        <li><a href="dashboard-three.html">Analytics</a></li>
+                        <li><a href="${basePath}/dashboard-two.html">Ecommerce <span class="badge badge-danger">2</span></a></li>
+                        <li><a href="${basePath}/dashboard-three.html">Analytics</a></li>
                         <li><a href="dashboard-four.html">Project Management</a></li>
                         <li><a href="dashboard-five.html">Helpdesk Management</a></li>
                         <li class="navigation-divider">Contacts</li>
@@ -804,6 +819,24 @@
                                 </li>
                             </ul>
                         </li>
+                    </ul>
+                </div>
+                
+                  <div id="basicSettings">
+                    <ul>
+                        <li class="navigation-divider">客服账号管理</li>
+                        <li><a href="login.html">客服分组管理</a></li>
+                        <li><a href="register.html">部门信息管理</a></li>
+                        <li><a href="recover-password.html">公司角色管理</a></li>
+                        <li><a href="lock-screen.html">公司角色分配</a></li>
+                        <li><a href="profile.html">接入策略管理</a></li>
+                        <li><a href="timeline.html">接入渠道配置</a></li>
+                        <li><a href="invoice.html">访客屏蔽管理</a></li>
+
+                        <li><a href="${basePath}/site/index.html">子站点管理</a></li>
+                        <li><a href="search-result.html">公司信息配置</a></li>
+                        <li><a href="blank-page.html">公司全局配置</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -1581,34 +1614,34 @@
 <!-- end::main -->
 
 <!-- Plugin scripts -->
-<script src="vendors/bundle.js"></script>
+<script src="${basePath}/vendors/bundle.js"></script>
 
 <!-- Chartjs -->
-<script src="vendors/charts/chartjs/chart.min.js"></script>
+<script src="${basePath}/vendors/charts/chartjs/chart.min.js"></script>
 
 <!-- Apex chart -->
-<script src="vendors/charts/apex/apexcharts.min.js"></script>
+<script src="${basePath}/vendors/charts/apex/apexcharts.min.js"></script>
 
 <!-- Circle progress -->
-<script src="vendors/circle-progress/circle-progress.min.js"></script>
+<script src="${basePath}/vendors/circle-progress/circle-progress.min.js"></script>
 
 <!-- Peity -->
-<script src="vendors/charts/peity/jquery.peity.min.js"></script>
-<script src="assets/js/examples/charts/peity.js"></script>
+<script src="${basePath}/vendors/charts/peity/jquery.peity.min.js"></script>
+<script src="${basePath}/assets/js/examples/charts/peity.js"></script>
 
 <!-- Datepicker -->
-<script src="vendors/datepicker/daterangepicker.js"></script>
+<script src="${basePath}/vendors/datepicker/daterangepicker.js"></script>
 
 <!-- Slick -->
-<script src="vendors/slick/slick.min.js"></script>
+<script src="${basePath}/vendors/slick/slick.min.js"></script>
 
 <!-- Vamp -->
-<script src="vendors/vmap/jquery.vmap.min.js"></script>
-<script src="vendors/vmap/maps/jquery.vmap.usa.js"></script>
-<script src="assets/js/examples/vmap.js"></script>
+<script src="${basePath}/vendors/vmap/jquery.vmap.min.js"></script>
+<script src="${basePath}/vendors/vmap/maps/jquery.vmap.usa.js"></script>
+<script src="${basePath}/assets/js/examples/vmap.js"></script>
 
 <!-- Dashboard scripts -->
-<script src="assets/js/examples/dashboard.js"></script>
+<script src="${basePath}/assets/js/examples/dashboard.js"></script>
 <div class="colors"> <!-- To use theme colors with Javascript -->
     <div class="bg-primary"></div>
     <div class="bg-primary-bright"></div>
@@ -1625,6 +1658,6 @@
 </div>
 
 <!-- App scripts -->
-<script src="assets/js/app.js"></script>
+<script src="${basePath}/assets/js/app.js"></script>
 </body>
 </html>
