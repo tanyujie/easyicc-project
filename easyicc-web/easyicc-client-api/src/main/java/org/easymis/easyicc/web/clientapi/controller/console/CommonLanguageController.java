@@ -1,12 +1,14 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.CommonLanguageService;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +24,19 @@ import io.swagger.annotations.ApiOperation;
 public class CommonLanguageController extends IdentityRepository {
 	@Autowired
 	private CommonLanguageService service;
-
+	@ApiOperation(value = "个人常用语首页")
+	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
+		String orgId = getOrgId();
+		CommonLanguage bean = new CommonLanguage();
+		bean.setOrgId(orgId);
+		if (pageNum == null)
+			pageNum = 1;
+		if (pageSize == null)
+			pageSize = 10;
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/commonLanguage/index";
+	}
 	@ApiOperation(value = "查询接口", response = School.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
 			@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),

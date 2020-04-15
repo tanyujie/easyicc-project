@@ -1,9 +1,10 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.service.HrmStaffInfoService;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

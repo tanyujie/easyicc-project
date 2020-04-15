@@ -35,7 +35,7 @@ public class SiteController extends IdentityRepository{
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
 		return "/console/site/index";
 	}
 	@ApiOperation(value = "站点查询", response = Site.class)
