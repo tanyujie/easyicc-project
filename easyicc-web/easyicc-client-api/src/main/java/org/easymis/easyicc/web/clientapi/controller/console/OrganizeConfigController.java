@@ -2,10 +2,12 @@ package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.OrganizeConfig;
+import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.OrganizeConfigService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +23,16 @@ import io.swagger.annotations.ApiOperation;
 public class OrganizeConfigController extends IdentityRepository{
 	@Autowired
 	private OrganizeConfigService service;
+	@ApiOperation(value = "公司全局配置页面")
+	@RequestMapping(value = { "/edit.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String find(String name,ModelMap model) {
+		String orgId = getOrgId();
+		Site bean = new Site();
+		bean.setOrgId(orgId);
 
+		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/organize/config";
+	}
 
 	@ApiOperation(value = "保存组织全局配置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),

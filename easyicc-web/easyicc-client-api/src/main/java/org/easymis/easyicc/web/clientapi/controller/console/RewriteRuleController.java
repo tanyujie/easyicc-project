@@ -1,10 +1,9 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.School;
+import org.easymis.easyicc.domain.entity.RewriteRule;
 import org.easymis.easyicc.domain.entity.Site;
-import org.easymis.easyicc.domain.entity.VisitorFilter;
-import org.easymis.easyicc.service.VisitorFilterService;
+import org.easymis.easyicc.service.RewriteRuleService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +17,13 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "/visitorFilter", description = "访客屏蔽管理")
+@Api(value = "/rewriteRule", description = "接入策略管理")
 @Controller
-@RequestMapping("/visitorFilter")
-public class VisitorFilterController extends IdentityRepository{
+@RequestMapping("/rewriteRule")
+public class RewriteRuleController extends IdentityRepository{
 	@Autowired
-	private VisitorFilterService service;
-	@ApiOperation(value = "访客屏蔽页面")
+	private RewriteRuleService service;
+	@ApiOperation(value = "接入策略页面")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,ModelMap model) {
 		String orgId = getOrgId();
@@ -32,9 +31,9 @@ public class VisitorFilterController extends IdentityRepository{
 		bean.setOrgId(orgId);
 
 		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/console/visitorFilter/index";
+		return "/console/rewriteRule/index";
 	}
-	@ApiOperation(value = "查询接口", response = School.class)
+	@ApiOperation(value = "查询接口", response = RewriteRule.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
 			@ApiImplicitParam(name = "pageNum", value = "页码", dataType = "int", required = false),
 			@ApiImplicitParam(name = "pageSize", value = "每页显示记录", dataType = "int", required = false), })
@@ -42,14 +41,15 @@ public class VisitorFilterController extends IdentityRepository{
 	@ResponseBody
 	public RestResult findByOrgId(String content, Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		VisitorFilter bean = new VisitorFilter();
+		RewriteRule bean = new RewriteRule();
 		bean.setOrgId(orgId);
-		bean.setStaffId(getStaffId());
+
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
+		//service.find(bean, pageNum, pageSize)
+		return RestResult.buildSuccess();
 	}
 
 	@ApiOperation(value = "保存访客屏蔽")
@@ -60,9 +60,8 @@ public class VisitorFilterController extends IdentityRepository{
 			@ApiImplicitParam(name = "hotKey", value = "hotKey", dataType = "string", required = false), })
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(VisitorFilter bean) {
+	public RestResult add(RewriteRule bean) {
 		bean.setOrgId(getOrgId());
-		bean.setStaffId(getStaffId());
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -77,7 +76,7 @@ public class VisitorFilterController extends IdentityRepository{
 			@ApiImplicitParam(name = "hotKey", value = "hotKey", dataType = "string", required = false), })
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(VisitorFilter bean) {
+	public RestResult update(RewriteRule bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

@@ -2,10 +2,12 @@ package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
+import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.PromotionChannelService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,6 +23,17 @@ import io.swagger.annotations.ApiOperation;
 public class PromotionChannelController extends IdentityRepository{
 	@Autowired
 	private PromotionChannelService service;
+	@ApiOperation(value = "推广渠道页面")
+	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String find(String name,ModelMap model) {
+		String orgId = getOrgId();
+		Site bean = new Site();
+		bean.setOrgId(orgId);
+
+		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/promotionChannel/index";
+	}
+	
 	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
 	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
