@@ -1,8 +1,13 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
+import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguage;
+import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
 import org.easymis.easyicc.domain.entity.School;
+import org.easymis.easyicc.service.CommonLanguageCategoryService;
 import org.easymis.easyicc.service.CommonLanguageService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +29,8 @@ import io.swagger.annotations.ApiOperation;
 public class CommonLanguageController extends IdentityRepository {
 	@Autowired
 	private CommonLanguageService service;
+	@Autowired
+	private CommonLanguageCategoryService categoryService;
 	@ApiOperation(value = "个人常用语首页")
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
@@ -34,6 +41,7 @@ public class CommonLanguageController extends IdentityRepository {
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
+		model.put("categoryList", categoryService.findByOrgId(orgId));
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
 		return "/console/commonLanguage/index";
 	}
@@ -55,7 +63,30 @@ public class CommonLanguageController extends IdentityRepository {
 			pageSize = 10;
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
-
+	@ApiOperation(value = "保存个人常用语")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
+			@ApiImplicitParam(name = "type", value = "类型", dataType = "string", required = false),
+			@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
+			@ApiImplicitParam(name = "title", value = "常用语标题", dataType = "string", required = false),
+			@ApiImplicitParam(name = "hotKey", value = "hotKey", dataType = "string", required = false), })
+	@RequestMapping(value = { "/saveOrUpdate.do" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public RestResult saveOrUpdate(CommonLanguage bean) {
+		if (StringUtils.isEmpty(bean.getId())) {
+			bean.setOrgId(getOrgId());
+			bean.setStaffId(getStaffId());
+			service.save(bean);
+			return RestResult.buildSuccess();
+		} else if (StringUtils.isNotBlank(bean.getId())) {
+			CommonLanguage vBean = service.findById(bean.getId());
+			vBean.setCategoryId(bean.getCategoryId());
+			vBean.setTitle(bean.getTitle());
+			vBean.setContent(bean.getContent());
+			service.update(vBean);
+			return RestResult.buildSuccess();
+		} else
+			return RestResult.buildFail();
+	}
 	@ApiOperation(value = "保存个人常用语")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
 			@ApiImplicitParam(name = "type", value = "类型", dataType = "string", required = false),

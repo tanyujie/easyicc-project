@@ -90,10 +90,13 @@
 
     $(document).on('click', '[data-nav-target]', function () {
         var $this = $(this),
-            target = $this.data('nav-target');
+            target = $this.data('nav-target'),
+            targetTitle = $this.data('nav-title');
+            
         if (body_.hasClass('navigation-toggle-one')) {
             body_.addClass('navigation-show');
         }
+        $('#data-nav-title').html(targetTitle);
         $('.navigation .navigation-menu-body .navigation-menu-group > div').removeClass('open');
         $('.navigation .navigation-menu-body .navigation-menu-group ' + target).addClass('open');
         $('[data-nav-target]').removeClass('active');
@@ -101,7 +104,7 @@
         $this.tooltip('hide');
     });
 
-    $(document).on('click', '.navigation-toggler a', function () {alert("ww");
+    $(document).on('click', '.navigation-toggler a', function () {
         if (wind_.width() < 1200) {
             $.createOverlay();
             body_.addClass('navigation-show');

@@ -1,5 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
+import org.apache.commons.lang.StringUtils;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
 import org.easymis.easyicc.domain.entity.School;
@@ -51,7 +52,27 @@ public class CommonLanguageCategoryController extends IdentityRepository{
 			pageSize = 10;
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
-
+	@ApiOperation(value = "保存个人常用语")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
+		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
+		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
+	@RequestMapping(value = { "/saveOrUpdate.do" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public RestResult saveOrUpdate(CommonLanguageCategory bean) {
+		if (StringUtils.isEmpty(bean.getId())) {
+			bean.setOrgId(getOrgId());
+			bean.setParentId("0");
+			service.save(bean);
+			return RestResult.buildSuccess();
+		} else if (StringUtils.isNotBlank(bean.getId())) {
+			CommonLanguageCategory vBean=service.findById(bean.getId());
+			vBean.setName(bean.getName());
+			vBean.setPriority(bean.getPriority());
+			service.update(vBean);
+			return RestResult.buildSuccess();
+		} else
+			return RestResult.buildFail();
+	}
 	@ApiOperation(value = "保存个人常用语")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
@@ -61,6 +82,7 @@ public class CommonLanguageCategoryController extends IdentityRepository{
 	@ResponseBody
 	public RestResult save(CommonLanguageCategory bean) {
 		bean.setOrgId(getOrgId());
+		bean.setParentId("0");
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else

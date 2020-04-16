@@ -1,8 +1,9 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.PromotionChannel;
-import org.easymis.easyicc.service.PromotionChannelService;
+import org.easymis.easyicc.domain.entity.Organize;
+import org.easymis.easyicc.service.OrganizeService;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,19 +15,19 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "/promotionChannel", description = "推广渠道")
+@Api(value = "/organize", description = "公司信息配置")
 @Controller
-@RequestMapping("/promotionChannel")
-public class PromotionChannelController extends IdentityRepository{
+@RequestMapping("/organize")
+public class OrganizeController extends IdentityRepository{
 	@Autowired
-	private PromotionChannelService service;
-	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
+	private OrganizeService service;
+	@ApiOperation(value = "查询接口", response = Organize.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
 	@RequestMapping(value = { "/findPage.json" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
 	public RestResult findByOrgId(String name,Integer pageNum, Integer pageSize) {
 		String orgId = getOrgId();
-		PromotionChannel bean = new PromotionChannel();
+		Organize bean = new Organize();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
@@ -42,7 +43,7 @@ public class PromotionChannelController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(PromotionChannel bean) {
+	public RestResult add(Organize bean) {
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
@@ -56,7 +57,7 @@ public class PromotionChannelController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(PromotionChannel bean) {
+	public RestResult update(Organize bean) {
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else
