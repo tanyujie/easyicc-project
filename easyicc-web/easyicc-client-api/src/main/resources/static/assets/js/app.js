@@ -86,7 +86,7 @@
             $('.navigation .navigation-menu-body ul li.open>a>.sub-menu-arrow').removeClass('ti-plus').addClass('ti-minus').addClass('rotate-in');
         }, 200);
     });
-    /*------------- side menu (sub menü arrow) -------------*/
+    /*------------- side menu 左侧导航菜单 -------------*/
 
     $(document).on('click', '[data-nav-target]', function () {
         var $this = $(this),
@@ -101,7 +101,7 @@
         $this.tooltip('hide');
     });
 
-    $(document).on('click', '.navigation-toggler a', function () {
+    $(document).on('click', '.navigation-toggler a', function () {alert("ww");
         if (wind_.width() < 1200) {
             $.createOverlay();
             body_.addClass('navigation-show');
@@ -317,7 +317,8 @@
             recipient = button.data('whatever'),
             modal = $(this);
 
-        modal.find('.modal-title').text('New message to ' + recipient);
+      // modal.find('.modal-title').text('New message to ' + recipient);
+        //alert("WWW");
         modal.find('.modal-body input').val(recipient);
     });
 
