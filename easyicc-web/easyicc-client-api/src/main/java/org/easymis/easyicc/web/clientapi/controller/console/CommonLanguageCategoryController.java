@@ -1,8 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.BusinessGroup;
-import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.service.CommonLanguageCategoryService;
@@ -29,14 +27,14 @@ public class CommonLanguageCategoryController extends IdentityRepository{
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
 		String orgId = getOrgId();
-		CommonLanguage bean = new CommonLanguage();
+		CommonLanguageCategory bean = new CommonLanguageCategory();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/console/commonLanguage/index";
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/commonLanguage/category/index";
 	}
 	@ApiOperation(value = "查询接口", response = School.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
@@ -61,7 +59,8 @@ public class CommonLanguageCategoryController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/save.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult add(CommonLanguageCategory bean) {
+	public RestResult save(CommonLanguageCategory bean) {
+		bean.setOrgId(getOrgId());
 		if (service.save(bean))
 			return RestResult.buildSuccess();
 		else
