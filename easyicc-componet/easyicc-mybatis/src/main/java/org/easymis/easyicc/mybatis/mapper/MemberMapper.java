@@ -9,15 +9,12 @@ public interface MemberMapper {
 	@Select("<script>" + "SELECT * FROM member WHERE phone_number=#{phoneNumber}" + "</script>")
 	Member findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
 
-    
 	@Select("select * from member t WHERE t.phone_number = #{phoneNumber}")
 	Member get(@Param("phoneNumber") String phoneNumber, @Param("password") String password);
-	
-	@Insert("insert into Member(id, Member_no, sex, age, company_name, department, position, password, head_url, phone_number, email, modify_time, create_time, name, enabled)"
-			+ "values"
-			+ "(#{id},#{MemberNo},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{phoneNumber},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")
-	boolean save(Member bean);
-	
-	 @Select("select * from member t WHERE t.member_id = #{memberId}")  
-	 Member findById(@Param("memberId") String memberId);
+
+	 @Insert("insert into member(member_id,member_no,org_id,sex,age,company_name,department,position,password,head_url,mobile_no,email,modify_time,create_time,name,enabled)values(#{memberId},#{memberNo},#{orgId},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{mobileNo},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")  
+	 public boolean save(Member bean); 
+
+	@Select("select * from member t WHERE t.member_id = #{memberId}")
+	Member findById(@Param("memberId") String memberId);
 }

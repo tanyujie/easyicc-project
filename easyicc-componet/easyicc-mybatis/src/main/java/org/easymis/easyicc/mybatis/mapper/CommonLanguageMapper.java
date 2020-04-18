@@ -11,11 +11,11 @@ import org.easymis.easyicc.domain.entity.CommonLanguage;
 
 public interface CommonLanguageMapper {
 	@Select({"<script>",
-        "SELECT * from common_language ",
+        "SELECT * from common_language t left join common_language_category c on t.category_id=c.id",
         " <where> " +
-        " <if test=\"orgId != null\"> AND org_id=#{orgId}</if> " +
-        " <if test=\"staffId != null\"> AND staff_id=#{staffId}</if> " +
-        " <if test=\"content != null\"> AND content LIKE '%${content}%'</if> " +
+        " <if test=\"orgId != null\"> AND t.org_id=#{orgId}</if> " +
+        " <if test=\"staffId != null\"> AND t.staff_id=#{staffId}</if> " +
+        " <if test=\"content != null\"> AND t.content LIKE '%${content}%'</if> " +
         " </where> " +
         "</script>"}) 
 	public List<CommonLanguage> getList(

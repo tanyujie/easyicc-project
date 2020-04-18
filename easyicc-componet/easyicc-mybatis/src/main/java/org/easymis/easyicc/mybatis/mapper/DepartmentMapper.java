@@ -11,8 +11,6 @@ public interface DepartmentMapper {
 	@Select(" SELECT * FROM department t where org_id=#{orgId} order by priority")
 	public List<Department> findByOrgId(@Param("orgId")String orgId);
 	
-	@Insert("insert into Member(id, Member_no, sex, age, company_name, department, position, password, head_url, phone_number, email, modify_time, create_time, name, enabled)"
-			+ "values"
-			+ "(#{id},#{MemberNo},#{sex},#{age},#{companyName},#{department},#{position},#{password},#{headUrl},#{phoneNumber},#{email},#{modifyTime},#{createTime},#{name},#{enabled})")
-	boolean save(Department bean);
+	 @Insert("insert into department(id,org_id,name,no,leader_id,assist_id,invisible_ids,parent_id,priority,level,is_leaf,depict,status)values(#{id},#{orgId},#{name},#{no},#{leaderId},#{assistId},#{invisibleIds},#{parentId},#{priority},#{level},#{isLeaf},#{depict},#{status})")  
+	 public void save(Department bean); 
 }
