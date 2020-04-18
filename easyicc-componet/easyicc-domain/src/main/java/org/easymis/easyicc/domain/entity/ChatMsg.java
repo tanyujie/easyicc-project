@@ -15,6 +15,8 @@ public class ChatMsg {
     private String acceptMemberId; 
     //@GenField(labelname="",column="msg",length=255,isnull=false) 
     private String msg; 
+	private String chatId;//对话记录
+	private String type;//消息类型
     //@GenField(labelname="",column="sign_flag",isnull=false) 
     private Integer signFlag; 
     //@GenField(labelname="",column="create_time",isnull=false) 
