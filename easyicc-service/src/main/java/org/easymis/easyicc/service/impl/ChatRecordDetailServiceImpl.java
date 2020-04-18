@@ -9,6 +9,7 @@ import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
 import org.easymis.easyicc.domain.vo.VisitorChatMsg;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordDetailMapper;
 import org.easymis.easyicc.service.ChatRecordDetailService;
+import org.easymis.easyicc.service.ChatRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,6 @@ import com.github.pagehelper.PageInfo;
 public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 	@Autowired
 	private ChatRecordDetailMapper mapper;
-
 	@Override
 	public boolean save(ChatRecordDetail bean) {
 		bean.setCreateTime(new Date());
@@ -28,7 +28,13 @@ public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 	@Override
 	public boolean save(VisitorChatMsg chatMsg) {
 		ChatRecordDetail bean= new ChatRecordDetail();
-		bean.setCreateTime(new Date());
+		bean.setOrgId(chatMsg.getOrgId());
+		bean.setCreateTime(new Date());		
+		bean.setChatId(chatMsg.getChatId());
+		bean.setFromUserId(chatMsg.getSendMemberId());
+		bean.setToUserId(chatMsg.getAcceptMemberId());
+		bean.setType(chatMsg.getType());
+		bean.setMessage(chatMsg.getMsg());
 		
 		return mapper.insertByBean(bean);
 	}
