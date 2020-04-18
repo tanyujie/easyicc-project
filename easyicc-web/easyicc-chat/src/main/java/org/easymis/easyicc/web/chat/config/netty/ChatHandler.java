@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.easymis.easyicc.domain.vo.VisitorChatMsg;
+import org.easymis.easyicc.service.ChatRecordDetailService;
 import org.easymis.easyicc.service.ChatRecordService;
 import org.easymis.easyicc.service.HrmStaffInfoService;
 import org.easymis.easyicc.web.chat.enums.MsgActionEnum;
@@ -43,7 +45,6 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 		DataContent dataContent = JsonUtils.jsonToPojo(content, DataContent.class);
 		Integer action = dataContent.getAction();
 		// 2. 判断消息类型，根据不同的类型来处理不同的业务
-
 		if (action == MsgActionEnum.CONNECT.type) {
 			// 	2.1  当websocket 第一次open的时候，初始化channel，把用的channel和userid关联起来
 			String senderId = dataContent.getChatMsg().getSenderId();
@@ -73,7 +74,7 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				// 用户离线 TODO 推送消息
 			}
 			
-		} else if (action == MsgActionEnum.CHAT.type) {
+		} else if (action.equals(MsgActionEnum.CHAT.type)) {
 			//  2.2  聊天类型的消息，把聊天记录保存到数据库，同时标记消息的签收状态[未签收]
 			ChatMsg chatMsg = dataContent.getChatMsg();
 			String msgText = chatMsg.getMsg();
@@ -127,7 +128,27 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
 				  }*/
 			  }
 
-		} else if (action == MsgActionEnum.SIGNED.type) {
+		}else if (action.equals(MsgActionEnum.ICC_TEXT.type)) {
+			//  2.2  聊天类型的消息，把聊天记录保存到数据库，同时标记消息的签收状态[未签收]
+			ChatMsg chatMsg = dataContent.getChatMsg();
+			String msgText = chatMsg.getMsg();
+			String groupId= chatMsg.getGroupId();
+			String receiverId = chatMsg.getReceiverId();
+			String senderId = chatMsg.getSenderId();			
+			// 保存消息到数据库，并且标记为 未签收
+			ChatRecordDetailService chatRecordDetailService = (ChatRecordDetailService)SpringUtil.getBean("chatRecordDetailService");
+			//
+			VisitorChatMsg visitorChatMsg= new VisitorChatMsg();
+			visitorChatMsg.setOrgId(chatMsg.getOrgId());
+			visitorChatMsg.setChatId(chatMsg.getChatId());
+			visitorChatMsg.setType(chatMsg.getType());
+			visitorChatMsg.setMsg(chatMsg.getMsg());
+			visitorChatMsg.setAcceptMemberId(chatMsg.getReceiverId());
+			visitorChatMsg.setSendMemberId(chatMsg.getSenderId());
+			chatRecordDetailService.save(visitorChatMsg);
+			
+
+		}else if (action == MsgActionEnum.SIGNED.type) {
 			//  2.3  签收消息类型，针对具体的消息进行签收，修改数据库中对应消息的签收状态[已签收]
 			ChatMemberService userService = (ChatMemberService)SpringUtil.getBean("chatMemberService");
 			// 扩展字段在signed类型的消息中，代表需要去签收的消息id，逗号间隔

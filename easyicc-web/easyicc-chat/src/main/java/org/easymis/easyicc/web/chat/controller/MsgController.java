@@ -15,6 +15,11 @@ import org.easymis.easyicc.service.ChatRecordService;
 import org.easymis.easyicc.service.RobotChatDetailService;
 import org.easymis.easyicc.service.RobotQuestionService;
 import org.easymis.easyicc.service.VisitorInfoService;
+import org.easymis.easyicc.web.chat.config.netty.ChatHandler;
+import org.easymis.easyicc.web.chat.config.netty.ChatMsg;
+import org.easymis.easyicc.web.chat.config.netty.DataContent;
+import org.easymis.easyicc.web.chat.config.netty.UserChannelRel;
+import org.easymis.easyicc.web.chat.utils.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.util.StringUtil;
 
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
@@ -91,6 +98,36 @@ public class MsgController {
 		bean.setType("RECORD_RECORD");
 		bean.setToUserId("AI-ylkj");//客服 id
 		chatRecordDetailService.save(bean);
+		//人工客服
+		ChatMsg chatMsg = new ChatMsg();
+		chatMsg.setChatId(chatId);
+		chatMsg.setGroupId("groupId");
+		chatMsg.setMsg(transformEmoticon(message));
+		chatMsg.setMsgId("msgId");
+		chatMsg.setOrgId(orgId);
+		chatMsg.setReceiverId("2");
+		chatMsg.setSenderId("senderId");
+		chatMsg.setType("type");
+		
+		String receiverId = chatMsg.getReceiverId();
+		DataContent dataContentMsg = new DataContent();
+		dataContentMsg.setAction(2);
+		dataContentMsg.setChatMsg(chatMsg);
+		Channel receiverChannel = UserChannelRel.get(receiverId);
+		if (receiverChannel == null) {
+			// TODO channel为空代表用户离线，推送消息（JPush，个推，小米推送）
+		} else {
+			// 当receiverChannel不为空的时候，从ChannelGroup去查找对应的channel是否存在
+			Channel findChannel = ChatHandler.users.find(receiverChannel.id());
+			if (findChannel != null) {
+				// 用户在线
+				receiverChannel.writeAndFlush(
+						new TextWebSocketFrame(
+								JsonUtils.objectToJson(dataContentMsg)));
+			} else {
+				// 用户离线 TODO 推送消息
+			}
+		}
 		
 		RobotQuestion robotQuestion = new RobotQuestion();
 		robotQuestion.setOrgId(orgId);

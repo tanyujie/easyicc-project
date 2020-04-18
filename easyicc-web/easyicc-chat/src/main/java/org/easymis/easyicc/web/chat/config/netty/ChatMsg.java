@@ -9,8 +9,18 @@ public class ChatMsg implements Serializable {
 	private String groupId;//群id
 	private String senderId; // 发送者的用户id
 	private String receiverId; // 接受者的用户id
+	private String chatId;//对话记录
+	private String type;//消息类型
 	private String msg; // 聊天内容
 	private String msgId; // 用于消息的签收
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getOrgId() {
 		return orgId;
@@ -58,6 +68,14 @@ public class ChatMsg implements Serializable {
 
 	public void setGroupId(String groupId) {
 		this.groupId = groupId;
+	}
+
+	public String getChatId() {
+		return chatId;
+	}
+
+	public void setChatId(String chatId) {
+		this.chatId = chatId;
 	}
 
 }
