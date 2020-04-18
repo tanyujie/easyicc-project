@@ -9,9 +9,10 @@ public class CommonLanguage {
 	private String categoryId;
 	private String staffId;
 	private String content;
-	private String type;
+	private Integer type;
 	private String priority;
 	private String title;
 	private String hotKey;
+	private String name;
 
 }
