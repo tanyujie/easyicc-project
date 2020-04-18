@@ -1,14 +1,12 @@
 package org.easymis.easyicc.service.impl;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.ChatRecord;
 import org.easymis.easyicc.domain.entity.ChatRecordDetail;
 import org.easymis.easyicc.domain.vo.ChatRecordDetailVo;
+import org.easymis.easyicc.domain.vo.VisitorChatMsg;
 import org.easymis.easyicc.mybatis.mapper.ChatRecordDetailMapper;
 import org.easymis.easyicc.service.ChatRecordDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-@Service
+@Service("chatRecordDetailService")  
 public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 	@Autowired
 	private ChatRecordDetailMapper mapper;
@@ -27,7 +25,13 @@ public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 		bean.setCreateTime(new Date());
 		return mapper.insertByBean(bean);
 	}
-
+	@Override
+	public boolean save(VisitorChatMsg chatMsg) {
+		ChatRecordDetail bean= new ChatRecordDetail();
+		bean.setCreateTime(new Date());
+		
+		return mapper.insertByBean(bean);
+	}
 	@Override
 	public boolean update(ChatRecordDetail bean) {
 		// TODO Auto-generated method stub
@@ -63,6 +67,8 @@ public class ChatRecordDetailServiceImpl implements ChatRecordDetailService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 }

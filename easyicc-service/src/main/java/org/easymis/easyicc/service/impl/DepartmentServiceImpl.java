@@ -6,9 +6,7 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Department;
-import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 import org.easymis.easyicc.domain.vo.DepartmentTreeVo;
-import org.easymis.easyicc.domain.vo.StaffInfoVo;
 import org.easymis.easyicc.mybatis.mapper.DepartmentMapper;
 import org.easymis.easyicc.service.DepartmentService;
 import org.springframework.beans.BeanUtils;
@@ -86,6 +84,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 			}
 		}
 		return firstList;
+	}
+
+	@Override
+	public List<Department> findByOrgId(String orgId) {
+		// TODO Auto-generated method stub
+		return mapper.findByOrgId(orgId);
 	}
 
 }

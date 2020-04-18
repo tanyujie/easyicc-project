@@ -97,7 +97,9 @@ public class MemberServiceImpl implements MemberService {
 		hrmStaffInfo.setDepartmentId(departmentId);
 		hrmStaffInfo.setMemberId(memberId);
 		hrmStaffInfo.setSetLanguage(1);
-
+		//js jsconfig
+		//组织全局配置 organize_config
+		
 		
 		mapper.save(member);
 		

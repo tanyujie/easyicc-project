@@ -2,6 +2,7 @@ package org.easymis.easyicc.service.impl;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.CommonLanguageCategory;
@@ -20,7 +21,7 @@ public class CommonLanguageCategoryServiceImpl implements CommonLanguageCategory
 	private CommonLanguageCategoryMapper mapper;
 	@Override
 	public boolean save(CommonLanguageCategory bean) {
-		// TODO Auto-generated method stub
+		bean.setId(UUID.randomUUID().toString().replace("-", ""));
 		return mapper.save(bean);
 	}
 
