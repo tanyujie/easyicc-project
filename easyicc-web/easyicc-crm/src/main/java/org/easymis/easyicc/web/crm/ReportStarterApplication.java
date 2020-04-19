@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.report;
+package org.easymis.easyicc.web.crm;
 
 
 

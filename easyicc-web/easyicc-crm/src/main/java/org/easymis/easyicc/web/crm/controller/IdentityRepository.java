@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.report.controller;
+package org.easymis.easyicc.web.crm.controller;
 
 import javax.servlet.http.HttpServletRequest;
 

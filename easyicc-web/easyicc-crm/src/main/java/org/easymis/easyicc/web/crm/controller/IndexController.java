@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.report.controller;
+package org.easymis.easyicc.web.crm.controller;
 
 import org.easymis.easyicc.domain.entity.HrmStaffInfo;
 import org.springframework.stereotype.Controller;
