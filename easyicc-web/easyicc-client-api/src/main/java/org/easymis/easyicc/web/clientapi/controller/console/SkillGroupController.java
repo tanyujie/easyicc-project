@@ -35,7 +35,7 @@ public class SkillGroupController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/console/commonLanguage/index";
+		return "/console/skillGroup/index";
 	}
 	@ApiOperation(value = "查询接口", response = School.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "content", value = "常用语内容", dataType = "string", required = false),
