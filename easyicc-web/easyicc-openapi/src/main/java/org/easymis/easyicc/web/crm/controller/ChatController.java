@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.openapi.controller;
+package org.easymis.easyicc.web.crm.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,11 +49,11 @@ public class ChatController extends IdentityRepository{
 		if(questionList!=null) {
 			for(int i=0;i<questionList.size();i++) {
 				AnswerResult answerResult= new AnswerResult();
-				RobotQuestion robotQuestion= questionList.get(i);
+				RobotQuestion robotAnswer= questionList.get(i);
 				answerResult.setGroupType(0);
-				answerResult.setResultType(robotQuestion.getResultType());
+				answerResult.setResultType(robotAnswer.getResultType());
 				HashMap values = new HashMap();
-				values.put(robotQuestion.getResultType(), robotQuestion.getAnswer());
+				values.put(robotAnswer.getResultType(), robotAnswer.getAnswer());
 				answerResult.setValues(values);
 				answerResultList.add(answerResult);				
 			}
