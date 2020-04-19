@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-@Api(value = "/iccAaccount", description = "客服账号管理")
+@Api(value = "/iccAccount", description = "客服账号管理")
 @Controller
-@RequestMapping("/iccAaccount")
-public class ICCAaccountController extends IdentityRepository {
+@RequestMapping("/iccAccount")
+public class ICCAccountController extends IdentityRepository {
 	@Autowired
 	private HrmStaffInfoService service;
 	@ApiOperation(value = "客服账号管理首页")
@@ -29,6 +29,6 @@ public class ICCAaccountController extends IdentityRepository {
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/iccAaccount/index";
+		return "/console/iccAaccount/index";
 	}
 }
