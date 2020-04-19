@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bordash - Admin Dashboard Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="${basePath}/vendors/bundle.css" type="text/css">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="${basePath}/vendors/datepicker/daterangepicker.css">
+
+    <!-- Vmap -->
+    <link rel="stylesheet" href="${basePath}/vendors/vmap/jqvmap.min.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="${basePath}/assets/css/app.css" type="text/css">
+    <style type="text/css">
+    .form-page-header {
+  margin:0,0;
+  padding: 1rem 1.8rem;
+  margin-bottom: 10px;
+  height: 69px;
+  background-color: white;
+  z-index: 3;
+  -webkit-box-shadow: 0 3px 10px rgba(62, 85, 120, 0.07);
+     -moz-box-shadow: 0 3px 10px rgba(62, 85, 120, 0.07);
+          box-shadow: 0 3px 10px rgba(62, 85, 120, 0.07);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.form-page-header h1, .form-page-header h2, .form-page-header h3, .form-page-header h4, .form-page-header h5 {
+  margin: 0;
+}
+
+.form-page-header .breadcrumb {
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-page-header .breadcrumb a:hover, .form-page-header .breadcrumb .chat-block .chat-sidebar .chat-sidebar-content .list-group .list-group-item.active:hover, .chat-block .chat-sidebar .chat-sidebar-content .list-group .form-page-header .breadcrumb .list-group-item.active:hover, .form-page-header .breadcrumb .header form .input-group .input-group-append button.btn:hover, .header form .input-group .input-group-append .form-page-header .breadcrumb button.btn:hover {
+  text-decoration: underline;
+}
+
+.form-page-header .breadcrumb li.breadcrumb-item {
+  font-size: inherit !important;
+}
+
+.form-page-header .breadcrumb li.breadcrumb-item:first-child:before {
+  font-size: 12px;
+  font-family: themify;
+  content: "\e69b";
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.form-page-header .breadcrumb li.breadcrumb-item + .breadcrumb-item::before {
+  font-size: 10px;
+}
+
+.form-page-header .breadcrumb li.breadcrumb-item.active {
+  color: #1565C0;
+  font-weight: 600;
+}
+    </style>
+</head>
+<body>
+<div class="form-page-header">
+<form class="form-inline">
+
+<div class="form-group mb-2">
+<label  >注册表单名称:	</label>
+     <input type="text" class="form-control" id="inputPassword2" >
+  </div>
+  <div class="form-group mx-sm-5 mb-2">
+    <label  >查询时间段:	</label>
+    <input type="text" name="datefilter" class="form-control">
+  </div>
+
+    <button type="submit" class="btn btn-warning mb-2 mr-5">查询</button>
+    <button type="submit" class="btn btn-primary mb-2">导出</button>
+  
+</form>
+</div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-12">
+<div class="card">
+
+<div class="table-responsive" tabindex="1" style="overflow: hidden; outline: none;">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">我的CRM</th>
+                                        <th scope="col">创建日期 </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+</div>
+</div>
+</div>
+</div>
+<!-- Plugin scripts -->
+<script src="${basePath}/vendors/bundle.js"></script>
+<!-- Peity -->
+<script src="${basePath}/vendors/charts/peity/jquery.peity.min.js"></script>
+<script src="${basePath}/assets/js/examples/charts/peity.js"></script>
+
+<!-- Datepicker -->
+<script src="${basePath}/vendors/datepicker/daterangepicker.js"></script>
+
+<!-- Slick -->
+<script src="${basePath}/vendors/slick/slick.min.js"></script>
+
+<!-- Vamp -->
+<script src="${basePath}/vendors/vmap/jquery.vmap.min.js"></script>
+<script src="${basePath}/vendors/vmap/maps/jquery.vmap.usa.js"></script>
+<script src="${basePath}/assets/js/examples/vmap.js"></script>
+
+
+
+<!-- App scripts -->
+<script src="${basePath}/assets/js/app.js"></script>
+<script type="text/javascript">
+var datefilter = $('input[name="datefilter"]');
+datefilter.daterangepicker({
+    autoUpdateInput: false,
+    locale: {
+        cancelLabel: 'Clear'
+    }
+});
+
+datefilter.on('apply.daterangepicker', function(ev, picker) {
+    $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+});
+
+$('input.create-event-datepicker').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    autoUpdateInput: false
+}).on
+</script>
+</body>
+</html>
