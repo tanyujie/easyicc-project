@@ -23,6 +23,6 @@ public class IndexController extends IdentityRepository {
 		if (pageSize == null)
 			pageSize = 10;
 		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/hrmStaff/index";
+		return "/index";
 	}
 }
