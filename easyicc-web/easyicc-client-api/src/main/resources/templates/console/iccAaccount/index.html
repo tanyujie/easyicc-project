@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bordash - Admin Dashboard Template</title>
+    <title>后台管理中心 - 客服账号管理</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
@@ -81,49 +81,40 @@
                 </div>
             </div>
             <div class="flex-grow-1">
-               <ul>                
-                <li>
-                        <a  href="#" data-toggle="tooltip" data-placement="right" title="首页"  data-nav-target="#personCommon">
-                            <i data-feather="home"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="个人常用功能"
-                           data-nav-target="#personCommon">
-                            <i data-feather="user"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="系统状态监控" data-nav-target="#systemStatusMonitor">
-                            <i data-feather="monitor"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="智能微微配置"   data-nav-target="#robotConfig">
-                            <i data-feather="user-plus"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="辅助功能管理" data-nav-target="#assistConfig">
-                            <i data-feather="tool"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="咨询入口管理" data-nav-target="#consultConfig">
-                            <i data-feather="message-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="网页样式配置" data-nav-target="#pageStyleConfig">
-                            <i data-feather="file-plus"></i>
-                        </a>
-                    </li>
-                     <li>
-                        <a href="#" data-toggle="tooltip" data-placement="right" title="基础信息设置" data-nav-target="#basicSettings">
-                            <i data-feather="settings"></i>
-                        </a>
-                    </li>
-                </ul>
+				<ul>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="首页" data-nav-target="#personCommon"> <i
+								data-feather="home"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="个人常用功能" data-nav-target="#personCommon"> <i
+								data-feather="user"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="系统状态监控" data-nav-target="#systemStatusMonitor"> <i
+								data-feather="monitor"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="智能微微配置" data-nav-target="#robotConfig"> <i
+								data-feather="user-plus"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="辅助功能管理" data-nav-target="#assistConfig"> <i
+								data-feather="tool"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="咨询入口管理" data-nav-target="#consultConfig"> <i
+								data-feather="message-square"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="网页样式配置" data-nav-target="#pageStyleConfig"> <i
+								data-feather="file-plus"></i>
+						</a></li>
+						<li><a class="active" href="#" data-toggle="tooltip"
+							data-placement="right" title="基础信息设置"
+							data-nav-target="#basicSettings"> <i data-feather="settings"></i>
+						</a></li>
+					</ul>
             </div>
 
         </div>
@@ -185,11 +176,11 @@
                     </ul>
                 </div>
                 
-                <div class="open" id="assistConfig">
+                <div  id="assistConfig">
                     <ul>
                         <li><a href="login.html">AI助手</a></li>
                         <li><a  href="${basePath}/commonLanguageCategory/index.html">常用语分类管理</a></li>
-                        <li><a class="active" href="${basePath}/commonLanguage/index.html">常用语内容管理</a></li>
+                        <li><a href="${basePath}/commonLanguage/index.html">常用语内容管理</a></li>
                         <li><a href="login.html">客户信息字段管理</a></li>
                         <li><a href="${basePath}/summaryCategory/index.html">总结标签管理</a></li>
                         <li><a href="${basePath}/chatTeam/index.html">群管理</a></li>
@@ -203,20 +194,21 @@
                      </ul>
                 </div>
                 
-                  <div id="basicSettings">
+               <div class="open" id="basicSettings">
                     <ul>
-                        <li class="navigation-divider">客服账号管理</li>
-                        <li><a href="login.html">客服分组管理</a></li>
+                        
+                        <li><a class="active" href="#">客服账号管理</a></li>
+                        <li><a href="${basePath}/skillGroup/index.html">客服分组管理</a></li>
                         <li><a href="${basePath}/department/index.html">部门信息管理</a></li>
-                        <li><a href="recover-password.html">公司角色管理</a></li>
-                        <li><a href="lock-screen.html">公司角色分配</a></li>
-                        <li><a href="profile.html">接入策略管理</a></li>
-                        <li><a href="timeline.html">接入渠道配置</a></li>
-                        <li><a href="invoice.html">访客屏蔽管理</a></li>
+                        <li><a href="${basePath}/role/index.html">公司角色管理</a></li>
+                        <li><a href="${basePath}/role/assignRole.html">公司角色分配</a></li>
+                        <li><a href="${basePath}/rewriteRule/index.html">接入策略管理</a></li>
+                        <li><a href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
+                        <li><a href="${basePath}/visitorFilter/index.html">访客屏蔽管理</a></li>
 
                         <li><a href="${basePath}/site/index.html">子站点管理</a></li>
-                        <li><a href="search-result.html">公司信息配置</a></li>
-                        <li><a href="blank-page.html">公司全局配置</a></li>
+                        <li><a href="${basePath}/organize/edit.html">公司信息配置</a></li>
+                        <li><a href="${basePath}/organizeConfig/edit.html">公司全局配置</a></li>
 
                     </ul>
                 </div>
@@ -232,10 +224,10 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>常用语分类管理</h4>
+                <h4>客服账号管理</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addCommonLanguageCategoryMode">
+                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addIccAccountMode">
                                 <i class="ti-plus mr-2"></i> 新增
                                  
                             </button>
@@ -255,10 +247,18 @@
 						<thead class="thead-light">
 							<tr>
 								<th>#</th>
-								<th class="text-left">类别</th>
-								<th class="text-left">标题</th>
-								<th class="text-left">内容</th>
-								<th class="text-left">类型</th>
+								<th class="text-left">客服ID</th>
+								<th class="text-left">对外显示名称</th>
+								<th class="text-left">对内显示名称</th>
+								<th class="text-left">所属角色</th>								
+								<th class="text-left">邮件地址</th>
+								<th class="text-left">联系电话</th>
+								<th class="text-left">所属部门</th>
+								<th class="text-left">最大接待量</th>
+								<th class="text-left">最大对话数</th>
+								<th class="text-left">客服等级</th>
+								<th class="text-left">账号类型</th>
+								<th class="text-left">启用</th>
 								<th class="text-left">操作</th>
 							</tr>
 						</thead>
@@ -266,13 +266,13 @@
 							<#list pageInfo.list as category>
 							<tr class="text-left">
 								<td class="text-left">${pageInfo.startRow+category_index}</td>
-								<td class="text-left">${category.name!}</td>
-								<td class="text-left">${category.title!}</td>
-								<td class="text-left">${category.content!}</td>
-								<td class="text-left"><#if (category.type==1)> 公司常用语 <#else> ---</#if></td>
+								<td class="text-left">${category.code!}</td>
+								<td class="text-left">${category.code!}</td>
+								<td class="text-left">${category.code!}</td>
+								<td class="text-left"><#if (category.code=='1')> 公司常用语 <#else> ---</#if></td>
 								<td class="text-left">
-								<a class="badge badge-success"  onClick="editCommonLanguageCategory('${category.id!}')">修改</a>
-								<a class="badge badge-danger"  onClick="deleteCommonLanguageCategory('${category.id!}')">删除</a>
+								<a class="badge badge-success"  onClick="editIccAccount('${category.id!}')">修改</a>
+								<a class="badge badge-danger"  onClick="deleteIccAccount('${category.id!}')">删除</a>
 								 </td>
 
 							</tr>
@@ -293,38 +293,125 @@
 </div>
 <!-- end::main -->
 <!-- insert modal begin-->
-<div class="modal fade" id="addCommonLanguageCategoryMode" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="addIccAccountMode" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-     <form id="addCommonLanguageForm"  onsubmit="return checkAddCommonLanguageForm()">
+     <form id="addIccAccountForm"  onsubmit="return checkAddIccAccountForm()" >
      <input type="hidden" id="id" name="id"/>
      <input type="hidden" id="type" name="type" value="1"/>
      
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">新增分类信息</h5>
+        <h5 class="modal-title" id="myModalLabel">新增客服信息</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <i class="ti-close"></i>
         </button>
       </div>
       <div class="modal-body">
-       
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">常用语类别:</label>
-         
-          </div>
-           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">常用语标题:</label>
-            <input type="text" class="form-control" id="title" name="title" placeholder="请输入分类名称" required="">
-            <div class="invalid-feedback" id="name-feedback"></div>
-          </div>
-          <div class="form-group">
-              <label for="message-text" class="col-form-label">常用语内容:</label>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2">客服ID:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="code" name="code"
+						placeholder="请输入分类名称" required="">
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2">对内显示名称:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="title" name="title"
+						placeholder="请输入分类名称" required="">
+				</div>
+				<div class="invalid-feedback" id="name-feedback"></div>
+			</div>
+			<div class="form-group row">
+				<label class="col-form-label col-sm-2">对外显示名称:</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="content"
+						name="content" placeholder="请输入常用语内容">
+				</div>
+			</div>
+						<div class="form-group row">
+              <label  class="col-form-label col-sm-2">登录时间:</label>
+              <div class="col-sm-8">
               <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
             </div>
-         
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">角色:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">邮箱地址:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">座机号码[对外可见]:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">所属部门:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服最大接待量:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服最大对话数:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服等级:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">账号类型:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服IP:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服MAC地址:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">客服头像URL:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
+            <div class="form-group row">
+              <label  class="col-form-label col-sm-2">备注信息:</label>
+              <div class="col-sm-8">
+              <input type="text" class="form-control" id="content" name="content" placeholder="请输入常用语内容" >
+              </div>
+            </div>
        </div>
        <div class="modal-footer">
-          <button  type="button" class="btn btn-primary"  id="saveCategoryButton" onClick="saveCommonLanguageCategory()">保存</button>
+          <button  type="button" class="btn btn-primary"  id="saveCategoryButton" onClick="saveIccAccount()">保存</button>
        </div>
        </form>
      </div>
@@ -355,51 +442,51 @@ $(document).ready(function () {
 
 });
 //以检查用户名不能为空不能有特殊符号为例
-function checkAddCommonLanguageForm(){
-        var title = document.getElementById("title");//获取title那个div
+function checkAddIccAccountForm(){
+        var code = document.getElementById("code");//获取code那个div
         var feedback = document.getElementById("name-feedback");
         //不能为空
-        if(title.value==""){
+        if(code.value==""){
             feedback.innerHTML = "请输入分类名称！";//修改title-feedback div中的内容
-            title.classList.remove("is-valid");//清除合法状态
-            title.classList.add("is-invalid");//添加非法状态
+            code.classList.remove("is-valid");//清除合法状态
+            code.classList.add("is-invalid");//添加非法状态
             return false;
         }
         //不能有特殊符号
         var patrn = /[@#\$%\^&\*]+/g;//正则表达式
         if(patrn.exec(title.value)){
             feedback.innerHTML = "用户名不能存在特殊符号！";
-            title.classList.remove("is-valid");
-            title.classList.add("is-invalid");
+            code.classList.remove("is-valid");
+            code.classList.add("is-invalid");
             return false;
         }
 
         //清除错误提示，改成成功提示
-        title.classList.remove("is-invalid");
-        title.classList.add("is-valid");
+        code.classList.remove("is-invalid");
+        code.classList.add("is-valid");
         feedback.innerHTML="";
         return true;
-    }
-function saveCommonLanguageCategory(){
-	if(checkAddCommonLanguageForm()){
+}
+function saveIccAccount(){
+	if(checkAddIccAccountForm()){
 		$.ajax({
 	        type: 'POST',
-	        url: '${basePath}/commonLanguage/saveOrUpdate.do',
+	        url: '${basePath}/iccAccount/saveOrUpdate.do',
 	        dataType: 'json',
-	        data: $("#addCommonLanguageForm").serialize(),
+	        data: $("#addIccAccountForm").serialize(),
 	        //发送数据前
 	        beforeSend: function(){
 	            // 禁用按钮防止重复提交
 	            $('#saveCategoryButton').attr({disabled: "disabled"});
 	            //弹出modal框
 	           // $('#modal_sm_black_content').html('<img src="loading-white.gif" width="18" height="18" class="mr-2">正在处理，请稍后');
-	           // $("#addCommonLanguageCategoryMode").modal("show");
+	           // $("#addIccAccountMode").modal("show");
 	        },
 	        //成功返回
 	        success: function(data){
 	        	if(data.code==0){
 	                $('#saveCategoryButton').removeAttr('disabled');
-	                $('#addCommonLanguageCategoryMode').modal('hide');
+	                $('#addIccAccountMode').modal('hide');
 	                window.location.reload();	        		
 	        	}
 	        },
@@ -407,7 +494,7 @@ function saveCommonLanguageCategory(){
 	        complete: function(){
 	            $('#saveCategoryButton').removeAttr('disabled');
 	            $('#saveCategoryButton').modal('hide');
-	            $('#addCommonLanguageCategoryMode').modal('hide');
+	            $('#addIccAccountMode').modal('hide');
 	            window.location.reload();
 	        },
 	        //报错
@@ -417,10 +504,10 @@ function saveCommonLanguageCategory(){
 	    });			
 	}
 }
-function editCommonLanguageCategory(id){
+function editIccAccount(id){
 	$.ajax({
         type: 'POST',
-        url: '${basePath}/commonLanguage/read.json',
+        url: '${basePath}/iccAccount/read.json',
         dataType: 'json',
         data: {id:id},
         success: function(data){
@@ -429,7 +516,7 @@ function editCommonLanguageCategory(id){
 				$("#id").val(bean.id);
 				$("#name").val(bean.name);
 				$("#priority").val(bean.priority);
-				$("#addCommonLanguageCategoryMode").modal("show");
+				$("#addIccAccountMode").modal("show");
 			}
         },
         error: function(data){
@@ -437,10 +524,10 @@ function editCommonLanguageCategory(id){
         }
     });		
 }
-function deleteCommonLanguageCategory(ids){
+function deleteIccAccount(ids){
 	$.ajax({
         type: 'POST',
-        url: '${basePath}/commonLanguage/delete.do',
+        url: '${basePath}/iccAccount/delete.do',
         dataType: 'json',
         data: {ids:ids},
         success: function(data){

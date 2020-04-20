@@ -1,81 +1,528 @@
-
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-  <title>Bootstrap 4 Website Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-  <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <style>
-  .fakeimg {
-      height: 200px;
-      background: #aaa;
-  }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理中心 - 客服分组管理</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="${basePath}/vendors/bundle.css" type="text/css">
+    <!-- Prism -->
+    <link rel="stylesheet" href="${basePath}/vendors/prism/prism.css" type="text/css">
+    <!-- App styles -->
+    <link rel="stylesheet" href="${basePath}/assets/css/app.css" type="text/css">
 </head>
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>我的第一个 Bootstrap 4 页面</h1>
-  <p>重置浏览器窗口大小查看效果！</p> 
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
 </div>
+<!-- end::preloader -->
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">导航</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#">链接</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">链接</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">链接</a>
-      </li>    
-    </ul>
-  </div>  
-</nav>
 
-<div class="container" style="margin-top:30px">
-  <div class="row">
-<table class="table">
-    <thead>
-       <tr>
-        <th>配置标识</th>
-        <th>配置说明</th>
-        <th>是否默认</th>
-        <th>所属子站点</th>
-        <th>最后修改人</th>
-        <th>最后修改时间</th>
-        <th>操作</th>
-      </tr>
-    </thead>
-    <tbody>
-    <#list pageInfo.list as bean>
-      <tr>
-        <td>${bean.name!}</td>
-        <td>Doe</td>
-        <td>机器人版本：</td>
-        <td>机器人版本：</td>
-        <td><a class="btn btn-primary" href="${request.contextPath}/jsConfig/delete?ids={bean.id}">删除</a></td>
-      </tr>
-      </#list>
-    </tbody>
-</table>
-<a class="btn btn-primary" href="${request.contextPath}/jsConfig/add.html">新增</a>
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation">
+
+        <div class="navigation-menu-tab">
+            <div>
+                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <i data-feather="home"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="flex-grow-1">
+<ul>
+                
+                <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="首页"  data-nav-target="#personCommon">
+                            <i data-feather="home"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="个人常用功能"
+                           data-nav-target="#personCommon">
+                            <i data-feather="user"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="系统状态监控" data-nav-target="#systemStatusMonitor">
+                            <i data-feather="monitor"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="智能微微配置"   data-nav-target="#robotConfig">
+                            <i data-feather="user-plus"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="辅助功能管理" data-nav-target="#assistConfig">
+                            <i data-feather="tool"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="咨询入口管理" data-nav-target="#consultConfig">
+                            <i data-feather="message-square"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="tooltip" data-placement="right" title="网页样式配置" data-nav-target="#pageStyleConfig">
+                            <i data-feather="file-plus"></i>
+                        </a>
+                    </li>
+                     <li>
+                        <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="基础信息设置" data-nav-target="#basicSettings">
+                            <i data-feather="settings"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- begin::navigation menu -->
+        <div class="navigation-menu-body">
+
+            <!-- begin::navigation-logo -->
+             <div>
+                <div id="navigation-logo">
+                    <a href="index.html">
+                        <img class="logo" src="${basePath}/assets/media/image/logo.png" alt="logo">
+                        <img class="logo-light" src="${basePath}/assets/media/image/logo-light.png" alt="light logo">
+                    </a>
+                </div>
+            </div>
+            <!-- end::navigation-logo -->
+
+            <div class="navigation-menu-group">
+
+                <div id="dashboards">
+                    <ul>
+                        <li class="navigation-divider">Dashboards</li>
+                        <li><a href="index.html">CRM System</a></li>
+                        <li><a href="dashboard-two.html">子站点管理 <span class="badge badge-danger">2</span></a></li>
+                        <li><a href="dashboard-three.html">Analytics</a></li>
+                        <li><a href="dashboard-four.html">Project Management</a></li>
+                        <li><a href="dashboard-five.html">Helpdesk Management</a></li>
+                        <li class="navigation-divider">Contacts</li>
+                        <li>
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/man_avatar1.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Valentine Maton</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Holmes Cherryman</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/women_avatar4.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Kenneth Hune</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="navigation-divider">Followers</li>
+                        <li>
+                            <div class="avatar-group ml-4">
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-success rounded-circle">E</span>
+                                </a>
+                                <a href="#" class="avatar">
+                                    <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
+                                </a>
+                                <a href="#" class="avatar">
+                                    <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
+                                </a>
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-info rounded-circle">C</span>
+                                </a>
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-dark rounded-circle">+30</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="apps">
+                    <ul>
+                        <li class="navigation-divider">Web Apps</li>
+                        <li>
+                            <a href="chat.html">
+                                <span>Chat</span>
+                                <span class="badge badge-danger">5</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="inbox.html">
+                                <span>Mail</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="app-todo.html">
+                                <span>Todo</span>
+                                <span class="badge badge-warning">2</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="active" href="file-manager.html">
+                                <span>File Manager</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="calendar.html">
+                                <span>Calendar</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="elements">
+                    <ul>
+                        <li class="navigation-divider">UI Elements</li>
+                        <li>
+                            <a href="#">Basic</a>
+                            <ul>
+                                <li><a href="alerts.html">Alert</a></li>
+                                <li><a href="accordion.html">Accordion</a></li>
+                                <li><a href="buttons.html">Buttons</a></li>
+                                <li><a href="dropdown.html">Dropdown</a></li>
+                                <li><a href="list-group.html">List Group</a></li>
+                                <li><a href="pagination.html">Pagination</a></li>
+                                <li><a href="typography.html">Typography</a></li>
+                                <li><a href="media-object.html">Media Object</a></li>
+                                <li><a href="progress.html">Progress</a></li>
+                                <li><a href="modal.html">Modal</a></li>
+                                <li><a href="spinners.html">Spinners</a></li>
+                                <li><a href="navs.html">Navs</a></li>
+                                <li><a href="tab.html">Tab</a></li>
+                                <li><a href="tooltip.html">Tooltip</a></li>
+                                <li><a href="popovers.html">Popovers</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Cards</a>
+                            <ul>
+                                <li><a href="basic-cards.html">Basic Cards </a></li>
+                                <li><a href="image-cards.html">Image Cards </a></li>
+                                <li><a href="card-scroll.html">Card Scroll </a></li>
+                                <li><a href="other-cards.html">Others </a></li>
+                            </ul>
+                        </li>
+                        <li><a href="avatar.html">Avatar</a></li>
+                        <li><a href="icons.html">Icons</a></li>
+                        <li><a href="colors.html">Colors</a></li>
+                        <li>
+                            <a href="#">Plugins</a>
+                            <ul>
+                                <li><a href="sweet-alert.html">Sweet Alert</a></li>
+                                <li><a href="lightbox.html">Lightbox</a></li>
+                                <li><a href="toast.html">Toast</a></li>
+                                <li><a href="tour.html">Tour</a></li>
+                                <li><a href="slick-slide.html">Slick Slide</a></li>
+                                <li><a href="nestable.html">Nestable</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Forms</a>
+                            <ul>
+                                <li><a href="basic-form.html">Form Layouts</a></li>
+                                <li><a href="custom-form.html">Custom Forms</a></li>
+                                <li><a href="advanced-form.html">Advanced Form</a></li>
+                                <li><a href="form-validation.html">Validation</a></li>
+                                <li><a href="form-wizard.html">Wizard</a></li>
+                                <li><a href="file-upload.html">File Upload</a></li>
+                                <li><a href="datepicker.html">Datepicker</a></li>
+                                <li><a href="timepicker.html">Timepicker</a></li>
+                                <li><a href="colorpicker.html">Colorpicker</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Tables</a>
+                            <ul>
+                                <li><a href="tables.html">Basic Tables</a></li>
+                                <li><a href="data-table.html">Datatable</a></li>
+                                <li><a href="responsive-table.html">Responsive Tables</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Charts</a>
+                            <ul>
+                                <li><a href="apexchart.html">Apex</a></li>
+                                <li><a href="chartjs.html">Chartjs</a></li>
+                                <li><a href="justgage.html">Justgage</a></li>
+                                <li><a href="morsis.html">Morsis</a></li>
+                                <li><a href="peity.html">Peity</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Maps</a>
+                            <ul>
+                                <li><a href="google-map.html">Google</a></li>
+                                <li><a href="vector-map.html">Vector</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+               <div class="open" id="basicSettings">
+                    <ul>
+                        <li><a href="${basePath}/iccAccount/index.html"">客服账号管理</a></li>
+                        <li><a class="active" href="#">客服分组管理</a></li>
+                        <li><a href="${basePath}/department/index.html">部门信息管理</a></li>
+                        <li><a href="${basePath}/role/index.html">公司角色管理</a></li>
+                        <li><a href="${basePath}/role/assignRole.html">公司角色分配</a></li>
+                        <li><a href="${basePath}/rewriteRule/index.html">接入策略管理</a></li>
+                        <li><a href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
+                        <li><a href="${basePath}/visitorFilter/index.html">访客屏蔽管理</a></li>
+
+                        <li><a href="${basePath}/site/index.html">子站点管理</a></li>
+                        <li><a href="${basePath}/organize/edit.html">公司信息配置</a></li>
+                        <li><a href="${basePath}/organizeConfig/edit.html">公司全局配置</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end::navigation menu -->
+
+    </div>
+    <!-- end::navigation -->
+
+    <!-- begin::main-content -->
+    <main class="main-content">
+
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4>客服分组管理</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
+                                <i class="ti-plus mr-2"></i> 新增
+                                 
+                            </button>
+                    </ol>
+                    
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<table class="table mb-4 mt-4">
+						<thead class="thead-light">
+							<tr>
+								<th>分组ID</th>
+								<th class="text-left">分组名称</th>
+								<th class="text-left">是否默认</th>
+								<th class="text-left">分配方式</th>
+								<th class="text-left">是否启用排队</th>
+								<th class="text-left">最大排队人数</th>
+								<th class="text-left">排序号</th>
+								<th class="text-left">排队溢出时间</th>
+								<th class="text-left">忙线溢出组ID</th>
+								<th class="text-left">忙线溢出组名称</th>
+								<th class="text-left">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#list pageInfo.list as site>
+							<tr class="text-left">
+								<td class="text-left">${pageInfo.startRow+site_index}</td>
+								<td class="text-left">${site.groupName!}</td>
+								<td class="text-left">${site.depict!}</td>
+								<td class="text-left">修改 删除</td>
+
+							</tr>
+							</#list>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+        <!-- end::footer -->
+
+    </main>
+    <!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+<!-- insert modal begin-->
+<div class="modal fade" id="addSiteMode" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+     <form id="addSiteForm"  onsubmit="return checkAddSiteForm()">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">新增客服分组信息</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="ti-close"></i>
+        </button>
+      </div>
+	<div class="modal-body">
+	
+		<div class="form-group row">
+			<label  class="col-form-label col-sm-3">客服分组名称:</label>
+			<div class="col-sm-9">			
+			<input type="text" class="form-control" id="name" name="name"
+				placeholder="请输入子站点名称" required="">
+			</div>
+			<div class="invalid-feedback" id="name-feedback"></div>
+		</div>
+		<div class="form-group">
+			<label for="message-text" class="col-form-label">人员分配算法:</label>
+			<div class="col-sm-9">
+			<textarea class="form-control" id="depict" name="depict"
+				placeholder="请输入子站点描述内存"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="message-text" class="col-form-label">是否启用排队:</label>
+			<div class="col-sm-9">
+			<textarea class="form-control" id="depict" name="depict"
+				placeholder="请输入子站点描述内存"></textarea>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">排队访客分配规则:</label>
+			
+			<div class="col-sm-9">
+				<input type="password" class="form-control" id="inputPassword"
+					placeholder="Password">
+			</div>
+		</div>
+				<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">忙线溢出组:</label>
+			<div class="col-sm-9">
+				<input type="password" class="form-control" id="inputPassword"
+					placeholder="Password">
+			</div>
+		</div>
+						<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">排序号:</label>
+			<div class="col-sm-9">
+				<input type="password" class="form-control" id="inputPassword"
+					placeholder="Password">
+			</div>
+		</div>
+								<div class="form-group row">
+			<label for="inputPassword" class="col-sm-2 col-form-label">描述:</label>
+			<div class="col-sm-9">
+				<input type="password" class="form-control" id="inputPassword"
+					placeholder="Password">
+			</div>
+		</div>
+	</div>
+					<div class="modal-footer">
+          <button  type="button" class="btn btn-primary"  id="saveSiteButton" onClick="saveSite()">保存</button>
+       </div>
+       </form>
+     </div>
   </div>
 </div>
+<script type="text/javascript">
+//以检查用户名不能为空不能有特殊符号为例
+function checkAddSiteForm(){
+        var username = document.getElementById("name");//获取username那个div
+        var feedback = document.getElementById("name-feedback");
+        //不能为空
+        if(username.value==""){
+            feedback.innerHTML = "请输入子站点名称！";//修改username-feedback div中的内容
+            username.classList.remove("is-valid");//清除合法状态
+            username.classList.add("is-invalid");//添加非法状态
+            return false;
+        }
+        //不能有特殊符号
+        var patrn = /[@#\$%\^&\*]+/g;//正则表达式
+        if(patrn.exec(username.value)){
+            feedback.innerHTML = "用户名不能存在特殊符号！";
+            username.classList.remove("is-valid");
+            username.classList.add("is-invalid");
+            return false;
+        }
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <p>底部内容</p>
-</div>
+        //清除错误提示，改成成功提示
+        username.classList.remove("is-invalid");
+        username.classList.add("is-valid");
+        feedback.innerHTML="";
+        return true;
+    }
+function saveSite(){
+	if(checkAddSiteForm()){
+		alert($("#addSiteForm").serialize());
+		$.ajax({
+	        type: 'POST',
+	        url: '${basePath}/site/save.do',
+	        dataType: 'json',
+	        data: $("#addSiteForm").serialize(),
+	        //发送数据前
+	        beforeSend: function(){
+	            // 禁用按钮防止重复提交
+	            $('#saveSiteButton').attr({disabled: "disabled"});
+	            //弹出modal框
+	           // $('#modal_sm_black_content').html('<img src="loading-white.gif" width="18" height="18" class="mr-2">正在处理，请稍后');
+	           // $("#addSiteMode").modal("show");
+	        },
+	        //成功返回
+	        success: function(data){
+	            setTimeout(function(){
+	                //隐藏modal框
+	                $('#saveSiteButton').removeAttr('disabled');
+	                $('#addSiteMode').modal('hide');
+	                switch(data){
+	                    case 'success':
+	                        //操作成功，弹出modal框
+	                      //  $('#modal_sm_black_content').html('<i class="fas fa-check-circle mr-2"></i>操作成功');
+	                        //$("#addSiteMode").modal("show");
+	                        window.location.reload();
+	                        break;
+	                }
+	            }, 1);
+	        },
+	        //处理完成
+	        complete: function(){
+	            $('#saveSiteButton').removeAttr('disabled');
+	            $('#saveSiteButton').modal('hide');
+	        },
+	        //报错
+	        error: function(data){
+	            console.info("error: " + data.responseText);
+	        }
+	    });			
+	}
+}
+</script>
+<!-- insert modal end -->
 
+<!-- Plugin scripts -->
+<script src="${basePath}/vendors/bundle.js"></script>
+<!-- Prism -->
+<script src="${basePath}/vendors/prism/prism.js"></script>
+<!-- App scripts -->
+<script src="${basePath}/assets/js/app.js"></script>
 </body>
 </html>

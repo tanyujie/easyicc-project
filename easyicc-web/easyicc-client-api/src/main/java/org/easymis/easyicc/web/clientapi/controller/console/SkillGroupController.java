@@ -1,7 +1,6 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
-import org.easymis.easyicc.domain.entity.CommonLanguage;
 import org.easymis.easyicc.domain.entity.School;
 import org.easymis.easyicc.domain.entity.SkillGroup;
 import org.easymis.easyicc.service.SkillGroupService;
@@ -28,13 +27,13 @@ public class SkillGroupController extends IdentityRepository{
 	@RequestMapping(value = { "/index.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,Integer pageNum, Integer pageSize,ModelMap model) {
 		String orgId = getOrgId();
-		CommonLanguage bean = new CommonLanguage();
+		SkillGroup bean = new SkillGroup();
 		bean.setOrgId(orgId);
 		if (pageNum == null)
 			pageNum = 1;
 		if (pageSize == null)
 			pageSize = 10;
-		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
 		return "/console/skillGroup/index";
 	}
 	@ApiOperation(value = "查询接口", response = School.class)
