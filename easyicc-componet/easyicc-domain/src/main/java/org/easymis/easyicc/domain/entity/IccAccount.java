@@ -32,7 +32,7 @@ public class IccAccount implements Serializable {
 	// 备注信息",column="max_chat_count",isnull=true)
 	private Integer maxChatCount;
 	// 客服等级",column="rank",length=255,isnull=true)
-	private String rank;
+	private String accountRank;
 	// 账号类型",column="account_type",isnull=true)
 	private Integer accountType;
 	// 客服IP",column="login_ip",length=255,isnull=true)
