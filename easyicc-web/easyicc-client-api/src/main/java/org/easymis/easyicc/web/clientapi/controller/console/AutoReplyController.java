@@ -6,6 +6,7 @@ import org.easymis.easyicc.service.AutoReplyService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,7 +21,19 @@ import io.swagger.annotations.ApiOperation;
 public class AutoReplyController extends IdentityRepository{
 	@Autowired
 	private AutoReplyService service;
-
+	@ApiOperation(value = "自动回复设置首页")
+	@RequestMapping(value = { "/edit.html" }, method = { RequestMethod.GET, RequestMethod.POST })
+	public String find(String name, Integer pageNum, Integer pageSize, ModelMap model) {
+		String orgId = getOrgId();
+		AutoReply bean = new AutoReply();
+		//bean.setOrgId(orgId);
+		if (pageNum == null)
+			pageNum = 1;
+		if (pageSize == null)
+			pageSize = 10;
+		model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		return "/console/autoReply/edit";
+	}
 	@ApiOperation(value = "保存自动回复设置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
