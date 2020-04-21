@@ -35,7 +35,7 @@ public class HtmlAliasController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/htmlAlias/index";
+		return "/console/htmlAlias/index";
 	}
 	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
