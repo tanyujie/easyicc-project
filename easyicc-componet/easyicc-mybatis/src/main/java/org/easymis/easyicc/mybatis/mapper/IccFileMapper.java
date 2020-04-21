@@ -1,6 +1,5 @@
 package org.easymis.easyicc.mybatis.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -13,16 +12,16 @@ import org.easymis.easyicc.domain.entity.IccFile;
 
 public interface IccFileMapper {
 	@Select("select * from icc_file")
-	public List<IccFile> getList(HashMap<String, Object> params);
+	public List<IccFile> getList(IccFile params);
 
 	@Insert("insert into icc_file(id,parent_id,org_id,file_path,file_name,depict,file_size,picture_length,picture_width,create_time,folder_flag)values(#{id},#{parentId},#{orgId},#{filePath},#{fileName},#{depict},#{fileSize},#{pictureLength},#{pictureWidth},#{createTime},#{folderFlag})")
-	public void save(IccFile bean);
+	public boolean save(IccFile bean);
 
 	@Insert("insert into icc_file(id,parent_id,org_id,file_path,file_name,depict,file_size,picture_length,picture_width,create_time,folder_flag)values(#{id},#{parentId},#{orgId},#{filePath},#{fileName},#{depict},#{fileSize},#{pictureLength},#{pictureWidth},#{createTime},#{folderFlag})")
 	public void saveBatch(List<IccFile> beans);
 
 	@Update("UPDATE icc_file SET id= #{id},parent_id= #{parentId},org_id= #{orgId},file_path= #{filePath},file_name= #{fileName},depict= #{depict},file_size= #{fileSize},picture_length= #{pictureLength},picture_width= #{pictureWidth},create_time= #{createTime},folder_flag= #{folderFlag} WHERE id= #{id}")
-	public void update(IccFile bean);
+	public boolean update(IccFile bean);
 
 	@Delete(" DELETE FROM icc_file WHERE id = #{id}")
 	public void delete(String id);
