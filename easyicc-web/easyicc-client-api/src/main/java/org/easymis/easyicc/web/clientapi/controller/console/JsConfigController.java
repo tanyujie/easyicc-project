@@ -1,4 +1,4 @@
-package org.easymis.easyicc.web.clientapi.controller;
+package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.JsConfig;
@@ -7,6 +7,7 @@ import org.easymis.easyicc.service.JsConfigService;
 import org.easymis.easyicc.service.PromotionChannelService;
 import org.easymis.easyicc.service.SiteService;
 import org.easymis.easyicc.service.SkillGroupService;
+import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -42,7 +43,7 @@ public class JsConfigController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/jsConfig/index";
+		return "/console/jsConfig/index";
 	}
 	
 	@ApiOperation(value = "查询接口", response = PromotionChannel.class)
