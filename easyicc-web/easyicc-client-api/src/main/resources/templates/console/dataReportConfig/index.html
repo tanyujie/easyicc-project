@@ -1,0 +1,373 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>后台管理中心 - 第三方数据转换上报</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="${basePath}/vendors/bundle.css" type="text/css">
+    <!-- Prism -->
+    <link rel="stylesheet" href="${basePath}/vendors/prism/prism.css" type="text/css">
+    <!-- App styles -->
+    <link rel="stylesheet" href="${basePath}/assets/css/app.css" type="text/css">
+</head>
+<body>
+
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
+</div>
+<!-- end::preloader -->
+
+
+<!-- begin::main -->
+<div id="main">
+
+    <!-- begin::navigation -->
+    <div class="navigation">
+
+        <div class="navigation-menu-tab">
+            <div>
+                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
+                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                        <i data-feather="home"></i>
+                    </a>
+
+                </div>
+            </div>
+				<div class="flex-grow-1">
+					<ul>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="首页" data-nav-target="#personCommon"> <i
+								data-feather="home"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="个人常用功能" data-nav-target="#personCommon"> <i
+								data-feather="user"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="系统状态监控" data-nav-target="#systemStatusMonitor"> <i
+								data-feather="monitor"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="智能微微配置" data-nav-target="#robotConfig"> <i
+								data-feather="user-plus"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="辅助功能管理" data-nav-target="#assistConfig"> <i
+								data-feather="tool"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip" data-placement="right"
+							title="咨询入口管理" data-nav-target="#consultConfig"> <i
+								data-feather="message-square"></i>
+						</a></li>
+						<li><a class="active" href="#" data-toggle="tooltip" data-placement="right"
+							title="网页样式配置" data-nav-target="#pageStyleConfig"> <i
+								data-feather="file-plus"></i>
+						</a></li>
+						<li><a href="#" data-toggle="tooltip"
+							data-placement="right" title="基础信息设置"
+							data-nav-target="#basicSettings"> <i data-feather="settings"></i>
+						</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+        <!-- begin::navigation menu -->
+        <div class="navigation-menu-body">
+
+            <!-- begin::navigation-logo -->
+             <div>
+                <div id="navigation-logo">
+                    <a href="index.html">
+                        <img class="logo" src="${basePath}/assets/media/image/logo.png" alt="logo">
+                        <img class="logo-light" src="${basePath}/assets/media/image/logo-light.png" alt="light logo">
+                    </a>
+                </div>
+            </div>
+            <!-- end::navigation-logo -->
+
+            <div class="navigation-menu-group">
+
+                <div id="dashboards">
+                    <ul>
+                        <li class="navigation-divider">Dashboards</li>
+                        <li><a href="index.html">CRM System</a></li>
+                        <li><a href="dashboard-two.html">子站点管理 <span class="badge badge-danger">2</span></a></li>
+                        <li><a href="dashboard-three.html">Analytics</a></li>
+                        <li><a href="dashboard-four.html">Project Management</a></li>
+                        <li><a href="dashboard-five.html">Helpdesk Management</a></li>
+                        <li class="navigation-divider">Contacts</li>
+                        <li>
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/man_avatar1.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Valentine Maton</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Holmes Cherryman</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex align-items-center">
+                                    <div>
+                                        <div class="avatar avatar-sm m-r-10">
+                                            <img src="assets/media/image/user/women_avatar4.jpg" class="rounded-circle" alt="image">
+                                        </div>
+                                    </div>
+                                    <span>Kenneth Hune</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="navigation-divider">Followers</li>
+                        <li>
+                            <div class="avatar-group ml-4">
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-success rounded-circle">E</span>
+                                </a>
+                                <a href="#" class="avatar">
+                                    <img src="assets/media/image/user/women_avatar5.jpg" class="rounded-circle" alt="avatar">
+                                </a>
+                                <a href="#" class="avatar">
+                                    <img src="assets/media/image/user/women_avatar2.jpg" class="rounded-circle" alt="avatar">
+                                </a>
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-info rounded-circle">C</span>
+                                </a>
+                                <a href="#" class="avatar">
+                                    <span class="avatar-title bg-dark rounded-circle">+30</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+               <div class="open" id="consultConfig">
+                    <ul>
+                    	<li><a class="active" href="#"">第三方数据转换上报</a></li>
+                        <li><a href="${basePath}/wechatSetting/index.html">微信同步管理</a></li>
+                        <li><a href="${basePath}/form/index.html">注册表单管理</a></li>
+                        <li><a href="${basePath}/miniHtml/index.html">微网页管理</a></li>
+                     </ul>
+                </div>
+                <div id="pageStyleConfig">
+                    <ul>
+                    	<li><a href="${basePath}/htmlAlias/index.html">网页别名设置</a></li>
+                        <li><a class="active" href="#">图片素材管理</a></li>
+                        <li><a href="${basePath}/jsConfig/index.html">网页样式配置</a></li>
+                     </ul>
+                </div>
+               <div id="basicSettings">
+                    <ul>
+                        <li><a href="${basePath}/iccAccount/index.html"">客服账号管理</a></li>
+                        <li><a href="${basePath}/skillGroup/index.html">客服分组管理</a></li>
+                        <li><a href="${basePath}/department/index.html">部门信息管理</a></li>
+                        <li><a href="${basePath}/role/index.html">公司角色管理</a></li>
+                        <li><a href="${basePath}/role/assignRole.html">公司角色分配</a></li>
+                        <li><a href="${basePath}/rewriteRule/index.html">接入策略管理</a></li>
+                        <li><a href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
+                        <li><a href="${basePath}/visitorFilter/index.html">访客屏蔽管理</a></li>
+
+                        <li><a href="${basePath}/site/index.html">子站点管理</a></li>
+                                            <li><a href="${basePath}/organize/edit.html">公司信息配置</a></li>
+                        <li><a href="${basePath}/organizeConfig/edit.html">公司全局配置</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- end::navigation menu -->
+
+    </div>
+    <!-- end::navigation -->
+
+    <!-- begin::main-content -->
+    <main class="main-content">
+
+        <div class="page-header">
+            <div class="container-fluid d-sm-flex justify-content-between">
+                <h4>第三方数据转换上报</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
+                                <i class="ti-plus mr-2"></i> 新增
+                                 
+                            </button>
+                    </ol>
+                    
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="container-fluid">
+
+			<div class="row">
+				<div class="col-md-12">
+
+					<table class="table mb-4 mt-4">
+						<thead class="thead-light">
+							<tr>
+								<th>#</th>
+								<th class="text-left">URL</th>
+								<th class="text-left">网页别名</th>
+								<th class="text-left">描述</th>
+								
+								<th class="text-left">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#list pageInfo.list as bean>
+							<tr class="text-left">
+								<td class="text-left">${pageInfo.startRow+bean_index}</td>
+								<td class="text-left">${bean.url!}</td>
+								<td class="text-left">${bean.depict!}</td>
+								<td class="text-left">修改 删除</td>
+
+							</tr>
+							</#list>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+        <!-- end::footer -->
+
+    </main>
+    <!-- end::main-content -->
+
+</div>
+<!-- end::main -->
+<!-- insert modal begin-->
+<div class="modal fade" id="addSiteMode" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <form id="addSiteForm"  onsubmit="return checkAddSiteForm()">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">新增网页别名</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <i class="ti-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">URL:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
+            <div class="invalid-feedback" id="name-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">网页别名:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
+            <div class="invalid-feedback" id="name-feedback"></div>
+          </div>
+          <div class="form-group">
+              <label for="message-text" class="col-form-label">描述:</label>
+              <textarea class="form-control" id="depict" name="depict" placeholder="请输入子站点描述内存"></textarea>
+            </div>
+         
+       </div>
+       <div class="modal-footer">
+          <button  type="button" class="btn btn-primary"  id="saveSiteButton" onClick="saveSite()">保存</button>
+       </div>
+       </form>
+     </div>
+  </div>
+</div>
+<script type="text/javascript">
+//以检查用户名不能为空不能有特殊符号为例
+function checkAddSiteForm(){
+        var username = document.getElementById("name");//获取username那个div
+        var feedback = document.getElementById("name-feedback");
+        //不能为空
+        if(username.value==""){
+            feedback.innerHTML = "请输入子站点名称！";//修改username-feedback div中的内容
+            username.classList.remove("is-valid");//清除合法状态
+            username.classList.add("is-invalid");//添加非法状态
+            return false;
+        }
+        //不能有特殊符号
+        var patrn = /[@#\$%\^&\*]+/g;//正则表达式
+        if(patrn.exec(username.value)){
+            feedback.innerHTML = "用户名不能存在特殊符号！";
+            username.classList.remove("is-valid");
+            username.classList.add("is-invalid");
+            return false;
+        }
+
+        //清除错误提示，改成成功提示
+        username.classList.remove("is-invalid");
+        username.classList.add("is-valid");
+        feedback.innerHTML="";
+        return true;
+    }
+function saveSite(){
+	if(checkAddSiteForm()){
+		alert($("#addSiteForm").serialize());
+		$.ajax({
+	        type: 'POST',
+	        url: '${basePath}/site/save.do',
+	        dataType: 'json',
+	        data: $("#addSiteForm").serialize(),
+	        //发送数据前
+	        beforeSend: function(){
+	            // 禁用按钮防止重复提交
+	            $('#saveSiteButton').attr({disabled: "disabled"});
+	            //弹出modal框
+	           // $('#modal_sm_black_content').html('<img src="loading-white.gif" width="18" height="18" class="mr-2">正在处理，请稍后');
+	           // $("#addSiteMode").modal("show");
+	        },
+	        //成功返回
+	        success: function(data){
+	            setTimeout(function(){
+	                //隐藏modal框
+	                $('#saveSiteButton').removeAttr('disabled');
+	                $('#addSiteMode').modal('hide');
+	                switch(data){
+	                    case 'success':
+	                        //操作成功，弹出modal框
+	                      //  $('#modal_sm_black_content').html('<i class="fas fa-check-circle mr-2"></i>操作成功');
+	                        //$("#addSiteMode").modal("show");
+	                        window.location.reload();
+	                        break;
+	                }
+	            }, 1);
+	        },
+	        //处理完成
+	        complete: function(){
+	            $('#saveSiteButton').removeAttr('disabled');
+	            $('#saveSiteButton').modal('hide');
+	        },
+	        //报错
+	        error: function(data){
+	            console.info("error: " + data.responseText);
+	        }
+	    });			
+	}
+}
+</script>
+<!-- insert modal end -->
+
+<!-- Plugin scripts -->
+<script src="${basePath}/vendors/bundle.js"></script>
+<!-- Prism -->
+<script src="${basePath}/vendors/prism/prism.js"></script>
+<!-- App scripts -->
+<script src="${basePath}/assets/js/app.js"></script>
+</body>
+</html>
