@@ -258,28 +258,184 @@
 
         <!-- begin::page content -->
         <div class="container-fluid">
-				<form class="needs-validation" novalidate>
-<div class="form-row">
-  <div class="col-md-2 mb-3">
-  展示转接信息给访客：
-  </div>
-  <div class="col-md-4 mb-3 custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck" checked="">
-  </div>
-</div>
-<div class="form-group">
-    <div class="custom-control custom-checkbox custom-checkbox-info">
-        <input type="checkbox" class="custom-control-input" id="customCheck" checked>
-        <label class="custom-control-label" for="customCheck">Check this custom checkbox - Default</label>
-    </div>
-</div>
+				<form id="editConfigForm" onsubmit="return checkEditConfigForm()">
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">展示转接信息给访客:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
 
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">预知访客输入:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">结束对话弹出访客评价:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">聊天窗口显示保存记录:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">熟客识别:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">会话结束后总结提醒:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">客服超时响应时间:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">超时响应次数记录规则:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">机器人显示名称:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">对话接通欢迎语:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">对话结束语:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">对话转移语:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">访客消息关键字过滤:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">CRM同步接口:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">访客扩展信息:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">表单提交次数:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">接待数据定期重置时间:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">名片变更通知:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+										<div class="form-group row">
+						<label class="col-form-label col-sm-2">手机号超时隐藏:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+															<div class="form-group row">
+						<label class="col-form-label col-sm-2">对话是否使用验证码:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+															<div class="form-group row">
+						<label class="col-form-label col-sm-2">同一访客建立一通对话:</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+															<div class="form-group row">
+						<label class="col-form-label col-sm-2">对话质量配置：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+															<div class="form-group row">
+						<label class="col-form-label col-sm-2">留言分配方式：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
+																				<div class="form-group row">
+						<label class="col-form-label col-sm-2">访客电话验证：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="code" name="code"
+								placeholder="请输入分类名称" required="">
+						</div>
+					</div>
 					<div class="row">
 
-						<div class="col-md-12"></div>
+						<div class="col-md-12">
+						 <button  type="button" class="btn btn-primary"  id="saveCategoryButton" onClick="saveIccAccount()">保存</button>
+						</div>
 					</div>
 				</form>
-		</div>
+			</div>
         <!-- end::page content -->
 
         <!-- begin::footer -->
@@ -349,5 +505,10 @@
 
 <!-- App scripts -->
 <script src="${basePath}/assets/js/app.js"></script>
+<script type="text/javascript">
+function checkEditConfigForm(){
+	
+}
+</script>
 </body>
 </html>
