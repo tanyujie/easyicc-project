@@ -8,6 +8,9 @@ import org.easymis.easyicc.mybatis.mapper.SkillGroupMapper;
 import org.easymis.easyicc.service.SkillGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 @Service
 public class SkillGroupServiceImpl implements SkillGroupService {
 	@Autowired
@@ -41,5 +44,13 @@ public class SkillGroupServiceImpl implements SkillGroupService {
 	public List findByOrgId(String orgId) {
 		// TODO Auto-generated method stub
 		return mapper.findByOrgId(orgId);
+	}
+
+	@Override
+	public PageInfo<?> find(SkillGroup bean, Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		List<SkillGroup> dataList = mapper.getList(bean);
+		PageInfo<SkillGroup> p = new PageInfo<SkillGroup>(dataList);
+		return p;
 	}
 }
