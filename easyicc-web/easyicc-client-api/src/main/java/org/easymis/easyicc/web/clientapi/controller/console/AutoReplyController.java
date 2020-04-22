@@ -32,7 +32,7 @@ public class AutoReplyController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/console/autoReply/edit";
+		return "/console/hrmStaffInfo/autoReply";
 	}
 	@ApiOperation(value = "保存自动回复设置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
