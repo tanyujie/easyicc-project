@@ -32,14 +32,7 @@
     <div class="navigation">
 
         <div class="navigation-menu-tab">
-            <div>
-                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
-                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                        <i data-feather="home"></i>
-                    </a>
 
-                </div>
-            </div>
 				<div class="flex-grow-1">
 					<ul>
 						<li><a href="#" data-toggle="tooltip" data-placement="right"
@@ -50,7 +43,7 @@
 							title="个人常用功能" data-nav-target="#personCommon"> <i
 								data-feather="user"></i>
 						</a></li>
-						<li><a href="#" data-toggle="tooltip" data-placement="right"
+						<li><a class="active" href="#" data-toggle="tooltip" data-placement="right"
 							title="系统状态监控" data-nav-target="#systemStatusMonitor"> <i
 								data-feather="monitor"></i>
 						</a></li>
@@ -70,7 +63,7 @@
 							title="网页样式配置" data-nav-target="#pageStyleConfig"> <i
 								data-feather="file-plus"></i>
 						</a></li>
-						<li><a class="active" href="#" data-toggle="tooltip"
+						<li><a href="#" data-toggle="tooltip"
 							data-placement="right" title="基础信息设置"
 							data-nav-target="#basicSettings"> <i data-feather="settings"></i>
 						</a></li>
@@ -95,7 +88,7 @@
 
             <div class="navigation-menu-group">
 
-                 <div id="personCommon">
+                <div id="personCommon">
                     <ul>
                         <li class="navigation-divider">个人常用功能</li>                        
                         <li><a href="${basePath}/autoReply/edit.html">自动回复设置</a></li>
@@ -108,14 +101,14 @@
                 <div class="open" id="systemStatusMonitor">
                     <ul>
                         <li class="navigation-divider">系统状态监控</li>
-                        <li><a href="${basePath}/log/statusChange.html">客服状态日志查询</a></li>                        
+                        <li><a class="active" href="${basePath}/log/statusChange.html">客服状态日志查询</a></li>                        
                         <li><a href="${basePath}/monitor/groupIndex.html">分组信息监控</a></li>
-                        <li><a class="active" href="#">客服登录日志查询</a></li>
+                        <li><a href="${basePath}/log/login.html">客服登录日志查询</a></li>
                         <li><a href="${basePath}/monitor/opration.html">系统操作日志查询</a></li>
                     </ul>
                 </div>
 
-                
+
                <div id="basicSettings">
                     <ul>
                         <li><a href="${basePath}/iccAccount/index.html"">客服账号管理</a></li>
@@ -127,7 +120,7 @@
                         <li><a href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
                         <li><a href="${basePath}/visitorFilter/index.html">访客屏蔽管理</a></li>
 
-                        <li><a class="active" href="${basePath}/site/index.html">子站点管理</a></li>
+                        <li><a href="${basePath}/site/index.html">子站点管理</a></li>
                                             <li><a href="${basePath}/organize/edit.html">公司信息配置</a></li>
                         <li><a href="${basePath}/organizeConfig/edit.html">公司全局配置</a></li>
 
@@ -145,7 +138,7 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>子站点管理</h4>
+                <h4>客服状态日志查询</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
@@ -174,7 +167,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+
 						</tbody>
 					</table>
 
