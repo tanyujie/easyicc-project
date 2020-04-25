@@ -16,7 +16,7 @@ public class LogController {
 	@RequestMapping(value = { "/statusChange.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String statusChange(ModelMap model) {
 
-		return "/console/log/loginLogSearch";
+		return "/console/log/statusChange";
 	}
 	
 	@ApiOperation(value = "客服状态日志查询")
@@ -44,7 +44,7 @@ public class LogController {
 	@RequestMapping(value = { "/opration.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String opration(ModelMap model) {
 
-		return "/console/log/loginLogSearch";
+		return "/console/log/opration";
 	}
 	
 	@ApiOperation(value = "系统操作日志查询")

@@ -2,7 +2,6 @@ package org.easymis.easyicc.web.clientapi.controller.console;
 
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Organize;
-import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.OrganizeService;
 import org.easymis.easyicc.web.clientapi.controller.IdentityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +24,8 @@ public class OrganizeController extends IdentityRepository{
 	private OrganizeService service;
 	@ApiOperation(value = "公司全局配置页面")
 	@RequestMapping(value = { "/edit.html" }, method = { RequestMethod.GET, RequestMethod.POST })
-	public String find(String name,ModelMap model) {
-		String orgId = getOrgId();
-		Site bean = new Site();
-		bean.setOrgId(orgId);
-
-		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+	public String edit(String name,ModelMap model) {
+		model.put("organize", service.findById(getOrgId()));
 		return "/console/organize/profile";
 	}
 	@ApiOperation(value = "查询接口", response = Organize.class)
@@ -63,13 +58,23 @@ public class OrganizeController extends IdentityRepository{
 	}
 
 	@ApiOperation(value = "修改组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
-		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),
-		@ApiImplicitParam(name = "parentId", value = "parentId", dataType = "string", required = false),
+	@ApiImplicitParams({ @ApiImplicitParam(name = "orgName", value = "分类名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "phone", value = "公司电话", dataType = "公司电话", required = false),
+		@ApiImplicitParam(name = "fax", value = "公司传真", dataType = "string", required = false),
+		@ApiImplicitParam(name = "url", value = "公司网址", dataType = "string", required = false),
+		@ApiImplicitParam(name = "officeAddress", value = "公司地址", dataType = "string", required = false),
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(Organize bean) {
+	public RestResult update(Organize vBean) {
+		Organize bean=service.findById(vBean.getOrgId());
+		bean.setOrgName(vBean.getOrgName());
+		bean.setPhone(vBean.getPhone());
+		bean.setFax(vBean.getFax());
+		bean.setUrl(vBean.getUrl());
+		bean.setOfficeAddress(vBean.getOfficeAddress());
+		bean.setDepict(vBean.getDepict());
+		
 		if (service.update(bean))
 			return RestResult.buildSuccess();
 		else

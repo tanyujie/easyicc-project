@@ -16,7 +16,7 @@ public class RobotController {
 	@RequestMapping(value = { "/greeting.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String greeting(ModelMap model) {
 
-		return "/console/changePassword/index";
+		return "/console/robot/greeting";
 	}
 	@ApiOperation(value = "机器人问候语配置查询")
 	@RequestMapping(value = { "/queryGreeting.json" }, method = { RequestMethod.GET, RequestMethod.POST })
