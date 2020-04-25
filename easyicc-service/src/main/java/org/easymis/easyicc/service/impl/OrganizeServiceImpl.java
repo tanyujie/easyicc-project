@@ -27,12 +27,12 @@ public class OrganizeServiceImpl implements OrganizeService {
 	@Override
 	public boolean update(Organize bean) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.update(bean);
 	}
 	@Override
 	public Organize findById(String id) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapper.findById(id);
 	}
 	@Override
 	public PageInfo<?> find(Organize bean, Integer pageNum, Integer pageSize) {
