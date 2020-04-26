@@ -8,5 +8,6 @@ public interface OrganizeConfigService {
 	public boolean update(OrganizeConfig bean);
 
 	public OrganizeConfig findById(String id);
+	public OrganizeConfig findOrgId(String orgId);
 
 }

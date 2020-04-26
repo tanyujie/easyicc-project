@@ -28,4 +28,10 @@ public class OrganizeConfigServiceImpl implements OrganizeConfigService{
 		return null;
 	}
 
+	@Override
+	public OrganizeConfig findOrgId(String orgId) {
+		// TODO Auto-generated method stub
+		return mapper.findById(orgId);
+	}
+
 }
