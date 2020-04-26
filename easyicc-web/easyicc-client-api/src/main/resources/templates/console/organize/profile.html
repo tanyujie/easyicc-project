@@ -262,50 +262,52 @@
 					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司标识：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="orgId" name="orgId"
+								value="${organize.orgId!}" readonly="readonly" >
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司名称：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="orgName" name="orgName"
+								value="${organize.orgName!}" placeholder="请输入公司名称" required="">
+								<div class="invalid-feedback" id="orgName-feedback"></div>
 						</div>
 					</div>
-										<div class="form-group row">
+					
+					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司电话：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="phone" name="phone"
+								value="${organize.phone!}" placeholder="请输入公司电话" required="">
 						</div>
 					</div>
-										<div class="form-group row">
+					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司传真：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="fax" name="fax"
+								value="${organize.fax!}" placeholder="请输入公司传真" required="">
 						</div>
 					</div>
-															<div class="form-group row">
+					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司网址：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="url" name="url"
+								value="${organize.url!}" placeholder="请输入公司网址" required="">
 						</div>
 					</div>
-															<div class="form-group row">
+					<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司地址：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+							<input type="text" class="form-control" id="officeAddress" name="officeAddress"
+								value="${organize.officeAddress!}" placeholder="请输入公司地址" required="">
 						</div>
 					</div>
 															<div class="form-group row">
 						<label class="col-form-label col-sm-2">公司简介：</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="code" name="code"
-								placeholder="请输入分类名称" required="">
+						<textarea class="form-control" maxlength="100" name="depict" id="depict" >${organize.depict!}</textarea>
+							
 						</div>
 					</div>
 					<div class="row">
@@ -313,34 +315,89 @@
 						<div class="col-sm-2">
 						</div>
 						<div class="col-md-8">
-						 <button  type="button" class="btn btn-primary"  id="saveCategoryButton" onClick="saveIccAccount()">保存配置</button>
+						 <button  type="button" class="btn btn-primary"  id="saveOrganizeButton" onClick="saveOrganize()">保存配置</button>
 						</div>
 					</div>
 			</form>
 		</div>
         <!-- end::page content -->
 
-        <!-- begin::footer -->
-        <footer>
-            <div class="container-fluid">
-                <div>© 2019 Protable v1.0.0 Made by <a href="http://bootstrapmb.com">Laborasyon</a></div>
-                <div>
-                    <nav class="nav">
-                        <a href="" class="nav-link">Licenses</a>
-                        <a href="#" class="nav-link">Change Log</a>
-                        <a href="#" class="nav-link">Get Help</a>
-                    </nav>
-                </div>
-            </div>
-        </footer>
-        <!-- end::footer -->
-
     </div>
     <!-- end::main-content -->
 
 </div>
 <!-- end::main -->
+<script type="text/javascript">
+//以检查用户名不能为空不能有特殊符号为例
+function checkEditConfigForm(){
+        var orgName = document.getElementById("orgName");//获取orgName那个div
+        var feedback = document.getElementById("orgName-feedback");
+        //不能为空
+        if(orgName.value==""){
+            feedback.innerHTML = "请输入子站点名称！";//修改orgName-feedback div中的内容
+            orgName.classList.remove("is-valid");//清除合法状态
+            orgName.classList.add("is-invalid");//添加非法状态
+            return false;
+        }
+        //不能有特殊符号
+        var patrn = /[@#\$%\^&\*]+/g;//正则表达式
+        if(patrn.exec(orgName.value)){
+            feedback.innerHTML = "用户名不能存在特殊符号！";
+            orgName.classList.remove("is-valid");
+            orgName.classList.add("is-invalid");
+            return false;
+        }
 
+        //清除错误提示，改成成功提示
+        orgName.classList.remove("is-invalid");
+        orgName.classList.add("is-valid");
+        feedback.innerHTML="";
+        return true;
+    }
+function saveOrganize(){
+	if(checkEditConfigForm()){	
+		$.ajax({
+	        type: 'POST',
+	        url: '${basePath}/organize/update.do',
+	        dataType: 'json',
+	        data: $("#editConfigForm").serialize(),
+	        //发送数据前
+	        beforeSend: function(){
+	            // 禁用按钮防止重复提交
+	            $('#saveOrganizeButton').attr({disabled: "disabled"});
+	            //弹出modal框
+	           // $('#modal_sm_black_content').html('<img src="loading-white.gif" width="18" height="18" class="mr-2">正在处理，请稍后');
+	           // $("#addSiteMode").modal("show");
+	        },
+	        //成功返回
+	        success: function(data){
+	            setTimeout(function(){
+	                //隐藏modal框
+	                $('#saveOrganizeButton').removeAttr('disabled');
+	              //  $('#addSiteMode').modal('hide');
+	                switch(data){
+	                    case 'success':
+	                        //操作成功，弹出modal框
+	                      //  $('#modal_sm_black_content').html('<i class="fas fa-check-circle mr-2"></i>操作成功');
+	                        //$("#addSiteMode").modal("show");
+	                        window.location.reload();
+	                        break;
+	                }
+	            }, 1);
+	        },
+	        //处理完成
+	        complete: function(){
+	            $('#saveOrganizeButton').removeAttr('disabled');
+	            $('#saveOrganizeButton').modal('hide');
+	        },
+	        //报错
+	        error: function(data){
+	            console.info("error: " + data.responseText);
+	        }
+	    });			
+	}
+}
+</script>
 <!-- Plugin scripts -->
 <script src="${basePath}/vendors/bundle.js"></script>
 
