@@ -1,5 +1,7 @@
 package org.easymis.easyicc.web.clientapi.controller.console;
 
+import javax.validation.Valid;
+
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Organize;
 import org.easymis.easyicc.service.OrganizeService;
@@ -66,7 +68,7 @@ public class OrganizeController extends IdentityRepository{
 		@ApiImplicitParam(name = "depict", value = "备注", dataType = "string", required = false),})
 	@RequestMapping(value = { "/update.do" }, method = { RequestMethod.GET, RequestMethod.POST })
 	@ResponseBody
-	public RestResult update(Organize vBean) {
+	public RestResult update(@Valid Organize vBean) {
 		Organize bean=service.findById(vBean.getOrgId());
 		bean.setOrgName(vBean.getOrgName());
 		bean.setPhone(vBean.getPhone());
