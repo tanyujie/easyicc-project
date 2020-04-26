@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bordash - Admin Dashboard Template</title>
+    <title>后台管理中心 - 系统操作日志查询</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
@@ -32,14 +32,6 @@
     <div class="navigation">
 
         <div class="navigation-menu-tab">
-            <div>
-                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
-                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                        <i data-feather="home"></i>
-                    </a>
-
-                </div>
-            </div>
 				<div class="flex-grow-1">
 					<ul>
 						<li><a href="#" data-toggle="tooltip" data-placement="right"
@@ -50,7 +42,7 @@
 							title="个人常用功能" data-nav-target="#personCommon"> <i
 								data-feather="user"></i>
 						</a></li>
-						<li><a href="#" data-toggle="tooltip" data-placement="right"
+						<li><a class="active" href="#" data-toggle="tooltip" data-placement="right"
 							title="系统状态监控" data-nav-target="#systemStatusMonitor"> <i
 								data-feather="monitor"></i>
 						</a></li>
@@ -70,7 +62,7 @@
 							title="网页样式配置" data-nav-target="#pageStyleConfig"> <i
 								data-feather="file-plus"></i>
 						</a></li>
-						<li><a class="active" href="#" data-toggle="tooltip"
+						<li><a href="#" data-toggle="tooltip"
 							data-placement="right" title="基础信息设置"
 							data-nav-target="#basicSettings"> <i data-feather="settings"></i>
 						</a></li>
@@ -165,16 +157,7 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>子站点管理</h4>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
-                                <i class="ti-plus mr-2"></i> 新增
-                                 
-                            </button>
-                    </ol>
-                    
-                </nav>
+                <h4>系统操作日志查询</h4>
             </div>
         </div>
 
@@ -187,10 +170,13 @@
 					<table class="table mb-4 mt-4">
 						<thead class="thead-light">
 							<tr>
-								<th>#</th>
-								<th class="text-left">子站点名称</th>
-								<th class="text-left">子站点描述</th>
+								<th>时间</th>
+								<th class="text-left">客服账号</th>
+								<th class="text-left">客服名称</th>
 								<th class="text-left">操作</th>
+								<th class="text-left">数据</th>
+								<th class="text-left">详情</th>
+								<th class="text-left">IP</th>
 							</tr>
 						</thead>
 						<tbody>

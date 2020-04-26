@@ -109,7 +109,63 @@
                      </ul>
 
                 </div>    
-
+                <div id="systemStatusMonitor">
+                    <ul>
+                        <li class="navigation-divider">系统状态监控</li>
+                        <li><a href="${basePath}/log/statusChange.html">客服状态日志查询</a></li>                        
+                        <li><a href="${basePath}/monitor/groupIndex.html">分组信息监控</a></li>
+                        <li><a href="${basePath}/log/login.html">客服登录日志查询</a></li>
+                        <li><a href="${basePath}/log/opration.html">系统操作日志查询</a></li>
+                    </ul>
+                </div>
+                <div id="robotConfig">
+                    <ul>
+                        <li class="navigation-divider">智能微微配置</li>
+                        <li>
+                            <a href="${basePath}/robot/greeting.html">
+                                <span>问候语配置</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${basePath}/robotQuestion/index.html">
+                                <span>知识库配置</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${basePath}/robotQuestionCategory/robotQuestionCategory.html">
+                                <span>知识库分类</span>
+                            </a>
+                        </li>
+                    
+                    </ul>
+                </div>
+                
+                <div id="assistConfig">
+                    <ul>
+                        <li class="navigation-divider">辅助功能管理</li>
+                        <li><a href="login.html">AI助手</a></li>
+                        <li><a href="${basePath}/commonLanguageCategory/index.html">常用语分类管理</a></li>
+                        <li><a href="${basePath}/commonLanguage/index.html">常用语内容管理</a></li>
+                        <li><a href="login.html">客户信息字段管理</a></li>
+                        <li><a href="${basePath}/summaryCategory/index.html">总结标签管理</a></li>
+                        <li><a href="${basePath}/chatTeam/index.html">群管理</a></li>
+                     </ul>
+                </div>                
+                <div id="consultConfig">
+                    <ul>
+                    	<li><a href="${basePath}/dataReportConfig/index.html"">第三方数据转换上报</a></li>
+                        <li><a href="${basePath}/wechatSetting/index.html">微信同步管理</a></li>
+                        <li><a href="${basePath}/diyForm/index.html">注册表单管理</a></li>
+                        <li><a href="${basePath}/miniHtml/index.html">微网页管理</a></li>
+                     </ul>
+                </div>
+                <div id="pageStyleConfig">
+                    <ul>
+                    	<li><a href="${basePath}/htmlAlias/index.html"">网页别名设置</a></li>
+                        <li><a href="${basePath}/iccFile/index.html">图片素材管理</a></li>
+                        <li><a href="${basePath}/jsConfig/index.html">网页样式配置</a></li>
+                     </ul>
+                </div>
                <div id="basicSettings">
                     <ul>
                         <li class="navigation-divider"> 客服账号管理</li>
@@ -139,43 +195,46 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>部门信息管理</h4>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
-                                <i class="ti-plus mr-2"></i> 新增
-                                 
-                            </button>
-                    </ol>
-                    
-                </nav>
+                <h4>修改登录密码</h4>
             </div>
         </div>
 
 
         <div class="container-fluid">
-
-			<div class="row">
-				<div class="col-md-12">
-
-					<table class="table mb-4 mt-4">
-						<thead class="thead-light">
-							<tr>
-								<th>#</th>
-								<th class="text-left">部门名称</th>
-								<th class="text-left">部门描述</th>
-								<th class="text-left">关联子站点</th>
-								<th class="text-left">操作</th>
-							</tr>
-						</thead>
-						<tbody>
+			<form id="editConfigForm" onsubmit="return checkEditConfigForm()">
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">原密码：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="orgId" name="orgId"
+								value="" placeholder="请输入" >
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">新密码：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="orgName" name="orgName"
+								value="" placeholder="请输入" required="">
+								<div class="invalid-feedback" id="orgName-feedback"></div>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label class="col-form-label col-sm-2">确认新密码：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="phone" name="phone"
+								value="" placeholder="请输入" required="">
+						</div>
+					</div>
+					
+					<div class="row">
 						
-						</tbody>
-					</table>
-
-				</div>
-			</div>
-
+						<div class="col-sm-2">
+						</div>
+						<div class="col-md-8">
+						 <button  type="button" class="btn btn-primary"  id="saveOrganizeButton" onClick="saveOrganize()">保存</button>
+						</div>
+					</div>
+			</form>
 		</div>
 
         <!-- end::footer -->
@@ -186,41 +245,7 @@
 </div>
 <!-- end::main -->
 <!-- insert modal begin-->
-<div class="modal fade" id="addSiteMode" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-     <form id="addSiteForm"  onsubmit="return checkAddSiteForm()">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">新增子站点</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <i class="ti-close"></i>
-        </button>
-      </div>
-      <div class="modal-body">
-       
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">部门名称:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
-            <div class="invalid-feedback" id="name-feedback"></div>
-          </div>
-           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">子站点关联:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
-            <div class="invalid-feedback" id="name-feedback"></div>
-          </div>
-          <div class="form-group">
-              <label for="message-text" class="col-form-label">部门描述:</label>
-              <textarea class="form-control" id="depict" name="depict" placeholder="请输入子站点描述内存"></textarea>
-            </div>
-         
-       </div>
-       <div class="modal-footer">
-          <button  type="button" class="btn btn-primary"  id="saveSiteButton" onClick="saveSite()">保存</button>
-       </div>
-       </form>
-     </div>
-  </div>
-</div>
+
 <script type="text/javascript">
 //以检查用户名不能为空不能有特殊符号为例
 function checkAddSiteForm(){

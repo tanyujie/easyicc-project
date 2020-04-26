@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>后台管理中心 - 问候语配置</title>
+    <title>后台管理中心 - 知识库分类</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
@@ -32,14 +32,6 @@
     <div class="navigation">
 
         <div class="navigation-menu-tab">
-            <div>
-                <div class="navigation-menu-tab-header" data-toggle="tooltip" title="首页" data-placement="right">
-                    <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
-                        <i data-feather="home"></i>
-                    </a>
-
-                </div>
-            </div>
 				<div class="flex-grow-1">
 					<ul>
 						<li><a href="#" data-toggle="tooltip" data-placement="right"
@@ -118,7 +110,7 @@
                     <ul>
                         <li class="navigation-divider">智能微微配置</li>
                         <li>
-                            <a class="active"  href="${basePath}/robot/greeting.html">
+                            <a href="${basePath}/robot/greeting.html">
                                 <span>问候语配置</span>
                             </a>
                         </li>
@@ -128,14 +120,39 @@
                             </a>
                         </li>
                         <li>
-                            <a href="${basePath}/robotQuestionCategory/robotQuestionCategory.html">
+                            <a class="active" href="#" >
                                 <span>知识库分类</span>
                             </a>
                         </li>
                     
                     </ul>
                 </div>
-                
+                                <div id="assistConfig">
+                    <ul>
+                        <li class="navigation-divider">辅助功能管理</li>
+                        <li><a href="login.html">AI助手</a></li>
+                        <li><a href="${basePath}/commonLanguageCategory/index.html">常用语分类管理</a></li>
+                        <li><a href="${basePath}/commonLanguage/index.html">常用语内容管理</a></li>
+                        <li><a href="login.html">客户信息字段管理</a></li>
+                        <li><a href="${basePath}/summaryCategory/index.html">总结标签管理</a></li>
+                        <li><a href="${basePath}/chatTeam/index.html">群管理</a></li>
+                     </ul>
+                </div>                
+                <div id="consultConfig">
+                    <ul>
+                    	<li><a href="${basePath}/dataReportConfig/index.html"">第三方数据转换上报</a></li>
+                        <li><a href="${basePath}/wechatSetting/index.html">微信同步管理</a></li>
+                        <li><a href="${basePath}/diyForm/index.html">注册表单管理</a></li>
+                        <li><a href="${basePath}/miniHtml/index.html">微网页管理</a></li>
+                     </ul>
+                </div>
+                <div id="pageStyleConfig">
+                    <ul>
+                    	<li><a href="${basePath}/htmlAlias/index.html"">网页别名设置</a></li>
+                        <li><a href="${basePath}/iccFile/index.html">图片素材管理</a></li>
+                        <li><a href="${basePath}/jsConfig/index.html">网页样式配置</a></li>
+                     </ul>
+                </div>
                <div id="basicSettings">
                     <ul>
                         <li><a href="${basePath}/iccAccount/index.html"">客服账号管理</a></li>
@@ -165,7 +182,7 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>问候语配置</h4>
+                <h4>知识库分类</h4>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addSiteMode">
@@ -187,9 +204,9 @@
 					<table class="table mb-4 mt-4">
 						<thead class="thead-light">
 							<tr>
-								<th>#</th>
-								<th class="text-left">子站点名称</th>
-								<th class="text-left">子站点描述</th>
+								<th>分类名称</th>
+								<th class="text-left">分类描述</th>
+								<th class="text-left">最后修改时间</th>
 								<th class="text-left">操作</th>
 							</tr>
 						</thead>

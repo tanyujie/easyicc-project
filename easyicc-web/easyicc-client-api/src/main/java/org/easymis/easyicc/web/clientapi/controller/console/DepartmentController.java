@@ -2,8 +2,12 @@ package org.easymis.easyicc.web.clientapi.controller.console;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.apache.commons.lang.StringUtils;
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Department;
+import org.easymis.easyicc.domain.entity.IccRole;
 import org.easymis.easyicc.domain.entity.PromotionChannel;
 import org.easymis.easyicc.domain.entity.Site;
 import org.easymis.easyicc.service.DepartmentService;
@@ -54,7 +58,27 @@ public class DepartmentController extends IdentityRepository {
 			pageSize = 10;
 		return RestResult.buildSuccess(service.find(bean, pageNum, pageSize));
 	}
+	@ApiOperation(value = "保存或修改角色")
+	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "子站点名称", dataType = "string", required = false),
+			@ApiImplicitParam(name = "depict", value = "子站点描述", dataType = "string", required = false), })
+	@RequestMapping(value = { "/saveOrUpdate.do" }, method = { RequestMethod.GET, RequestMethod.POST })
+	@ResponseBody
+	public RestResult saveOrUpdate(@Valid Department bean) {
+		if (StringUtils.isEmpty(bean.getId())) {
+			bean.setOrgId(getOrgId());
+			service.save(bean);
+			return RestResult.buildSuccess();
+		} else if (StringUtils.isNotBlank(bean.getId())) {
+			Department vBean=service.findById(bean.getId());
+			//vBean.setRoleName(bean.getRoleName());
+			//vBean.setRoleStatus(bean.getRoleStatus());
+			vBean.setDepict(bean.getDepict());
+			service.update(vBean);
+			return RestResult.buildSuccess();
+		} else
+			return RestResult.buildFail();
 
+	}
 	@ApiOperation(value = "保存组织全局配置")
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "priority", value = "排序", dataType = "int", required = false),

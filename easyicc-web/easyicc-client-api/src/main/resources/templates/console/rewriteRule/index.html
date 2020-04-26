@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Bordash - Admin Dashboard Template</title>
+    <title>后台管理中心 - 接入策略管理</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
@@ -227,8 +227,8 @@
                         <li><a href="${basePath}/department/index.html">部门信息管理</a></li>
                         <li><a href="${basePath}/role/index.html">公司角色管理</a></li>
                         <li><a href="${basePath}/role/assignRole.html">公司角色分配</a></li>
-                        <li><a href="${basePath}/quality/rewriteRule.html">接入策略管理</a></li>
-                        <li><a class="active" href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
+                        <li><a class="active" href="${basePath}/quality/rewriteRule.html">接入策略管理</a></li>
+                        <li><a href="${basePath}/promotionChannel/index.html">接入渠道配置</a></li>
                         <li><a href="${basePath}/visitorFilter/index.html">访客屏蔽管理</a></li>
 
                         <li><a href="${basePath}/site/index.html">子站点管理</a></li>
@@ -250,35 +250,64 @@
         <!-- begin::page-header -->
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>高级选项配置</h4>
-
+                <h4>接入策略管理</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <button type="button" class="btn btn-danger btn-square btn-uppercase" onClick="addRole()">
+                                <i class="ti-plus mr-2"></i> 新增
+                                 
+                            </button>
+                    </ol>
+                    
+                </nav>
             </div>
         </div>
         <!-- end::page-header -->
 
         <!-- begin::page content -->
         <div class="container-fluid">
-				<form class="needs-validation" novalidate>
-<div class="form-row">
-  <div class="col-md-2 mb-3">
-  展示转接信息给访客：
-  </div>
-  <div class="col-md-4 mb-3 custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck" checked="">
-  </div>
-</div>
-<div class="form-group">
-    <div class="custom-control custom-checkbox custom-checkbox-info">
-        <input type="checkbox" class="custom-control-input" id="customCheck" checked>
-        <label class="custom-control-label" for="customCheck">Check this custom checkbox - Default</label>
-    </div>
-</div>
 
-					<div class="row">
+			<div class="row">
+				<div class="col-md-12">
 
-						<div class="col-md-12"></div>
-					</div>
-				</form>
+					<table class="table mb-4 mt-4">
+						<thead class="thead-light">
+							<tr>
+								<th>#</th>
+								<th class="text-left">策略对象</th>
+								<th class="text-left">分组名称</th>
+								<th class="text-left">分组信息</th>
+								<th class="text-left">客户分组</th>
+								<th class="text-left">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#if roleList?? && (roleList?size > 0) >
+								<#list roleList as role>
+								<tr class="text-left">
+									<td class="text-left">${role_index+1}</td>
+									<td class="text-left">${role.roleName!}</td>
+									<td class="text-left">${role.depict!}</td>
+									<td class="text-left"><#if role.roleStatus==1>启用<#else> 停用</#if></td>
+									<td class="text-left">
+									<a class="badge badge-success" onclick="editRole('${role.roleId!}')">修改</a>
+									 <a class="badge badge-danger" onClick="deleteRole('${role.roleId!}')" >删除</a>
+									 <a class="badge badge-success" onClick="setPermission('${role.roleId!}')" >设置菜单</a>
+									 </td>
+	
+								</tr>
+								</#list>
+								<#else>
+								<tr class="text-center">
+								<td colspan=5 class="text-center">无数据</td>
+								</tr>
+							</#if>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
 		</div>
         <!-- end::page content -->
 

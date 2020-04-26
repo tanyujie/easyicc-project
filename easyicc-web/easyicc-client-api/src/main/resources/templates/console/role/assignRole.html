@@ -250,51 +250,64 @@
         <!-- begin::page-header -->
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>高级选项配置</h4>
-
+                <h4>公司角色分配</h4>
             </div>
         </div>
         <!-- end::page-header -->
 
         <!-- begin::page content -->
         <div class="container-fluid">
-				<form class="needs-validation" novalidate>
-<div class="form-row">
-  <div class="col-md-2 mb-3">
-  展示转接信息给访客：
-  </div>
-  <div class="col-md-4 mb-3 custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck" checked="">
-  </div>
-</div>
-<div class="form-group">
-    <div class="custom-control custom-checkbox custom-checkbox-info">
-        <input type="checkbox" class="custom-control-input" id="customCheck" checked>
-        <label class="custom-control-label" for="customCheck">Check this custom checkbox - Default</label>
-    </div>
-</div>
 
-					<div class="row">
+			<div class="row">
+				<div class="col-md-12">
 
-						<div class="col-md-12"></div>
-					</div>
-				</form>
+					<table class="table mb-4 mt-4">
+						<thead class="thead-light">
+							<tr>
+								<th>#</th>
+								<th class="text-left">客服ID</th>
+								<th class="text-left">客服姓名</th>
+								<th class="text-left">邮件地址</th>
+								<th class="text-left">联系电话</th>
+								<th class="text-left">所属部门</th>
+								<th class="text-left">所属角色</th>
+								
+								<th class="text-left">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<#if pageInfo.list?? && (pageInfo.list?size > 0) >
+								<#list pageInfo.list as account>
+								<tr class="text-left">
+									<td class="text-left">${account_index+1}</td>
+									<td class="text-left">${account.code!}</td>
+									<td class="text-left">${account.nick!}</td>
+									<td class="text-left">${account.email!}</td>
+									<td class="text-left">${account.mobile!}</td>
+									<td class="text-left">${account.departmentName!}</td>
+									<td class="text-left">${account.roleName!}</td>
+									<td class="text-left">
+									<a class="badge badge-success" onclick="editRole('${account.id!}')">修改</a>
+									 </td>
+	
+								</tr>
+								</#list>
+								<#else>
+								<tr class="text-center">
+								<td colspan=8 class="text-center">无数据</td>
+								</tr>
+							</#if>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
 		</div>
         <!-- end::page content -->
 
         <!-- begin::footer -->
-        <footer>
-            <div class="container-fluid">
-                <div>© 2019 Protable v1.0.0 Made by <a href="http://bootstrapmb.com">Laborasyon</a></div>
-                <div>
-                    <nav class="nav">
-                        <a href="" class="nav-link">Licenses</a>
-                        <a href="#" class="nav-link">Change Log</a>
-                        <a href="#" class="nav-link">Get Help</a>
-                    </nav>
-                </div>
-            </div>
-        </footer>
+
         <!-- end::footer -->
 
     </div>
@@ -322,30 +335,15 @@
 <!-- Datepicker -->
 <script src="${basePath}/vendors/datepicker/daterangepicker.js"></script>
 
-<!-- Slick -->
-<script src="${basePath}/vendors/slick/slick.min.js"></script>
+
 
 <!-- Vamp -->
 <script src="${basePath}/vendors/vmap/jquery.vmap.min.js"></script>
 <script src="${basePath}/vendors/vmap/maps/jquery.vmap.usa.js"></script>
 <script src="${basePath}/assets/js/examples/vmap.js"></script>
 
-<!-- Dashboard scripts -->
-<script src="${basePath}/assets/js/examples/dashboard.js"></script>
-<div class="colors"> <!-- To use theme colors with Javascript -->
-    <div class="bg-primary"></div>
-    <div class="bg-primary-bright"></div>
-    <div class="bg-secondary"></div>
-    <div class="bg-secondary-bright"></div>
-    <div class="bg-info"></div>
-    <div class="bg-info-bright"></div>
-    <div class="bg-success"></div>
-    <div class="bg-success-bright"></div>
-    <div class="bg-danger"></div>
-    <div class="bg-danger-bright"></div>
-    <div class="bg-warning"></div>
-    <div class="bg-warning-bright"></div>
-</div>
+
+
 
 <!-- App scripts -->
 <script src="${basePath}/assets/js/app.js"></script>

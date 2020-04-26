@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>后台管理中心 - 个人常用语</title>
+    <title>后台管理中心 - 内部聊天记录</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="${basePath}/assets/media/image/favicon.png"/>
@@ -185,16 +185,7 @@
 
         <div class="page-header">
             <div class="container-fluid d-sm-flex justify-content-between">
-                <h4>常用语分类管理</h4>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <button type="button" class="btn btn-danger btn-square btn-uppercase" data-toggle="modal" data-target="#addCommonLanguageCategoryMode">
-                                <i class="ti-plus mr-2"></i> 新增
-                                 
-                            </button>
-                    </ol>
-                    
-                </nav>
+                <h4>内部聊天记录</h4>
             </div>
         </div>
 
@@ -208,11 +199,12 @@
 						<thead class="thead-light">
 							<tr>
 								<th>#</th>
-								<th class="text-left">类别</th>
-								<th class="text-left">标题</th>
-								<th class="text-left">内容</th>
-								<th class="text-left">类型</th>
-								<th class="text-left">操作</th>
+								<th class="text-left">发送方ID</th>
+								<th class="text-left">发送方昵称</th>
+								<th class="text-left">接收方ID</th>
+								<th class="text-left">接收方昵称</th>
+								<th class="text-left">聊天消息</th>
+								<th class="text-left">发送日期</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -222,11 +214,9 @@
 								<td class="text-left">${bean.message!}</td>
 								<td class="text-left">${bean.message!}</td>
 								<td class="text-left">${bean.message!}</td>
+								<td class="text-left">${bean.message!}</td>
+								<td class="text-left">${bean.message!}</td>
 								<td class="text-left">--</td>
-								<td class="text-left">
-								<a class="badge badge-success"  onClick="editCommonLanguageCategory('${bean.id!}')">修改</a>
-								<a class="badge badge-danger"  onClick="deleteCommonLanguageCategory('${bean.id!}')">删除</a>
-								 </td>
 
 							</tr>
 							</#list>
