@@ -60,7 +60,9 @@ public class OrganizeController extends IdentityRepository{
 	}
 
 	@ApiOperation(value = "修改组织全局配置信息")
-	@ApiImplicitParams({ @ApiImplicitParam(name = "orgName", value = "分类名称", dataType = "string", required = false),
+	@ApiImplicitParams({ 
+		@ApiImplicitParam(name = "orgId", value = "分类名称", dataType = "string", required = false),
+		@ApiImplicitParam(name = "orgName", value = "分类名称", dataType = "string", required = false),
 		@ApiImplicitParam(name = "phone", value = "公司电话", dataType = "公司电话", required = false),
 		@ApiImplicitParam(name = "fax", value = "公司传真", dataType = "string", required = false),
 		@ApiImplicitParam(name = "url", value = "公司网址", dataType = "string", required = false),

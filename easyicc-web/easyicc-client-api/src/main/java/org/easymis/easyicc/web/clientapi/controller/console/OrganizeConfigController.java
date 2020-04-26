@@ -26,11 +26,7 @@ public class OrganizeConfigController extends IdentityRepository{
 	@ApiOperation(value = "公司全局配置页面")
 	@RequestMapping(value = { "/edit.html" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String find(String name,ModelMap model) {
-		String orgId = getOrgId();
-		Site bean = new Site();
-		bean.setOrgId(orgId);
-
-		//model.put("pageInfo", service.find(bean, pageNum, pageSize));
+		model.put("config", service.findOrgId(getOrgId()));
 		return "/console/organize/config";
 	}
 
