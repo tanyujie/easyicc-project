@@ -204,14 +204,35 @@
 					<table class="table mb-4 mt-4">
 						<thead class="thead-light">
 							<tr>
-								<th>分类名称</th>
+								<th>机器人</th>
+								<th class="text-left">分类描述</th>
 								<th class="text-left">分类描述</th>
 								<th class="text-left">最后修改时间</th>
 								<th class="text-left">操作</th>
 							</tr>
 						</thead>
-						<tbody>
-							
+												<tbody>
+							<#if pageInfo.list?? && (pageInfo.list?size > 0) >
+								<#list pageInfo.list as category>
+								<tr class="text-left">
+									<td class="text-left">${category.rebotId!}</td>
+									<td class="text-left">${category.categoryName!}</td>
+									<td class="text-left">${category.depict!}</td>
+									<td class="text-left">${category.createTime?string('yyyy-MM-dd')}</td>
+									<td class="text-left">${category.updateTime?string('yyyy-MM-dd')}</td>
+									<td class="text-left">
+									<a class="badge badge-success" onclick="editQuestion('${category.id!}')">修改</a>
+									<a class="badge badge-danger" onclick="deleteQuestion('${category.id!}')">删除</a>
+									
+									 </td>
+	
+								</tr>
+								</#list>
+								<#else>
+								<tr class="text-center">
+								<td colspan=8 class="text-center">无数据</td>
+								</tr>
+							</#if>
 						</tbody>
 					</table>
 
@@ -241,12 +262,22 @@
       <div class="modal-body">
        
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">子站点名称:</label>
+            <label for="recipient-name" class="col-form-label">分类名称:</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
             <div class="invalid-feedback" id="name-feedback"></div>
           </div>
           <div class="form-group">
-              <label for="message-text" class="col-form-label">子站点描述:</label>
+            <label for="recipient-name" class="col-form-label">上级分类:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
+            <div class="invalid-feedback" id="name-feedback"></div>
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">修改时间:</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
+            <div class="invalid-feedback" id="name-feedback"></div>
+          </div>
+          <div class="form-group">
+              <label for="message-text" class="col-form-label">分类描述:</label>
               <textarea class="form-control" id="depict" name="depict" placeholder="请输入子站点描述内存"></textarea>
             </div>
          
@@ -290,7 +321,7 @@ function saveSite(){
 		alert($("#addSiteForm").serialize());
 		$.ajax({
 	        type: 'POST',
-	        url: '${basePath}/site/save.do',
+	        url: '${basePath}/robotQuestionCategory/saveOrUpdate.do',
 	        dataType: 'json',
 	        data: $("#addSiteForm").serialize(),
 	        //发送数据前
