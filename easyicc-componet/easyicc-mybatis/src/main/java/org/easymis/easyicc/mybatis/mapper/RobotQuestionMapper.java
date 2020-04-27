@@ -1,6 +1,5 @@
 package org.easymis.easyicc.mybatis.mapper;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -23,10 +22,10 @@ public interface RobotQuestionMapper {
 			@Result(property = "createTime", column = "create_time"),
 			@Result(property = "updateId", column = "update_id"),
 			@Result(property = "updateTime", column = "update_time") })
-	public List<RobotQuestion> getList(HashMap<String, Object> params);
+	public List<RobotQuestion> getList(RobotQuestion params);
 
 	@Insert("insert into robot_question(id,org_id,robot_id,sort_id,question,result_type,answer,locked_flag,create_id,create_time,update_id,update_time)values(#{id},#{orgId},#{robotId},#{sortId},#{question},#{resultType},#{answer},#{lockedFlag},#{createId},#{createTime},#{updateId},#{updateTime})")
-	public void save(RobotQuestion bean);
+	public boolean save(RobotQuestion bean);
 
 	@Insert("insert into robot_question(id,org_id,robot_id,sort_id,question,result_type,answer,locked_flag,create_id,create_time,update_id,update_time)values(#{id},#{orgId},#{robotId},#{sortId},#{question},#{resultType},#{answer},#{lockedFlag},#{createId},#{createTime},#{updateId},#{updateTime})")
 	public void saveBatch(List<RobotQuestion> beans);
@@ -40,8 +39,15 @@ public interface RobotQuestionMapper {
 	public void removeBatch(List<String> list);
 
 	public void restoreBatch(List<String> list);
-
-	public void deleteBatch(List<String> list);
+	@Delete({"<script>",
+        "DELETE FROM robot_question",
+        "WHERE id IN", 
+          "<foreach item='item' index='index' collection='ids'",
+            "open='(' separator=',' close=')'>",
+            "#{item}",
+          "</foreach>",
+        "</script>"}) 
+	public void deleteBatch(@Param("ids")List<String> ids);
 	@Select("select * from robot_question t WHERE t.question like '%'||#{question}||'%' and t.org_id=#{orgId} ")
 	public List<RobotQuestion> findByQuestion(RobotQuestion bean);
 	@Select("select * from robot_question t WHERE t.id = #{id}")
