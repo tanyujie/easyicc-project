@@ -118,7 +118,7 @@
                     <ul>
                         <li class="navigation-divider">智能微微配置</li>
                         <li>
-                            <a href="${basePath}/robot/greeting.html">
+                            <a href="${basePath}/robot/index.html">
                                 <span>问候语配置</span>
                             </a>
                         </li>
@@ -201,7 +201,29 @@
 							</tr>
 						</thead>
 						<tbody>
-							
+							<#if pageInfo.list?? && (pageInfo.list?size > 0) >
+								<#list pageInfo.list as question>
+								<tr class="text-left">
+									<td class="text-left">${question_index+1}</td>
+									<td class="text-left">${question.question!}</td>
+									<td class="text-left">-</td>
+									<td class="text-left">${question.question!}</td>
+									<td class="text-left">-</td>
+									<td class="text-left">-</td>
+									<td class="text-left">-</td>
+									<td class="text-left">
+									<a class="badge badge-success" onclick="editQuestion('${question.id!}')">修改</a>
+									<a class="badge badge-danger" onclick="deleteQuestion('${question.id!}')">删除</a>
+									
+									 </td>
+	
+								</tr>
+								</#list>
+								<#else>
+								<tr class="text-center">
+								<td colspan=8 class="text-center">无数据</td>
+								</tr>
+							</#if>
 						</tbody>
 					</table>
 
@@ -223,25 +245,41 @@
     <div class="modal-content">
      <form id="addSiteForm"  onsubmit="return checkAddSiteForm()">
       <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">新增子站点</h5>
+        <h5 class="modal-title" id="myModalLabel">新增知识信息</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <i class="ti-close"></i>
         </button>
       </div>
-      <div class="modal-body">
-       
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">子站点名称:</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="请输入子站点名称" required="">
-            <div class="invalid-feedback" id="name-feedback"></div>
-          </div>
-          <div class="form-group">
-              <label for="message-text" class="col-form-label">子站点描述:</label>
-              <textarea class="form-control" id="depict" name="depict" placeholder="请输入子站点描述内存"></textarea>
-            </div>
-         
-       </div>
-       <div class="modal-footer">
+	<div class="modal-body">
+		<div class="form-group">
+			<label for="message-text" class="col-form-label">机器人:</label>
+			<select class="select2-example" id="robotId" name="robotId">
+            <#list robotList as robot>
+			  <option value="${robot.robotId!}">${robot.name!}</option>
+			</#list>
+			
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="message-text" class="col-form-label">类别:</label>
+			<textarea class="form-control" id="depict" name="depict"
+				placeholder="请输入子站点描述内存"></textarea>
+		</div>
+		<div class="form-group">
+			<label for="recipient-name" class="col-form-label">问题:</label> <input
+				type="text" class="form-control" id="question" name="question"
+				placeholder="请输入" required="">
+			<div class="invalid-feedback" id="question-feedback"></div>
+		</div>
+		<div class="form-group">
+			<label for="recipient-name" class="col-form-label">答案:</label> <input
+				type="text" class="form-control" id="answer" name="answer"
+				placeholder="请输入" required="">
+			<div class="invalid-feedback" id="answer-feedback"></div>
+		</div>
+
+	</div>
+	   <div class="modal-footer">
           <button  type="button" class="btn btn-primary"  id="saveSiteButton" onClick="saveSite()">保存</button>
        </div>
        </form>
@@ -249,29 +287,36 @@
   </div>
 </div>
 <script type="text/javascript">
+$(document).ready(function () {
+
+    $('#categoryId').select2({
+        placeholder: 'Select'
+    });
+
+});
 //以检查用户名不能为空不能有特殊符号为例
 function checkAddSiteForm(){
-        var username = document.getElementById("name");//获取username那个div
-        var feedback = document.getElementById("name-feedback");
+        var question = document.getElementById("question");//获取question那个div
+        var feedback = document.getElementById("question-feedback");
         //不能为空
-        if(username.value==""){
-            feedback.innerHTML = "请输入子站点名称！";//修改username-feedback div中的内容
-            username.classList.remove("is-valid");//清除合法状态
-            username.classList.add("is-invalid");//添加非法状态
+        if(question.value==""){
+            feedback.innerHTML = "请输入子站点名称！";//修改question-feedback div中的内容
+            question.classList.remove("is-valid");//清除合法状态
+            question.classList.add("is-invalid");//添加非法状态
             return false;
         }
         //不能有特殊符号
         var patrn = /[@#\$%\^&\*]+/g;//正则表达式
-        if(patrn.exec(username.value)){
+        if(patrn.exec(question.value)){
             feedback.innerHTML = "用户名不能存在特殊符号！";
-            username.classList.remove("is-valid");
-            username.classList.add("is-invalid");
+            question.classList.remove("is-valid");
+            question.classList.add("is-invalid");
             return false;
         }
 
         //清除错误提示，改成成功提示
-        username.classList.remove("is-invalid");
-        username.classList.add("is-valid");
+        question.classList.remove("is-invalid");
+        question.classList.add("is-valid");
         feedback.innerHTML="";
         return true;
     }
@@ -280,7 +325,7 @@ function saveSite(){
 		alert($("#addSiteForm").serialize());
 		$.ajax({
 	        type: 'POST',
-	        url: '${basePath}/site/save.do',
+	        url: '${basePath}/robotQuestion/save.do',
 	        dataType: 'json',
 	        data: $("#addSiteForm").serialize(),
 	        //发送数据前
@@ -318,6 +363,21 @@ function saveSite(){
 	        }
 	    });			
 	}
+}
+function deleteQuestion(ids){
+	$.ajax({
+        type: 'POST',
+        url: '${basePath}/robotQuestion/delete.do',
+        dataType: 'json',
+        data: {ids:ids},
+        success: function(data){
+			if(data.code==0)
+        	window.location.reload();
+        },
+        error: function(data){
+            console.info("error: " + data.responseText);
+        }
+    });		
 }
 </script>
 <!-- insert modal end -->
