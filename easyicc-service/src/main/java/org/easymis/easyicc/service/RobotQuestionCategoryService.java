@@ -7,7 +7,7 @@ import org.easymis.easyicc.domain.entity.RobotQuestionCategory;
 
 import com.github.pagehelper.PageInfo;
 
-public interface RebotQuestionCategoryService {
+public interface RobotQuestionCategoryService {
 	public boolean save(RobotQuestionCategory bean);
 
 	public boolean update(RobotQuestionCategory bean);

@@ -1,6 +1,8 @@
 package org.easymis.easyicc.service;
 
 
+import java.util.List;
+
 import org.easymis.easyicc.common.result.RestResult;
 import org.easymis.easyicc.domain.entity.Robot;
 
@@ -13,6 +15,8 @@ public interface RobotService {
 	public boolean update(Robot bean);
 
 	public Robot findById(String id);
+
+	public List<Robot> findByOrgId(String orgId);
 
 	public PageInfo<?> find(Robot bean, Integer pageNum, Integer pageSize);
 

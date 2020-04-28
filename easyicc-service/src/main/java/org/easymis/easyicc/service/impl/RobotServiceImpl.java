@@ -53,4 +53,10 @@ public class RobotServiceImpl implements RobotService {
 		return RestResult.buildSuccess();
 	}
 
+	@Override
+	public List<Robot> findByOrgId(String orgId) {
+		// TODO Auto-generated method stub
+		return mapper.findByOrgId(orgId);
+	}
+
 }
