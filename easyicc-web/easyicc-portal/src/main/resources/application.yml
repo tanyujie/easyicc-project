@@ -5,14 +5,14 @@ server:
         min-spare-threads: 2
         maxHttpHeaderSize: 10240000
         maxHttpPostSize: 10240000 
-    port: 5191
+    port: 51910
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
     servlet: 
         context-path: /portal
 spring:
     application:
-        name: easyicc-scripts
+        name: easyicc-portal
     # 环境 dev|test|prod
     profiles:
        active: test

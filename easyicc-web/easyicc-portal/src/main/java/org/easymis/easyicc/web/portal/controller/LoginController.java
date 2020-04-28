@@ -10,25 +10,27 @@ import org.easymis.easyicc.domain.vo.LoginVo;
 import org.easymis.easyicc.service.MemberService;
 import org.easymis.easyicc.web.portal.config.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 @Api(description = "门户系统登录")
 @Validated
-@RestController
+@Controller
 @Slf4j
 public class LoginController {
 	@Autowired
 	private MemberService memberService;
 	@RequestMapping("/login.html")
-	public String blank() throws NoSuchAlgorithmException {
+	public String login() throws NoSuchAlgorithmException {
 		return "/login";
 	}
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	@ResponseBody
 	public RestResult login(LoginVo ar) {		
 		Member member=memberService.findByMobile(ar.getLoginName());
 		if(member!=null) {

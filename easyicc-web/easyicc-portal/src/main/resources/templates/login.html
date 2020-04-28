@@ -13,24 +13,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
 	<title>智能客服</title>
 	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.xc.new.ico?t=1586518043671"/>
-    <link rel="stylesheet" href="/css/layui.css">
-    <link rel="stylesheet" href="/css/flexboxgrid.min.css">
+    <link rel="stylesheet" href="${basePath}/layer/theme/default/layer.css">
     <link rel="stylesheet" href="${basePath}/css/login.css">
-    <script src="/js/jquery-1.10.2.min.js"></script>
-    <script src="/js/jquery.form.js"></script>
-    <script src="/layui.js"></script>
-    <!-- <script defer="true" src="/im/044JYV.html"></script> -->
-    <script language="javascript">
-        if ((window.frameElement && window.frameElement.id || '') != "") {
-            top.location.href = "/login.html";
-        }
-        layui.use('layer', function () {
-            var layer = layui.layer;
-        });
-        layui.use('form', function(){
-            //var form = layui.form();
-        });
-    </script>
+    <script src="${basePath}/js/jquery-1.12.4.min.js"></script>
     <link rel="stylesheet" href="${basePath}/css/login.css">
 </head>
 
@@ -48,13 +33,13 @@
         </div>
 
         <div class="main-right">
-            <form id="loginForm" action="/login.html" class="layui-form" method="post" onsubmit="return checkForm();">
-                <p><span style="font-size: 20px;">登陆小持科技</span>
+            <form id="loginForm" action="${basePath}/login.do" class="layui-form" method="post" >
+                <p><span style="font-size: 20px;">系统登录</span>
 
 
                 </p><div class="main-input" style="margin-bottom:10px;">
                     <span class="layui-icon form-control-feedback"><img src="${basePath}/images/yonghu.png" height="20px"></span>
-                    <input type="text" name="username" id="username" autofocus="" required="" lay-verify="required" class="form-control required" value="" placeholder="手机/邮箱/用户名"></div>
+                    <input type="text" name="loginName" id="loginName" autofocus="" required="" lay-verify="required" class="form-control required" value="" placeholder="手机/邮箱/用户名"></div>
                 <div class="main-input" style="margin-bottom:10px;">
                     <span class="lay form-control-feedback"><img src="${basePath}/images/mima.png" height="22px"></span>
                     <input type="password" name="password" id="password" required="" lay-verify="required|pass" class="form-control required" value="" placeholder="密码"></div>
@@ -70,7 +55,7 @@
 
 
                 <p>
-                    <button id="submitBTN" class="btn btn-block btn-primary btn-lg">立即登录</button>
+                    <button id="loginButton" class="btn btn-block btn-primary btn-lg">立即登录</button>
                 </p>
                 <a href="${basePath}/repassword.html" style="color: #999999">忘记密码</a><a href="${basePath}/register.html">立即注册</a>
             </form>
@@ -94,7 +79,7 @@
 <div class="floor">
     <div class="clearfix wrap">
         <div class="fl">
-            Copyright © 2016-2019 上海小持智能科技有限公司. 沪ICP备16043540号
+            Copyright © 2016-2019 成都聚尚贤科技有限公司. 沪ICP备16043540号
 
         </div>
         <div class="fr">
@@ -119,16 +104,8 @@
 
 
 <script>
-    var show_num = [];
-    window.onload = function (){
-        draw(show_num);
 
-        $("#canvas").on('click',function(){
-            draw(show_num);
-        })
-    }
-
-    function checkForm(){
+     function checkForm(){
         var val = $("#code").val().toLowerCase();
         var num = show_num.join("");
         if(val == num){
@@ -142,59 +119,26 @@
         }
     }
 
-    function draw(show_num) {
-        var canvas_width=$('#canvas').width();
-        var canvas_height=$('#canvas').height();
-        var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
-        var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
-        canvas.width = canvas_width;
-        canvas.height = canvas_height;
-        var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
-        var aCode = sCode.split(",");
-        var aLength = aCode.length;//获取到数组的长度
-
-        for (var i = 0; i <= 3; i++) {
-            var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
-            var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
-            var txt = aCode[j];//得到随机的一个内容
-            show_num[i] = txt.toLowerCase();
-            var x = 10 + i * 20;//文字在canvas上的x坐标
-            var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
-            context.font = "bold 23px 微软雅黑";
-
-            context.translate(x, y);
-            context.rotate(deg);
-
-            context.fillStyle = randomColor();
-            context.fillText(txt, 0, 0);
-
-            context.rotate(-deg);
-            context.translate(-x, -y);
-        }
-        for (var i = 0; i <= 8; i++) { //验证码上显示线条
-            context.strokeStyle = randomColor();
-            context.beginPath();
-            context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
-            context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
-            context.stroke();
-        }
-        for (var i = 0; i <= 50; i++) { //验证码上显示小点
-            context.strokeStyle = randomColor();
-            context.beginPath();
-            var x = Math.random() * canvas_width;
-            var y = Math.random() * canvas_height;
-            context.moveTo(x, y);
-            context.lineTo(x + 1, y + 1);
-            context.stroke();
-        }
-    }
-
-    function randomColor() {//得到随机的颜色值
-        var r = Math.floor(Math.random() * 256);
-        var g = Math.floor(Math.random() * 256);
-        var b = Math.floor(Math.random() * 256);
-        return "rgb(" + r + "," + g + "," + b + ")";
-    }
+        $("#loginButton").click(function () {
+    		var loginName = $("#loginForm").find("#loginName").eq(0).val();
+    		var password = $("#loginForm").find("#password").eq(0).val();
+    		$.ajax({
+                url:'${basePath}/login.do',
+                type:'post',
+                data:{'loginName':loginName,'password':password},
+               // dataType:'json',
+                success:function(data){
+                    if(data.code==0){
+                        location.href='member.html';
+                    }else{
+                        alert(data.msg);
+                    }
+                },
+                error:function(){
+                    console.log('请求出错！');
+                }
+            })
+    	});
 
 </script>
 

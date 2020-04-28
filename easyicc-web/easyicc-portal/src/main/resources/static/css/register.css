@@ -44,8 +44,8 @@ body{
 .model-main {
   position: relative;
   background-color: white;
-  width: 450px;
-  height: 505px;
+  width: 420px;
+  height: 460px;
   z-index: 1;
   top: 30px;
 /*   margin-top: -313px; */
@@ -55,7 +55,7 @@ body{
 }
 .model-main form{
   padding-top: 10px;
-  margin-left: 60px;
+  margin-left: 40px;
 }
 form a{
   color: #d00b3c;
