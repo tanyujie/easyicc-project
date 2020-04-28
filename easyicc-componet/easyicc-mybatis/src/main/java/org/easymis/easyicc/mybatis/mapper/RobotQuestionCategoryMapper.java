@@ -13,14 +13,14 @@ public interface RobotQuestionCategoryMapper {
 	@Select("select * from robot_question_category")
 	public List<RobotQuestionCategory> getList(RobotQuestionCategory params);
 
-	@Insert("insert into robot_question_category(category_id,org_id,rebot_id,category_name,create_time,update_time)values(#{categoryId},#{orgId},#{rebotId},#{categoryName},#{createTime},#{updateTime})")
-	public void save(RobotQuestionCategory bean);
+	@Insert("insert into robot_question_category(category_id,org_id,rebot_id,category_name,depict,create_time,update_time)values(#{categoryId},#{orgId},#{rebotId},#{categoryName},#{depict},#{createTime},#{updateTime})")
+	public boolean save(RobotQuestionCategory bean);
 
-	@Insert("insert into robot_question_category(category_id,org_id,rebot_id,category_name,create_time,update_time)values(#{categoryId},#{orgId},#{rebotId},#{categoryName},#{createTime},#{updateTime})")
+	@Insert("insert into robot_question_category(category_id,org_id,rebot_id,category_name,depict,create_time,update_time)values(#{categoryId},#{orgId},#{rebotId},#{categoryName},#{depict},#{createTime},#{updateTime})")
 	public void saveBatch(List<RobotQuestionCategory> beans);
 
-	@Update("UPDATE robot_question_category SET category_id= #{categoryId},org_id= #{orgId},rebot_id= #{rebotId},category_name= #{categoryName},create_time= #{createTime},update_time= #{updateTime} WHERE category_id= #{categoryId}")
-	public void update(RobotQuestionCategory bean);
+	@Update("UPDATE robot_question_category SET category_id= #{categoryId},org_id= #{orgId},rebot_id= #{rebotId},category_name= #{categoryName},depict= #{depict},create_time= #{createTime},update_time= #{updateTime} WHERE category_id= #{categoryId}")
+	public boolean update(RobotQuestionCategory bean);
 
 	@Delete(" DELETE FROM robot_question_category WHERE category_id = #{categoryId}")
 	public void delete(String category_id);
