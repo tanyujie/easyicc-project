@@ -5,10 +5,11 @@ server:
         min-spare-threads: 30
         maxHttpHeaderSize: 10240000
         maxHttpPostSize: 10240000 
-    port: 80
+    port: 50351
     maxHttpHeaderSize: 10240000
     maxHttpPostSize: 10240000
-      
+    servlet: 
+        context-path: /cardAdmin            
 spring:
     application:
         name: easycrm

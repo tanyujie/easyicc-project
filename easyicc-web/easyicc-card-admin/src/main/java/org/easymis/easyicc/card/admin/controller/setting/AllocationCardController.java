@@ -128,7 +128,7 @@ public class AllocationCardController extends IdentityRepository{
 			//if(ud.hasDataPermission("3d5c4d88-032f-409f-bf74-1b2f429d1216", "hideTelephone", "1")){
 		if(true) {
 				for(Card card : pageInfo.getList()){
-						String noteString=card.getNote();
+/*						String noteString=card.getNote();
 						String mobileString=card.getMobile();
 						String telString=card.getTel();
 						String qqString=card.getQq();
@@ -137,7 +137,7 @@ public class AllocationCardController extends IdentityRepository{
 						card.setQq(hidePhoneRule(qqString));
 						card.setTel(hidePhoneRule(telString));
 						card.setNote(hideMSNRule(noteString));
-						card.setMsn(hideMSNRule(msnString));
+						card.setMsn(hideMSNRule(msnString));*/
 
 				}
 			}

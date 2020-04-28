@@ -149,7 +149,7 @@ public class ApiPushLogController extends IdentityRepository {
 				Map<String, Object> mapApi = new HashMap<String, Object>();
 				mapApi.put("name", log.getName());
 				mapApi.put("mobile", log.getMobile());
-				mapApi.put("tel", log.getTel());
+				//mapApi.put("tel", log.getTel());
 				mapApi.put("createTime",log.getCreateTime()==null?log.getCreateTime():sdf.format(log.getCreateTime()));
 				mapApi.put("status", log.getStatus()==0?"失败":"成功");
 				mapApi.put("pushTime", log.getPushTime()==null?log.getPushTime():sdf.format(log.getPushTime()));
