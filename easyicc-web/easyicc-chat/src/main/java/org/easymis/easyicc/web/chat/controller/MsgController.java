@@ -111,7 +111,7 @@ public class MsgController {
 		
 		String receiverId = chatMsg.getReceiverId();
 		DataContent dataContentMsg = new DataContent();
-		dataContentMsg.setAction(2);
+		dataContentMsg.setAction(201);
 		dataContentMsg.setChatMsg(chatMsg);
 		Channel receiverChannel = UserChannelRel.get(receiverId);
 		if (receiverChannel == null) {
