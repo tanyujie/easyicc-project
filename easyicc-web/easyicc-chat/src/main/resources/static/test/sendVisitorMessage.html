@@ -138,6 +138,7 @@
 					CHAT.socket = new WebSocket("ws://127.0.0.1:8088/ws")
 					CHAT.socket.onopen = function(){
 						var msg='{"action":1,"chatMsg":{"orgId":"orgId","msg":"'+'初始问候语'+'","msgId":"msgId","receiverId":"","senderId":"2"},"extand":"orgId"}';
+						console.log(msg);
 						CHAT.socket.send(msg);
 						console.log("链接建立成功...")
 					},
@@ -169,7 +170,7 @@
 			chat:function(){
 				var msgContent = document.getElementById("talkwords")
 				//CHAT.socket.send(msgContent.value);
-				var msg='{"action":201,"chatMsg":{"orgId":"12990","msg":"'+msgContent.value+'","msgId":"msgId","receiverId":"01000000012990717903983251685812","senderId":"AI-ylkj","type":"RECORD_RECORD","chatId":"337131562"},"extand":"orgId"}';
+				var msg='{"action":201,"chatMsg":{"orgId":"12990","msg":"'+msgContent.value+'","msgId":"msgId","receiverId":"01000000012990615773331170973517","senderId":"AI-ylkj","type":"RECORD_RECORD","chatId":"337131562"},"extand":"orgId"}';
 				CHAT.socket.send(msg);
 				str = '<div class="btalk"><span>' + msgContent.value +'</span></div>';
 				console.log(msg + "发送成功");
