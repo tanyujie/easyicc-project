@@ -14,8 +14,11 @@ public class BasePathInterceptor extends HandlerInterceptorAdapter{
 	        String scheme = request.getScheme();
 	        String serverName = request.getServerName();
 	        int port = request.getServerPort();
+	        
 	        String path = request.getContextPath();
 	        String basePath = scheme + "://" + serverName + ":" + port + path;
+	        if(port==80)
+	        	basePath="http://www.easymis.cn";
 	        logger.info(basePath);
 	        request.setAttribute("basePath", basePath);
 	        return true;
