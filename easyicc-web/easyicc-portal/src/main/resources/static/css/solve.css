@@ -1,0 +1,101 @@
+.sol_cons {
+    padding: 60px 0 97px;
+}
+
+.sol_cons table {
+    width: 100%;
+    border: 1px solid #E4E5E9;
+}
+
+.sol_cons table thead tr td {
+    border-left: 1px solid #E4E5E9;
+    border-bottom: 1px solid #E4E5E9;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #000000;
+    background: #ECECED;
+}
+ .sol_tex{
+        padding-bottom:20px;
+        border-bottom: 1px solid #E4E5E9;
+    }
+    .sol_ted{
+        padding-top:20px;
+    }
+    .s_add{
+        padding:0 !important;
+    }
+
+
+.sol_cons table thead tr td:last-child {
+    border-left: none;
+ 
+}
+
+.sol_cons table tbody tr td {
+    text-align: center;
+    padding: 15px 10px;
+}
+
+.sol_cons table tbody tr .s_a {
+    background: #F9F9FA;
+    border-bottom: 1px solid #E4E5E9;
+}
+
+.sol_cons table tbody tr .s_a:last-child {
+    border-bottom: none;
+}
+
+.sol_cons table tbody tr .s_b {
+    background: #F5F5F6;
+    border: 1px solid #E4E5E9;
+    border-top: none;
+}
+
+.sol_cons table tbody tr .s_c,
+.sol_cons table tbody tr .s_d,
+.sol_cons table tbody tr .s_e {
+    border-bottom: 1px solid #E4E5E9;
+    border-right: 1px solid #E4E5E9;
+}
+
+.sol_cons table tbody tr .s_f {
+    border-bottom: 1px solid #E4E5E9;
+    display:none;
+}
+
+.sol_one {
+    font-size: 14px;
+    color: #000000;
+}
+
+.sol_two {
+    font-size: 14px;
+    color: #585858;
+}
+
+.sol_thr {
+    font-size: 14px;
+    color: #585858;
+    text-align: left;
+    padding: 0 10px;
+}
+
+.sol_four img {
+    margin-right: 15px;
+}
+
+.sol_four img:last-child {
+    margin-right: 0;
+}
+
+.sol_five,
+.sol_sex {
+    font-size: 14px;
+    color: #585858;
+}
+
+.sol_tuss {
+    border-top: 1px solid #E4E5E9;
+}

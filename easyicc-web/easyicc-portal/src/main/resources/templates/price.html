@@ -1,0 +1,633 @@
+<html>
+<head>
+<head>
+    <meta charset="UTF-8">
+    <meta content="telephone=no" name="format-detection">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="shortcut icon" href="/image/favicon.png">
+		<meta name="renderer" content="webkit">
+		<meta name="robots" content="index, follow">
+		<title>【官网】华创微聊 |客服管理系统-在线客服系统-自动回复机器人-电话机器人-智能客服机器人-华创新能</title>
+    	<meta name="description" content="上海小持智能科技有限公司致力于AI客服机器人及系统平台研发,提供客服管理系统,自动回复机器人,在线客服系统,客服软件,微信机器人,电话机器人,拥有多项专利和软件著作权.公司科研人员长期基于深度学习、自然语言NLU开发出多项智能客服系统，可以根据行业垂直场景进行深度定制，满足客户个性化商业服务需求。">
+		<meta name="keyword" content="小持科技智能客服,在线客服,微信机器人,电话机器人,客服机器人,云客服,AI客服,上海小持智能科技有限公司">
+		<meta name="copyright" content="上海小持智能科技有限公司, All Rights Reserved">
+		<link rel="canonical" href="${basePath}">
+    <link rel="stylesheet" href="${basePath}/css/animate.min.css">
+    <link rel="stylesheet" href="${basePath}/css/public.css">
+    <link rel="stylesheet" href="${basePath}/css/frame.css">
+     <link rel="stylesheet" href="${basePath}/css/">
+     <link rel="stylesheet" href="${basePath}/css/index4.css">
+    
+    <link rel="stylesheet" href="${basePath}/css/media.css">
+    <link href="${basePath}/css/add_media6.24.css" rel="stylesheet">
+     <script src="${basePath}/js/jquery-1.12.4.min.js"></script>
+    <script src="${basePath}/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="${basePath}/js/common.js"></script>
+        
+    <script>
+        // 字体
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 6.4 + "px";
+    </script>
+
+
+<link rel="stylesheet" href="${basePath}/layer/theme/default/layer.css?v=3.1.0" id="layuicss-layer"></head>
+</head>
+<body>
+     <header>
+        <div class="header on">
+            <div class="clearfix he_cons wrap">
+                <div class="logo fl">
+                      <h1><a href="http://www.xiaochirobot.com/" title="小持客服管理系统">
+                        <img src="/xiaochi/files/images/201907/0104100247760.png" alt="小持客服管理系统" class="logo_one">
+                    </a></h1>
+                
+                   
+                </div>
+                <div class="fr menu clearfix">
+                    <div class="menu_fl fl">
+                        <ul class="clearfix">
+                            <li><a href="http://www.easymis.org">首页</a></li>
+                            <li>
+                                	<a href="${basePath}/introduce.html">产品介绍</a>
+                                
+                            </li>
+                            <li>
+                                <a href="${basePath}/solve.html">解决方案</a>
+                                <div class="menu_boot menu_bootss">
+                                    <a href="${basePath}/solve.html#caiwu">财务人事行政问答助手</a>
+                                    <a href="${basePath}/solve.html#toubiao">招投标问答助手</a>
+                                    <a href="${basePath}/solve.html#it"> IT问答助手</a>
+                                    <a href="${basePath}/solve.html#shequ">社区卫生服务助手</a>
+                                    <a href="${basePath}/solve.html#yiyuao">医药销售助手</a>
+                                    <a href="${basePath}/solve.html#yunwei">运维调度</a>
+                                    <a href="${basePath}/solve.html#zushou">合规管理助手</a>
+                                    <a href="${basePath}/solve.html#dichan">地产推广</a>
+                                    <a href="${basePath}/solve.html#weixiu">维保维修助手</a>
+                                    <a href="${basePath}/solve.html#baoxian">财险推广</a>
+                                </div>
+                            </li>
+                            <li><a href="${basePath}/price.html">服务价格</a></li>
+                            <li><a href="${basePath}/demo.html">产品体验</a>
+                            </li>
+                         <li><a href="${basePath}/download.html">下载</a>
+                        </ul>
+                    </div>
+                    <div class="menu_fr fl">
+                        <a href="${basePath}/login.html" rel="nofollow">登录</a>
+                        <a href="${basePath}/register.html" rel="nofollow">免费试用</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 手机端头部 -->
+    <div class="p_head_null none">
+        <div class="phone_header">
+            <div class="hea_content wrap clearfix">
+                <div class="nav_icon nav_icon_animate">
+                    <img src="/./images/nav_icon.png" alt="客服管理系统" class="nv_show" style="display: inline;">
+                    <img src="/./images/clone.png" alt="自动回复机器人" class="nv_clone" style="display: none;">
+                </div>
+                <div class="hea_logo fl">
+                  
+                       <a href="/">
+                        <img src="/./images/logo(1).png" alt="客服系统">
+                    </a>
+                               
+                </div>
+                <div class="p_heder_rg">
+
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="${basePath}/layer/layer.js"></script>
+<style>
+    .thr_textl > h2 {
+        font-size:16px!important;
+    }
+    /*.wrap {
+        margin-top:-15px;
+    }*/
+   .i_fou_show {
+         margin-top:50px;
+    }
+    /*.lun{
+background: #000000;
+}*/ 
+    
+</style>
+<script>
+    $(function () {
+        var title = $(".i_fou_ul li").eq(0).attr("data-Title");
+        var Description = $(".i_fou_ul li").eq(0).attr("data-Description");
+        var href = $(".i_fou_ul li").eq(0).attr("data-href");
+        var ps = $(".i_fou_ul li").eq(0).attr("data-pic");
+        var pss = $(".i_fou_ul li").eq(0).attr("data-pics");
+        var id = $(".i_fou_ul li").eq(0).attr("data-CatalogId");
+        if (id == 51) {
+            id = "#caiwu";
+        } else if (id == 52) {
+            id = "#toubiao";
+        }
+        else if (id == 53) {
+            id = "#it";
+        }
+        else if (id == 54) {
+            id = "#shequ";
+        }
+        else if (id == 55) {
+            id = "#yiyuao";
+        }
+        else if (id == 56) {
+            id = "#yunwei";
+        }
+        else if (id == 57) {
+            id = "#zushou";
+        }
+        else if (id == 58) {
+            id = "#dichan";
+            
+        }
+        else if (id == 59) {
+            id = "#weixiu";
+        }
+        else if (id == 60) {
+            id = "#baoxian";
+        }
+        $("#title").text(title);
+        $("#tit").text(title);
+        $("#Description").text(Description);
+        $("#href").attr("href", "${basePath}/solve.html" + id);
+
+        $("#pic").attr("src", href);
+       
+        if (ps != "") {
+            $("#pics").attr("src", ps);
+            $(".pas").show();
+        } else {
+            $(".pas").hide();
+        }
+        if (pss != "") {
+            $("#picss").attr("src", pss);
+            $(".pac").show();
+        } else {
+            $(".pac").hide();
+        }
+     
+       
+    })
+    function fenl(o) {
+        var Title = $(o).attr("data-Title");
+        var Description = $(o).attr("data-Description");
+        var href = $(o).attr("data-href");
+        var ps = $(o).attr("data-pic");
+        var pss = $(o).attr("data-pics");
+        var id = $(o).attr("data-CatalogId");
+        if (id==51) {
+            id = "#caiwu";
+        } else if (id==52) {
+            id = "#toubiao";
+        }
+        else if (id == 53) {
+            id = "#it";
+        }
+        else if (id == 54) {
+            id = "#shequ";
+        }
+        else if (id == 55) {
+            id = "#yiyuao";
+        }
+        else if (id == 56) {
+            id = "#yunwei";
+        }
+        else if (id == 57) {
+            id = "#zushou";
+        }
+        else if (id == 58) {
+            id = "#dichan";
+        }
+        else if (id == 59) {
+            id = "#weixiu";
+        }
+        else if (id == 60) {
+            id = "#baoxian";
+        }
+      
+        $("#title").text(Title);
+        $("#tit").text(Title);
+        $("#Description").text(Description);
+        $("#href").attr("href", "${basePath}/solve.html" + id);
+        $("#pic").attr("src", href);
+        if (ps != "") {
+            $("#pics").attr("src", ps);
+            $(".pas").show();
+        } else {
+            $(".pas").hide();
+        }
+        if (pss != "") {
+            $("#picss").attr("src", pss);
+            $(".pac").show();
+        } else {
+            $(".pac").hide();
+        }
+    }
+ 
+</script>
+ <main>
+
+        <div class="i_one wrap">
+            <h2 class="index_one">选择角色,开始体验</h2>
+            <div class="i_one_lun">
+                <div class="picScroll-left">
+                    <div class="bd">
+                        <div class="tempWrap" style="overflow:hidden; position:relative; width:1260px"><ul class="picList" style="width: 1575px; left: 0px; position: relative; overflow: hidden; padding: 0px; margin: 0px;">
+                             <li style="float: left; width: 299px;">
+                                <div class="one_lun">
+                                    <div class="on_lun_tu">
+                                        <img src="${basePath}/files/images/202004/0405340275470.png" alt="网页H5机器人" class="on_one">
+                                        <img src="${basePath}/files/images/202004/0405345521750.png" alt="网页H5机器人" class="on_two">
+                                    </div>
+                                    <h2>网页H5机器人</h2>
+                                    <p class="" style="height: 72px;">
+                                       官网web、手机H5嵌入无缝对接
+7x24小时实时服务
+                                    </p>
+                                    <a href="http://www.xiaochirobot.com/net-robot/2.html">了解详情</a>
+                                </div>
+                            </li> <li style="float: left; width: 299px;">
+                                <div class="one_lun">
+                                    <div class="on_lun_tu">
+                                        <img src="${basePath}/files/images/202004/0405315520880.png" alt="微信公众号机器人" class="on_one">
+                                        <img src="${basePath}/files/images/202004/0405320268120.png" alt="微信公众号机器人" class="on_two">
+                                    </div>
+                                    <h2>微信公众号机器人</h2>
+                                    <p class="" style="height: 72px;">
+                                       微信、公众号、企业号全覆盖<br>
+精准识别客户意图，多轮次会话互动
+                                    </p>
+                                    <a href="http://www.xiaochirobot.com/wx-robot/1.html">了解详情</a>
+                                </div>
+                            </li> <li style="float: left; width: 299px;">
+                                <div class="one_lun">
+                                    <div class="on_lun_tu">
+                                        <img src="${basePath}/files/images/202004/0405420240870.png" alt="电话外呼" class="on_one">
+                                        <img src="${basePath}/files/images/202004/0405420839910.png" alt="电话外呼" class="on_two">
+                                    </div>
+                                    <h2>电话外呼</h2>
+                                    <p class="" style="height: 72px;">
+                                       批量电话智能外呼<br>
+智能筛选意向客户，实时转人工
+                                    </p>
+                                    <a href="http://www.xiaochirobot.com/tel-robot/7.html">了解详情</a>
+                                </div>
+                            </li> <li style="float: left; width: 299px;">
+                                <div class="one_lun">
+                                    <div class="on_lun_tu">
+                                        <img src="${basePath}/files/images/202004/0405393135360.png" alt="电话工单" class="on_one">
+                                        <img src="${basePath}/files/images/202004/0405393854520.png" alt="电话工单" class="on_two">
+                                    </div>
+                                    <h2>电话工单</h2>
+                                    <p class="" style="height: 72px;">
+                                       机器人自主接听电话<br>
+智能抓取语意信息，自动对接业务工单
+                                    </p>
+                                    <a href="http://www.xiaochirobot.com/tel-order/3.html">了解详情</a>
+                                </div>
+                            </li> <li style="float: left; width: 299px;">
+                                <div class="one_lun">
+                                    <div class="on_lun_tu">
+                                        <img src="/xiaochi/files/images/201907/0303530004210.png" alt="综合云坐席" class="on_one">
+                                        <img src="/xiaochi/files/images/201907/0303531069690.png" alt="综合云坐席" class="on_two">
+                                    </div>
+                                    <h2>综合云坐席</h2>
+                                    <p class="" style="height: 72px;">
+                                       全面融合文字/语音机器人、人工坐席、工单、短信，
+覆盖微信、网站、H5、电话众多渠道
+                                    </p>
+                                    <a href="http://www.xiaochirobot.com/zh-cloud/8.html">了解详情</a>
+                                </div>
+                            </li>
+                        </ul></div>
+                    </div>
+                    <div class="hd">
+                        <ul><li class="on">1</li><li>2</li></ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+
+        
+
+    </main>
+
+       <footer>
+        <div class="footer">
+            <div class="foot_top wrap clearfix">
+                <div class="fl foo_t_fl clearfix">
+                    <div class="f_lo fl">
+                        <img src="${basePath}/images/di.png" alt="在线客服系统电话机器人">
+                    </div>
+                    <div class="f_jie fl">
+                        <h5 style="font-size: 16px;    color: #BEBEBE;    padding-bottom: 15px;">售前咨询热线</h5>
+                        <p style="font-size: 24px;    color: #FFFFFF;    padding-bottom: 25px;">028-63828398 </p>
+                        <p>地址：成都市高新区金地天府城2栋903</p>
+                        <p>业务：028-63828398</p>
+                        <p>邮箱：13551259347@139.com</p>
+                        <div class="f_jie_a">
+                            <a href="javascript:;">
+                                <img src="${basePath}/images/we_1.png" alt="微信机器人">
+                            </a>
+                            <a href="javascript:;"><img src="${basePath}/images/we_2.png" alt="客服管理系统"></a>
+                            <a href="javascript:;"><img src="${basePath}/images/we_3.png" alt="自动回复机器人"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="fl foo_t_cen" >
+                    <ul class="clearfix">
+                        <li>
+                            <h2>产品介绍</h2>
+                              <a href="/intro.html">产品介绍视频</a>
+                         <a href="/wx-robot/1.html">微信公众号机器人</a>
+                          
+                                <a href="/net-robot/2.html">网页H5机器人</a>
+                                <a href="/tel-order/3.html">电话工单</a>
+                                <a href="/tel-robot/7.html">电话外呼</a>
+                                <a href="/zh-cloud/8.html">综合云坐席</a>
+                        </li>
+                        <li id="baoxian">
+                            <h2>解决方案</h2>
+                             <a href="${basePath}/solve.html#caiwu">财务人事行政问答助手</a>
+                                    <a href="${basePath}/solve.html#toubiao">招投标问答助手</a>
+                                    <a href="${basePath}/solve.html#it"> IT问答助手</a>
+                                    <a href="${basePath}/solve.html#shequ">社区卫生服务助手</a>
+                                    <a href="${basePath}/solve.html#yiyuao"> 销售助手</a>
+                                    <a href="${basePath}/solve.html#yunwei">运维调度</a>
+                                    <a href="${basePath}/solve.html#zushou">合规管理助手</a>
+                                    <a href="${basePath}/solve.html#dichan">地产推广</a>
+                                    <a href="${basePath}/solve.html#weixiu">维保维修助手</a>
+                                    <a href="${basePath}/solve.html#baoxian">财险推广</a>
+
+                        </li>
+                        <li>
+                            <h2>联系我们</h2>
+                           <!-- <a href="/">价格介绍</a>-->
+                                 <a href="/about-us/1.html">关于小持</a>
+                                <a href="/about-us/2.html">媒体报道</a>
+                                <a href="/about-us/3.html">加入我们</a>
+                                <a href="/about-us/4.html">联系我们</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="foo_t_fr fr">
+                    <h2>小持智能科技</h2>
+                    <div class="foo_r">
+                        <img src="/./image/er.png" alt="小持智能科技">
+                    </div>
+                    <p>
+                        扫码体验AI客服
+                    </p>
+                </div>
+            </div>
+            <div class="foot_boot" style="padding: 12px;color:#fff;">
+                <ul><li style="padding: 0 10px;display: inline-block;color:#BEBEBE;">友情链接：</li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.9dsn.com/" style="color:#BEBEBE">百度排名</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.cndsnet.com/" style="color:#BEBEBE">百度优化</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.xueseo.org/" style="color:#BEBEBE">实战seo</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.mangopower.net/" style="color:#BEBEBE">智能手机助手</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://ui0.cn/" style="color:#BEBEBE">物联网之家</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://xxxxjy.top/" style="color:#BEBEBE">新乡网站建设</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.07rj.cn/" style="color:#BEBEBE">物业管理系统</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.58seo.cn/" style="color:#BEBEBE">网站建设</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.suchengapp.com/" style="color:#BEBEBE">小程序开发</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.hztongesoft.com/" style="color:#BEBEBE">制造业ERP系统</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.cqouge.com/" style="color:#BEBEBE">重庆广告公司</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.vowins.com/" style="color:#BEBEBE">app开发</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.soyikj.com/" style="color:#BEBEBE">百度SEO</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.jiyuzs.com/" style="color:#BEBEBE">360防拦截域名</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.linsenad.cn/" style="color:#BEBEBE">东营网站建设</a></li>
+                    
+                    <li style="padding: 0 10px;display: inline-block;"><a target="_blank" href="http://www.nccpu.net/" style="color:#BEBEBE">石家庄网站建设</a></li>
+                    
+</ul>
+            </div>
+            <div class="foot_boot">
+                <div class="clearfix wrap">
+                    <div class="foot_b_fl fl">
+                        Copyright © 2016-2019 上海小持智能科技有限公司. 沪ICP备16043540号
+                        
+                            Design by SmallView<br>
+							
+						服务：<strong>在线客服系统</strong>、<strong>客服管理系统</strong>、<strong>客服软件</strong>、<strong>电话机器人</strong>、<strong>微信机器人</strong>、<strong>自动回复机器人</strong>
+                        
+                    </div>
+                    <div class="foot_b_fr fr">
+                        <a href="/about-us/1.html">
+                            关于小持
+                        </a>
+                        <em>
+                            ｜
+                        </em>
+                        <a href="/about-us/2.html">媒体报道</a>
+                        <em>
+                            ｜
+                        </em>
+                        <a href="/about-us/3.html">加入我们</a>
+                        <em>
+                            ｜
+                        </em>
+                        <a href="/about-us/4.html">联系我们</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- 右侧 -->
+   <div class="phone_nav none">
+        <div class="phone_mask"></div>
+        <div class="phone_nav_right">
+            <ul>
+                <li>
+                    <a href="http://www.xiaochirobot.com/">首页</a>
+                </li>
+                <li>
+                    <a href="javascript:;">产品介绍</a>
+                    <div class="phone_duo">
+                         <a href="http://www.xiaochirobot.com/intro.html">产品介绍视频</a>
+ 
+                       <a href="http://www.xiaochirobot.com/wx-robot/1.html">微信公众号机器人</a>
+                                <a href="http://www.xiaochirobot.com/net-robot/2.html">网页H5机器人</a>
+                                <a href="http://www.xiaochirobot.com/tel-order/3.html">电话工单</a>
+                                <a href="http://www.xiaochirobot.com/tel-robot/7.html">电话外呼</a>
+                                <a href="http://www.xiaochirobot.com/zh-cloud/8.html">综合云坐席</a>
+                    </div>
+                </li>
+            
+                <li>
+                    <a href="javascript:;">解决方案</a>
+                    <div class="phone_duo">
+                       <a href="http://www.xiaochirobot.com${basePath}/solve.html#caiwu">财务人事行政问答助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#toubiao">招投标问答助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#it"> IT问答助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#shequ">社区卫生服务助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#yiyuao"> 销售助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#yunwei">运维调度</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#zushou">合规管理助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#dichan">地产推广</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#weixiu">维保维修助手</a>
+                                    <a href="http://www.xiaochirobot.com/solve.html#baoxian">财险推广</a>
+                    </div>
+                </li>
+                <li><a href="/price.html">服务价格</a></li>
+                <li><a href="http://www.xiaochirobot.com/Customer.html">客户案例</a></li>
+          <!--      <li><a href="/">产品体验</a></li>-->
+                <li><a href="javascript:;">联系我们</a>
+                     <div class="phone_duo">
+                          <a href="/about-us/1.html">关于小持</a>
+                          <a href="/about-us/2.html">媒体报道</a>
+                          <a href="/about-us/3.html">加入我们</a>
+                          <a href="/about-us/4.html">联系我们</a>
+                      
+                    </div>
+                </li>
+            </ul>
+            <div class="menu_fr fl">
+                <a href="http://www.xiaochirobot.com/enroll.html" rel="nofollow">登录</a>
+                <a href="/">免费试用</a>
+            </div>
+        </div>
+    </div>
+    <!-- 手机底部 -->
+    <div class="phone_foot_fixed none">
+        <div class="anypabottom">
+            <a href="http://www.xiaochiai.com:80/im/text/0sV8kV.html" rel="nofollow" class="online"><img src="/./image/online.png"></a>
+            <a href="tel:028-63828398" rel="nofollow" class="ontele"><img src="/./image/tele.png"></a>
+        </div>
+    </div>
+<!-- 右侧 -->
+   
+    <script type="text/javascript">
+        window.onload = function () {
+            if (win_width <= 768) {
+                jQuery(".i_one_lun .picScroll-left").slide({
+                    titCell: ".hd ul",
+                    mainCell: ".bd ul",
+                    autoPage: true,
+                    effect: "left",
+                    autoPlay: true,
+                    vis: 1,
+                    trigger: "click"
+                });
+                jQuery(".i_seve_con .picScroll-left").slide({
+                    titCell: ".hd ul",
+                    mainCell: ".bd ul",
+                    autoPage: true,
+                    effect: "left",
+                    autoPlay: true,
+                    vis: 1,
+                    trigger: "click"
+                });
+
+            }
+        }
+        jQuery(".slideBox").slide({
+            mainCell: ".bd ul",
+            autoPlay: true,
+            effect:"left"
+        });
+        var win_width = $(window).width();
+        if (win_width > 768) {
+            // 轮播2
+            jQuery(".i_one_lun .picScroll-left").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "left",
+                autoPlay: false,
+                vis: 4,
+                trigger: "click"
+            });
+            // 轮播3
+            jQuery(".i_seve_con .picScroll-left").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "left",
+                autoPlay: true,
+                vis: 3,
+                trigger: "click"
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        
+    </script>
+<script>
+    // 
+    var win_width = $(window).width();
+    if (win_width > 768) {
+        window.onload = function () {
+            var heightData = new Array();
+            $(".one_lun p").each(function () {
+                heightData.push($(this).height())
+            })
+            heightData.sort(function (val1, val2) {
+                return val1 - val2;
+            })
+            var heights = heightData[heightData.length - 1];
+            $(".one_lun p").css("height", heights)
+        }
+    }
+   
+    var a = $(".picList li").eq(4);
+    
+    $("#dj").click(function () {
+        var phone = $(".phone").val();
+        
+        var Phone = /^1[3|4|5|7|8][0-9]{9}$/;
+        if (phone=="") {
+            layer.msg("请输入您的手机号码！");
+            return;
+        }
+        if (Phone.test(phone) != true) {
+            layer.msg("请输入正确的手机号码！");
+            return;
+        }
+
+	$.ajax({
+                type:"GET",
+                url:"http://www.xiaochiai.com/bind/trialApply?phone="+phone,
+                success:function(data) {
+                        if(data.responseText != "0" && data.responseText != "-1"){
+                            layer.msg("感谢您对小持科技的关注，您的专属业务员会在24小时内联系您，请留意接听，谢谢.");
+                        }
+                     },
+                error:function(){
+                    console.error("发送短信失败，请联系管理员");
+                }
+		});
+        layer.msg("感谢你对小持科技的关注，您的专属业务会员会在24小时内联系您，请留意接听，谢谢");
+    })
+</script>
+<script type="text/javascript" charset="UTF-8" src="http://127.0.0.1:5161/scripts/e420fb2ba81d41019430d9d38c7150a6.js"></script>
+
+</body>
+</html>
