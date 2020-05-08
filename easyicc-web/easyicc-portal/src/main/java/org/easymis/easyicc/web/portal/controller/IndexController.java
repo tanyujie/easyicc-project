@@ -15,6 +15,10 @@ public class IndexController {
 	public String introduce() throws NoSuchAlgorithmException {
 		return "/introduce";
 	}
+	@RequestMapping("/solve.html")
+	public String solve() throws NoSuchAlgorithmException {
+		return "/solve";
+	}
 	@RequestMapping("/price.html")
 	public String price() throws NoSuchAlgorithmException {
 		return "/price";
@@ -22,6 +26,14 @@ public class IndexController {
 	@RequestMapping("/customer.html")
 	public String customer() throws NoSuchAlgorithmException {
 		return "/customer";
+	}
+	@RequestMapping("/demo.html")
+	public String demo() throws NoSuchAlgorithmException {
+		return "/demo";
+	}
+	@RequestMapping("/download.html")
+	public String download() throws NoSuchAlgorithmException {
+		return "/download";
 	}
 	@RequestMapping("/about-us.html")
 	public String aboutUs() throws NoSuchAlgorithmException {

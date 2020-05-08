@@ -23,4 +23,13 @@ public class RegisterController {
 	public RestResult registerDo(RegisterVo vo) {		
 		return memberService.saveRegister(vo);
 	}
+	@RequestMapping("/repassword.html")
+	public String repasswordHtml() throws NoSuchAlgorithmException {
+		return "/repassword";
+	}
+
+	@RequestMapping(value = "/repassword.do", method = RequestMethod.POST)
+	public RestResult repasswordDo(RegisterVo vo) {		
+		return memberService.saveRegister(vo);
+	}
 }
