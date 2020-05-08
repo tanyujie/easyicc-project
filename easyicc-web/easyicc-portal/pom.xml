@@ -18,7 +18,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-<!-- 		<springfox-swagger.version>2.8.0</springfox-swagger.version> -->
+		<!-- <springfox-swagger.version>2.8.0</springfox-swagger.version> -->
 		<springfox-staticdocs.version>2.6.1</springfox-staticdocs.version>
 	</properties>
 	<packaging>jar</packaging>
@@ -43,7 +43,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
- 		<dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
@@ -130,18 +130,33 @@
 			<version>1.11.2</version>
 		</dependency>
 		<!-- 热部署 -->
+		<!-- easyicc相关jar begin -->
 		<dependency>
-			<groupId>org.easymis.easysaas</groupId>
-			<artifactId>easysaas-common</artifactId>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-common</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-
-
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-domain</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-service</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.easymis.easyicc</groupId>
+			<artifactId>easyicc-fastdfs</artifactId>
+			<version>1.0.0.RELEASE</version>
+		</dependency>
+		<!-- easyicc相关jar end -->
 	</dependencies>
 
 
 	<build>
-		<finalName>easysaas-icc</finalName>
+		<finalName>easyicc-portal</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
