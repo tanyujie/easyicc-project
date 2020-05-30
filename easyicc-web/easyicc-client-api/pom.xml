@@ -140,7 +140,7 @@
 
 
 	<build>
-		<finalName>easyicc</finalName>
+		<finalName>easyicc-clientApi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
