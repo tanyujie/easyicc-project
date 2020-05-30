@@ -5,19 +5,19 @@
 	<meta name="keywords" content="在线客服"/>
 	<meta name="description" content="在线客服"/>
 	<title>在线客服</title>
-    <link type="text/css" rel="stylesheet" href="http://127.0.0.1:5031/chat/css/2020/initialize.css?ver=20190708"/>
-    <link type="text/css" rel="stylesheet" href="http://127.0.0.1:5031/chat/css/2020/index.css?ver=20190708"/>
+    <link type="text/css" rel="stylesheet" href="${basePath}/css/2020/initialize.css?ver=20190708"/>
+    <link type="text/css" rel="stylesheet" href="${basePath}/css/2020/index.css?ver=20190708"/>
     
-    <script src="http://127.0.0.1:5031/chat/js/jquery-1.4.4.min.js"></script>
+    <script src="${basePath}/js/jquery-1.4.4.min.js"></script>
     
-    <script type='text/javascript' src='http://127.0.0.1:5031/chat/lang/sc.js?ver=20190708'></script>
+    <script type='text/javascript' src='${basePath}/lang/sc.js?ver=20190708'></script>
     
 <script>
 	
 	var scheme = "http";
 	var schemePort = "80";
 	
-	var staticFilePath = "http://127.0.0.1:5031/chat/";
+	var staticFilePath = "${basePath}/";
 	
 	var promotionId = 0;
 	var chatType = "pc";
@@ -71,7 +71,7 @@
 	var msgStyle = "pc";
 	
 	var quietFlag = false;
-	var imgUrl = "http://127.0.0.1:5031/chat/images/2020/pcWarning.png";
+	var imgUrl = "${basePath}/images/2020/pcWarning.png";
 	var ocpc = {
 			platform:'-1',
 			condition:'1',
@@ -89,7 +89,7 @@
 <body>
 <div class="container-screen">
     <div class="header-img">
-        <div class="brand-img" style="background: url("http://127.0.0.1:5031/chat/images/logo.png") left center no-repeat;"></div>
+        <div class="brand-img" style="background: url("${basePath}/images/logo.png") left center no-repeat;"></div>
     </div>
     <div class="main">
         <div id="chatDiv" class="main-aside-left test-1">
@@ -192,7 +192,7 @@
 <div id="jesong_sound" style="display:none;">
 	<audio id="jesong_audio" src="./wav/sound.wav"></audio>
 </div>
-<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/util.js?ver=20200408'></script>
-<script type='text/javascript' src='http://127.0.0.1:5031/chat/js/2020/chat.js?ver=20200408'></script>
+<script type='text/javascript' src='${basePath}/js/util.js?ver=20200408'></script>
+<script type='text/javascript' src='${basePath}/js/2020/chat.js?ver=20200408'></script>
 </body>
 </html>
