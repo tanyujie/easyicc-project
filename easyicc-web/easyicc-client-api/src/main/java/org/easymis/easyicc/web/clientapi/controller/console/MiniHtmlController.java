@@ -34,7 +34,7 @@ public class MiniHtmlController extends IdentityRepository{
 		if (pageSize == null)
 			pageSize = 10;
 		model.put("pageInfo", service.find(bean, pageNum, pageSize));
-		return "/console/iccFile/index";
+		return "/console/miniHtml/index";
 	}
 	@ApiOperation(value = "查询接口", response = MiniHtml.class)
 	@ApiImplicitParams({ @ApiImplicitParam(name = "name", value = "分类名称", dataType = "string", required = false),})
