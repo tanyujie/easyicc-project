@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
-@Api(value = "/chat", description = "客户端聊天javaScripts")
+@Api(value = "/", description = "客户端聊天javaScripts")
 @Controller
 @RequestMapping("/")
 public class ScriptsController extends IdentityRepository{
