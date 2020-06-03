@@ -27,6 +27,7 @@ public class VisitorTrackController {
 	public RestResult currentChat(String visitorId,Model model) throws NoSuchAlgorithmException {
 		ChatRecord chatRecord = chatRecordService.findById(visitorId);
 		HashMap map = new HashMap();
+		
 		return RestResult.buildSuccess(map);
 	}
 }
