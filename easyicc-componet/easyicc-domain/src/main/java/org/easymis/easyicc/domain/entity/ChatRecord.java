@@ -32,7 +32,7 @@ public class ChatRecord {
      private Integer effective; 
      //消息记录条数",column="message_count",isnull=true) 
      private Integer messageCount; 
-     //",column="summarize",length=255,isnull=true) 
+     //",column="summarize",length=255,isnull=true) Schc123456.
      private String summarize; 
      //",column="all_time",isnull=true) 
      private Integer allTime; 
