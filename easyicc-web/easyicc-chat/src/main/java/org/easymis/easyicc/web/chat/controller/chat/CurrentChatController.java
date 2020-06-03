@@ -1,10 +1,13 @@
 package org.easymis.easyicc.web.chat.controller.chat;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
+import org.easymis.easyicc.common.result.RestResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,14 +25,13 @@ public class CurrentChatController {
 	
 	@ApiOperation(value = "当前对话")
 	@RequestMapping("/index.json")
-	public String currentChat(String o,String v,String u,String config,String chatUrl,Model model) throws NoSuchAlgorithmException {
-		model.addAttribute("orgId", o);
-		model.addAttribute("visitorId", v);
-		model.addAttribute("staffId", u);
-		model.addAttribute("jsConfigId", config);
-		model.addAttribute("chatUrl", chatUrl);
-		//ChatRecord chatRecord=chatRecordService.findByVisitorId(v);
-		//model.addAttribute("chatId", chatRecord.getChatId());
-		return "/chat";
-	}
+	@ResponseBody
+	public RestResult currentChat(String chatId, Model model) throws NoSuchAlgorithmException {
+		HashMap map = new HashMap();
+		map.put("searchWord", "");
+		map.put("keywordWord", "");
+		// 当前浏览网页
+		map.put("firstActiveUrl", "http://www.easymis.cn");
+
+		return RestResult.buildSuccess(map);}
 }

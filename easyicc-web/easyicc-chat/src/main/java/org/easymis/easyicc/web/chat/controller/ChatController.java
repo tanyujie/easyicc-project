@@ -29,4 +29,6 @@ public class ChatController {
 	public String blank() throws NoSuchAlgorithmException {
 		return "/chatBlank";
 	}
+
+	
 }
