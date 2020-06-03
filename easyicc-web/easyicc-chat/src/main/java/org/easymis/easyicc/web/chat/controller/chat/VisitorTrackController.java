@@ -1,10 +1,16 @@
 package org.easymis.easyicc.web.chat.controller.chat;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
+import org.easymis.easyicc.common.result.RestResult;
+import org.easymis.easyicc.domain.entity.ChatRecord;
+import org.easymis.easyicc.service.ChatRecordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -13,16 +19,14 @@ import io.swagger.annotations.ApiOperation;
 @Controller
 @RequestMapping("/visitorTrack")
 public class VisitorTrackController {
+	@Autowired
+	private ChatRecordService chatRecordService;
 	@ApiOperation(value = "访客轨迹")
 	@RequestMapping("/index.json")
-	public String currentChat(String o,String v,String u,String config,String chatUrl,Model model) throws NoSuchAlgorithmException {
-		model.addAttribute("orgId", o);
-		model.addAttribute("visitorId", v);
-		model.addAttribute("staffId", u);
-		model.addAttribute("jsConfigId", config);
-		model.addAttribute("chatUrl", chatUrl);
-		//ChatRecord chatRecord=chatRecordService.findByVisitorId(v);
-		//model.addAttribute("chatId", chatRecord.getChatId());
-		return "/chat";
+	@ResponseBody
+	public RestResult currentChat(String visitorId,Model model) throws NoSuchAlgorithmException {
+		ChatRecord chatRecord = chatRecordService.findById(visitorId);
+		HashMap map = new HashMap();
+		return RestResult.buildSuccess(map);
 	}
 }
