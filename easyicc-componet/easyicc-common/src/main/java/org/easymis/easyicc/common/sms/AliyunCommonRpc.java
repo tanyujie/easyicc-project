@@ -1,5 +1,7 @@
 package org.easymis.easyicc.common.sms;
 
+import org.apache.http.HttpStatus;
+
 import com.alibaba.fastjson.JSON;
 import com.aliyuncs.CommonRequest;
 import com.aliyuncs.CommonResponse;
@@ -9,8 +11,8 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
+
 import lombok.extern.slf4j.Slf4j;
-import org.apache.http.HttpStatus;
 
 /**
 　* @description: 发送短信工具类
@@ -20,8 +22,7 @@ import org.apache.http.HttpStatus;
 @Slf4j
 public class AliyunCommonRpc {
 
-    private final static DefaultProfile profile = DefaultProfile.getProfile("default", "LTAIPR36p4xDuayC", "ZyDz9R8AhmNkHf4jpiJ34yMLJiJZHY");
-
+    private final static DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIIGZNqRSDIjZA", "l2obc6BtNHtJjbSamMLZ6Du6gKmLjI");
     /**
  　　* @description: 发送验证码通知
  　　* author zh
@@ -30,10 +31,12 @@ public class AliyunCommonRpc {
     public static AliyunSmsResult sendSms(String mobile, String code) {
         CommonRequest request = new CommonRequest();
         //request.setProtocol(ProtocolType.HTTPS);
-        request.putQueryParameter("PhoneNumbers", mobile);
-        request.putQueryParameter("SignName", "黄金眼");
-        request.putQueryParameter("TemplateCode", "SMS_164275292");
-        request.putQueryParameter("TemplateParam", "{\"code\":\"" + code + "\"}");
+		request.putQueryParameter("RegionId", "cn-hangzhou");
+		request.putQueryParameter("PhoneNumbers", mobile);
+		request.putQueryParameter("SignName", "dbview");
+		request.putQueryParameter("TemplateCode", "SMS_176475042");
+		request.putQueryParameter("TemplateParam", "{\"code\":\"" + code + "\"}");
+        
         return commonResult(request);
     }
     /**
